@@ -43,9 +43,9 @@ dependencies {
     // Forgelin
     compile group: "net.shadowfacts", name: "Forgelin", version: "1.6.0"
     // Mantle
-    //compile group: "slimeknights.mantle", name: "Mantle", version: "${v_minecraft_root}-${v_mantle}"
+    compile group: "slimeknights.mantle", name: "Mantle", version: "${v_minecraft_root}-${v_mantle}"
     // Tinkers' Construct
-    //compile group: "slimeknights", name: "TConstruct", version: "${v_minecraft}-${v_tinkers}"
+    compile group: "slimeknights", name: "TConstruct", version: "${v_minecraft}-${v_tinkers}"
 }
 
 processResources {
