@@ -21,8 +21,8 @@ class NewMaterial(initName: String, initColor: Int, initFunc: NewMaterial.() -> 
 
     lateinit var material: Material
     var matFluid: Fluid? = null
-    private lateinit var matBlock: Block
-    private lateinit var fluidItem: ItemBlock
+    lateinit var matBlock: Block
+    lateinit var fluidItem: ItemBlock
     private var matIngot: ItemStack? = null
     private lateinit var integration: MaterialIntegration
     var nameLocales = mutableMapOf<String, String>()
@@ -65,7 +65,7 @@ class NewMaterial(initName: String, initColor: Int, initFunc: NewMaterial.() -> 
     private fun makeFluid() {
         var name = tool.name.toLowerCase()
         matFluid = FluidMolten(name, tool.color).apply {
-            unlocalizedName = "${Pewter.MODID}:$name"
+            unlocalizedName = "${Pewter.MODID}.$name"
         }
         FluidRegistry.registerFluid(matFluid)
 

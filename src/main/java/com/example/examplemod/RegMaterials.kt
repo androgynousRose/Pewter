@@ -1,7 +1,8 @@
 package com.example.examplemod
 
-class RegMaterials {
+import slimeknights.tconstruct.shared.FluidsClientProxy
 
+class RegMaterials {
 
 
     companion object {
