@@ -2,7 +2,7 @@ package com.example.examplemod.logic
 
 import com.example.examplemod.dsl.NewMaterial
 
-class DummyMaterial : NewMaterial("hello", "#888888", {
+class ExampleMaterial : NewMaterial("hello", "#888888", {
     locale("en_US" to "Test Material.")
     forge { true }
     craft { false }

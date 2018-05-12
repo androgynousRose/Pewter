@@ -4,7 +4,7 @@ import com.example.examplemod.Pewter
 import com.example.examplemod.dsl.NewMaterial
 import com.example.examplemod.dsl.ToolStats
 import com.example.examplemod.ext.resource
-import com.example.examplemod.logic.DummyMaterial
+import com.example.examplemod.logic.ExampleMaterial
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
@@ -33,31 +33,29 @@ open class CommonProxy : IProxy {
     override fun preInit(e: FMLPreInitializationEvent) {
         loadMaterialData()
         makePewterFluid()
+        if (Pewter.materials.size == 0) {
+            saveExampleMaterial()
+        }
+    }
 
-
-        val mat1 = DummyMaterial()
-        Pewter.materials.add(mat1)
-
-
+    private fun saveExampleMaterial() {
         val gson = GsonBuilder().setPrettyPrinting().create()
-        //2. Convert object to JSON string and save into a file directly
         try {
-            FileWriter("toolbeta.json").use { writer ->
+            println("WANNA WRITE TO ${Pewter.CONFIGDIR}\\_example.json")
+            FileWriter("${Pewter.CONFIGDIR}\\_example.json").use { writer ->
 
-                gson.toJson(mat1.tool, writer)
+                gson.toJson(ExampleMaterial().tool, writer)
 
             }
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
-
-
-
     }
 
     private fun loadMaterialData() {
-        Pewter.materials.addAll(loadMaterialFiles(Pewter.CONFIGDIR).map { NewMaterial(it) })
+        val loadedMaterials = loadMaterialFiles(Pewter.CONFIGDIR).map { NewMaterial(it) }
+        Pewter.LOGGER.info("Loaded ${loadedMaterials.size} materials.")
+        Pewter.materials.addAll(loadedMaterials)
     }
 
     private fun loadMaterialFiles(dir: File): MutableList<ToolStats> {
@@ -72,11 +70,10 @@ open class CommonProxy : IProxy {
                         statList.add(stat)
                     }
                 }
-                file.name.endsWith(".json") -> {
+                file.name.endsWith(".json") && !file.name.startsWith("_") -> {
                     Pewter.LOGGER.info("Attempting to parse: ${file.name}")
                     val parsedStat: Any? = try {
                         val fileContents = String(Files.readAllBytes(file.toPath()))
-                        println("FILE CONTENTS: $fileContents")
                         gson.fromJson<Any>(fileContents, ToolStats::class.java)
                     } catch (e: IOException) {
                         Pewter.LOGGER.warn("File named ${file.name} could not be found?")
