@@ -12,7 +12,7 @@ class ResourceManager : IResourceManagerReloadListener {
     override fun onResourceManagerReload(resourceManager: IResourceManager) {
         var data = ""
         for (mat in Pewter.materials) {
-            for ((locName, value) in mat.nameLocales) {
+            for ((locName, value) in mat.tool.nameLocales) {
                 val materialName = mat.tool.name.toLowerCase()
                 if (locName.toLowerCase() == Minecraft.getMinecraft().languageManager.currentLanguage.languageCode.toLowerCase()) {
                     // Material entry in book

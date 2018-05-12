@@ -41,7 +41,6 @@ open class CommonProxy : IProxy {
     private fun saveExampleMaterial() {
         val gson = GsonBuilder().setPrettyPrinting().create()
         try {
-            println("WANNA WRITE TO ${Pewter.CONFIGDIR}\\_example.json")
             FileWriter("${Pewter.CONFIGDIR}\\_example.json").use { writer ->
 
                 gson.toJson(ExampleMaterial().tool, writer)

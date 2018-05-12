@@ -4,7 +4,6 @@ import com.example.examplemod.Pewter
 import com.example.examplemod.ext.resource
 import com.example.examplemod.ext.toItemStack
 import net.minecraft.block.Block
-import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fluids.Fluid
@@ -26,11 +25,7 @@ open class NewMaterial(initName: String, initColor: String, initFunc: NewMateria
     lateinit var fluidItem: ItemBlock
     private var matIngot: ItemStack? = null
     private lateinit var integration: MaterialIntegration
-    var nameLocales = mutableMapOf<String, String>()
-    private var smeltingMap = mutableMapOf<String, MutableList<Item>>(
-            "ingot" to mutableListOf(),
-            "nuggets" to mutableListOf()
-    )
+
     var tool = ToolStats()
 
     constructor(toolData: ToolStats) : this(toolData.name, toolData.color, {}) {
@@ -51,9 +46,13 @@ open class NewMaterial(initName: String, initColor: String, initFunc: NewMateria
 
     // Register all associated items in the Ore Dictionary
     private fun addToOreDict() {
-        for (type in smeltingMap.keys ) {
-            smeltingMap[type]!!.forEach { item ->
-                OreDictionary.registerOre(type + tool.name.capitalize(), item)
+        for (type in tool.smelting.keys ) {
+            tool.smelting[type]!!.forEach { itemString ->
+                val item = itemString.toItemStack?.item
+                // If that item exists, register it
+                item?.let {
+                    OreDictionary.registerOre(type + tool.name.capitalize(), it)
+                }
             }
         }
     }
@@ -142,7 +141,7 @@ open class NewMaterial(initName: String, initColor: String, initFunc: NewMateria
 
     @TopLevelToolDSL
     fun locale(vararg pairs: Pair<String, String>) {
-        nameLocales = pairs.toMap().toMutableMap()
+        tool.nameLocales = pairs.toMap().toMutableMap()
     }
 
     @TopLevelToolDSL
@@ -152,10 +151,16 @@ open class NewMaterial(initName: String, initColor: String, initFunc: NewMateria
 
     fun ingots(vararg ing: String) {
         // Add all ingots to map
-        smeltingMap["ingot"]!!.addAll(ing.mapNotNull { it.toItemStack }.mapNotNull { it.item })
+        tool.smelting["ingot"]!!.addAll(ing)
         // Set icon to first ingot if no icon exists yet
-        if (matIngot == null && smeltingMap["ingot"]!!.isNotEmpty()) {
-            matIngot = ItemStack(smeltingMap["ingot"]!!.first())
+        if (matIngot == null && tool.smelting["ingot"]!!.isNotEmpty()) {
+            val foundName = tool.smelting["ingot"]!!.first()
+            val found = foundName.toItemStack
+            if (found != null) {
+                matIngot = found
+            } else {
+                throw Exception("This item does NOT exist at this time!: $foundName")
+            }
         }
     }
 

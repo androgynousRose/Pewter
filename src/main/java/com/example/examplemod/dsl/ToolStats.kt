@@ -8,7 +8,6 @@ class ToolStats {
     var color = "#448844"
     var craftable = false
     var madeInToolForge = false
-    //var toolId = 0
     var name = "doot"
     var durability = 0
     var toolAttackDamage = 0
@@ -24,8 +23,11 @@ class ToolStats {
     var arrowShaftBonusAmmo = 0
     var fletchingModifier = 0f
     var stringModifier = 0f
-    var matParts = mutableSetOf<MatPart>(MatPart.HEAD)
-
+    var matParts = mutableSetOf<MatPart>()
+    var nameLocales = mutableMapOf<String, String>()
+    var smelting = mutableMapOf<String, MutableList<String>>(
+            "ingot" to mutableListOf()
+    )
     /*
     private fun addTrait(name: String, matType: String) {
         val imod = TinkerRegistry.getModifier(name)
