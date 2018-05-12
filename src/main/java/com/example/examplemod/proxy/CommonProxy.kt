@@ -4,6 +4,8 @@ import com.example.examplemod.Pewter
 import com.example.examplemod.dsl.NewMaterial
 import com.example.examplemod.dsl.ToolStats.*
 import com.example.examplemod.ext.resource
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
@@ -14,6 +16,14 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.registry.ForgeRegistries
 import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.smeltery.block.BlockMolten
+import sun.plugin2.util.PojoUtil.toJson
+import java.io.IOException
+import sun.plugin2.util.PojoUtil.toJson
+import java.io.FileWriter
+
+
+
+
 
 open class CommonProxy : IProxy {
 
@@ -25,7 +35,7 @@ open class CommonProxy : IProxy {
 
         makePewterFluid()
 
-        val mat1 = NewMaterial("hello", 0x888888) {
+        val mat1 = NewMaterial("hello", "#888888") {
             locale("en_US" to "Test Material.")
             forge { true }
             craft { false }
@@ -54,6 +64,20 @@ open class CommonProxy : IProxy {
                 bonusAmmo { 5 }
             }
         }
+
+        val gson = GsonBuilder().setPrettyPrinting().create()
+        //2. Convert object to JSON string and save into a file directly
+        try {
+            FileWriter("toolbeta.json").use { writer ->
+
+                gson.toJson(mat1.tool, writer)
+
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+
         Pewter.materials.add(mat1)
     }
 

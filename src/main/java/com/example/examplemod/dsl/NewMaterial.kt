@@ -16,8 +16,9 @@ import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.library.materials.Material
 import slimeknights.tconstruct.smeltery.block.BlockMolten
+import java.awt.Color
 
-class NewMaterial(initName: String, initColor: Int, initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
+class NewMaterial(initName: String, initColor: String, initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
 
     lateinit var material: Material
     var matFluid: Fluid? = null
@@ -58,13 +59,13 @@ class NewMaterial(initName: String, initColor: Int, initFunc: NewMaterial.() -> 
         if (material != Material.UNKNOWN) {
             println("Material already registered.")
         } else {
-            material = Material(tool.name, tool.color)
+            material = Material(tool.name, Color.decode(tool.color).rgb)
         }
     }
 
     private fun makeFluid() {
         var name = tool.name.toLowerCase()
-        matFluid = FluidMolten(name, tool.color).apply {
+        matFluid = FluidMolten(name, Color.decode(tool.color).rgb).apply {
             unlocalizedName = "${Pewter.MODID}.$name"
         }
         FluidRegistry.registerFluid(matFluid)
@@ -184,12 +185,12 @@ class NewMaterial(initName: String, initColor: Int, initFunc: NewMaterial.() -> 
 
         @NestedDSL
         fun attack(func: () -> Int) {
-            tool.attack = func()
+            tool.toolAttackDamage = func()
         }
 
         @NestedDSL
         fun speed(func: () -> Float) {
-            tool.matSpeed = func()
+            tool.toolSpeed = func()
         }
     }
 

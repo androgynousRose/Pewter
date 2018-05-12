@@ -1,32 +1,24 @@
 package com.example.examplemod.proxy
 
-import com.google.common.base.Function
-
 import com.example.examplemod.Pewter
 import com.example.examplemod.ResourceManager
 import com.example.examplemod.logic.FluidStateMapper
+import com.google.common.base.Function
 import net.minecraft.client.Minecraft
-import net.minecraft.client.resources.IReloadableResourceManager
-import net.minecraftforge.client.model.ModelLoader
-import net.minecraftforge.fml.common.event.FMLInitializationEvent
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
-import slimeknights.tconstruct.library.client.MaterialRenderInfo
-import slimeknights.tconstruct.library.Util.MODID
-import net.minecraft.client.renderer.block.model.ModelResourceLocation
-import net.minecraftforge.client.model.Attributes.DEFAULT_BAKED_FORMAT
-import net.minecraftforge.client.model.ModelFluid
-import net.minecraft.creativetab.CreativeTabs.MATERIALS
 import net.minecraft.client.renderer.block.model.IBakedModel
-import net.minecraftforge.client.model.IModel
+import net.minecraft.client.renderer.block.model.ModelResourceLocation
+import net.minecraft.client.renderer.texture.TextureAtlasSprite
+import net.minecraft.client.resources.IReloadableResourceManager
+import net.minecraft.util.ResourceLocation
 import net.minecraftforge.client.event.ModelBakeEvent
 import net.minecraftforge.client.model.Attributes
+import net.minecraftforge.client.model.IModel
+import net.minecraftforge.client.model.ModelFluid
+import net.minecraftforge.client.model.ModelLoader
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
-import net.minecraft.util.ResourceLocation
-import net.minecraft.client.renderer.texture.TextureAtlasSprite
-
-
-
+import slimeknights.tconstruct.library.client.MaterialRenderInfo
+import java.awt.Color
 
 
 class ClientProxy : CommonProxy() {
@@ -43,7 +35,7 @@ class ClientProxy : CommonProxy() {
                 // Block Model
                 ModelLoader.setCustomStateMapper(material.matBlock, mapper)
             }
-            material.material.setRenderInfo(MaterialRenderInfo.Metal(material.tool.color, 0.25f, 0.5f, -0.1f))
+            material.material.setRenderInfo(MaterialRenderInfo.Metal(Color.decode(material.tool.color).rgb, 0.25f, 0.5f, -0.1f))
         }
 
 

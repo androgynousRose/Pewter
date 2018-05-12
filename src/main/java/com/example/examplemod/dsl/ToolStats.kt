@@ -5,15 +5,15 @@ import slimeknights.tconstruct.library.materials.*
 
 
 class ToolStats {
-    var color = 0
+    var color = "#448844"
     var craftable = false
     var madeInToolForge = false
-    var toolId = 0
+    //var toolId = 0
     var name = "doot"
     var durability = 0
-    var attack = 0
-    var matHarvest = 0
-    var matSpeed = 0f
+    var toolAttackDamage = 0
+    var toolHarvestLevel = 0
+    var toolSpeed = 0f
     var handleMult = 0f
     var handleDurability = 0
     var extraDurability = 0
@@ -24,7 +24,7 @@ class ToolStats {
     var arrowShaftBonusAmmo = 0
     var fletchingModifier = 0f
     var stringModifier = 0f
-    var matParts = mutableSetOf<MatPart>()
+    var matParts = mutableSetOf<MatPart>(MatPart.HEAD)
 
     /*
     private fun addTrait(name: String, matType: String) {
@@ -54,10 +54,10 @@ class ToolStats {
     }
 
     enum class MatPart(val stats: (it: ToolStats) -> IMaterialStats?) {
-        HEAD({ HeadMaterialStats(it.durability, it.matSpeed, it.attack.toFloat(), it.matHarvest) }),
+        HEAD({ HeadMaterialStats(it.durability, it.toolSpeed, it.toolAttackDamage.toFloat(), it.toolHarvestLevel) }),
         HANDLE({ HandleMaterialStats(it.handleMult, it.handleDurability) }),
         BINDING({ ExtraMaterialStats(it.extraDurability) }),
-        BOW({ BowMaterialStats(it.matSpeed, it.bowRange, it.bowBonusDamage) }),
+        BOW({ BowMaterialStats(it.toolSpeed, it.bowRange, it.bowBonusDamage) }),
         SHAFT({ ArrowShaftMaterialStats(it.arrowShaftModifier, it.arrowShaftBonusAmmo) }),
         FLETCHING({ FletchingMaterialStats(it.bowAccuracy, it.fletchingModifier) }),
         STRING({ BowStringMaterialStats(it.stringModifier) }),
