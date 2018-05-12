@@ -1,7 +1,7 @@
-package com.example.pewter.dsl
+package com.ejektaflex.pewter.dsl
 
-import com.example.pewter.ext.toItemStack
-import com.example.pewter.logic.MaterialStats
+import com.ejektaflex.pewter.ext.toItemStack
+import com.ejektaflex.pewter.logic.MaterialStats
 
 open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>() {
 

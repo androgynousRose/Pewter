@@ -1,4 +1,4 @@
-package com.example.pewter
+package com.ejektaflex.pewter
 
 import net.minecraft.client.resources.IResourceManagerReloadListener
 import net.minecraft.util.text.translation.LanguageMap

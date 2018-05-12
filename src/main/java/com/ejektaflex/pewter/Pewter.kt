@@ -1,7 +1,7 @@
-package com.example.pewter
+package com.ejektaflex.pewter
 
-import com.example.pewter.logic.MaterialRegistrar
-import com.example.pewter.proxy.IProxy
+import com.ejektaflex.pewter.logic.MaterialRegistrar
+import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventHandler
@@ -48,8 +48,8 @@ class Pewter {
         const val VERSION = "1.0"
         const val DEPENDS = "required:tconstruct"
         const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
-        const val CLIENT = "com.example.pewter.proxy.ClientProxy"
-        const val SERVER = "com.example.pewter.proxy.CommonProxy"
+        const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
+        const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
 
         lateinit var LOGGER: Logger
         lateinit var CONFIGDIR: File

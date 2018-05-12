@@ -1,4 +1,4 @@
-package com.example.pewter.logic
+package com.ejektaflex.pewter.logic
 
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*

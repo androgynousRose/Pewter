@@ -1,4 +1,4 @@
-package com.example.pewter.ext
+package com.ejektaflex.pewter.ext
 
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack

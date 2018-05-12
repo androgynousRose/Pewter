@@ -1,4 +1,4 @@
-package com.example.pewter.dsl
+package com.ejektaflex.pewter.dsl
 
 class FluidDSL {
     private var name = "DEF"

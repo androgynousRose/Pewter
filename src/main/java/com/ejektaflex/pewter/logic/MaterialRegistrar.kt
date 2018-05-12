@@ -1,8 +1,8 @@
-package com.example.pewter.logic
+package com.ejektaflex.pewter.logic
 
-import com.example.pewter.Pewter
-import com.example.pewter.ext.resource
-import com.example.pewter.ext.toItemStack
+import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.ext.resource
+import com.ejektaflex.pewter.ext.toItemStack
 import net.minecraft.block.Block
 import net.minecraft.item.ItemBlock
 import net.minecraft.item.ItemStack

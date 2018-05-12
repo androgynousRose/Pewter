@@ -1,4 +1,4 @@
-package com.example.pewter.proxy
+package com.ejektaflex.pewter.proxy
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
