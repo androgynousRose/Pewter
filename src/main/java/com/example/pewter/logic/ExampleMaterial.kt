@@ -1,8 +1,8 @@
-package com.example.examplemod.logic
+package com.example.pewter.logic
 
-import com.example.examplemod.dsl.MaterialDSL
+import com.example.pewter.dsl.MaterialDSL
 
-class ExampleMaterial : MaterialDSL("hello", "#888888", {
+class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {
     locale("en_US" to "Test Material.")
     forge { true }
     craft { false }

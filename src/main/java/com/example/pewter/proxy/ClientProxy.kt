@@ -1,8 +1,8 @@
-package com.example.examplemod.proxy
+package com.example.pewter.proxy
 
-import com.example.examplemod.Pewter
-import com.example.examplemod.ResourceManager
-import com.example.examplemod.logic.FluidStateMapper
+import com.example.pewter.Pewter
+import com.example.pewter.ResourceManager
+import com.example.pewter.logic.FluidStateMapper
 import com.google.common.base.Function
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.block.model.IBakedModel

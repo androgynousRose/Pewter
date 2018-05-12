@@ -1,4 +1,4 @@
-package com.example.examplemod
+package com.example.pewter
 
 import net.minecraft.client.resources.IResourceManagerReloadListener
 import net.minecraft.util.text.translation.LanguageMap

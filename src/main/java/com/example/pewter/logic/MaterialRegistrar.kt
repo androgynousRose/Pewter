@@ -1,9 +1,8 @@
-package com.example.examplemod.logic
+package com.example.pewter.logic
 
-import com.example.examplemod.Pewter
-import com.example.examplemod.dsl.MaterialStats
-import com.example.examplemod.ext.resource
-import com.example.examplemod.ext.toItemStack
+import com.example.pewter.Pewter
+import com.example.pewter.ext.resource
+import com.example.pewter.ext.toItemStack
 import net.minecraft.block.Block
 import net.minecraft.item.ItemBlock
 import net.minecraft.item.ItemStack

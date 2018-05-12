@@ -1,6 +1,6 @@
-package com.example.examplemod.ext
+package com.example.pewter.ext
 
-import com.example.examplemod.Pewter
+import com.example.pewter.Pewter
 import net.minecraft.util.ResourceLocation
 
 val String.resource: ResourceLocation

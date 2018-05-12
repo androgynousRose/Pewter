@@ -1,7 +1,4 @@
-package com.example.examplemod.dsl
-
-import net.minecraftforge.fluids.Fluid
-import net.minecraftforge.fluids.FluidRegistry
+package com.example.pewter.dsl
 
 class FluidDSL {
     private var name = "DEF"

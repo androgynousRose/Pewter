@@ -1,10 +1,10 @@
-package com.example.examplemod.proxy
+package com.example.pewter.proxy
 
-import com.example.examplemod.Pewter
-import com.example.examplemod.dsl.MaterialStats
-import com.example.examplemod.ext.resource
-import com.example.examplemod.logic.ExampleMaterial
-import com.example.examplemod.logic.MaterialRegistrar
+import com.example.pewter.Pewter
+import com.example.pewter.logic.MaterialStats
+import com.example.pewter.ext.resource
+import com.example.pewter.logic.ExampleMaterial
+import com.example.pewter.logic.MaterialRegistrar
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException

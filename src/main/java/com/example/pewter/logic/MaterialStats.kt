@@ -1,4 +1,4 @@
-package com.example.examplemod.dsl
+package com.example.pewter.logic
 
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*

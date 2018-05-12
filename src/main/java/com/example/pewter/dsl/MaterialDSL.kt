@@ -1,6 +1,7 @@
-package com.example.examplemod.dsl
+package com.example.pewter.dsl
 
-import com.example.examplemod.ext.toItemStack
+import com.example.pewter.ext.toItemStack
+import com.example.pewter.logic.MaterialStats
 
 open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>() {
 

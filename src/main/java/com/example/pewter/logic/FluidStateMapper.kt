@@ -1,6 +1,6 @@
-package com.example.examplemod.logic
+package com.example.pewter.logic
 
-import com.example.examplemod.ext.resource
+import com.example.pewter.ext.resource
 import net.minecraft.block.state.IBlockState
 import net.minecraft.client.renderer.block.model.ModelResourceLocation
 import net.minecraft.item.ItemStack
