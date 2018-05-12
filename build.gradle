@@ -37,6 +37,10 @@ repositories {
         name 'DVS1 Maven'
         url 'http://dvs1.progwml6.com/files/maven'
     }
+    maven {
+        name = "JEI Maven Server"
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
 }
 
 dependencies {
@@ -46,6 +50,10 @@ dependencies {
     compile group: "slimeknights.mantle", name: "Mantle", version: "${v_minecraft_root}-${v_mantle}"
     // Tinkers' Construct
     compile group: "slimeknights", name: "TConstruct", version: "${v_minecraft}-${v_tinkers}"
+    // compile against the JEI API but do not include it at runtime
+    deobfProvided "mezz.jei:jei_${v_minecraft}:${v_jei}:api"
+    // at runtime, use the full JEI jar
+    runtime "mezz.jei:jei_${v_minecraft}:${v_jei}"
 }
 
 processResources {

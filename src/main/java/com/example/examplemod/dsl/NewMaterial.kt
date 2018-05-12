@@ -94,7 +94,8 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
 
     private fun addMaterialStats() {
         ToolStats.MatPart.values().forEach {
-            TinkerRegistry.addMaterialStats(material, it.stats(tool))
+            println("Adding Stats For: $it")
+            tool.registerStats(material, it)
         }
     }
 

@@ -10,7 +10,6 @@ import java.awt.Color
 
 
 class ToolStats {
-    lateinit var material: Material
     lateinit var fluid: Fluid
     var madeInToolForge = false
     var toolId = 0
@@ -68,6 +67,7 @@ material.addMaterialStats();
         FMLInterModComms.sendMessage("TConstruct", "addPartCastingMaterial", t)
     }
 
+    /*
     private fun addTrait(name: String, matType: String) {
         val imod = TinkerRegistry.getModifier(name)
         if (imod != null && imod is ITrait) {
@@ -78,12 +78,22 @@ material.addMaterialStats();
             }
         }
     }
+    */
 
-    private fun registerStats(m: Material, part: MatPart) {
-        TinkerRegistry.addMaterialStats(material, part.stats(this))
+    // Quoting MrJohz/LakMoore:
+    //Tinkers auto-adds this stat to any material used to make tool heads
+    //and trying to add it a second time throws an exception, so check before adding.
+    fun registerStats(m: Material, part: MatPart) {
+        if (part == MatPart.PROJECTILE) {
+            if(!m.hasStats(MaterialTypes.PROJECTILE)) {
+                TinkerRegistry.addMaterialStats(m, part.stats(this))
+            }
+        } else {
+            TinkerRegistry.addMaterialStats(m, part.stats(this))
+        }
     }
 
-    enum class MatPart(val stats: (it: ToolStats) -> IMaterialStats) {
+    enum class MatPart(val stats: (it: ToolStats) -> IMaterialStats?) {
         HEAD({ HeadMaterialStats(it.durability, it.matSpeed.toFloat(), it.attack.toFloat(), it.matHarvest) }),
         HANDLE({ HandleMaterialStats(it.handleMult, it.handleDurability) }),
         BINDING({ ExtraMaterialStats(it.extraDurability) }),
