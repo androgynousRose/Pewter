@@ -1,8 +1,8 @@
 package com.example.examplemod.logic
 
-import com.example.examplemod.dsl.ToolDSL
+import com.example.examplemod.dsl.MaterialDSL
 
-class ExampleMaterial : ToolDSL("hello", "#888888", {
+class ExampleMaterial : MaterialDSL("hello", "#888888", {
     locale("en_US" to "Test Material.")
     forge { true }
     craft { false }

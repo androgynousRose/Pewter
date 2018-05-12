@@ -2,13 +2,9 @@ package com.example.examplemod.dsl
 
 import com.example.examplemod.ext.toItemStack
 
-open class ToolDSL(initName: String, initColor: String, initFunc: ToolDSL.() -> Unit) : DSL<ToolDSL>() {
+open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>() {
 
-    var tool = ToolStats()
-
-    constructor(toolData: ToolStats) : this(toolData.name, toolData.color, {}) {
-       tool = toolData
-    }
+    var tool = MaterialStats()
 
     init {
         tool.color = initColor
@@ -28,7 +24,7 @@ open class ToolDSL(initName: String, initColor: String, initFunc: ToolDSL.() -> 
     }
 
     @TopLevelToolDSL
-    fun parts(vararg someParts: ToolStats.MatPart) {
+    fun parts(vararg someParts: MaterialStats.MatPart) {
         someParts.forEach { tool.matParts.add(it) }
     }
 

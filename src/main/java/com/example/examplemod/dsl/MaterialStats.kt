@@ -4,7 +4,7 @@ import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*
 
 
-class ToolStats {
+class MaterialStats {
     var color = "#448844"
     var craftable = false
     var madeInToolForge = false
@@ -33,9 +33,9 @@ class ToolStats {
         val imod = TinkerRegistry.getModifier(name)
         if (imod != null && imod is ITrait) {
             if (matType == "") {
-                material.addTrait(imod)
+                tinkMaterial.addTrait(imod)
             } else {
-                material.addTrait(imod, matType)
+                tinkMaterial.addTrait(imod, matType)
             }
         }
     }
@@ -45,7 +45,7 @@ class ToolStats {
     fun registerStats(m: Material, part: MatPart) {
         if (part == MatPart.PROJECTILE) {
             // Quoting MrJohz/LakMoore:
-            //Tinkers auto-adds this stat to any material used to make tool heads
+            //Tinkers auto-adds this stat to any tinkMaterial used to make stats heads
             //and trying to add it a second time throws an exception, so check before adding.
             if(!m.hasStats(MaterialTypes.PROJECTILE)) {
                 TinkerRegistry.addMaterialStats(m, part.stats(this))
@@ -55,7 +55,7 @@ class ToolStats {
         }
     }
 
-    enum class MatPart(val stats: (it: ToolStats) -> IMaterialStats?) {
+    enum class MatPart(val stats: (it: MaterialStats) -> IMaterialStats?) {
         HEAD({ HeadMaterialStats(it.durability, it.toolSpeed, it.toolAttackDamage.toFloat(), it.toolHarvestLevel) }),
         HANDLE({ HandleMaterialStats(it.handleMult, it.handleDurability) }),
         BINDING({ ExtraMaterialStats(it.extraDurability) }),
