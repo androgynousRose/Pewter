@@ -2,41 +2,55 @@ package com.example.examplemod.dsl
 
 import com.example.examplemod.Pewter
 import com.example.examplemod.ext.resource
+import com.example.examplemod.ext.toItemStack
 import net.minecraft.block.Block
+import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fluids.Fluid
 import net.minecraftforge.fluids.FluidRegistry
 import net.minecraftforge.fml.common.registry.ForgeRegistries
+import net.minecraftforge.oredict.OreDictionary
 import slimeknights.tconstruct.library.MaterialIntegration
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.library.materials.Material
 import slimeknights.tconstruct.smeltery.block.BlockMolten
 
-class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
+class NewMaterial(initName: String, initColor: Int, initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
 
     lateinit var material: Material
-    private lateinit var matFluid: Fluid
+    var matFluid: Fluid? = null
     private lateinit var matBlock: Block
     private lateinit var fluidItem: ItemBlock
-    private lateinit var matIngot: ItemStack
+    private var matIngot: ItemStack? = null
     private lateinit var integration: MaterialIntegration
     var nameLocales = mutableMapOf<String, String>()
+    private var smeltingMap = mutableMapOf<String, MutableList<Item>>(
+            "ingot" to mutableListOf(),
+            "nuggets" to mutableListOf()
+    )
     val tool = ToolStats()
 
     init {
-        println("Going to add values to $tool")
+        tool.color = initColor
+        tool.name = initName
         apply(initFunc)
-        println("Creating material for $tool...")
+        addToOreDict()
         createMaterial()
-        println("Making fluids for material $material...")
         makeFluid()
-        println("Integrating material $material...")
         integrateMaterial()
-        println("Adding material stats to $material")
         addMaterialStats()
-        println("Added material stats to $tool")
+    }
+
+
+    // Register all associated items in the Ore Dictionary
+    private fun addToOreDict() {
+        for (type in smeltingMap.keys ) {
+            smeltingMap[type]!!.forEach { item ->
+                OreDictionary.registerOre(type + tool.name.capitalize(), item)
+            }
+        }
     }
 
     private fun createMaterial() {
@@ -44,14 +58,15 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
         if (material != Material.UNKNOWN) {
             println("Material already registered.")
         } else {
-            material = Material(tool.name, 0x888888)
+            material = Material(tool.name, tool.color)
         }
     }
 
     private fun makeFluid() {
         var name = tool.name.toLowerCase()
-        matFluid = FluidMolten(name, 0x888888)
-        matFluid.unlocalizedName = "${Pewter.MODID}:$name"
+        matFluid = FluidMolten(name, tool.color).apply {
+            unlocalizedName = "${Pewter.MODID}:$name"
+        }
         FluidRegistry.registerFluid(matFluid)
 
         // TODO Set fluid properties here
@@ -88,8 +103,9 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
         // Add ingot for item
         matIngot.let {
             material.addItem(prefix + suffix, 1, Material.VALUE_Ingot)
-            material.representativeItem = it
-
+            println("THIS ITEM IS: $it")
+            material.setRepresentativeItem(it)
+            println("REPRESENTATIVE ITEM IS:\n\n\n${material.representativeItem}")
         }
 
         // Integrate
@@ -117,13 +133,17 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
     annotation class NestedDSL
 
     @TopLevelToolDSL
-    fun name(func: () -> String) {
-        tool.name = func()
-    }
-
-    @TopLevelToolDSL
     fun locale(vararg pairs: Pair<String, String>) {
         nameLocales = pairs.toMap().toMutableMap()
+    }
+
+    fun ingots(vararg ing: String) {
+        // Add all ingots to map
+        smeltingMap["ingot"]!!.addAll(ing.mapNotNull { it.toItemStack }.mapNotNull { it.item })
+        // Set icon to first ingot if no icon exists yet
+        if (matIngot == null && smeltingMap["ingot"]!!.isNotEmpty()) {
+            matIngot = ItemStack(smeltingMap["ingot"]!!.first())
+        }
     }
 
     @TopLevelToolDSL
@@ -132,8 +152,14 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
     }
 
     @TopLevelToolDSL
-    fun ingot(func: () -> ItemStack) {
-        matIngot = func()
+    fun craft(func: () -> Boolean) {
+        tool.craftable = func()
+    }
+
+
+    @TopLevelToolDSL
+    fun icon(s: String) {
+        matIngot = s.toItemStack!!
     }
 
     @TopLevelToolDSL

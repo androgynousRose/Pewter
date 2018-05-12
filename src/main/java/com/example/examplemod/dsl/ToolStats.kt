@@ -1,15 +1,12 @@
 package com.example.examplemod.dsl
 
-import net.minecraft.nbt.NBTTagCompound
-import net.minecraftforge.fluids.Fluid
-import net.minecraftforge.fml.common.event.FMLInterModComms
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*
-import slimeknights.tconstruct.library.traits.ITrait
-import java.awt.Color
 
 
 class ToolStats {
+    var color = 0
+    var craftable = false
     var madeInToolForge = false
     var toolId = 0
     var name = "doot"
@@ -28,15 +25,6 @@ class ToolStats {
     var fletchingModifier = 0f
     var stringModifier = 0f
     var matParts = mutableListOf<MatPart>()
-
-    // TODO NOT DONE!
-    private fun tagFluid() {
-        val t = NBTTagCompound()
-        t.apply {
-            setInteger("MaterialId", toolId)
-        }
-        FMLInterModComms.sendMessage("TConstruct", "addPartCastingMaterial", t)
-    }
 
     /*
     private fun addTrait(name: String, matType: String) {
@@ -65,7 +53,7 @@ class ToolStats {
     }
 
     enum class MatPart(val stats: (it: ToolStats) -> IMaterialStats?) {
-        HEAD({ HeadMaterialStats(it.durability, it.matSpeed.toFloat(), it.attack.toFloat(), it.matHarvest) }),
+        HEAD({ HeadMaterialStats(it.durability, it.matSpeed, it.attack.toFloat(), it.matHarvest) }),
         HANDLE({ HandleMaterialStats(it.handleMult, it.handleDurability) }),
         BINDING({ ExtraMaterialStats(it.extraDurability) }),
         BOW({ BowMaterialStats(it.matSpeed, it.bowRange, it.bowBonusDamage) }),
