@@ -1,5 +1,6 @@
 package com.example.examplemod
 
+import com.example.examplemod.dsl.NewMaterial
 import com.example.examplemod.ext.toItemStack
 import com.example.examplemod.proxy.IProxy
 import net.minecraft.init.Blocks
@@ -46,5 +47,6 @@ class Pewter {
         @SidedProxy(clientSide = CLIENT, serverSide = SERVER)
         @JvmStatic var proxy: IProxy? = null
 
+        var materials = mutableListOf<NewMaterial>()
     }
 }

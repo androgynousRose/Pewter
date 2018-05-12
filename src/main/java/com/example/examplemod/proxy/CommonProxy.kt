@@ -1,5 +1,6 @@
 package com.example.examplemod.proxy
 
+import com.example.examplemod.Pewter
 import com.example.examplemod.dsl.NewMaterial
 import com.example.examplemod.ext.times
 import net.minecraft.init.Items
@@ -9,11 +10,11 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 
 open class CommonProxy : IProxy {
 
-    var mats = mutableListOf<NewMaterial>()
 
     override fun preInit(e: FMLPreInitializationEvent) {
         val mat1 = NewMaterial {
             name { "hello" }
+            locale("en_US" to "HELLO!")
             forge { true }
             ingot { Items.APPLE * 1 }
             head   {    durability { 100 };     attack { 5 };       speed { 1 } }
@@ -22,17 +23,17 @@ open class CommonProxy : IProxy {
             bow    {    accuracy { 0.5f };      range { 10 };       string { 1.1f } }
             shaft  {    modifier { 1.1f };      bonusAmmo { 5 } }
         }
-        mats.add(mat1)
+        Pewter.materials.add(mat1)
     }
 
     override fun init(e: FMLInitializationEvent) {
-        mats.map { it.material }.forEach {
+        Pewter.materials.map { it.material }.forEach {
             //it.addMaterialTraits()
         }
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
-        mats.forEach {
+        Pewter.materials.forEach {
             it.integrate()
         }
     }

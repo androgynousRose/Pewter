@@ -22,6 +22,7 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
     private lateinit var fluidItem: ItemBlock
     private lateinit var matIngot: ItemStack
     private lateinit var integration: MaterialIntegration
+    var nameLocales = mutableMapOf<String, String>()
     val tool = ToolStats()
 
     init {
@@ -118,6 +119,11 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
     @TopLevelToolDSL
     fun name(func: () -> String) {
         tool.name = func()
+    }
+
+    @TopLevelToolDSL
+    fun locale(vararg pairs: Pair<String, String>) {
+        nameLocales = pairs.toMap().toMutableMap()
     }
 
     @TopLevelToolDSL
