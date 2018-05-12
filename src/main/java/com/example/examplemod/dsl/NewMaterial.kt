@@ -155,7 +155,7 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
         }
 
         @NestedDSL
-        fun speed(func: () -> Int) {
+        fun speed(func: () -> Float) {
             tool.matSpeed = func()
         }
     }
@@ -201,7 +201,12 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
         }
 
         @NestedDSL
-        fun range(func: () -> Int) {
+        fun bonusDamage(func: () -> Float) {
+            tool.bowBonusDamage = func()
+        }
+
+        @NestedDSL
+        fun range(func: () -> Float) {
             tool.bowRange = func()
         }
 

@@ -16,32 +16,18 @@ class ToolStats {
     var durability = 0
     var attack = 0
     var matHarvest = 0
-    var matSpeed = 0
+    var matSpeed = 0f
     var handleMult = 0f
     var handleDurability = 0
     var extraDurability = 0
     var bowAccuracy = 0f
-    var bowRange = 0
-    var bowBonusDamage = 0
+    var bowRange = 0f
+    var bowBonusDamage = 0f
     var arrowShaftModifier = 0f
     var arrowShaftBonusAmmo = 0
     var fletchingModifier = 0f
     var stringModifier = 0f
     var matParts = mutableListOf<MatPart>()
-
-    private fun tagMaterial() {
-        val t = NBTTagCompound()
-        t.apply {
-            setInteger("Id", toolId)
-            setString("Name", name)
-            setInteger("Durability", durability)
-            setInteger("HarvestLevel", matHarvest)
-            setInteger("MiningSpeed", matSpeed)
-            setFloat("HandleModifier", handleMult)
-            setInteger("Color", Color.RED.rgb)
-        }
-        FMLInterModComms.sendMessage("TConstruct", "addMaterial", t)
-    }
 
     // TODO NOT DONE!
     private fun tagFluid() {
@@ -82,7 +68,7 @@ class ToolStats {
         HEAD({ HeadMaterialStats(it.durability, it.matSpeed.toFloat(), it.attack.toFloat(), it.matHarvest) }),
         HANDLE({ HandleMaterialStats(it.handleMult, it.handleDurability) }),
         BINDING({ ExtraMaterialStats(it.extraDurability) }),
-        BOW({ BowMaterialStats(it.matSpeed.toFloat(), it.bowRange.toFloat(), it.bowBonusDamage.toFloat()) }),
+        BOW({ BowMaterialStats(it.matSpeed, it.bowRange, it.bowBonusDamage) }),
         SHAFT({ ArrowShaftMaterialStats(it.arrowShaftModifier, it.arrowShaftBonusAmmo) }),
         FLETCHING({ FletchingMaterialStats(it.bowAccuracy, it.fletchingModifier) }),
         STRING({ BowStringMaterialStats(it.stringModifier) }),

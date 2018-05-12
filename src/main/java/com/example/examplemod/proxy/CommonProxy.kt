@@ -17,10 +17,10 @@ open class CommonProxy : IProxy {
             locale("en_US" to "HELLO!")
             forge { true }
             ingot { Items.APPLE * 1 }
-            head   {    durability { 100 };     attack { 5 };       speed { 1 } }
+            head   {    durability { 100 };     attack { 5 };       speed { 1f } }
             handle {    durability { 50 };      mult { 1f } }
             extra  {    durability { 25 } }
-            bow    {    accuracy { 0.5f };      range { 10 };       string { 1.1f } }
+            bow    {    accuracy { 0.5f };      range { 1f };       string { 1.1f };         bonusDamage { 5f } }
             shaft  {    modifier { 1.1f };      bonusAmmo { 5 } }
         }
         Pewter.materials.add(mat1)
