@@ -2,10 +2,12 @@ package com.example.examplemod.proxy
 
 import com.example.examplemod.Pewter
 import com.example.examplemod.dsl.NewMaterial
-import com.example.examplemod.dsl.ToolStats.*
+import com.example.examplemod.dsl.ToolStats
 import com.example.examplemod.ext.resource
+import com.example.examplemod.logic.DummyMaterial
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonSyntaxException
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
@@ -16,13 +18,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.registry.ForgeRegistries
 import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.smeltery.block.BlockMolten
-import sun.plugin2.util.PojoUtil.toJson
-import java.io.IOException
-import sun.plugin2.util.PojoUtil.toJson
+import java.io.File
 import java.io.FileWriter
-
-
-
+import java.io.IOException
+import java.nio.file.Files
 
 
 open class CommonProxy : IProxy {
@@ -32,38 +31,13 @@ open class CommonProxy : IProxy {
     lateinit var item: Item
 
     override fun preInit(e: FMLPreInitializationEvent) {
-
+        loadMaterialData()
         makePewterFluid()
 
-        val mat1 = NewMaterial("hello", "#888888") {
-            locale("en_US" to "Test Material.")
-            forge { true }
-            craft { false }
-            ingots("minecraft:apple")
-            icon("minecraft:apple")
-            head {
-                durability { 100 }
-                attack { 5 }
-                speed { 1f }
-            }
-            handle {
-                durability { 50 }
-                mult { 1f }
-            }
-            extra {
-                durability { 25 }
-            }
-            bow {
-                accuracy { 0.5f }
-                range { 1f }
-                string { 1.1f }
-                bonusDamage { 5f }
-            }
-            shaft {
-                modifier { 1.1f }
-                bonusAmmo { 5 }
-            }
-        }
+
+        val mat1 = DummyMaterial()
+        Pewter.materials.add(mat1)
+
 
         val gson = GsonBuilder().setPrettyPrinting().create()
         //2. Convert object to JSON string and save into a file directly
@@ -78,8 +52,50 @@ open class CommonProxy : IProxy {
         }
 
 
-        Pewter.materials.add(mat1)
+
+
     }
+
+    private fun loadMaterialData() {
+        Pewter.materials.addAll(loadMaterialFiles(Pewter.CONFIGDIR).map { NewMaterial(it) })
+    }
+
+    private fun loadMaterialFiles(dir: File): MutableList<ToolStats> {
+
+        val statList = mutableListOf<ToolStats>()
+        val gson = Gson()
+
+        for (file in dir.listFiles()) {
+            when {
+                file.isDirectory -> {
+                    for (stat in loadMaterialFiles(file)) {
+                        statList.add(stat)
+                    }
+                }
+                file.name.endsWith(".json") -> {
+                    Pewter.LOGGER.info("Attempting to parse: ${file.name}")
+                    val parsedStat: Any? = try {
+                        val fileContents = String(Files.readAllBytes(file.toPath()))
+                        println("FILE CONTENTS: $fileContents")
+                        gson.fromJson<Any>(fileContents, ToolStats::class.java)
+                    } catch (e: IOException) {
+                        Pewter.LOGGER.warn("File named ${file.name} could not be found?")
+                        null
+                    } catch (e: JsonSyntaxException) {
+                        Pewter.LOGGER.warn("File named ${file.name} has a JSON syntax error!")
+                        e.printStackTrace()
+                        null
+                    }
+                    println("GOT THIS: $parsedStat")
+
+                    parsedStat?.let { statList.add(it as ToolStats) }
+                }
+            }
+        }
+        return statList
+    }
+
+
 
     override fun init(e: FMLInitializationEvent) {
         Pewter.materials.map { it.material }.forEach {

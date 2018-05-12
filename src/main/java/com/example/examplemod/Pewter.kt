@@ -1,10 +1,7 @@
 package com.example.examplemod
 
 import com.example.examplemod.dsl.NewMaterial
-import com.example.examplemod.ext.toItemStack
-import com.example.examplemod.proxy.ClientProxy
 import com.example.examplemod.proxy.IProxy
-import net.minecraft.init.Blocks
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventHandler
@@ -13,16 +10,22 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import org.apache.logging.log4j.Logger
 import net.minecraftforge.fml.common.SidedProxy
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
+import java.io.File
 
 
 @Mod(modid = Pewter.MODID, name = Pewter.NAME, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
 class Pewter {
 
-    lateinit var logger: Logger
-
     @EventHandler
     fun preInit(event: FMLPreInitializationEvent) {
-        logger = event.modLog
+        LOGGER = event.modLog
+
+        CONFIGDIR = File(event.modConfigurationDirectory, MODID)
+
+        if (!CONFIGDIR.exists()) {
+            CONFIGDIR.mkdirs()
+        }
+
         proxy.preInit(event)
         // Register model baking
         MinecraftForge.EVENT_BUS.register(proxy)
@@ -47,6 +50,9 @@ class Pewter {
         const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
         const val CLIENT = "com.example.examplemod.proxy.ClientProxy"
         const val SERVER = "com.example.examplemod.proxy.CommonProxy"
+
+        lateinit var LOGGER: Logger
+        lateinit var CONFIGDIR: File
 
         @SidedProxy(clientSide = CLIENT, serverSide = SERVER)
         @JvmStatic lateinit var proxy: IProxy

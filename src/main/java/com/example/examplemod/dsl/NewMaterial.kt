@@ -18,7 +18,7 @@ import slimeknights.tconstruct.library.materials.Material
 import slimeknights.tconstruct.smeltery.block.BlockMolten
 import java.awt.Color
 
-class NewMaterial(initName: String, initColor: String, initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
+open class NewMaterial(initName: String, initColor: String, initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
 
     lateinit var material: Material
     var matFluid: Fluid? = null
@@ -31,7 +31,11 @@ class NewMaterial(initName: String, initColor: String, initFunc: NewMaterial.() 
             "ingot" to mutableListOf(),
             "nuggets" to mutableListOf()
     )
-    val tool = ToolStats()
+    var tool = ToolStats()
+
+    constructor(toolData: ToolStats) : this(toolData.name, toolData.color, {}) {
+       tool = toolData
+    }
 
     init {
         tool.color = initColor
