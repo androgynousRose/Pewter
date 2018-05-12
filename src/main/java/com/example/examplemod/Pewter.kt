@@ -1,6 +1,6 @@
 package com.example.examplemod
 
-import com.example.examplemod.dsl.NewMaterial
+import com.example.examplemod.logic.MaterialRegistrar
 import com.example.examplemod.proxy.IProxy
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
@@ -57,6 +57,6 @@ class Pewter {
         @SidedProxy(clientSide = CLIENT, serverSide = SERVER)
         @JvmStatic lateinit var proxy: IProxy
 
-        var materials = mutableListOf<NewMaterial>()
+        var materials = mutableListOf<MaterialRegistrar>()
     }
 }

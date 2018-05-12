@@ -27,15 +27,15 @@ class ClientProxy : CommonProxy() {
         super.preInit(e)
 
         Pewter.materials.forEach { material ->
-            material.matFluid?.let {
+            material.fluid?.let {
                 val mapper = FluidStateMapper(it)
                 // Item Model
                 ModelLoader.registerItemVariants(material.fluidItem)
                 ModelLoader.setCustomMeshDefinition(material.fluidItem, mapper)
                 // Block Model
-                ModelLoader.setCustomStateMapper(material.matBlock, mapper)
+                ModelLoader.setCustomStateMapper(material.block, mapper)
             }
-            material.material.setRenderInfo(MaterialRenderInfo.Metal(Color.decode(material.tool.color).rgb, 0.25f, 0.5f, -0.1f))
+            material.tinkMaterial.setRenderInfo(MaterialRenderInfo.Metal(Color.decode(material.stats.color).rgb, 0.25f, 0.5f, -0.1f))
         }
 
 
@@ -60,10 +60,10 @@ class ClientProxy : CommonProxy() {
         var model: IModel
         var baked: IBakedModel
         for (mat in Pewter.materials) {
-            if (mat.matFluid != null) {
-                model = ModelFluid(mat.matFluid!!)
+            if (mat.fluid != null) {
+                model = ModelFluid(mat.fluid!!)
                 baked = model.bake(model.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter)
-                location = ModelResourceLocation(Pewter.MODID + ":fluid_block", mat.matFluid!!.name)
+                location = ModelResourceLocation(Pewter.MODID + ":fluid_block", mat.fluid!!.name)
                 event.modelRegistry.putObject(location, baked)
             }
         }

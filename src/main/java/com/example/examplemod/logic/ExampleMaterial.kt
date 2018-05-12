@@ -1,13 +1,13 @@
 package com.example.examplemod.logic
 
-import com.example.examplemod.dsl.NewMaterial
+import com.example.examplemod.dsl.ToolDSL
 
-class ExampleMaterial : NewMaterial("hello", "#888888", {
+class ExampleMaterial : ToolDSL("hello", "#888888", {
     locale("en_US" to "Test Material.")
     forge { true }
     craft { false }
     ingots("minecraft:apple")
-    icon("minecraft:apple")
+    //icon("minecraft:apple")
     head {
         durability { 100 }
         attack { 5 }

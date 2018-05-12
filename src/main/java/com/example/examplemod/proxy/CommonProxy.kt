@@ -1,10 +1,10 @@
 package com.example.examplemod.proxy
 
 import com.example.examplemod.Pewter
-import com.example.examplemod.dsl.NewMaterial
-import com.example.examplemod.dsl.ToolStats
+import com.example.examplemod.dsl.MaterialStats
 import com.example.examplemod.ext.resource
 import com.example.examplemod.logic.ExampleMaterial
+import com.example.examplemod.logic.MaterialRegistrar
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
@@ -42,9 +42,7 @@ open class CommonProxy : IProxy {
         val gson = GsonBuilder().setPrettyPrinting().create()
         try {
             FileWriter("${Pewter.CONFIGDIR}\\_example.json").use { writer ->
-
                 gson.toJson(ExampleMaterial().tool, writer)
-
             }
         } catch (e: IOException) {
             e.printStackTrace()
@@ -52,14 +50,17 @@ open class CommonProxy : IProxy {
     }
 
     private fun loadMaterialData() {
-        val loadedMaterials = loadMaterialFiles(Pewter.CONFIGDIR).map { NewMaterial(it) }
+        // Load materials as MaterialStats and then register them all
+        val loadedMaterials = loadMaterialFiles(Pewter.CONFIGDIR).map {
+            MaterialRegistrar(it)
+        }
         Pewter.LOGGER.info("Loaded ${loadedMaterials.size} materials.")
         Pewter.materials.addAll(loadedMaterials)
     }
 
-    private fun loadMaterialFiles(dir: File): MutableList<ToolStats> {
+    private fun loadMaterialFiles(dir: File): MutableList<MaterialStats> {
 
-        val statList = mutableListOf<ToolStats>()
+        val statList = mutableListOf<MaterialStats>()
         val gson = Gson()
 
         for (file in dir.listFiles()) {
@@ -73,7 +74,7 @@ open class CommonProxy : IProxy {
                     Pewter.LOGGER.info("Attempting to parse: ${file.name}")
                     val parsedStat: Any? = try {
                         val fileContents = String(Files.readAllBytes(file.toPath()))
-                        gson.fromJson<Any>(fileContents, ToolStats::class.java)
+                        gson.fromJson<Any>(fileContents, MaterialStats::class.java)
                     } catch (e: IOException) {
                         Pewter.LOGGER.warn("File named ${file.name} could not be found?")
                         null
@@ -84,7 +85,7 @@ open class CommonProxy : IProxy {
                     }
                     println("GOT THIS: $parsedStat")
 
-                    parsedStat?.let { statList.add(it as ToolStats) }
+                    parsedStat?.let { statList.add(it as MaterialStats) }
                 }
             }
         }
@@ -94,7 +95,7 @@ open class CommonProxy : IProxy {
 
 
     override fun init(e: FMLInitializationEvent) {
-        Pewter.materials.map { it.material }.forEach {
+        Pewter.materials.map { it.tinkMaterial }.forEach {
             //it.addMaterialTraits()
         }
 
