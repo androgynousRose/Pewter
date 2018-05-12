@@ -2,8 +2,10 @@ package com.example.examplemod
 
 import com.example.examplemod.dsl.NewMaterial
 import com.example.examplemod.ext.toItemStack
+import com.example.examplemod.proxy.ClientProxy
 import com.example.examplemod.proxy.IProxy
 import net.minecraft.init.Blocks
+import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventHandler
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
@@ -22,6 +24,10 @@ class Pewter {
     fun preInit(event: FMLPreInitializationEvent) {
         logger = event.modLog
         proxy!!.preInit(event)
+
+        println("There are now ${materials.size} custom TiC materials from this mod.")
+
+        MinecraftForge.EVENT_BUS.register(proxy!!)
     }
 
 

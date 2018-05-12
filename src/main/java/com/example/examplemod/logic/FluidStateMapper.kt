@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.block.statemap.StateMapperBase
 
 
 class FluidStateMapper(fluid: Fluid) : StateMapperBase(), ItemMeshDefinition {
-    private val location: ModelResourceLocation = ModelResourceLocation("fluid_block".resource, "infinifluid")
+    private val location: ModelResourceLocation = ModelResourceLocation("fluid_block".resource, fluid.name)
 
     override fun getModelLocation(stack: ItemStack): ModelResourceLocation {
         return location

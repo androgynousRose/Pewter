@@ -71,8 +71,10 @@ class ClientProxy : CommonProxy() {
         ModelLoader.setCustomStateMapper(block, mapper)
     }
 
+
     @SubscribeEvent
     fun onModelBake(event: ModelBakeEvent) {
+        println("ModelBaking is occuring.")
         var location: ModelResourceLocation
         var model: IModel
         var baked: IBakedModel
@@ -87,6 +89,7 @@ class ClientProxy : CommonProxy() {
     }
 
     companion object {
+
         @JvmStatic
         var textureGetter: Function<ResourceLocation, TextureAtlasSprite> = Function {
             location -> Minecraft.getMinecraft().textureMapBlocks.getAtlasSprite(location.toString())

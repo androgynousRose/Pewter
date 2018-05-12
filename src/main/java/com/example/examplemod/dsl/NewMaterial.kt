@@ -71,7 +71,7 @@ class NewMaterial(initName: String, initColor: Int, initFunc: NewMaterial.() -> 
 
         // TODO Set fluid properties here
 
-        name = "molten_$name"
+        //name = "molten_$name"
 
         // Create block
         matBlock = BlockMolten(matFluid).apply {
