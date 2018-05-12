@@ -10,7 +10,6 @@ import java.awt.Color
 
 
 class ToolStats {
-    lateinit var fluid: Fluid
     var madeInToolForge = false
     var toolId = 0
     var name = "doot"
@@ -29,20 +28,6 @@ class ToolStats {
     var fletchingModifier = 0f
     var stringModifier = 0f
     var matParts = mutableListOf<MatPart>()
-
-    /*
-material.getSolids();
-material.addToOreDict();
-material.makeMaterial();
-material.makeFluid();
-material.integrateMaterial();
-material.addMaterialStats();
-
-
-
-
-
-     */
 
     private fun tagMaterial() {
         val t = NBTTagCompound()
@@ -104,7 +89,9 @@ material.addMaterialStats();
         PROJECTILE({ ProjectileMaterialStats() })
     }
 
-
+    override fun toString(): String {
+        return "NAME: $name: DUR: $durability ATK: $attack SPD: $matSpeed"
+    }
 
 
 }

@@ -17,19 +17,25 @@ import slimeknights.tconstruct.smeltery.block.BlockMolten
 class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
 
     lateinit var material: Material
-    lateinit var matFluid: Fluid
-    lateinit var matBlock: Block
-    lateinit var fluidItem: ItemBlock
-    lateinit var matIngot: ItemStack
-    lateinit var integration: MaterialIntegration
+    private lateinit var matFluid: Fluid
+    private lateinit var matBlock: Block
+    private lateinit var fluidItem: ItemBlock
+    private lateinit var matIngot: ItemStack
+    private lateinit var integration: MaterialIntegration
     val tool = ToolStats()
 
     init {
+        println("Going to add values to $tool")
         apply(initFunc)
+        println("Creating material for $tool...")
         createMaterial()
+        println("Making fluids for material $material...")
         makeFluid()
+        println("Integrating material $material...")
         integrateMaterial()
+        println("Adding material stats to $material")
         addMaterialStats()
+        println("Added material stats to $tool")
     }
 
     private fun createMaterial() {
@@ -126,10 +132,12 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
 
     @TopLevelToolDSL
     fun head(func: HeadCreator.() -> Unit) {
-        HeadCreator(func)
+        HeadCreator().apply(func)
     }
 
-    inner class HeadCreator(initFunc: HeadCreator.() -> Unit) : DSL<HeadCreator>() {
+    inner class HeadCreator : DSL<HeadCreator>() {
+
+
         @NestedDSL
         fun durability(func: () -> Int) {
             tool.durability = func()
@@ -148,10 +156,10 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
 
     @TopLevelToolDSL
     fun handle(func: HandleCreator.() -> Unit) {
-        HandleCreator(func)
+        HandleCreator().apply(func)
     }
 
-    inner class HandleCreator(initFunc: HandleCreator.() -> Unit) : DSL<HandleCreator>() {
+    inner class HandleCreator : DSL<HandleCreator>() {
         @NestedDSL
         fun durability(func: () -> Int) {
             tool.handleDurability = func()
@@ -165,10 +173,10 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
 
     @TopLevelToolDSL
     fun extra(func: ExtraCreator.() -> Unit) {
-        ExtraCreator(func)
+        ExtraCreator().apply(func)
     }
 
-    inner class ExtraCreator(initFunc: ExtraCreator.() -> Unit) : DSL<ExtraCreator>() {
+    inner class ExtraCreator : DSL<ExtraCreator>() {
         @NestedDSL
         fun durability(func: () -> Int) {
             tool.extraDurability = func()
@@ -177,10 +185,10 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
 
     @TopLevelToolDSL
     fun bow(func: BowCreator.() -> Unit) {
-        BowCreator(func)
+        BowCreator().apply(func)
     }
 
-    inner class BowCreator(initFunc: BowCreator.() -> Unit) : DSL<BowCreator>() {
+    inner class BowCreator : DSL<BowCreator>() {
         @NestedDSL
         fun accuracy(func: () -> Float) {
             tool.bowAccuracy = func()
@@ -190,17 +198,22 @@ class NewMaterial(initFunc: NewMaterial.() -> Unit) : DSL<NewMaterial>() {
         fun range(func: () -> Int) {
             tool.bowRange = func()
         }
+
+        @NestedDSL
+        fun string(func: () -> Float) {
+            tool.stringModifier = func()
+        }
     }
 
     @TopLevelToolDSL
     fun shaft(func: ShaftCreator.() -> Unit) {
-        ShaftCreator(func)
+        ShaftCreator().apply(func)
     }
 
-    inner class ShaftCreator(initFunc: ShaftCreator.() -> Unit) : DSL<ShaftCreator>() {
+    inner class ShaftCreator : DSL<ShaftCreator>() {
         @NestedDSL
         fun modifier(func: () -> Float) {
-            tool.bowAccuracy = func()
+            tool.arrowShaftModifier = func()
         }
 
         @NestedDSL

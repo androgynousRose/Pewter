@@ -26,8 +26,6 @@ class Pewter {
 
     @EventHandler
     fun init(event: FMLInitializationEvent) {
-        logger.info("DIRT BLOCK >> {}", Blocks.DIRT.registryName)
-        println("METTTAAAAAA ${"minecraft:dirt".toItemStack}")
         proxy!!.init(event)
     }
 
