@@ -2,6 +2,7 @@ package com.example.examplemod.proxy
 
 import com.example.examplemod.Pewter
 import com.example.examplemod.dsl.NewMaterial
+import com.example.examplemod.dsl.ToolStats.*
 import com.example.examplemod.ext.resource
 import net.minecraft.block.Block
 import net.minecraft.item.Item
@@ -70,7 +71,7 @@ open class CommonProxy : IProxy {
     }
 
     open fun makePewterFluid() {
-        val name = "infinifluid"
+        val name = "pewterfluid"
         fluid = FluidMolten(name, 0xffff00ff.toInt()).apply {
             unlocalizedName = "unused"
             FluidRegistry.registerFluid(this)

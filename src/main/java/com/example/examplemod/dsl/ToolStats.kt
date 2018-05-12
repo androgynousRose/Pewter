@@ -24,7 +24,7 @@ class ToolStats {
     var arrowShaftBonusAmmo = 0
     var fletchingModifier = 0f
     var stringModifier = 0f
-    var matParts = mutableListOf<MatPart>()
+    var matParts = mutableSetOf<MatPart>()
 
     /*
     private fun addTrait(name: String, matType: String) {
@@ -39,11 +39,12 @@ class ToolStats {
     }
     */
 
-    // Quoting MrJohz/LakMoore:
-    //Tinkers auto-adds this stat to any material used to make tool heads
-    //and trying to add it a second time throws an exception, so check before adding.
+
     fun registerStats(m: Material, part: MatPart) {
         if (part == MatPart.PROJECTILE) {
+            // Quoting MrJohz/LakMoore:
+            //Tinkers auto-adds this stat to any material used to make tool heads
+            //and trying to add it a second time throws an exception, so check before adding.
             if(!m.hasStats(MaterialTypes.PROJECTILE)) {
                 TinkerRegistry.addMaterialStats(m, part.stats(this))
             }
@@ -62,10 +63,5 @@ class ToolStats {
         STRING({ BowStringMaterialStats(it.stringModifier) }),
         PROJECTILE({ ProjectileMaterialStats() })
     }
-
-    override fun toString(): String {
-        return "NAME: $name: DUR: $durability ATK: $attack SPD: $matSpeed"
-    }
-
 
 }

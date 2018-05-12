@@ -72,7 +72,6 @@ class NewMaterial(initName: String, initColor: Int, initFunc: NewMaterial.() -> 
         // TODO Set fluid properties here
 
         //name = "molten_$name"
-
         // Create block
         matBlock = BlockMolten(matFluid).apply {
             unlocalizedName = "${Pewter.MODID}.$name"
@@ -103,9 +102,7 @@ class NewMaterial(initName: String, initColor: Int, initFunc: NewMaterial.() -> 
         // Add ingot for item
         matIngot.let {
             material.addItem(prefix + suffix, 1, Material.VALUE_Ingot)
-            println("THIS ITEM IS: $it")
-            material.setRepresentativeItem(it)
-            println("REPRESENTATIVE ITEM IS:\n\n\n${material.representativeItem}")
+            material.representativeItem = it
         }
 
         // Integrate
@@ -116,8 +113,14 @@ class NewMaterial(initName: String, initColor: Int, initFunc: NewMaterial.() -> 
     }
 
     private fun addMaterialStats() {
-        ToolStats.MatPart.values().forEach {
-            println("Adding Stats For: $it")
+        // Load all MatParts if none are specified
+        val matsToLoad: Collection<ToolStats.MatPart> = if (tool.matParts.isEmpty()) {
+            ToolStats.MatPart.values().toList()
+        } else {
+            tool.matParts
+        }
+        // Register stats for each MatPart
+        matsToLoad.forEach {
             tool.registerStats(material, it)
         }
     }
@@ -135,6 +138,11 @@ class NewMaterial(initName: String, initColor: Int, initFunc: NewMaterial.() -> 
     @TopLevelToolDSL
     fun locale(vararg pairs: Pair<String, String>) {
         nameLocales = pairs.toMap().toMutableMap()
+    }
+
+    @TopLevelToolDSL
+    fun parts(vararg someParts: ToolStats.MatPart) {
+        someParts.forEach { tool.matParts.add(it) }
     }
 
     fun ingots(vararg ing: String) {
@@ -168,7 +176,6 @@ class NewMaterial(initName: String, initColor: Int, initFunc: NewMaterial.() -> 
     }
 
     inner class HeadCreator : DSL<HeadCreator>() {
-
 
         @NestedDSL
         fun durability(func: () -> Int) {

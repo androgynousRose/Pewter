@@ -4,8 +4,8 @@
     "model": "forge:fluid"
   },
   "variants": {
-    "infinifluid": [{
-      "custom": { "fluid": "infinifluid" }
+    "pewterfluid": [{
+      "custom": { "fluid": "pewterfluid" }
     }]
   }
 }

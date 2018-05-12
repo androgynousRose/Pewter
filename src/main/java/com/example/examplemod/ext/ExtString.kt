@@ -24,8 +24,12 @@ val String.toItemStack: ItemStack?
         } else if (sect.size == 2) {
             sect += "0"
         }
-        val item = Item.getByNameOrId("${sect[0]}:${sect[1]}")!!
-        return ItemStack(item, 1, sect[2].toMeta)
+        val item = Item.getByNameOrId("${sect[0]}:${sect[1]}")
+        return if (item != null) {
+            ItemStack(item, 1, sect[2].toMeta)
+        } else {
+            null
+        }
     }
 
 val String.isInOreDict: Boolean

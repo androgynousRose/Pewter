@@ -23,22 +23,20 @@ class Pewter {
     @EventHandler
     fun preInit(event: FMLPreInitializationEvent) {
         logger = event.modLog
-        proxy!!.preInit(event)
-
-        println("There are now ${materials.size} custom TiC materials from this mod.")
-
-        MinecraftForge.EVENT_BUS.register(proxy!!)
+        proxy.preInit(event)
+        // Register model baking
+        MinecraftForge.EVENT_BUS.register(proxy)
     }
 
 
     @EventHandler
     fun init(event: FMLInitializationEvent) {
-        proxy!!.init(event)
+        proxy.init(event)
     }
 
     @EventHandler
     fun postInit(event: FMLPostInitializationEvent) {
-        proxy!!.postInit(event)
+        proxy.postInit(event)
     }
 
     companion object {
@@ -51,7 +49,7 @@ class Pewter {
         const val SERVER = "com.example.examplemod.proxy.CommonProxy"
 
         @SidedProxy(clientSide = CLIENT, serverSide = SERVER)
-        @JvmStatic var proxy: IProxy? = null
+        @JvmStatic lateinit var proxy: IProxy
 
         var materials = mutableListOf<NewMaterial>()
     }

@@ -36,13 +36,11 @@ class ClientProxy : CommonProxy() {
 
         Pewter.materials.forEach { material ->
             material.matFluid?.let {
-                println("MAPPING FLUID ${it.name}")
                 val mapper = FluidStateMapper(it)
                 // Item Model
                 ModelLoader.registerItemVariants(material.fluidItem)
                 ModelLoader.setCustomMeshDefinition(material.fluidItem, mapper)
                 // Block Model
-                println("SETTING BLOCK MODEL FOR BLOCK: ${material.matBlock}")
                 ModelLoader.setCustomStateMapper(material.matBlock, mapper)
             }
             material.material.setRenderInfo(MaterialRenderInfo.Metal(material.tool.color, 0.25f, 0.5f, -0.1f))
@@ -51,14 +49,6 @@ class ClientProxy : CommonProxy() {
 
         // Load localizations
         (Minecraft.getMinecraft().resourceManager as IReloadableResourceManager).registerReloadListener(ResourceManager())
-    }
-
-    override fun init(e: FMLInitializationEvent) {
-        super.init(e)
-    }
-
-    override fun postInit(e: FMLPostInitializationEvent) {
-        super.postInit(e)
     }
 
     override fun makePewterFluid() {
@@ -74,7 +64,6 @@ class ClientProxy : CommonProxy() {
 
     @SubscribeEvent
     fun onModelBake(event: ModelBakeEvent) {
-        println("ModelBaking is occuring.")
         var location: ModelResourceLocation
         var model: IModel
         var baked: IBakedModel
@@ -89,7 +78,6 @@ class ClientProxy : CommonProxy() {
     }
 
     companion object {
-
         @JvmStatic
         var textureGetter: Function<ResourceLocation, TextureAtlasSprite> = Function {
             location -> Minecraft.getMinecraft().textureMapBlocks.getAtlasSprite(location.toString())
