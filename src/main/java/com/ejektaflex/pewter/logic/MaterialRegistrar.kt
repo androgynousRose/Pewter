@@ -35,10 +35,15 @@ class MaterialRegistrar(val stats: MaterialStats) {
         addMaterialStats()
     }
 
-    // Uh, I don't have any associated items for items from other mods and I realized why; I'm trying to associate them in preinit, but they don't exist in preinit if they're from other mods, do they?
-
     // Register all associated items in the Ore Dictionary
     fun associate() {
+
+        val strMap = mapOf(
+                "ingot" to Material.VALUE_Ingot,
+                "nugget" to Material.VALUE_Nugget,
+                "block" to Material.VALUE_Block
+        )
+
         for (type in stats.smelting.keys ) {
             stats.smelting[type]!!.forEach { itemString ->
                 val item = itemString.toItemStack?.item
@@ -47,13 +52,26 @@ class MaterialRegistrar(val stats: MaterialStats) {
                 if (item != null) {
                     Pewter.LOGGER.info("Registering item $item with ore dictionary tag $tag")
                     OreDictionary.registerOre(tag, item) // This may not be working?
-                    tinkMaterial.addItem(item)
+                    tinkMaterial.addItem(item, 1, strMap[type]!!)
                 } else {
                     Pewter.LOGGER.warn("Could not associate $itemString with material named '${stats.name}'! Reason is because the item doesn't exist right now.")
                 }
             }
         }
     }
+
+    fun represent() {
+        // Material will be represented in Table of Contents by first ingot we get
+        val itemToRepresentWith = stats.smelting["ingot"]?.get(0)?.toItemStack
+
+        itemToRepresentWith?.let {
+            tinkMaterial.addItem(it, 1, Material.VALUE_Ingot)
+            Pewter.LOGGER.info("Representing ${stats.name} with a $it")
+            tinkMaterial.representativeItem = it
+            Pewter.LOGGER.info("${stats.name} is being represented by a ${tinkMaterial.representativeItem}")
+        }
+    }
+
 
     fun addMaterialTraits() {
         var numGenTraits = 0
@@ -132,20 +150,7 @@ class MaterialRegistrar(val stats: MaterialStats) {
 
     }
 
-    fun represent() {
-        val prefix = "ingot"
-        val suffix = stats.name.capitalize()
 
-        // Material will be represented in Table of Contents by first ingot we get
-        val itemToRepresentWith = stats.smelting["ingot"]?.get(0)?.toItemStack
-
-        itemToRepresentWith?.let {
-            tinkMaterial.addItem(it, 1, Material.VALUE_Ingot)
-            Pewter.LOGGER.info("Representing ${stats.name} with a $it")
-            tinkMaterial.representativeItem = it
-            Pewter.LOGGER.info("${stats.name} is being represented by a ${tinkMaterial.representativeItem}")
-        }
-    }
 
     private fun integrateMaterial() {
         tinkMaterial.isCraftable = false

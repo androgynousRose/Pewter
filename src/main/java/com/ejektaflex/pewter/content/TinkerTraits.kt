@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.logic
+package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.traits.Brilliance
 import com.ejektaflex.pewter.traits.PewterTrait

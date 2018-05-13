@@ -118,7 +118,7 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         }
 
         @NestedDSL
-        fun mult(func: () -> Float) {
+        fun modifier(func: () -> Float) {
             tool.handleMult = func()
         }
     }

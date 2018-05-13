@@ -18,7 +18,7 @@ class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {
     }
     handle {
         durability { 50 }
-        mult { 1f }
+        modifier { 1f }
     }
     extra {
         durability { 25 }

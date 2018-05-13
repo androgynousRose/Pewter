@@ -19,7 +19,7 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
     }
     handle {
         durability { 85 }
-        mult { 0.75f }
+        modifier { 0.75f }
     }
     extra {
         durability { 35 }

@@ -5,8 +5,8 @@ import com.ejektaflex.pewter.dsl.MaterialDSL
 import com.ejektaflex.pewter.logic.MaterialStats
 import com.ejektaflex.pewter.ext.resource
 import com.ejektaflex.pewter.integrations.ExampleMaterial
-import com.ejektaflex.pewter.integrations.StarmetalMaterial
 import com.ejektaflex.pewter.logic.MaterialRegistrar
+import com.ejektaflex.pewter.content.TinkerMaterials
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
@@ -33,11 +33,7 @@ open class CommonProxy : IProxy {
     lateinit var block: Block
     lateinit var item: Item
 
-    var internalMaterials = mapOf<String, List<MaterialDSL>>(
-            "astralsorcery" to listOf(
-                    StarmetalMaterial()
-            )
-    )
+    var internalMaterials = TinkerMaterials.materials
 
     override fun preInit(e: FMLPreInitializationEvent) {
         loadInternalData()

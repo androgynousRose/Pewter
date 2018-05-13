@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter
 
-import com.ejektaflex.pewter.logic.TinkerTraits
+import com.ejektaflex.pewter.content.TinkerTraits
 import net.minecraft.client.resources.IResourceManagerReloadListener
 import net.minecraft.util.text.translation.LanguageMap
 import java.io.ByteArrayInputStream
