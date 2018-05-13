@@ -12,9 +12,9 @@ class Aural : PewterTrait("Aural", 0xFFFFFF) {
         val protoDamage = when (random.nextFloat() < chance) {
             true -> {
                 AuraHelper.drainVis(entity.world, entity.position, amount, false)
-                newDamage
+                newDamage - 1
             }
-            false -> newDamage - 1
+            false -> newDamage
         }
         return super.onToolDamage(tool, damage, protoDamage, entity)
     }
