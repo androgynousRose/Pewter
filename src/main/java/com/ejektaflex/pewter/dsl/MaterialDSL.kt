@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.dsl
 
+import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.logic.MaterialStats
 
@@ -30,6 +31,11 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     }
 
     @TopLevelToolDSL
+    fun harvestLevel(n: Int) {
+        tool.toolHarvestLevel = n
+    }
+
+    @TopLevelToolDSL
     fun defaultTrait(traitName: String) {
         tool.defaultTrait = traitName
     }
@@ -51,15 +57,19 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         // Add all ingots to map
         tool.smelting["ingot"]!!.addAll(ing)
         // Set icon to first ingot if no icon exists yet
+        /*
         if (tool.smelting["ingot"]!!.isNotEmpty()) {
             val foundName = tool.smelting["ingot"]!!.first()
             val found = foundName.toItemStack
             if (found != null) {
                 //matIngot = found
+                println("Registering ingot for tool '${tool.name}': '$foundName'")
             } else {
-                throw Exception("This item does NOT exist at this time!: $foundName")
+                println("Could not find an ingot for material '${tool.name}'")
+                //throw Exception("This item does NOT exist at this time!: $foundName")
             }
         }
+        */
     }
 
     @TopLevelToolDSL

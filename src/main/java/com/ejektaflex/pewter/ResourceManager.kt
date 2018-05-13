@@ -18,6 +18,8 @@ class ResourceManager : IResourceManagerReloadListener {
                     data += "material.$materialName.name=$value\n"
                     // Fluid entry & Bucket Entry
                     data += "fluid.${Pewter.MODID}.$materialName.name=$value\n"
+                    // Flavour text (Sadly does not work)
+                    data += "$materialName.flavour=helloworld\n"
                 }
             }
         }

@@ -1,11 +1,12 @@
 package com.ejektaflex.pewter.proxy
 
 import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.dsl.MaterialDSL
 import com.ejektaflex.pewter.logic.MaterialStats
 import com.ejektaflex.pewter.ext.resource
-import com.ejektaflex.pewter.logic.ExampleMaterial
+import com.ejektaflex.pewter.integrations.ExampleMaterial
+import com.ejektaflex.pewter.integrations.StarmetalMaterial
 import com.ejektaflex.pewter.logic.MaterialRegistrar
-import com.ejektaflex.pewter.logic.TinkerTraits
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
@@ -13,6 +14,7 @@ import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
 import net.minecraftforge.fluids.FluidRegistry
+import net.minecraftforge.fml.common.Loader
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
@@ -31,8 +33,15 @@ open class CommonProxy : IProxy {
     lateinit var block: Block
     lateinit var item: Item
 
+    var internalMaterials = mapOf<String, List<MaterialDSL>>(
+            "astralsorcery" to listOf(
+                    StarmetalMaterial()
+            )
+    )
+
     override fun preInit(e: FMLPreInitializationEvent) {
-        loadMaterialData()
+        loadInternalData()
+        loadExternalData()
         makePewterFluid()
         if (Pewter.materials.size == 0) {
             saveExampleMaterial()
@@ -40,17 +49,39 @@ open class CommonProxy : IProxy {
     }
 
     private fun saveExampleMaterial() {
+        saveDSLMaterial(ExampleMaterial(), "_example")
+    }
+
+    private fun saveDSLMaterial(materialDSL: MaterialDSL, fileName: String? = null) {
         val gson = GsonBuilder().setPrettyPrinting().create()
         try {
-            FileWriter("${Pewter.CONFIGDIR}\\_example.json").use { writer ->
-                gson.toJson(ExampleMaterial().tool, writer)
+            FileWriter("${Pewter.CONFIGDIR}\\${fileName ?: materialDSL.tool.name}.json").use { writer ->
+                gson.toJson(materialDSL.tool, writer)
             }
         } catch (e: IOException) {
             e.printStackTrace()
         }
     }
 
-    private fun loadMaterialData() {
+    private fun loadInternalData(overwrite: Boolean = true) {
+        for ((modName, modMaterialDSLs) in internalMaterials) {
+            if (Loader.isModLoaded(modName)) {
+                Pewter.LOGGER.info("Integrating $modName")
+                for (dsl in modMaterialDSLs) {
+                    if (dsl.tool.name !in Pewter.CONFIGDIR.listFiles().map { it.name } || overwrite) {
+                        saveDSLMaterial(dsl)
+                    } else {
+                        Pewter.LOGGER.info("Skipping integration of ${dsl.tool.name}; file already exists")
+                    }
+                }
+                Pewter.LOGGER.info("Finished integration with $modName")
+            } else {
+                Pewter.LOGGER.info("$modName is not loaded, skipping integration...")
+            }
+        }
+    }
+
+    private fun loadExternalData() {
         // Load materials as MaterialStats and then register them all
         val loadedMaterials = loadMaterialFiles(Pewter.CONFIGDIR).map {
             MaterialRegistrar(it)

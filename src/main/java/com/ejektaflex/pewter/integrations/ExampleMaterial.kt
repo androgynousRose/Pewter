@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.logic
+package com.ejektaflex.pewter.integrations
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 

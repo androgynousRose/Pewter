@@ -54,7 +54,10 @@ class Pewter {
         const val MODID = "pewter"
         const val NAME = "Pewter"
         const val VERSION = "1.0"
-        const val DEPENDS = "required-after:tconstruct"
+        const val DEPENDS = "required-after:tconstruct;" +
+                "after:astralsorcery;" +
+                "after:thaumcraft;" +
+                "after:betterwithmods;"
         const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
         private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
         private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
