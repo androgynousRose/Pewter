@@ -128,6 +128,7 @@ open class CommonProxy : IProxy {
 
     override fun init(e: FMLInitializationEvent) {
         Pewter.materials.forEach {
+            it.associate()
             it.addMaterialTraits()
             it.represent()
         }
