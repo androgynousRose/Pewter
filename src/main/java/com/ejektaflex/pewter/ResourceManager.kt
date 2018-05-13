@@ -16,7 +16,7 @@ class ResourceManager : IResourceManagerReloadListener {
                 val materialName = mat.stats.name.toLowerCase()
                 if (locName.toLowerCase() == Minecraft.getMinecraft().languageManager.currentLanguage.languageCode.toLowerCase()) {
                     // Material entry in book
-                    data += "tinkMaterial.$materialName.name=$value\n"
+                    data += "material.$materialName.name=$value\n"
                     // Fluid entry & Bucket Entry
                     data += "fluid.${Pewter.MODID}.$materialName.name=$value\n"
                 }

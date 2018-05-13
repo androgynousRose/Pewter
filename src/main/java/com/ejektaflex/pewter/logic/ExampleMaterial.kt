@@ -8,6 +8,9 @@ class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {
     craft { false }
     ingots("minecraft:apple")
     //icon("minecraft:apple")
+    traitMap(
+            "HEAD" to "dense"
+    )
     head {
         durability { 100 }
         attack { 5 }

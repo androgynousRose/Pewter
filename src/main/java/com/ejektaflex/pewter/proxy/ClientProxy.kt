@@ -38,7 +38,6 @@ class ClientProxy : CommonProxy() {
             material.tinkMaterial.setRenderInfo(MaterialRenderInfo.Metal(Color.decode(material.stats.color).rgb, 0.25f, 0.5f, -0.1f))
         }
 
-
         // Load localizations
         (Minecraft.getMinecraft().resourceManager as IReloadableResourceManager).registerReloadListener(ResourceManager())
     }

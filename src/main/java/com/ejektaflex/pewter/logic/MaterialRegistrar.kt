@@ -14,7 +14,9 @@ import slimeknights.tconstruct.library.MaterialIntegration
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.library.materials.Material
+import slimeknights.tconstruct.library.traits.ITrait
 import slimeknights.tconstruct.smeltery.block.BlockMolten
+import com.ejektaflex.pewter.logic.MaterialStats.MatPart
 import java.awt.Color
 
 class MaterialRegistrar(val stats: MaterialStats) {
@@ -43,6 +45,34 @@ class MaterialRegistrar(val stats: MaterialStats) {
                 item?.let {
                     OreDictionary.registerOre(type + stats.name.capitalize(), it)
                 }
+            }
+        }
+    }
+
+    fun addMaterialTraits() {
+        // Default Trair
+        addTrait(stats.defaultTrait)
+        // Specific Traits
+        for ((specificPartName, traitNames) in stats.specificTraits) {
+            try {
+                val matPart = MatPart.valueOf(specificPartName)
+                for (traitName in traitNames) {
+                    addTrait(traitName, matPart)
+                }
+            } catch (e: Exception) {
+                Pewter.LOGGER.error("I don't think a part exists for the part name $specificPartName")
+                e.printStackTrace()
+            }
+        }
+    }
+
+    private fun addTrait(name: String, matPart: MatPart? = null) {
+        val imod = TinkerRegistry.getModifier(name)
+        if (imod != null && imod is ITrait) {
+            if (matPart == null) {
+                tinkMaterial.addTrait(imod)
+            } else {
+                tinkMaterial.addTrait(imod, matPart.dependency)
             }
         }
     }

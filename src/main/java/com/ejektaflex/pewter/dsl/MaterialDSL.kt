@@ -29,6 +29,19 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         someParts.forEach { tool.matParts.add(it) }
     }
 
+    @TopLevelToolDSL
+    fun traitMap(vararg pairs: Pair<String, String>) {
+        for (pair in pairs) {
+            if (pair.first.toUpperCase() in MaterialStats.MatPart.values().map { it.toString() }) {
+                // Add specific trait key if it doesn't exist
+                if (pair.first !in tool.specificTraits.keys) {
+                    tool.specificTraits[pair.first] = mutableListOf()
+                }
+                tool.specificTraits[pair.first]!!.add(pair.second)
+            }
+        }
+    }
+
     fun ingots(vararg ing: String) {
         // Add all ingots to map
         tool.smelting["ingot"]!!.addAll(ing)
@@ -103,7 +116,7 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     inner class ExtraCreator : DSL<ExtraCreator>() {
         @NestedDSL
         fun durability(func: () -> Int) {
-            tool.extraDurability = func()
+            tool.bindingDurability = func()
         }
     }
 

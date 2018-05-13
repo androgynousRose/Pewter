@@ -95,8 +95,8 @@ open class CommonProxy : IProxy {
 
 
     override fun init(e: FMLInitializationEvent) {
-        Pewter.materials.map { it.tinkMaterial }.forEach {
-            //it.addMaterialTraits()
+        Pewter.materials.forEach {
+            it.addMaterialTraits()
         }
 
     }

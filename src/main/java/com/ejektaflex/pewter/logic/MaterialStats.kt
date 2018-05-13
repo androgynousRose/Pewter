@@ -15,7 +15,7 @@ class MaterialStats {
     var toolSpeed = 0f
     var handleMult = 0f
     var handleDurability = 0
-    var extraDurability = 0
+    var bindingDurability = 0
     var bowAccuracy = 0f
     var bowRange = 0f
     var bowBonusDamage = 0f
@@ -23,25 +23,16 @@ class MaterialStats {
     var arrowShaftBonusAmmo = 0
     var fletchingModifier = 0f
     var stringModifier = 0f
+    var defaultTrait = "dense"
     var matParts = mutableSetOf<MatPart>()
     var nameLocales = mutableMapOf<String, String>()
     var smelting = mutableMapOf<String, MutableList<String>>(
             "ingot" to mutableListOf()
     )
-    /*
-    private fun addTrait(name: String, matType: String) {
-        val imod = TinkerRegistry.getModifier(name)
-        if (imod != null && imod is ITrait) {
-            if (matType == "") {
-                tinkMaterial.addTrait(imod)
-            } else {
-                tinkMaterial.addTrait(imod, matType)
-            }
-        }
-    }
-    */
+    var specificTraits = mutableMapOf<String, MutableList<String>>(
 
-
+    )
+    
     fun registerStats(m: Material, part: MatPart) {
         if (part == MatPart.PROJECTILE) {
             // Quoting MrJohz/LakMoore:
@@ -55,15 +46,15 @@ class MaterialStats {
         }
     }
 
-    enum class MatPart(val stats: (it: MaterialStats) -> IMaterialStats?) {
-        HEAD({ HeadMaterialStats(it.durability, it.toolSpeed, it.toolAttackDamage.toFloat(), it.toolHarvestLevel) }),
-        HANDLE({ HandleMaterialStats(it.handleMult, it.handleDurability) }),
-        BINDING({ ExtraMaterialStats(it.extraDurability) }),
-        BOW({ BowMaterialStats(it.toolSpeed, it.bowRange, it.bowBonusDamage) }),
-        SHAFT({ ArrowShaftMaterialStats(it.arrowShaftModifier, it.arrowShaftBonusAmmo) }),
-        FLETCHING({ FletchingMaterialStats(it.bowAccuracy, it.fletchingModifier) }),
-        STRING({ BowStringMaterialStats(it.stringModifier) }),
-        PROJECTILE({ ProjectileMaterialStats() })
+    enum class MatPart(val dependency: String, val stats: (it: MaterialStats) -> IMaterialStats?) {
+        HEAD(MaterialTypes.HEAD, { HeadMaterialStats(it.durability, it.toolSpeed, it.toolAttackDamage.toFloat(), it.toolHarvestLevel) }),
+        HANDLE(MaterialTypes.HANDLE, { HandleMaterialStats(it.handleMult, it.handleDurability) }),
+        BINDING(MaterialTypes.EXTRA, { ExtraMaterialStats(it.bindingDurability) }),
+        BOW(MaterialTypes.BOW, { BowMaterialStats(it.toolSpeed, it.bowRange, it.bowBonusDamage) }),
+        SHAFT(MaterialTypes.SHAFT, { ArrowShaftMaterialStats(it.arrowShaftModifier, it.arrowShaftBonusAmmo) }),
+        FLETCHING(MaterialTypes.FLETCHING, { FletchingMaterialStats(it.bowAccuracy, it.fletchingModifier) }),
+        BOWSTRING(MaterialTypes.BOWSTRING, { BowStringMaterialStats(it.stringModifier) }),
+        PROJECTILE(MaterialTypes.PROJECTILE, { ProjectileMaterialStats() })
     }
 
 }
