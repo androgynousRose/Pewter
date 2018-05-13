@@ -30,6 +30,11 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     }
 
     @TopLevelToolDSL
+    fun defaultTrait(traitName: String) {
+        tool.defaultTrait = traitName
+    }
+
+    @TopLevelToolDSL
     fun traitMap(vararg pairs: Pair<String, String>) {
         for (pair in pairs) {
             if (pair.first.toUpperCase() in MaterialStats.MatPart.values().map { it.toString() }) {

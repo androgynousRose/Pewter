@@ -7,9 +7,9 @@ class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {
     forge { true }
     craft { false }
     ingots("minecraft:apple")
-    //icon("minecraft:apple")
+    defaultTrait("brilliance")
     traitMap(
-            "HEAD" to "dense"
+            "EXTRA" to "dense"
     )
     head {
         durability { 100 }

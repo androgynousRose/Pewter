@@ -23,7 +23,7 @@ class MaterialStats {
     var arrowShaftBonusAmmo = 0
     var fletchingModifier = 0f
     var stringModifier = 0f
-    var defaultTrait = "dense"
+    var defaultTrait = ""
     var matParts = mutableSetOf<MatPart>()
     var nameLocales = mutableMapOf<String, String>()
     var smelting = mutableMapOf<String, MutableList<String>>(
@@ -49,7 +49,7 @@ class MaterialStats {
     enum class MatPart(val dependency: String, val stats: (it: MaterialStats) -> IMaterialStats?) {
         HEAD(MaterialTypes.HEAD, { HeadMaterialStats(it.durability, it.toolSpeed, it.toolAttackDamage.toFloat(), it.toolHarvestLevel) }),
         HANDLE(MaterialTypes.HANDLE, { HandleMaterialStats(it.handleMult, it.handleDurability) }),
-        BINDING(MaterialTypes.EXTRA, { ExtraMaterialStats(it.bindingDurability) }),
+        EXTRA(MaterialTypes.EXTRA, { ExtraMaterialStats(it.bindingDurability) }),
         BOW(MaterialTypes.BOW, { BowMaterialStats(it.toolSpeed, it.bowRange, it.bowBonusDamage) }),
         SHAFT(MaterialTypes.SHAFT, { ArrowShaftMaterialStats(it.arrowShaftModifier, it.arrowShaftBonusAmmo) }),
         FLETCHING(MaterialTypes.FLETCHING, { FletchingMaterialStats(it.bowAccuracy, it.fletchingModifier) }),

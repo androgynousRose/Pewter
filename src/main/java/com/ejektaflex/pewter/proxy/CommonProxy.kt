@@ -5,6 +5,7 @@ import com.ejektaflex.pewter.logic.MaterialStats
 import com.ejektaflex.pewter.ext.resource
 import com.ejektaflex.pewter.logic.ExampleMaterial
 import com.ejektaflex.pewter.logic.MaterialRegistrar
+import com.ejektaflex.pewter.logic.TinkerTraits
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
