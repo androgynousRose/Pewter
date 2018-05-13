@@ -1,6 +1,5 @@
 package com.ejektaflex.pewter.traits
 
-import com.ejektaflex.pewter.ext.currentBiome
 import com.ejektaflex.pewter.ext.temperature
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack

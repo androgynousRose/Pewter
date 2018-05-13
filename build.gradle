@@ -12,8 +12,8 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 
 version = "1.0"
-group = "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+group = "com.ejektaflex.pewter" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "pewter"
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 compileJava {
@@ -41,6 +41,10 @@ repositories {
         name = "JEI Maven Server"
         url = "http://dvs1.progwml6.com/files/maven"
     }
+
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
@@ -54,6 +58,8 @@ dependencies {
     deobfProvided "mezz.jei:jei_${v_minecraft}:${v_jei}:api"
     // at runtime, use the full JEI jar
     runtime "mezz.jei:jei_${v_minecraft}:${v_jei}"
+    // Other integration mods
+    compile fileTree(dir: 'lib', include: ['*.jar'])
 }
 
 processResources {

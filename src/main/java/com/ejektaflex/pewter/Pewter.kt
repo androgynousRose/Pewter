@@ -14,8 +14,6 @@ import java.io.File
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent
 
 
-
-
 @Mod(modid = Pewter.MODID, name = Pewter.NAME, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
 class Pewter {
 
@@ -57,7 +55,8 @@ class Pewter {
         const val DEPENDS = "required-after:tconstruct;" +
                 "after:astralsorcery;" +
                 "after:thaumcraft;" +
-                "after:betterwithmods;"
+                "after:betterwithmods;" +
+                "after:thaumcraft;"
         const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
         private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
         private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
