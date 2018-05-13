@@ -111,7 +111,6 @@ open class CommonProxy : IProxy {
                         e.printStackTrace()
                         null
                     }
-                    println("GOT THIS: $parsedStat")
 
                     parsedStat?.let { statList.add(it as MaterialStats) }
                 }

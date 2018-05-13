@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.integrations.HellfireMaterial
+import com.ejektaflex.pewter.integrations.ManastringMaterial
 import com.ejektaflex.pewter.integrations.StarmetalMaterial
 import com.ejektaflex.pewter.integrations.ThaumiumMaterial
 
@@ -11,6 +12,9 @@ object TinkerMaterials {
             ),
             "betterwithmods" to listOf(
                     HellfireMaterial()
+            ),
+            "botania" to listOf(
+                    ManastringMaterial()
             ),
             "thaumcraft" to listOf(
                     ThaumiumMaterial()

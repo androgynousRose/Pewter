@@ -7,6 +7,7 @@ class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {
     forge { true }
     craft { false }
     ingots("minecraft:apple")
+    defaultMetalParts()
     defaultTrait("brilliance")
     traitMap(
             "EXTRA" to "dense"

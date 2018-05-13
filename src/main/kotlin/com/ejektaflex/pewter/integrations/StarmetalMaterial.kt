@@ -7,6 +7,7 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
     forge { true }
     craft { false }
     ingots("astralsorcery:itemcraftingcomponent:1")
+    defaultMetalParts()
     defaultTrait("brilliance")
     traitMap(
             "EXTRA" to "dense"

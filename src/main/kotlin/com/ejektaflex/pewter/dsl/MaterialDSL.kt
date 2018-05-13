@@ -1,7 +1,5 @@
 package com.ejektaflex.pewter.dsl
 
-import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.logic.MaterialStats
 
 open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>() {
@@ -28,6 +26,20 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     @TopLevelToolDSL
     fun parts(vararg someParts: MaterialStats.MatPart) {
         someParts.forEach { tool.matParts.add(it) }
+    }
+
+    @TopLevelToolDSL
+    fun defaultMetalParts() {
+        // No fletching or bowstring
+        val metalParts = arrayOf(
+                MaterialStats.MatPart.HEAD,
+                MaterialStats.MatPart.HANDLE,
+                MaterialStats.MatPart.EXTRA,
+                MaterialStats.MatPart.BOW,
+                MaterialStats.MatPart.SHAFT,
+                MaterialStats.MatPart.PROJECTILE
+        )
+        parts(*metalParts)
     }
 
     @TopLevelToolDSL

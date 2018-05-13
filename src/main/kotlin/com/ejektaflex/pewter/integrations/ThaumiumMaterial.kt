@@ -7,6 +7,7 @@ class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
     forge { true }
     craft { false }
     ingots("thaumium:ingot:0")
+    defaultMetalParts()
     defaultTrait("aural")
     traitMap(
             "HEAD" to "essentia"

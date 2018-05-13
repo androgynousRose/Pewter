@@ -77,7 +77,12 @@ class MaterialRegistrar(val stats: MaterialStats) {
         var numGenTraits = 0
         var numSpecTraits = 0
         // Default Trait
-        val defTrait = addTrait(stats.defaultTrait)
+        val defTrait = if (stats.defaultTrait != "") {
+            addTrait(stats.defaultTrait)
+        } else {
+            Pewter.LOGGER.warn("Material ${stats.name} has no default trait, not adding.")
+            false
+        }
         if (defTrait) numGenTraits++
         // Specific Traits
         for ((specificPartName, traitNames) in stats.specificTraits) {
@@ -153,8 +158,8 @@ class MaterialRegistrar(val stats: MaterialStats) {
 
 
     private fun integrateMaterial() {
-        tinkMaterial.isCraftable = false
-        tinkMaterial.isCastable = true
+        tinkMaterial.isCraftable = stats.craftable
+        tinkMaterial.isCastable = !stats.craftable
 
         val prefix = "ingot"
         val suffix = stats.name.capitalize()
