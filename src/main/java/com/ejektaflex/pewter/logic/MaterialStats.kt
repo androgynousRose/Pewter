@@ -32,7 +32,7 @@ class MaterialStats {
     var specificTraits = mutableMapOf<String, MutableList<String>>(
 
     )
-    
+
     fun registerStats(m: Material, part: MatPart) {
         if (part == MatPart.PROJECTILE) {
             // Quoting MrJohz/LakMoore:

@@ -50,30 +50,40 @@ class MaterialRegistrar(val stats: MaterialStats) {
     }
 
     fun addMaterialTraits() {
-        // Default Trair
-        addTrait(stats.defaultTrait)
+        var numGenTraits = 0
+        var numSpecTraits = 0
+        // Default Trait
+        val defTrait = addTrait(stats.defaultTrait)
+        if (defTrait) numGenTraits++
         // Specific Traits
         for ((specificPartName, traitNames) in stats.specificTraits) {
             try {
                 val matPart = MatPart.valueOf(specificPartName)
                 for (traitName in traitNames) {
-                    addTrait(traitName, matPart)
+                    val specTrait = addTrait(traitName, matPart)
+                    if (specTrait) numSpecTraits++
                 }
             } catch (e: Exception) {
                 Pewter.LOGGER.error("I don't think a part exists for the part name $specificPartName")
                 e.printStackTrace()
             }
         }
+        Pewter.LOGGER.info("Loaded $numGenTraits default traits.")
+        Pewter.LOGGER.info("Loaded $numSpecTraits specific traits.")
     }
 
-    private fun addTrait(name: String, matPart: MatPart? = null) {
+    private fun addTrait(name: String, matPart: MatPart? = null): Boolean {
         val imod = TinkerRegistry.getModifier(name)
-        if (imod != null && imod is ITrait) {
+        return if (imod != null && imod is ITrait) {
             if (matPart == null) {
                 tinkMaterial.addTrait(imod)
             } else {
                 tinkMaterial.addTrait(imod, matPart.dependency)
             }
+            true
+        } else {
+            Pewter.LOGGER.warn("Trait '$name' does not exist!")
+            false
         }
     }
 

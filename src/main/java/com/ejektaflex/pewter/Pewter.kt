@@ -11,6 +11,9 @@ import org.apache.logging.log4j.Logger
 import net.minecraftforge.fml.common.SidedProxy
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import java.io.File
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent
+
+
 
 
 @Mod(modid = Pewter.MODID, name = Pewter.NAME, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
@@ -42,14 +45,19 @@ class Pewter {
         proxy.postInit(event)
     }
 
+    @EventHandler
+    fun serverLoad(event: FMLServerStartingEvent) {
+        event.registerServerCommand(Command())
+    }
+
     companion object {
         const val MODID = "pewter"
         const val NAME = "Pewter"
         const val VERSION = "1.0"
-        const val DEPENDS = "required:tconstruct"
+        const val DEPENDS = "required-after:tconstruct"
         const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
-        const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
-        const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
+        private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
+        private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
 
         lateinit var LOGGER: Logger
         lateinit var CONFIGDIR: File
