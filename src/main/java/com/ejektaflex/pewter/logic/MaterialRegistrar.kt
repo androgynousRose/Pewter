@@ -23,7 +23,6 @@ class MaterialRegistrar(val stats: MaterialStats) {
 
     private lateinit var integration: MaterialIntegration
     lateinit var tinkMaterial: Material
-    private var ingot: ItemStack? = null
     var fluid: Fluid? = null
     lateinit var block: Block
     lateinit var fluidItem: ItemBlock
@@ -126,6 +125,21 @@ class MaterialRegistrar(val stats: MaterialStats) {
 
     }
 
+    fun represent() {
+        val prefix = "ingot"
+        val suffix = stats.name.capitalize()
+
+        // Material will be represented in Table of Contents by first ingot we get
+        val itemToRepresentWith = stats.smelting["ingot"]?.get(0)?.toItemStack
+
+        itemToRepresentWith?.let {
+            tinkMaterial.addItem(prefix + suffix, 1, Material.VALUE_Ingot)
+            Pewter.LOGGER.info("Representing ${stats.name} with a $it")
+            tinkMaterial.representativeItem = it
+            Pewter.LOGGER.info("${stats.name} is being represented by a ${tinkMaterial.representativeItem}")
+        }
+    }
+
     private fun integrateMaterial() {
         tinkMaterial.isCraftable = false
         tinkMaterial.isCastable = true
@@ -134,10 +148,12 @@ class MaterialRegistrar(val stats: MaterialStats) {
         val suffix = stats.name.capitalize()
 
         // Add ingot for item
+        /*
         ingot.let {
             tinkMaterial.addItem(prefix + suffix, 1, Material.VALUE_Ingot)
             tinkMaterial.representativeItem = it
         }
+        */
 
         // Integrate
         integration = MaterialIntegration(prefix + suffix, tinkMaterial, fluid, suffix).apply {

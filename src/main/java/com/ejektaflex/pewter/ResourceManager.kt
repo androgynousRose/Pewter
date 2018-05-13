@@ -6,8 +6,6 @@ import java.io.ByteArrayInputStream
 import net.minecraft.client.Minecraft
 import net.minecraft.client.resources.IResourceManager
 
-
-
 class ResourceManager : IResourceManagerReloadListener {
     override fun onResourceManagerReload(resourceManager: IResourceManager) {
         var data = ""
