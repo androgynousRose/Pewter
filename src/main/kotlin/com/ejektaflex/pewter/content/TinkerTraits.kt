@@ -1,8 +1,6 @@
 package com.ejektaflex.pewter.content
 
-import com.ejektaflex.pewter.traits.Brilliance
-import com.ejektaflex.pewter.traits.HeatLover
-import com.ejektaflex.pewter.traits.Polluted
+import com.ejektaflex.pewter.traits.*
 
 class TinkerTraits {
 
@@ -10,7 +8,9 @@ class TinkerTraits {
         val traits = listOf(
                 Brilliance(),
                 HeatLover(),
-                Polluted()
+                Polluted(),
+                Essentia(),
+                Aural()
         )
     }
 

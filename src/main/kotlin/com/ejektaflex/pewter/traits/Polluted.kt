@@ -5,6 +5,7 @@ import net.minecraft.item.ItemStack
 import thaumcraft.api.aura.AuraHelper
 
 class Polluted : PewterTrait("Polluted", 0xFFFFFF) {
+    override val motto = "Slightly Toxic."
     override val description = "Hitting enemies has a chance of releasing flux."
 
     override fun onToolDamage(tool: ItemStack?, damage: Int, newDamage: Int, entity: EntityLivingBase): Int {

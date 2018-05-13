@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent
 
 
 @Mod(modid = Pewter.MODID, name = Pewter.NAME, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
-class Pewter {
+object Pewter {
 
     @EventHandler
     fun preInit(event: FMLPreInitializationEvent) {
@@ -48,25 +48,23 @@ class Pewter {
         event.registerServerCommand(Command())
     }
 
-    companion object {
-        const val MODID = "pewter"
-        const val NAME = "Pewter"
-        const val VERSION = "1.0"
-        const val DEPENDS = "required-after:tconstruct;" +
-                "after:astralsorcery;" +
-                "after:thaumcraft;" +
-                "after:betterwithmods;" +
-                "after:thaumcraft;"
-        const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
-        private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
-        private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
+    const val MODID = "pewter"
+    const val NAME = "Pewter"
+    const val VERSION = "1.0"
+    const val DEPENDS = "required-after:tconstruct;" +
+            "after:astralsorcery;" +
+            "after:thaumcraft;" +
+            "after:betterwithmods;" +
+            "after:thaumcraft;"
+    const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
+    private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
+    private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
 
-        lateinit var LOGGER: Logger
-        lateinit var CONFIGDIR: File
+    lateinit var LOGGER: Logger
+    lateinit var CONFIGDIR: File
 
-        @SidedProxy(clientSide = CLIENT, serverSide = SERVER)
-        @JvmStatic lateinit var proxy: IProxy
+    @SidedProxy(clientSide = CLIENT, serverSide = SERVER)
+    @JvmStatic lateinit var proxy: IProxy
 
-        var materials = mutableListOf<MaterialRegistrar>()
-    }
+    var materials = mutableListOf<MaterialRegistrar>()
 }

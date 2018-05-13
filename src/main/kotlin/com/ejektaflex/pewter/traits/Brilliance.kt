@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.traits
 
+import com.ejektaflex.pewter.ext.isHoldingItemWithTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.init.MobEffects
 import net.minecraft.potion.PotionEffect
@@ -10,11 +11,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 
 class Brilliance : PewterTrait("Brilliance", 0xFFFFFF) {
+    override val motto = "Shine!"
     override val description = "Enemies that hit you glow and receive night vision."
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     fun defend(event: LivingHurtEvent) {
-        if (event.source is EntityDamageSource){
+        if (event.source is EntityDamageSource && event.entityLiving.isHoldingItemWithTrait(identifier)){
             event.source.trueSource?.let {
                 if (it is EntityLivingBase) {
                     it.addPotionEffect(PotionEffect(MobEffects.GLOWING, 100, 2))

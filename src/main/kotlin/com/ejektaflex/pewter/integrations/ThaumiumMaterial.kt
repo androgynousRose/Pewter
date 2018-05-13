@@ -7,9 +7,9 @@ class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
     forge { true }
     craft { false }
     ingots("thaumium:ingot:0")
-    defaultTrait("polluted")
+    defaultTrait("aural")
     traitMap(
-            "EXTRA" to "dense"
+            "HEAD" to "essentia"
     )
     harvestLevel(1)
     head {

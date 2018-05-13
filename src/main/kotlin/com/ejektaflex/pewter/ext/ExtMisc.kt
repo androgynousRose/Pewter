@@ -13,3 +13,6 @@ fun ClosedRange<Int>.random() =
 fun Random.range(closed: ClosedRange<Int>): Int {
         return nextInt(closed.endInclusive - closed.start) + closed.start
 }
+
+val <T> List<T>.random: T
+    get() = this[Random().range(0 until size)]

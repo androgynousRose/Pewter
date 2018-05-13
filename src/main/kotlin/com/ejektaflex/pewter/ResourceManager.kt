@@ -26,7 +26,7 @@ class ResourceManager : IResourceManagerReloadListener {
 
         for (trait in TinkerTraits.traits) {
             data += "modifier.${trait.identifier}.name=${trait.name}\n"
-            data += "modifier.${trait.identifier}.desc=${trait.description}\n"
+            data += "modifier.${trait.identifier}.desc=§o${trait.motto}§r\\n${trait.description}\n"
         }
 
         LanguageMap.inject(ByteArrayInputStream(data.toByteArray()))
