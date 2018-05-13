@@ -7,7 +7,7 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF3D3D", {
     forge { true }
     craft { false }
     ingots("betterwithmods:material:17")
-    defaultTrait("brilliance")
+    defaultTrait("heatlover")
     traitMap(
             "EXTRA" to "dense"
     )
