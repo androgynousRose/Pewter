@@ -126,6 +126,11 @@ class MaterialRegistrar(val stats: MaterialStats) {
     }
 
     private fun makeFluid() {
+
+        if (stats.craftable) { // If not craftable, must be castable and need a fluid
+            return
+        }
+
         val name = stats.name.toLowerCase()
         fluid = FluidMolten(name, Color.decode(stats.color).rgb).apply {
             unlocalizedName = "${Pewter.MODID}.$name"
