@@ -7,6 +7,7 @@ import com.ejektaflex.pewter.ext.resource
 import com.ejektaflex.pewter.integrations.ExampleMaterial
 import com.ejektaflex.pewter.logic.MaterialRegistrar
 import com.ejektaflex.pewter.content.TinkerMaterials
+import com.ejektaflex.pewter.content.TinkerModifiers
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
@@ -33,7 +34,8 @@ open class CommonProxy : IProxy {
     lateinit var block: Block
     lateinit var item: Item
 
-    var internalMaterials = TinkerMaterials.materials
+    //private var internalModifiers = TinkerModifiers.modifiers
+    private var internalMaterials = TinkerMaterials.materials
 
     override fun preInit(e: FMLPreInitializationEvent) {
         loadInternalData()
@@ -127,11 +129,19 @@ open class CommonProxy : IProxy {
             it.addMaterialTraits()
             it.represent()
         }
+        addModifiers()
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
         Pewter.materials.forEach {
             it.integrate()
+        }
+    }
+
+    // Assign modifiers to items
+    private fun addModifiers() {
+        for (mod in TinkerModifiers.modifiers) {
+            mod.key.apply(mod.value)
         }
     }
 
