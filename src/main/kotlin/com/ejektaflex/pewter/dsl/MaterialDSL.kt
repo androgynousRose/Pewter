@@ -67,20 +67,10 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     fun ingots(vararg ing: String) {
         // Add all ingots to map
         tool.smelting["ingot"]!!.addAll(ing)
-        // Set icon to first ingot if no icon exists yet
-        /*
-        if (tool.smelting["ingot"]!!.isNotEmpty()) {
-            val foundName = tool.smelting["ingot"]!!.first()
-            val found = foundName.toItemStack
-            if (found != null) {
-                //matIngot = found
-                println("Registering ingot for tool '${tool.name}': '$foundName'")
-            } else {
-                println("Could not find an ingot for material '${tool.name}'")
-                //throw Exception("This item does NOT exist at this time!: $foundName")
-            }
-        }
-        */
+    }
+
+    fun blocks(vararg blo: String) {
+        tool.smelting["block"]!!.addAll(blo)
     }
 
     @TopLevelToolDSL

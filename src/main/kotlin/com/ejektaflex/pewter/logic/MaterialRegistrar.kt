@@ -17,6 +17,7 @@ import slimeknights.tconstruct.library.materials.Material
 import slimeknights.tconstruct.library.traits.ITrait
 import slimeknights.tconstruct.smeltery.block.BlockMolten
 import com.ejektaflex.pewter.logic.MaterialStats.MatPart
+import slimeknights.tconstruct.smeltery.TinkerSmeltery
 import java.awt.Color
 
 class MaterialRegistrar(val stats: MaterialStats) {
@@ -53,6 +54,12 @@ class MaterialRegistrar(val stats: MaterialStats) {
                     Pewter.LOGGER.info("Registering item $item with ore dictionary tag $tag")
                     OreDictionary.registerOre(tag, item) // This may not be working?
                     tinkMaterial.addItem(item, 1, strMap[type]!!)
+                    // Register for melting on a casting table
+                    TinkerSmeltery.registerToolpartMeltingCasting(tinkMaterial)
+                    // Register melting the item into it's fluid form (if there is a fluid)
+                    fluid?.let {
+                        TinkerRegistry.registerMelting(item, fluid, strMap[type]!!)
+                    }
                 } else {
                     Pewter.LOGGER.warn("Could not associate $itemString with material named '${stats.name}'! Reason is because the item doesn't exist right now.")
                 }
