@@ -64,13 +64,20 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         }
     }
 
+    @TopLevelToolDSL
     fun ingots(vararg ing: String) {
         // Add all ingots to map
         tool.smelting["ingot"]!!.addAll(ing)
     }
 
+    @TopLevelToolDSL
     fun blocks(vararg blo: String) {
         tool.smelting["block"]!!.addAll(blo)
+    }
+
+    @TopLevelToolDSL
+    fun nuggets(vararg blo: String) {
+        tool.smelting["nugget"]!!.addAll(blo)
     }
 
     @TopLevelToolDSL

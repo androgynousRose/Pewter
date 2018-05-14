@@ -28,7 +28,9 @@ class MaterialStats {
     var matParts = mutableSetOf<MatPart>()
     var nameLocales = mutableMapOf<String, String>()
     var smelting = mutableMapOf<String, MutableList<String>>(
-            "ingot" to mutableListOf()
+            "ingot" to mutableListOf(),
+            "block" to mutableListOf(),
+            "nugget" to mutableListOf()
     )
     var specificTraits = mutableMapOf<String, MutableList<String>>(
 

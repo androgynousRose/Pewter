@@ -2,16 +2,15 @@ package com.ejektaflex.pewter.integrations
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class VoidMetalMaterial : MaterialDSL("voidmetal", "#1A0D3B", {
+class VoidMetalMaterial : MaterialDSL("voidmetal", "#220E3D", {
     locale("en_US" to "Void Metal")
     forge { true }
     craft { false }
     ingots("thaumcraft:ingot:1")
+    blocks("thaumcraft:metal_void")
+    nuggets("thaumcraft:nugget:7")
     defaultMetalParts()
-    defaultTrait("aural")
-    traitMap(
-            "HEAD" to "essentia"
-    )
+    defaultTrait("warping")
     harvestLevel(3)
     head {
         durability { 840 }
@@ -19,8 +18,8 @@ class VoidMetalMaterial : MaterialDSL("voidmetal", "#1A0D3B", {
         speed { 7.0f }
     }
     handle {
-        durability { 95 }
-        modifier { 0.9f }
+        durability { -15 }
+        modifier { 1.15f }
     }
     extra {
         durability { 35 }

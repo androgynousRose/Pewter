@@ -10,7 +10,8 @@ class TinkerTraits {
                 HeatLover(),
                 Polluted(),
                 Essentia(),
-                Aural()
+                Aural(),
+                Warping()
         )
     }
 
