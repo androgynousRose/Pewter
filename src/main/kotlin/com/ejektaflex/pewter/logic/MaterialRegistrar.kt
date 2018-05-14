@@ -17,6 +17,9 @@ import slimeknights.tconstruct.library.materials.Material
 import slimeknights.tconstruct.library.traits.ITrait
 import slimeknights.tconstruct.smeltery.block.BlockMolten
 import com.ejektaflex.pewter.logic.MaterialStats.MatPart
+import net.minecraft.item.Item
+import net.minecraft.util.ResourceLocation
+import net.minecraftforge.fml.common.Loader
 import slimeknights.tconstruct.smeltery.TinkerSmeltery
 import java.awt.Color
 
@@ -47,7 +50,8 @@ class MaterialRegistrar(val stats: MaterialStats) {
 
         for (type in stats.smelting.keys ) {
             stats.smelting[type]!!.forEach { itemString ->
-                val item = itemString.toItemStack?.item
+                val itemStack = itemString.toItemStack
+                val item = itemStack?.item
                 val tag = type + stats.name.capitalize()
                 // If that item exists, register it
                 if (item != null) {
@@ -58,10 +62,10 @@ class MaterialRegistrar(val stats: MaterialStats) {
                     TinkerSmeltery.registerToolpartMeltingCasting(tinkMaterial)
                     // Register melting the item into it's fluid form (if there is a fluid)
                     fluid?.let {
-                        TinkerRegistry.registerMelting(item, fluid, strMap[type]!!)
+                        TinkerRegistry.registerMelting(itemStack, fluid, strMap[type]!!)
                     }
                 } else {
-                    Pewter.LOGGER.warn("Could not associate $itemString with material named '${stats.name}'! Reason is because the item doesn't exist right now.")
+                    Pewter.LOGGER.warn("Could not associate $itemString with material named '${stats.name}'! Reason is because the item doesn't exist.")
                 }
             }
         }

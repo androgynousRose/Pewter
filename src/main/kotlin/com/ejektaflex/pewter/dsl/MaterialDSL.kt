@@ -148,6 +148,11 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         }
 
         @NestedDSL
+        fun speed(f: Float) {
+            tool.bowSpeed = f
+        }
+
+        @NestedDSL
         fun bonusDamage(func: () -> Float) {
             tool.bowBonusDamage = func()
         }

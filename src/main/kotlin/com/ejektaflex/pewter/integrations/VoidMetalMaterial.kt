@@ -2,21 +2,21 @@ package com.ejektaflex.pewter.integrations
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
-    locale("en_US" to "Thaumium")
+class VoidMetalMaterial : MaterialDSL("voidmetal", "#1A0D3B", {
+    locale("en_US" to "Void Metal")
     forge { true }
     craft { false }
-    ingots("thaumcraft:ingot:0")
+    ingots("thaumcraft:ingot:1")
     defaultMetalParts()
     defaultTrait("aural")
     traitMap(
             "HEAD" to "essentia"
     )
-    harvestLevel(1)
+    harvestLevel(3)
     head {
-        durability { 300 }
+        durability { 840 }
         attack { 4 }
-        speed { 6.5f }
+        speed { 7.0f }
     }
     handle {
         durability { 95 }

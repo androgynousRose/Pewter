@@ -16,6 +16,7 @@ class MaterialStats {
     var handleMult = 0f
     var handleDurability = 0
     var bindingDurability = 0
+    var bowSpeed = 0f
     var bowAccuracy = 0f
     var bowRange = 0f
     var bowBonusDamage = 0f

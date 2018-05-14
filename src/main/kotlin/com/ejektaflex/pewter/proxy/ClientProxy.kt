@@ -35,7 +35,7 @@ class ClientProxy : CommonProxy() {
                 // Block Model
                 ModelLoader.setCustomStateMapper(material.block, mapper)
             }
-            material.tinkMaterial.setRenderInfo(MaterialRenderInfo.Metal(Color.decode(material.stats.color).rgb, 0.25f, 0.5f, -0.1f))
+            material.tinkMaterial.setRenderInfo(MaterialRenderInfo.Metal(Color.decode(material.stats.color).rgb, 0.25f, 0.0f, -0.1f))
         }
 
         // Load localizations

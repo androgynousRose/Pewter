@@ -26,6 +26,7 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
         durability { 35 }
     }
     bow {
+        speed(0.5f)
         accuracy { 1.0f }
         range { 1.6f }
         string { 0.2f }

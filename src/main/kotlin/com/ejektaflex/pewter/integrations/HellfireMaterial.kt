@@ -9,9 +9,6 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF3D3D", {
     ingots("betterwithmods:material:17")
     defaultMetalParts()
     defaultTrait("heatlover")
-    traitMap(
-            "EXTRA" to "dense"
-    )
     harvestLevel(1)
     head {
         durability { 335 }
@@ -26,6 +23,7 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF3D3D", {
         durability { 95 }
     }
     bow {
+        speed(0.5f)
         accuracy { 0.0f }
         range { 0.5f }
         string { 0.85f }

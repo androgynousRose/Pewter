@@ -134,6 +134,7 @@ open class CommonProxy : IProxy {
 
     override fun postInit(e: FMLPostInitializationEvent) {
         Pewter.materials.forEach {
+            //it.associate()
             it.integrate()
         }
     }
