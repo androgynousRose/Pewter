@@ -16,7 +16,7 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
     head {
         durability { 275 }
         attack { 5 }
-        speed { 6.5f }
+        speed { 5.7f }
     }
     handle {
         durability { 85 }

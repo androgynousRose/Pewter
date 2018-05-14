@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.traits
 
+import com.ejektaflex.pewter.Pewter
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.shared.client.ParticleEffect
@@ -11,7 +12,7 @@ class Sapping : PewterTrait("Sapping", 0xFFFFFF) {
     override val description = "Damaging enemies usually steals a small portion of their health."
 
     override fun onHit(tool: ItemStack, player: EntityLivingBase, target: EntityLivingBase, damage: Float, isCritical: Boolean) {
-
+        
         val healthToSteal = min(target.health, damage) / 8.5f
 
         if (random.nextFloat() < chance) {

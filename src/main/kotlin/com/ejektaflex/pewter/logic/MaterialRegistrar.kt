@@ -151,11 +151,11 @@ class MaterialRegistrar(val stats: MaterialStats) {
 
         //name = "molten_$name"
         // Create block
-        block = BlockMolten(fluid).apply {
-            unlocalizedName = "${Pewter.MODID}.$name"
-            registryName = name.resource
-            setCreativeTab(null)
-        }
+        block = BlockMolten(fluid)
+        block.unlocalizedName = "${Pewter.MODID}.$name"
+        block.registryName = name.resource
+        //block.setCreativeTab(null)
+
         ForgeRegistries.BLOCKS.register(block)
 
         // Create item
