@@ -26,7 +26,7 @@ class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
         durability { 35 }
     }
     bow {
-        speed(0.5f)
+        speed(2.5f)
         accuracy { 0.85f }
         range { 1.75f }
         string { 0.05f }

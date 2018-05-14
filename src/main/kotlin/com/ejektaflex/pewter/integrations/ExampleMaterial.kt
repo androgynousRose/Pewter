@@ -25,7 +25,7 @@ class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {
         durability { 25 }
     }
     bow {
-        speed(0.5f)
+        speed(2.5f)
         accuracy { 0.5f }
         range { 1f }
         string { 1.1f }

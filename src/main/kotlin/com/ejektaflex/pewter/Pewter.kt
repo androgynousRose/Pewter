@@ -17,6 +17,8 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent
 @Mod(modid = Pewter.MODID, name = Pewter.NAME, acceptedMinecraftVersions = Pewter.VERSIONS, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
 object Pewter {
 
+    var materials = mutableListOf<MaterialRegistrar>()
+
     @EventHandler
     fun preInit(event: FMLPreInitializationEvent) {
         LOGGER = event.modLog
@@ -67,5 +69,4 @@ object Pewter {
     @SidedProxy(clientSide = CLIENT, serverSide = SERVER)
     @JvmStatic lateinit var proxy: IProxy
 
-    var materials = mutableListOf<MaterialRegistrar>()
 }

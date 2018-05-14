@@ -29,7 +29,7 @@ class VoidMetalMaterial : MaterialDSL("voidmetal", "#2A114A", {
         durability { 200 }
     }
     bow {
-        speed(0.5f)
+        speed(2.5f)
         accuracy { 0.85f }
         range { 1.75f }
         string { 0.05f }

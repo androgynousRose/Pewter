@@ -3,9 +3,9 @@ package com.ejektaflex.pewter.logic
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ext.resource
 import com.ejektaflex.pewter.ext.toItemStack
+import com.ejektaflex.pewter.logic.MaterialStats.MatPart
 import net.minecraft.block.Block
 import net.minecraft.item.ItemBlock
-import net.minecraft.item.ItemStack
 import net.minecraftforge.fluids.Fluid
 import net.minecraftforge.fluids.FluidRegistry
 import net.minecraftforge.fml.common.registry.ForgeRegistries
@@ -15,12 +15,8 @@ import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.library.materials.Material
 import slimeknights.tconstruct.library.traits.ITrait
-import slimeknights.tconstruct.smeltery.block.BlockMolten
-import com.ejektaflex.pewter.logic.MaterialStats.MatPart
-import net.minecraft.item.Item
-import net.minecraft.util.ResourceLocation
-import net.minecraftforge.fml.common.Loader
 import slimeknights.tconstruct.smeltery.TinkerSmeltery
+import slimeknights.tconstruct.smeltery.block.BlockMolten
 import java.awt.Color
 
 class MaterialRegistrar(val stats: MaterialStats) {
@@ -141,7 +137,9 @@ class MaterialRegistrar(val stats: MaterialStats) {
             return
         }
 
-        val name = stats.name.toLowerCase()
+        Pewter.LOGGER.info("Making fluid for material ${stats.name}")
+
+        var name = stats.name.toLowerCase()
         fluid = FluidMolten(name, Color.decode(stats.color).rgb).apply {
             unlocalizedName = "${Pewter.MODID}.$name"
         }
@@ -149,7 +147,7 @@ class MaterialRegistrar(val stats: MaterialStats) {
 
         // TODO Set fluid properties here
 
-        //name = "molten_$name"
+        name = "molten_$name"
         // Create block
         block = BlockMolten(fluid)
         block.unlocalizedName = "${Pewter.MODID}.$name"

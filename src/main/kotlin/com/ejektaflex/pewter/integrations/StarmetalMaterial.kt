@@ -15,18 +15,18 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
     harvestLevel(1)
     head {
         durability { 275 }
-        attack { 5 }
+        attack { 4 }
         speed { 5.7f }
     }
     handle {
-        durability { 85 }
+        durability { 95 }
         modifier { 0.75f }
     }
     extra {
-        durability { 35 }
+        durability { 45 }
     }
     bow {
-        speed(0.5f)
+        speed(2.5f)
         accuracy { 1.0f }
         range { 1.6f }
         string { 0.2f }

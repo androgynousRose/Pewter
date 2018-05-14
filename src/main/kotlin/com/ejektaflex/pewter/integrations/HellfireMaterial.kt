@@ -23,7 +23,7 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF3D3D", {
         durability { 95 }
     }
     bow {
-        speed(0.5f)
+        speed(2.5f)
         accuracy { 0.0f }
         range { 0.5f }
         string { 0.85f }

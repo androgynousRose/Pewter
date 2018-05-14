@@ -11,8 +11,6 @@ class ManastringMaterial : MaterialDSL("manastring", "#6BBEBF", {
     parts(MatPart.BOWSTRING)
     //defaultTrait("heatlover")
     bow {
-        speed(0.5f)
         string { 0.85f }
-        bonusDamage { -0.5f }
     }
 })
