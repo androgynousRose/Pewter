@@ -142,10 +142,13 @@ class MaterialRegistrar(val stats: MaterialStats) {
         var name = stats.name.toLowerCase()
         fluid = FluidMolten(name, Color.decode(stats.color).rgb).apply {
             unlocalizedName = "${Pewter.MODID}.$name"
+            viscosity = stats.fluid["viscosity"] ?: 0
+            density = stats.fluid["density"] ?: 0
+            temperature = stats.fluid["temperature"] ?: 0
+            luminosity = stats.fluid["luminosity"] ?: 0
         }
         FluidRegistry.registerFluid(fluid)
 
-        // TODO Set fluid properties here
 
         name = "molten_$name"
         // Create block

@@ -26,9 +26,15 @@ class MaterialStats {
     var bowStringModifier = 0f
     var defaultTrait = ""
     var looks = mutableMapOf(
-            "shininess" to "25",
-            "brightness" to "25",
-            "hueshift" to "-10"
+            "shininess" to 0.25f,
+            "brightness" to 0.25f,
+            "hueshift" to -0.1f
+    )
+    var fluid = mutableMapOf(
+            "viscosity" to 8000,
+            "density" to 1500,
+            "temperature" to 1000,
+            "luminosity" to 8
     )
     var matParts = mutableSetOf<MatPart>()
     var nameLocales = mutableMapOf<String, String>()
