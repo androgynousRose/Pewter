@@ -20,10 +20,10 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
     }
     handle {
         durability { 95 }
-        modifier { 0.75f }
+        modifier { 0.8f }
     }
     extra {
-        durability { 45 }
+        durability { 65 }
     }
     bow {
         speed(2.5f)

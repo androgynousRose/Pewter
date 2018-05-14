@@ -25,6 +25,11 @@ class MaterialStats {
     var arrowFletchingModifier = 0f
     var bowStringModifier = 0f
     var defaultTrait = ""
+    var looks = mutableMapOf(
+            "shininess" to "25",
+            "brightness" to "25",
+            "hueshift" to "-10"
+    )
     var matParts = mutableSetOf<MatPart>()
     var nameLocales = mutableMapOf<String, String>()
     var smelting = mutableMapOf<String, MutableList<String>>(

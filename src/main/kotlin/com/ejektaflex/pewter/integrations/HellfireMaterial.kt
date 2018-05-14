@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.integrations
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class HellfireMaterial : MaterialDSL("hellfire", "#FF3D3D", {
+class HellfireMaterial : MaterialDSL("hellfire", "#FF2E38", {
     locale("en_US" to "Hellfire")
     forge { true }
     craft { false }
