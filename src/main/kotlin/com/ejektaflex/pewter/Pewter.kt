@@ -14,7 +14,7 @@ import java.io.File
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent
 
 
-@Mod(modid = Pewter.MODID, name = Pewter.NAME, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
+@Mod(modid = Pewter.MODID, name = Pewter.NAME, acceptedMinecraftVersions = Pewter.VERSIONS, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
 object Pewter {
 
     @EventHandler
@@ -51,6 +51,7 @@ object Pewter {
     const val MODID = "pewter"
     const val NAME = "Pewter"
     const val VERSION = "1.0"
+    const val VERSIONS = "1.12"
     const val DEPENDS = "required-after:tconstruct;" +
             "after:astralsorcery;" +
             "after:thaumcraft;" +

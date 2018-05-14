@@ -12,8 +12,8 @@ class Sapping : PewterTrait("Sapping", 0xFFFFFF) {
     override val description = "Damaging enemies usually steals a small portion of their health."
 
     override fun onHit(tool: ItemStack, player: EntityLivingBase, target: EntityLivingBase, damage: Float, isCritical: Boolean) {
-        
-        val healthToSteal = min(target.health, damage) / 8.5f
+
+        val healthToSteal = min(target.health, damage) / 7.5f
 
         if (random.nextFloat() < chance) {
             TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_BLOOD, target, 1)
