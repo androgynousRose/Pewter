@@ -18,7 +18,7 @@ class ResourceManager : IResourceManagerReloadListener {
                     // Material entry in book
                     data += "material.$materialName.name=$value\n"
                     // Fluid entry & Bucket Entry
-                    data += "fluid.${Pewter.MODID}.$materialName.name=$value\n"
+                    data += "fluid.${Pewter.MODID}.$materialName.name=Molten $value\n"
                     // Flavour text (Sadly does not work)
                     data += "$materialName.flavour=helloworld\n"
                 }
