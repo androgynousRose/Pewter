@@ -9,6 +9,7 @@ class MaterialStats {
     var craftable = false
     var madeInToolForge = false
     var name = "doot"
+    var meltingTemperature = 475
     var durability = 0
     var toolAttackDamage = 0
     var toolHarvestLevel = 0

@@ -10,10 +10,12 @@ import net.minecraftforge.fluids.Fluid
 import net.minecraftforge.fluids.FluidRegistry
 import net.minecraftforge.fml.common.registry.ForgeRegistries
 import net.minecraftforge.oredict.OreDictionary
+import slimeknights.mantle.util.RecipeMatch
 import slimeknights.tconstruct.library.MaterialIntegration
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.library.materials.Material
+import slimeknights.tconstruct.library.smeltery.MeltingRecipe
 import slimeknights.tconstruct.library.traits.ITrait
 import slimeknights.tconstruct.smeltery.TinkerSmeltery
 import slimeknights.tconstruct.smeltery.block.BlockMolten
@@ -57,7 +59,12 @@ class MaterialRegistrar(val stats: MaterialStats) {
                     TinkerSmeltery.registerToolpartMeltingCasting(tinkMaterial)
                     // Register melting the item into it's fluid form (if there is a fluid)
                     fluid?.let {
-                        TinkerRegistry.registerMelting(itemStack, fluid, strMap[type]!!)
+                        val meltingRecipe = MeltingRecipe(
+                                RecipeMatch.of(itemStack, strMap[type]!!),
+                                fluid,
+                                stats.meltingTemperature
+                        )
+                        TinkerRegistry.registerMelting(meltingRecipe)
                     }
                 } else {
                     Pewter.LOGGER.warn("Could not associate $itemString with material named '${stats.name}'! Reason is because the item doesn't exist.")

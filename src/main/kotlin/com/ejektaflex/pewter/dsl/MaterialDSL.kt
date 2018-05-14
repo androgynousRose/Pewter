@@ -29,6 +29,11 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     }
 
     @TopLevelToolDSL
+    fun meltsAt(n: Int) {
+        tool.meltingTemperature = n
+    }
+
+    @TopLevelToolDSL
     fun defaultMetalParts() {
         // No fletching or bowstring
         val metalParts = arrayOf(
