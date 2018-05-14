@@ -22,8 +22,8 @@ class MaterialStats {
     var bowBonusDamage = 0f
     var arrowShaftModifier = 0f
     var arrowShaftBonusAmmo = 0
-    var fletchingModifier = 0f
-    var stringModifier = 0f
+    var arrowFletchingModifier = 0f
+    var bowStringModifier = 0f
     var defaultTrait = ""
     var matParts = mutableSetOf<MatPart>()
     var nameLocales = mutableMapOf<String, String>()
@@ -55,8 +55,8 @@ class MaterialStats {
         EXTRA(MaterialTypes.EXTRA, { ExtraMaterialStats(it.bindingDurability) }),
         BOW(MaterialTypes.BOW, { BowMaterialStats(it.toolSpeed, it.bowRange, it.bowBonusDamage) }),
         SHAFT(MaterialTypes.SHAFT, { ArrowShaftMaterialStats(it.arrowShaftModifier, it.arrowShaftBonusAmmo) }),
-        FLETCHING(MaterialTypes.FLETCHING, { FletchingMaterialStats(it.bowAccuracy, it.fletchingModifier) }),
-        BOWSTRING(MaterialTypes.BOWSTRING, { BowStringMaterialStats(it.stringModifier) }),
+        FLETCHING(MaterialTypes.FLETCHING, { FletchingMaterialStats(it.bowAccuracy, it.arrowFletchingModifier) }),
+        BOWSTRING(MaterialTypes.BOWSTRING, { BowStringMaterialStats(it.bowStringModifier) }),
         PROJECTILE(MaterialTypes.PROJECTILE, { ProjectileMaterialStats() })
     }
 

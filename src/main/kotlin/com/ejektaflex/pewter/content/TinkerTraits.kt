@@ -11,7 +11,8 @@ class TinkerTraits {
                 Polluted(),
                 Essentia(),
                 Aural(),
-                Warping()
+                Warping(),
+                Sapping()
         )
     }
 

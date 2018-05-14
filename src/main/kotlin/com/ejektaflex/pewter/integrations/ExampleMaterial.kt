@@ -9,7 +9,7 @@ class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {
     ingots("minecraft:apple")
     defaultMetalParts()
     defaultTrait("brilliance")
-    traitMap(
+    traitList(
             "EXTRA" to "dense"
     )
     head {

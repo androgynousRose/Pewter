@@ -52,7 +52,7 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     }
 
     @TopLevelToolDSL
-    fun traitMap(vararg pairs: Pair<String, String>) {
+    fun traitList(vararg pairs: Pair<String, String>) {
         for (pair in pairs) {
             if (pair.first.toUpperCase() in MaterialStats.MatPart.values().map { it.toString() }) {
                 // Add specific trait key if it doesn't exist
@@ -171,7 +171,7 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
 
         @NestedDSL
         fun string(func: () -> Float) {
-            tool.stringModifier = func()
+            tool.bowStringModifier = func()
         }
     }
 

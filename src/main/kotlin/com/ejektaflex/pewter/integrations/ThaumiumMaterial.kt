@@ -9,7 +9,7 @@ class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
     ingots("thaumcraft:ingot:0")
     defaultMetalParts()
     defaultTrait("aural")
-    traitMap(
+    traitList(
             "HEAD" to "essentia"
     )
     harvestLevel(1)

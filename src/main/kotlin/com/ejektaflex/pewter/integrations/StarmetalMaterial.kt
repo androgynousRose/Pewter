@@ -9,7 +9,7 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
     ingots("astralsorcery:itemcraftingcomponent:1")
     defaultMetalParts()
     defaultTrait("brilliance")
-    traitMap(
+    traitList(
             "EXTRA" to "dense"
     )
     harvestLevel(1)

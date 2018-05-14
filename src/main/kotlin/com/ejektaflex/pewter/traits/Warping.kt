@@ -7,7 +7,7 @@ import thaumcraft.api.ThaumcraftApi
 import thaumcraft.api.capabilities.IPlayerWarp
 
 
-class Warping : PewterTrait("Warping", 0x220E3D) {
+class Warping : PewterTrait("Warping", 0x2A114A) {
     override val motto = "Don't Forget The Soap!"
     override val description = "Tool usage slowly warps the user's mind."
 
