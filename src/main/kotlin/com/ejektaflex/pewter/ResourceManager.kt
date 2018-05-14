@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter
 
+import com.ejektaflex.pewter.content.TinkerModifiers
 import com.ejektaflex.pewter.content.TinkerTraits
 import net.minecraft.client.resources.IResourceManagerReloadListener
 import net.minecraft.util.text.translation.LanguageMap
@@ -27,6 +28,11 @@ class ResourceManager : IResourceManagerReloadListener {
         for (trait in TinkerTraits.traits) {
             data += "modifier.${trait.identifier}.name=${trait.name}\n"
             data += "modifier.${trait.identifier}.desc=§o${trait.motto}§r\\n${trait.description}\n"
+        }
+
+        for (mod in TinkerModifiers.modifiers.keys) {
+            data += "modifier.${mod.identifier}.name=${mod.name}\n"
+            data += "modifier.${mod.identifier}.desc=§o${mod.motto}§r\\n${mod.description}\n"
         }
 
         LanguageMap.inject(ByteArrayInputStream(data.toByteArray()))

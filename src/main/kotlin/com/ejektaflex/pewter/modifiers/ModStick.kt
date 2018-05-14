@@ -7,6 +7,9 @@ import slimeknights.tconstruct.library.utils.HarvestLevels
 import slimeknights.tconstruct.library.utils.TagUtil
 
 class ModStick : PewterMod("Shtick", 0xffffff) {
+    override val motto = "It's sticky!"
+    override val description = "Slight increase to all stats."
+
     init {
         addAspects(
                 ModifierAspect.SingleAspect(this),
@@ -18,7 +21,7 @@ class ModStick : PewterMod("Shtick", 0xffffff) {
     override fun applyEffect(rootCompound: NBTTagCompound, modifierTag: NBTTagCompound) {
 
         val data = TagUtil.getToolStats(rootCompound)
-        data.durability += 25
+        data.durability += 10
 
         data.attack += 0.2f
         data.speed += 0.05f

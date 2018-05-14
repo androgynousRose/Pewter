@@ -2,11 +2,11 @@ package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.modifiers.ModStick
-import slimeknights.tconstruct.tools.modifiers.ToolModifier
+import com.ejektaflex.pewter.modifiers.PewterMod
 
 object TinkerModifiers {
-    val modifiers = mapOf<ToolModifier, ToolModifier.() -> Unit>(
-            ModStick() to { it: ToolModifier ->
+    val modifiers = mapOf<PewterMod, PewterMod.() -> Unit>(
+            ModStick() to { it: PewterMod ->
                 it.addItem("minecraft:stick".toItemStack!!.item)
             }
     )

@@ -8,7 +8,7 @@ import kotlin.math.ceil
 
 
 class HeatLover : PewterTrait("Heat Lover", 0xFFFFFF) {
-    override val motto = "Don't move"
+    override val motto = "Don't move!"
     override val description = "More brittle in cold biomes, more durable in warm biomes"
 
     override fun onToolDamage(tool: ItemStack?, damage: Int, newDamage: Int, entity: EntityLivingBase): Int {
