@@ -24,10 +24,7 @@ object Pewter {
     @EventHandler
     fun preInit(event: FMLPreInitializationEvent) {
         LOGGER = event.modLog
-
-        createConfigDirectories(event.modConfigurationDirectory)
-
-        CONFIG = ConfigHandler(event.modConfigurationDirectory.path)
+        setupConfigHierarchy(event.modConfigurationDirectory)
 
         proxy.preInit(event)
         // Register model baking
@@ -52,10 +49,11 @@ object Pewter {
         event.registerServerCommand(Command())
     }
 
-    private fun createConfigDirectories(base: File) {
+    private fun setupConfigHierarchy(base: File) {
         CONFIGDIR = ensureDirectory(base, MODID)
         BUILTINDIR = ensureDirectory(CONFIGDIR, "builtins")
         CUSTOMDIR = ensureDirectory(CONFIGDIR, "custom")
+        CONFIG = ConfigHandler(CONFIGDIR.path)
     }
 
     private fun ensureDirectory(base: File, name: String): File {

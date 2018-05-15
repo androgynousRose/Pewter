@@ -19,14 +19,11 @@ object ContentLoader {
 
     fun loadContent() {
         saveInternalData()
-        loadInternalData()
+        loadData(Pewter.BUILTINDIR)
+        loadData(Pewter.CUSTOMDIR)
         if (Pewter.CUSTOMDIR.listFiles().isEmpty()) {
             saveExampleMaterial()
         }
-    }
-
-    private fun loadInternalData() {
-        loadData(Pewter.BUILTINDIR)
     }
 
     private fun loadData(dir: File) {
@@ -55,10 +52,22 @@ object ContentLoader {
 
     private fun saveInternalData() {
         val existingFiles = Pewter.BUILTINDIR.listFiles()
-        val filesToSave = TinkerMaterials.flattened.filter { it.second.tool.name in Pewter.CONFIG.builtinsToLoad }
+        val flatMaterials = TinkerMaterials.flattened
+        val materialsToSave = flatMaterials.filter { it.second.tool.name in Pewter.CONFIG.builtinsToLoad }
+        val materialsToPurge = flatMaterials - materialsToSave
+
+        if (Pewter.CONFIG.purge) {
+            val namesOfMaterialsToPurge = materialsToPurge.map { it.second.tool.name }
+            for (file in existingFiles) {
+                if (file.nameWithoutExtension in namesOfMaterialsToPurge) {
+                    Pewter.LOGGER.info("Purging material ${file.nameWithoutExtension}")
+                    file.delete()
+                }
+            }
+        }
 
         // For all builtin materials, save them
-        for ((modName, dsl) in filesToSave) {
+        for ((modName, dsl) in materialsToSave) {
             if (Loader.isModLoaded(modName)) {
                 if (dsl.tool.name !in existingFiles.map { it.name } || Pewter.CONFIG.overwrite) {
                     Pewter.LOGGER.info("Saving mod $modName material ${dsl.tool.name}")
