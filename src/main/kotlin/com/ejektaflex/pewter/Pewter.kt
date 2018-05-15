@@ -12,10 +12,12 @@ import net.minecraftforge.fml.common.SidedProxy
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import java.io.File
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent
+import com.ejektaflex.pewter.config.ConfigHandler
 
 
 @Mod(modid = Pewter.MODID, name = Pewter.NAME, acceptedMinecraftVersions = Pewter.VERSIONS, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
 object Pewter {
+
 
     var materials = mutableListOf<MaterialRegistrar>()
 
@@ -23,11 +25,9 @@ object Pewter {
     fun preInit(event: FMLPreInitializationEvent) {
         LOGGER = event.modLog
 
-        CONFIGDIR = File(event.modConfigurationDirectory, MODID)
+        createConfigDirectories(event.modConfigurationDirectory)
 
-        if (!CONFIGDIR.exists()) {
-            CONFIGDIR.mkdirs()
-        }
+        CONFIG = ConfigHandler(event.modConfigurationDirectory.path)
 
         proxy.preInit(event)
         // Register model baking
@@ -37,17 +37,33 @@ object Pewter {
 
     @EventHandler
     fun init(event: FMLInitializationEvent) {
+        CONFIG.load()
         proxy.init(event)
     }
 
     @EventHandler
     fun postInit(event: FMLPostInitializationEvent) {
+        CONFIG.save()
         proxy.postInit(event)
     }
 
     @EventHandler
     fun serverLoad(event: FMLServerStartingEvent) {
         event.registerServerCommand(Command())
+    }
+
+    private fun createConfigDirectories(base: File) {
+        CONFIGDIR = ensureDirectory(base, MODID)
+        BUILTINDIR = ensureDirectory(CONFIGDIR, "builtins")
+        CUSTOMDIR = ensureDirectory(CONFIGDIR, "custom")
+    }
+
+    private fun ensureDirectory(base: File, name: String): File {
+        val newDir = File(base, name)
+        if (!newDir.exists()) {
+            newDir.mkdirs()
+        }
+        return newDir
     }
 
     const val MODID = "pewter"
@@ -66,6 +82,9 @@ object Pewter {
 
     lateinit var LOGGER: Logger
     lateinit var CONFIGDIR: File
+    lateinit var BUILTINDIR: File
+    lateinit var CUSTOMDIR: File
+    lateinit var CONFIG: ConfigHandler
 
     @SidedProxy(clientSide = CLIENT, serverSide = SERVER)
     @JvmStatic lateinit var proxy: IProxy

@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.content
 
+import com.ejektaflex.pewter.dsl.MaterialDSL
 import com.ejektaflex.pewter.integrations.*
 
 object TinkerMaterials {
@@ -18,4 +19,19 @@ object TinkerMaterials {
                     VoidMetalMaterial()
             )
     )
+
+    val inListForm: List<MaterialDSL>
+        get() {
+            return materials.flatMap { entries -> entries.value }
+        }
+
+    val flattened: List<Pair<String, MaterialDSL>>
+        get() {
+            return materials.map { entry -> entry.value.map { entry.key to it } }.flatten()
+        }
+
+    fun materialsMatching(names: List<String>): List<Pair<String, MaterialDSL>> {
+        return flattened.filter { it.second.tool.name in names }
+    }
+
 }
