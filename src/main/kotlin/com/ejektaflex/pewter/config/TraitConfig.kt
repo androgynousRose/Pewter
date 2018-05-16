@@ -3,7 +3,7 @@ package com.ejektaflex.pewter.config
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.content.TinkerMaterials
 
-open class ConfigHandler(folder: String) : KConfig(folder, "pewter.cfg") {
+open class TraitConfig(folder: String) : KConfig(folder, "traits.cfg") {
     open var overwrite: Boolean = true
     open var purge: Boolean = true
 

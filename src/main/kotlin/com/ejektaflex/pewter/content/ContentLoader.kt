@@ -1,7 +1,6 @@
-package com.ejektaflex.pewter.config
+package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.content.TinkerMaterials
 import com.ejektaflex.pewter.dsl.MaterialDSL
 import com.ejektaflex.pewter.integrations.ExampleMaterial
 import com.ejektaflex.pewter.logic.MaterialRegistrar
@@ -19,9 +18,9 @@ object ContentLoader {
 
     fun loadContent() {
         saveInternalData()
-        loadData(Pewter.BUILTINDIR)
-        loadData(Pewter.CUSTOMDIR)
-        if (Pewter.CUSTOMDIR.listFiles().isEmpty()) {
+        loadData(Pewter.CONFIG.BUILTINDIR)
+        loadData(Pewter.CONFIG.CUSTOMDIR)
+        if (Pewter.CONFIG.CUSTOMDIR.listFiles().isEmpty()) {
             saveExampleMaterial()
         }
     }
@@ -36,7 +35,7 @@ object ContentLoader {
     }
 
     private fun saveExampleMaterial() {
-        saveDSLMaterial(Pewter.CUSTOMDIR, ExampleMaterial(), "_example")
+        saveDSLMaterial(Pewter.CONFIG.CUSTOMDIR, ExampleMaterial(), "_example")
     }
 
     private fun saveDSLMaterial(location: File, materialDSL: MaterialDSL, fileName: String? = null) {
@@ -51,12 +50,12 @@ object ContentLoader {
     }
 
     private fun saveInternalData() {
-        val existingFiles = Pewter.BUILTINDIR.listFiles()
+        val existingFiles = Pewter.CONFIG.BUILTINDIR.listFiles()
         val flatMaterials = TinkerMaterials.flattened
-        val materialsToSave = flatMaterials.filter { it.second.tool.name in Pewter.CONFIG.builtinsToLoad }
+        val materialsToSave = flatMaterials.filter { it.second.tool.name in Pewter.CONFIG.MAIN.builtinsToLoad }
         val materialsToPurge = flatMaterials - materialsToSave
 
-        if (Pewter.CONFIG.purge) {
+        if (Pewter.CONFIG.MAIN.purge) {
             val namesOfMaterialsToPurge = materialsToPurge.map { it.second.tool.name }
             for (file in existingFiles) {
                 if (file.nameWithoutExtension in namesOfMaterialsToPurge) {
@@ -69,9 +68,9 @@ object ContentLoader {
         // For all builtin materials, save them
         for ((modName, dsl) in materialsToSave) {
             if (Loader.isModLoaded(modName)) {
-                if (dsl.tool.name !in existingFiles.map { it.name } || Pewter.CONFIG.overwrite) {
+                if (dsl.tool.name !in existingFiles.map { it.name } || Pewter.CONFIG.MAIN.overwrite) {
                     Pewter.LOGGER.info("Saving mod $modName material ${dsl.tool.name}")
-                    saveDSLMaterial(Pewter.BUILTINDIR, dsl)
+                    saveDSLMaterial(Pewter.CONFIG.BUILTINDIR, dsl)
                 } else {
                     Pewter.LOGGER.info("Skipping integration of ${dsl.tool.name}; file already exists")
                 }
@@ -88,9 +87,9 @@ object ContentLoader {
 
         var filesToLoad = dir.listFiles().toList()
 
-        if (dir == Pewter.BUILTINDIR) {
+        if (dir == Pewter.CONFIG.BUILTINDIR) {
             Pewter.LOGGER.info("Loading from built in directory only files that are integrated")
-            filesToLoad = filesToLoad.filter { it.nameWithoutExtension in Pewter.CONFIG.builtinsToLoad }
+            filesToLoad = filesToLoad.filter { it.nameWithoutExtension in Pewter.CONFIG.MAIN.builtinsToLoad }
             Pewter.LOGGER.info("Those files were: ${filesToLoad.map { it.nameWithoutExtension }}")
         }
 

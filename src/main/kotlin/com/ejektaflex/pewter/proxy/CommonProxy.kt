@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.proxy
 
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.config.ContentLoader
+import com.ejektaflex.pewter.content.ContentLoader
 import com.ejektaflex.pewter.content.TinkerMaterials
 import com.ejektaflex.pewter.content.TinkerModifiers
 import com.ejektaflex.pewter.content.TinkerTraits
