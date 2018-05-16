@@ -31,7 +31,7 @@ open class ConfigHandler(folder: String) : KConfig(folder, "pewter.cfg") {
         for ((mod, materialList) in TinkerMaterials.materials) {
             val got = config.getStringList(
                     "materials",
-                    "Integration: '$mod' materials",
+                    "materials: $mod",
                     materialList.map { it.tool.name }.toTypedArray(),
                     "Integrations for $mod. Delete the ones you don't want and they will not be loaded on startup"
             )

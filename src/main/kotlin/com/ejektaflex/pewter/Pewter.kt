@@ -26,7 +26,11 @@ object Pewter {
         LOGGER = event.modLog
         setupConfigHierarchy(event.modConfigurationDirectory)
 
+        CONFIG.save()
         proxy.preInit(event)
+        CONFIG.load()
+
+
         // Register model baking
         MinecraftForge.EVENT_BUS.register(proxy)
     }
@@ -34,13 +38,12 @@ object Pewter {
 
     @EventHandler
     fun init(event: FMLInitializationEvent) {
-        CONFIG.load()
+
         proxy.init(event)
     }
 
     @EventHandler
     fun postInit(event: FMLPostInitializationEvent) {
-        CONFIG.save()
         proxy.postInit(event)
     }
 

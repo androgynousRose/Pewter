@@ -8,5 +8,5 @@ open class KConfig(folder: String, fileName: String) {
 
     fun load() = config.load()
     fun save() = config.save()
-
+    
 }
