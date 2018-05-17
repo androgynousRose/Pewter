@@ -15,7 +15,7 @@ modifier.polluted.name=Polluted
 modifier.polluted.desc=§oSlightly Toxic.§r\nHitting enemies has a chance of releasing flux.
 
 modifier.sapping.name=Sapping
-modifier.sapping.desc=§oAlchemical Trade!§r\nDamaging enemies usually steals a small portion of their health.
+modifier.sapping.desc=§oAlchemical Trade!§r\nDamaging enemies usually steals a small portion of their health. If your health is full, may regen tool durability instead.
 
 modifier.warping.name=Warping
 modifier.warping.desc=§oDon't Forget The Soap!§r\nTool usage slowly warps the user's mind.

@@ -11,7 +11,7 @@ class MaterialStats {
     var name = "doot"
     var meltingTemperature = 475
     var durability = 0
-    var toolAttackDamage = 0
+    var toolAttackDamage = 0f
     var toolHarvestLevel = 0
     var toolSpeed = 0f
     var handleMult = 0f
@@ -62,7 +62,7 @@ class MaterialStats {
     }
 
     enum class MatPart(val dependency: String, val stats: (it: MaterialStats) -> IMaterialStats?) {
-        HEAD(MaterialTypes.HEAD, { HeadMaterialStats(it.durability, it.toolSpeed, it.toolAttackDamage.toFloat(), it.toolHarvestLevel) }),
+        HEAD(MaterialTypes.HEAD, { HeadMaterialStats(it.durability, it.toolSpeed, it.toolAttackDamage, it.toolHarvestLevel) }),
         HANDLE(MaterialTypes.HANDLE, { HandleMaterialStats(it.handleMult, it.handleDurability) }),
         EXTRA(MaterialTypes.EXTRA, { ExtraMaterialStats(it.bindingDurability) }),
         BOW(MaterialTypes.BOW, { BowMaterialStats(it.toolSpeed, it.bowRange, it.bowBonusDamage) }),

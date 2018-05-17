@@ -8,10 +8,10 @@ val String.resource: ResourceLocation
     get() = ResourceLocation(Pewter.MODID, this)
 
 fun ClosedRange<Int>.random() =
-        Random().nextInt(endInclusive - start) +  start
+        Random().nextInt(endInclusive + 1 - start) +  start
 
 fun Random.range(closed: ClosedRange<Int>): Int {
-        return nextInt(closed.endInclusive - closed.start) + closed.start
+        return nextInt(closed.endInclusive + 1 - closed.start) + closed.start
 }
 
 val <T> List<T>.random: T

@@ -15,7 +15,7 @@ class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
     harvestLevel(1)
     head {
         durability { 300 }
-        attack { 4 }
+        attack { 4f }
         speed { 6.5f }
     }
     handle {

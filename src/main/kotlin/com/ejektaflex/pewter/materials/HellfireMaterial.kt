@@ -12,7 +12,7 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF2E38", {
     harvestLevel(1)
     head {
         durability { 335 }
-        attack { 4 }
+        attack { 4f }
         speed { 5.5f }
     }
     handle {

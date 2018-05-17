@@ -17,8 +17,8 @@ class VoidMetalMaterial : MaterialDSL("voidmetal", "#2A114A", {
     )
     harvestLevel(3)
     head {
-        durability { 840 }
-        attack { 6 }
+        durability { 740 }
+        attack { 5.3f }
         speed { 5.0f }
     }
     handle {

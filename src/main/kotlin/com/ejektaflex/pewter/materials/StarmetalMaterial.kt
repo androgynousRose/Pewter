@@ -16,7 +16,7 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
     shininess(0.6f)
     head {
         durability { 275 }
-        attack { 4 }
+        attack { 4.2f }
         speed { 5.7f }
     }
     handle {

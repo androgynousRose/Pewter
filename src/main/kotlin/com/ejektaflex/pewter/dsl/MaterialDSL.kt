@@ -114,7 +114,7 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         }
 
         @NestedDSL
-        fun attack(func: () -> Int) {
+        fun attack(func: () -> Float) {
             tool.toolAttackDamage = func()
         }
 

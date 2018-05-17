@@ -16,7 +16,7 @@ class HeatLover : PewterTrait("Heat Lover", 0xFFFFFF) {
         val tempDistance = abs(entity.temperature - targetTemp)
 
         val toDamage = when {
-            // 70% chance to damage when close to range
+            // 70% healChance to damage when close to range
             tempDistance < 0.26f -> if (random.nextFloat() > 0.3) {
                 1
             } else {

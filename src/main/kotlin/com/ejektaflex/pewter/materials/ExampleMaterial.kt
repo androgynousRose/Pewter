@@ -14,7 +14,7 @@ class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {
     )
     head {
         durability { 100 }
-        attack { 5 }
+        attack { 5f }
         speed { 1f }
     }
     handle {
