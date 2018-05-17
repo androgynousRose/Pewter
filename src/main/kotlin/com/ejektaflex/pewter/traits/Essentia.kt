@@ -11,12 +11,9 @@ import thaumcraft.api.aspects.AspectHelper
 import thaumcraft.api.aura.AuraHelper
 
 class Essentia : PewterTrait("Essentia", 0xFFFFFF) {
-    override val motto = "Only the essentials!"
-    override val description = "Killing enemies and breaking blocks has a chance of converting them to crystal essence, generating a tiny amount of flux."
-
 
     override fun blockHarvestDrops(tool: ItemStack, event: BlockEvent.HarvestDropsEvent) {
-        if (random.nextFloat() <= chance) {
+        if (random.nextFloat() <= blockChance) {
             event.harvester.inventory += getBlockCrystal(event.state.block)
             AuraHelper.polluteAura(event.world, event.pos, 1.0f, true)
         }
@@ -25,17 +22,17 @@ class Essentia : PewterTrait("Essentia", 0xFFFFFF) {
 
     override fun onHit(tool: ItemStack, player: EntityLivingBase, target: EntityLivingBase, damage: Float, isCritical: Boolean) {
         if (target.health < damage) {
-            if (random.nextFloat() <= chance) {
+            if (random.nextFloat() <= entityChance) {
                 target.entityDropItem(getEntityCrystal(target), 1f)
                 AuraHelper.polluteAura(target.world, target.position, 1.0f, true)
             }
         }
-
         super.onHit(tool, player, target, damage, isCritical)
     }
 
     companion object {
-        const val chance = 0.05f
+        const val blockChance = 0.04f
+        const val entityChance = 0.10f
 
         private fun getBlockCrystal(b: Block): ItemStack {
             val possibleAspects = AspectHelper.getObjectAspects(ItemStack(b))

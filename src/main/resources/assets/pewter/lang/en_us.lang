@@ -1,0 +1,22 @@
+
+modifier.aural.name=Aural
+modifier.aural.desc=§oIt all bounces back, right?§r\nTool use has a chance of feeding off of the Aura instead of using durability
+
+modifier.brilliance.name=Brilliance
+modifier.brilliance.desc=§oShine!§r\nEnemies that hit you glow and receive night vision.
+
+modifier.essentia.name=Essentia
+modifier.essentia.desc=§oOnly the essentials!§r\nKilling enemies and breaking blocks has a chance of converting them to crystal essence, generating a tiny amount of flux.
+
+modifier.heatlover.name=Heat Lover
+modifier.heatlover.desc=§oDon't Move!§r\nMore brittle in cold biomes, more durable in warm biomes.
+
+modifier.polluted.name=Polluted
+modifier.polluted.desc=§oSlightly Toxic.§r\nHitting enemies has a chance of releasing flux.
+
+modifier.sapping.name=Sapping
+modifier.sapping.desc=§oAlchemical Trade!§r\nDamaging enemies usually steals a small portion of their health.
+
+modifier.warping.name=Warping
+modifier.warping.desc=§oDon't Forget The Soap!§r\nTool usage slowly warps the user's mind.
+

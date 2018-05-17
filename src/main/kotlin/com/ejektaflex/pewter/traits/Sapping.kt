@@ -8,9 +8,6 @@ import slimeknights.tconstruct.tools.TinkerTools
 import kotlin.math.min
 
 class Sapping : PewterTrait("Sapping", 0xFFFFFF) {
-    override val motto = "Alchemical Trade!"
-    override val description = "Damaging enemies usually steals a small portion of their health."
-
     override fun onHit(tool: ItemStack, player: EntityLivingBase, target: EntityLivingBase, damage: Float, isCritical: Boolean) {
 
         val healthToSteal = min(target.health, damage) / 7.5f

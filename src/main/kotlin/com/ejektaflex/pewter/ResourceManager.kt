@@ -25,11 +25,6 @@ class ResourceManager : IResourceManagerReloadListener {
             }
         }
 
-        for (trait in TinkerTraits.traits) {
-            data += "modifier.${trait.identifier}.name=${trait.name}\n"
-            data += "modifier.${trait.identifier}.desc=§o${trait.motto}§r\\n${trait.description}\n"
-        }
-
         for (mod in TinkerModifiers.modifiers.keys) {
             data += "modifier.${mod.identifier}.name=${mod.name}\n"
             data += "modifier.${mod.identifier}.desc=§o${mod.motto}§r\\n${mod.description}\n"

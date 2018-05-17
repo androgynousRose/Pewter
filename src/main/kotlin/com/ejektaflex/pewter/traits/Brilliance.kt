@@ -11,9 +11,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 
 class Brilliance : PewterTrait("Brilliance", 0xFFFFFF) {
-    override val motto = "Shine!"
-    override val description = "Enemies that hit you glow and receive night vision."
-
     @SubscribeEvent(priority = EventPriority.LOWEST)
     fun defend(event: LivingHurtEvent) {
         if (event.source is EntityDamageSource && event.entityLiving.isHoldingItemWithTrait(identifier)){
@@ -25,5 +22,4 @@ class Brilliance : PewterTrait("Brilliance", 0xFFFFFF) {
             }
         }
     }
-
 }
