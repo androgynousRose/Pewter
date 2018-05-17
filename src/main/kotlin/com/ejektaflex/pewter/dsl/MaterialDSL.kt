@@ -34,6 +34,11 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     }
 
     @TopLevelToolDSL
+    fun shininess(f: Float) {
+        tool.looks["shininess"] = f
+    }
+
+    @TopLevelToolDSL
     fun defaultMetalParts() {
         // No fletching or bowstring
         val metalParts = arrayOf(

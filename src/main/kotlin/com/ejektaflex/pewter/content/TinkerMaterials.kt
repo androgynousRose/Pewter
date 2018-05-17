@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
-import com.ejektaflex.pewter.integrations.*
+import com.ejektaflex.pewter.materials.*
 
 object TinkerMaterials {
     val materials = mapOf(

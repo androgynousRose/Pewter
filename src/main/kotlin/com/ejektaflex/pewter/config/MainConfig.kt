@@ -25,7 +25,7 @@ open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
                 CATEGORY_GENERAL,
                 "purgeUnusedIntegrations",
                 true,
-                "If set to true, will remove integration files for integrations that have been turned off"
+                "If set to true, will remove integration files for materials that have been turned off"
         ).boolean
 
         for ((mod, materialList) in TinkerMaterials.materials) {

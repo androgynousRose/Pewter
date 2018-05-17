@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.dsl.MaterialDSL
-import com.ejektaflex.pewter.integrations.ExampleMaterial
+import com.ejektaflex.pewter.materials.ExampleMaterial
 import com.ejektaflex.pewter.logic.MaterialRegistrar
 import com.ejektaflex.pewter.logic.MaterialStats
 import com.google.gson.Gson
@@ -68,7 +68,7 @@ object ContentLoader {
         // For all builtin materials, save them
         for ((modName, dsl) in materialsToSave) {
             if (Loader.isModLoaded(modName)) {
-                if (dsl.tool.name !in existingFiles.map { it.name } || Pewter.CONFIG.MAIN.overwrite) {
+                if (dsl.tool.name !in existingFiles.map { it.nameWithoutExtension } || Pewter.CONFIG.MAIN.overwrite) {
                     Pewter.LOGGER.info("Saving mod $modName material ${dsl.tool.name}")
                     saveDSLMaterial(Pewter.CONFIG.BUILTINDIR, dsl)
                 } else {

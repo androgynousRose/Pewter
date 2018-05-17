@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.integrations
+package com.ejektaflex.pewter.materials
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
@@ -13,6 +13,7 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
             "EXTRA" to "dense"
     )
     harvestLevel(1)
+    shininess(0.6f)
     head {
         durability { 275 }
         attack { 4 }
