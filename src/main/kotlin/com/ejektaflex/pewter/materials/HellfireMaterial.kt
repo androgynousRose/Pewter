@@ -3,7 +3,7 @@ package com.ejektaflex.pewter.materials
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
 class HellfireMaterial : MaterialDSL("hellfire", "#FF2E38", {
-    locale("en_US" to "Hellfire")
+    locale("en_7S " to "Ye Fiery Treasure")
     forge { true }
     craft { false }
     ingots("betterwithmods:material:17")

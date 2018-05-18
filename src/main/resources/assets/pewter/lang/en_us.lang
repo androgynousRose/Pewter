@@ -1,3 +1,22 @@
+### Materials ###
+
+material.hellfire.name=Hellfire
+fluid.pewter.hellfire.name=Molten Hellfire
+
+material.manastring.name=Mana String
+# no fluid
+
+material.starmetal.name=Starmetal
+fluid.pewter.starmetal.name=Molten Starmetal
+
+material.thaumium.name=Thaumium
+fluid.pewter.thaumium.name=Molten Thaumium
+
+material.voidmetal.name=Void Metal
+fluid.pewter.voidmetal.name=Molten Void Metal
+
+
+### Traits ###
 
 modifier.aural.name=Aural
 modifier.aural.desc=§oIt all bounces back, right?§r\nTool use has a chance of feeding off of the Aura instead of using durability

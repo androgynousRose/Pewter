@@ -3,7 +3,6 @@ package com.ejektaflex.pewter.materials
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
 class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
-    locale("en_US" to "Starmetal")
     forge { true }
     craft { false }
     ingots("astralsorcery:itemcraftingcomponent:1")

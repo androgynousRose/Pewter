@@ -3,7 +3,7 @@ package com.ejektaflex.pewter.materials
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
 class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {
-    locale("en_US" to "Test Material.")
+    locale("en_us" to "Test Material.", "en_pr" to "Ye Olde Material")
     forge { true }
     craft { false }
     ingots("minecraft:apple")

@@ -3,7 +3,6 @@ package com.ejektaflex.pewter.materials
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
 class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
-    locale("en_US" to "Thaumium")
     forge { true }
     craft { false }
     ingots("thaumcraft:ingot:0")

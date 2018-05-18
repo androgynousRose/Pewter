@@ -86,8 +86,10 @@ object ContentLoader {
         val gson = Gson()
 
         var filesToLoad = dir.listFiles().toList()
+        val isBuiltin = dir == Pewter.CONFIG.BUILTINDIR
 
-        if (dir == Pewter.CONFIG.BUILTINDIR) {
+
+        if (isBuiltin) {
             Pewter.LOGGER.info("Loading from built in directory only files that are integrated")
             filesToLoad = filesToLoad.filter { it.nameWithoutExtension in Pewter.CONFIG.MAIN.builtinsToLoad }
             Pewter.LOGGER.info("Those files were: ${filesToLoad.map { it.nameWithoutExtension }}")
@@ -98,7 +100,13 @@ object ContentLoader {
                 file.name.endsWith(".json") && !file.name.startsWith("_") -> {
                     Pewter.LOGGER.info("Attempting to parse: ${file.name}")
                     val parsedStat = getStatsFromFile(gson, file)
-                    parsedStat?.let { statList.add(it) }
+                    parsedStat?.let {
+                        // Mark custom stats as custom
+                        if (!isBuiltin) {
+                            it.isInCustomFolder = true
+                        }
+                        statList.add(it)
+                    }
                 }
             }
         }

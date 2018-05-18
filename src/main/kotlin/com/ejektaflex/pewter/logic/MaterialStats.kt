@@ -48,6 +48,9 @@ class MaterialStats {
 
     )
 
+    @Transient
+    var isInCustomFolder = false
+
     fun registerStats(m: Material, part: MatPart) {
         if (part == MatPart.PROJECTILE) {
             // Quoting MrJohz/LakMoore:

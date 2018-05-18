@@ -3,7 +3,6 @@ package com.ejektaflex.pewter.materials
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
 class VoidMetalMaterial : MaterialDSL("voidmetal", "#2A114A", {
-    locale("en_US" to "Void Metal")
     forge { true }
     craft { false }
     ingots("thaumcraft:ingot:1")
