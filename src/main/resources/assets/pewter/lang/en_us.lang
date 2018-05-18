@@ -4,7 +4,7 @@ material.hellfire.name=Hellfire
 fluid.pewter.hellfire.name=Molten Hellfire
 
 material.manastring.name=Mana String
-# no fluid
+# no fluid available for manastring
 
 material.starmetal.name=Starmetal
 fluid.pewter.starmetal.name=Molten Starmetal

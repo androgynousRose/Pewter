@@ -20,7 +20,7 @@ class Sapping : PewterTrait("Sapping", 0xFFFFFF) {
             if (player.health == player.maxHealth) {
                 val tag = TagUtil.getToolTag(tool)
                 val tagAttack = tag.getFloat(Tags.DURABILITY)
-                tag.setFloat(Tags.DURABILITY, tagAttack + listOf(0, 0, 1).random)
+                tag.setFloat(Tags.DURABILITY, tagAttack + durabilityAddValues.random)
             } else {
                 player.health += healthToSteal
             }
@@ -31,6 +31,7 @@ class Sapping : PewterTrait("Sapping", 0xFFFFFF) {
     }
 
     companion object {
+        val durabilityAddValues = listOf(0, 0, 0, 1, 1, 2)
         const val healChance = 0.65f
     }
 
