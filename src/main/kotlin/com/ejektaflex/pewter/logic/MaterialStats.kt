@@ -42,7 +42,8 @@ class MaterialStats {
     var smelting = mutableMapOf<String, MutableList<String>>(
             "ingot" to mutableListOf(),
             "block" to mutableListOf(),
-            "nugget" to mutableListOf()
+            "nugget" to mutableListOf(),
+            "ore" to mutableListOf()
     )
     var specificTraits = mutableMapOf<String, MutableList<String>>(
 

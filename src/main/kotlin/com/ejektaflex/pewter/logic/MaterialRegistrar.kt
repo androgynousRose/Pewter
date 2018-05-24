@@ -43,8 +43,12 @@ class MaterialRegistrar(val stats: MaterialStats) {
         val strMap = mapOf(
                 "ingot" to Material.VALUE_Ingot,
                 "nugget" to Material.VALUE_Nugget,
-                "block" to Material.VALUE_Block
+                "block" to Material.VALUE_Block,
+                "ore" to Material.VALUE_Ore()
         )
+
+        // Register for melting on a casting table
+        //TinkerSmeltery.registerToolpartMeltingCasting(tinkMaterial)
 
         for (type in stats.smelting.keys ) {
             stats.smelting[type]!!.forEach { itemString ->
@@ -55,8 +59,7 @@ class MaterialRegistrar(val stats: MaterialStats) {
                     Pewter.LOGGER.info("Registering item $itemStack with ore dictionary tag $tag")
                     OreDictionary.registerOre(tag, itemStack) // This may not be working?
                     tinkMaterial.addItem(itemStack, 1, strMap[type]!!)
-                    // Register for melting on a casting table
-                    TinkerSmeltery.registerToolpartMeltingCasting(tinkMaterial)
+
                     // Register melting the item into it's fluid form (if there is a fluid)
                     fluid?.let {
                         val meltingRecipe = MeltingRecipe(

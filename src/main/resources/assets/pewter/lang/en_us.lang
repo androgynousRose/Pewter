@@ -12,6 +12,9 @@ fluid.pewter.octine.name=Molten Octine
 material.starmetal.name=Starmetal
 fluid.pewter.starmetal.name=Molten Starmetal
 
+material.syrmorite.name=Syrmorite
+fluid.pewter.syrmorite.name=Molten Syrmorite
+
 material.thaumium.name=Thaumium
 fluid.pewter.thaumium.name=Molten Thaumium
 
@@ -33,6 +36,9 @@ modifier.corrosive.tooltip=Corrosion: %s
 
 modifier.essentia.name=Essentia
 modifier.essentia.desc=§oOnly the essentials!§r\nKilling enemies and breaking blocks has a chance of converting them to crystal essence, generating a tiny amount of flux.
+
+modifier.gritty.name=Gritty
+modifier.gritty.desc=§oFeels So Good!§r\nAs the decay meter drains, bonus damage goes up.
 
 modifier.heatlover.name=Heat Lover
 modifier.heatlover.desc=§oDon't Move!§r\nMore brittle in cold biomes, more durable in warm biomes.

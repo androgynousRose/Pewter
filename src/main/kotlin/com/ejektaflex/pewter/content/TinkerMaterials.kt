@@ -19,7 +19,8 @@ object TinkerMaterials {
                     VoidMetalMaterial()
             ),
             "thebetweenlands" to listOf(
-                    OctineMaterial()
+                    OctineMaterial(),
+                    SyrmoriteMaterial()
             )
     )
 

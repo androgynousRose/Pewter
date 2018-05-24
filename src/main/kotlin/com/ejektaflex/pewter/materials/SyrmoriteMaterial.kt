@@ -2,38 +2,38 @@ package com.ejektaflex.pewter.materials
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class OctineMaterial : MaterialDSL("octine", "#F39C20", {
-    locale("en_7S " to "Ye Illuminating Treasure")
+class SyrmoriteMaterial : MaterialDSL("syrmorite", "#1E336C", {
     forge { true }
     craft { false }
-    ingots("thebetweenlands:octine_ingot")
-    ores("thebetweenlands:octine_ore")
+    ingots("thebetweenlands:items_misc:11")
+    ores("thebetweenlands:syrmorite_ore")
+    blocks("thebetweenlands:syrmorite_block")
     defaultMetalParts()
     defaultTrait("corrosive")
     traitList(
             "HEAD" to "corrosive",
-            "HEAD" to "sparking"
+            "HEAD" to "gritty"
     )
     harvestLevel(1)
-    shininess(0.5f)
+    shininess(0.25f)
     head {
-        durability { 270 }
-        attack { 5.0f }
-        speed { 5.5f }
+        durability { 620 }
+        attack { 5.3f }
+        speed { 5.2f }
     }
     handle {
-        durability { 55 }
-        modifier { 0.75f }
+        durability { 25 }
+        modifier { 1.15f }
     }
     extra {
-        durability { 95 }
+        durability { 125 }
     }
     bow {
         speed(2.5f)
-        accuracy { 0.0f }
+        accuracy { 1.0f }
         range { 0.5f }
         string { 0.85f }
-        bonusDamage { -0.5f }
+        bonusDamage { 1.5f }
     }
     shaft {
         modifier { 0.85f }

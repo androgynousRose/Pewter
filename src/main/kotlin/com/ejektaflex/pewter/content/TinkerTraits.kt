@@ -14,7 +14,8 @@ class TinkerTraits {
                 Warping(),
                 Sapping(),
                 Corrosive(),
-                Sparking()
+                Sparking(),
+                Gritty()
         )
     }
 

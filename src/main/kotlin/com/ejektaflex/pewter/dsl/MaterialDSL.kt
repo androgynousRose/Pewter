@@ -91,6 +91,11 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     }
 
     @TopLevelToolDSL
+    fun ores(vararg blo: String) {
+        tool.smelting["ore"]!!.addAll(blo)
+    }
+
+    @TopLevelToolDSL
     fun forge(func: () -> Boolean) {
         tool.madeInToolForge = func()
     }
