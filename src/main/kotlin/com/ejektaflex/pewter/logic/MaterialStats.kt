@@ -69,7 +69,7 @@ class MaterialStats {
         HEAD(MaterialTypes.HEAD, { HeadMaterialStats(it.durability, it.toolSpeed, it.toolAttackDamage, it.toolHarvestLevel) }),
         HANDLE(MaterialTypes.HANDLE, { HandleMaterialStats(it.handleMult, it.handleDurability) }),
         EXTRA(MaterialTypes.EXTRA, { ExtraMaterialStats(it.bindingDurability) }),
-        BOW(MaterialTypes.BOW, { BowMaterialStats(it.toolSpeed, it.bowRange, it.bowBonusDamage) }),
+        BOW(MaterialTypes.BOW, { BowMaterialStats(it.bowSpeed, it.bowRange, it.bowBonusDamage) }),
         SHAFT(MaterialTypes.SHAFT, { ArrowShaftMaterialStats(it.arrowShaftModifier, it.arrowShaftBonusAmmo) }),
         FLETCHING(MaterialTypes.FLETCHING, { FletchingMaterialStats(it.bowAccuracy, it.arrowFletchingModifier) }),
         BOWSTRING(MaterialTypes.BOWSTRING, { BowStringMaterialStats(it.bowStringModifier) }),

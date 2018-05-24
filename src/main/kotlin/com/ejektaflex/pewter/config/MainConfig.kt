@@ -7,7 +7,7 @@ open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
     open var overwrite: Boolean = true
     open var purge: Boolean = true
 
-    var builtinsToLoad = mutableListOf<String>()
+    var blacklistedMaterials = mutableListOf<String>()
 
     init {
         grab()
@@ -29,13 +29,16 @@ open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
         ).boolean
 
         for ((mod, materialList) in TinkerMaterials.materials) {
+            val catName = "material blacklist: $mod"
+            val comment = "Possible materials you can blacklist: ${materialList.map { it.tool.name }}"
+            config.addCustomCategoryComment(catName, comment)
             val got = config.getStringList(
-                    "materials",
-                    "materials: $mod",
-                    materialList.map { it.tool.name }.toTypedArray(),
-                    "Integrations for $mod. Delete the ones you don't want and they will not be loaded on startup"
+                    "materialBlacklist",
+                    catName,
+                    listOf<String>().toTypedArray(),
+                    "Blacklist for $mod. Add the materials you don't want and they will not be loaded on startup"
             )
-            got.forEach { builtinsToLoad.add(it) }
+            got.forEach { blacklistedMaterials.add(it) }
         }
 
     }

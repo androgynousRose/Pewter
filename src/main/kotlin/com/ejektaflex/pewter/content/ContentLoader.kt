@@ -52,7 +52,7 @@ object ContentLoader {
     private fun saveInternalData() {
         val existingFiles = Pewter.CONFIG.BUILTINDIR.listFiles()
         val flatMaterials = TinkerMaterials.flattened
-        val materialsToSave = flatMaterials.filter { it.second.tool.name in Pewter.CONFIG.MAIN.builtinsToLoad }
+        val materialsToSave = flatMaterials.filter { it.second.tool.name !in Pewter.CONFIG.MAIN.blacklistedMaterials }
         val materialsToPurge = flatMaterials - materialsToSave
 
         if (Pewter.CONFIG.MAIN.purge) {
@@ -91,7 +91,7 @@ object ContentLoader {
 
         if (isBuiltin) {
             Pewter.LOGGER.info("Loading from built in directory only files that are integrated")
-            filesToLoad = filesToLoad.filter { it.nameWithoutExtension in Pewter.CONFIG.MAIN.builtinsToLoad }
+            filesToLoad = filesToLoad.filter { it.nameWithoutExtension !in Pewter.CONFIG.MAIN.blacklistedMaterials }
             Pewter.LOGGER.info("Those files were: ${filesToLoad.map { it.nameWithoutExtension }}")
         }
 
