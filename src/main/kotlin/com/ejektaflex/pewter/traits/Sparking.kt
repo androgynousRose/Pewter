@@ -23,7 +23,7 @@ class Sparking : PewterTrait("Sparking", 0xF3B72A) {
     companion object {
         const val BURNING_BONUS_DAMAGE = 0.334f
         const val BURNING_LENGTH = 4
-        const val CHANCE = 0.15f
+        const val CHANCE = 0.18f
     }
 
 }
