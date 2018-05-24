@@ -125,7 +125,7 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
 
         @NestedDSL
         fun speed(func: () -> Float) {
-            tool.toolSpeed = func()
+            tool.toolSpeed = 1f / func()
         }
     }
 
@@ -188,6 +188,12 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         fun string(func: () -> Float) {
             tool.bowStringModifier = func()
         }
+
+        @NestedDSL
+        fun fletchingMod(f: Float) {
+            tool.arrowFletchingModifier = f
+        }
+
     }
 
     @TopLevelToolDSL
