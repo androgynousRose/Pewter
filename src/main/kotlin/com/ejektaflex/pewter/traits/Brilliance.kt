@@ -9,7 +9,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent
 import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
-class Brilliance : PewterTrait("Brilliance", 0xFFFFFF) {
+class Brilliance : PewterTrait("Brilliance", 0x66D7FB) {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     fun defend(event: LivingHurtEvent) {
         if (event.source is EntityDamageSource && event.entityLiving.isHoldingItemWithTrait(identifier)){

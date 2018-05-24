@@ -13,7 +13,8 @@ class TinkerTraits {
                 Aural(),
                 Warping(),
                 Sapping(),
-                Corrosive()
+                Corrosive(),
+                Sparking()
         )
     }
 

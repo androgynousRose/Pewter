@@ -10,7 +10,7 @@ import thaumcraft.api.ThaumcraftApiHelper
 import thaumcraft.api.aspects.AspectHelper
 import thaumcraft.api.aura.AuraHelper
 
-class Essentia : PewterTrait("Essentia", 0xFFFFFF) {
+class Essentia : PewterTrait("Essentia", 0xD79291) {
 
     override fun blockHarvestDrops(tool: ItemStack, event: BlockEvent.HarvestDropsEvent) {
         if (random.nextFloat() <= blockChance) {

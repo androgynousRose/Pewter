@@ -12,7 +12,7 @@ import slimeknights.tconstruct.library.utils.TagUtil
 import slimeknights.tconstruct.library.utils.Tags.DURABILITY
 
 
-class Sapping : PewterTrait("Sapping", 0xFFFFFF) {
+class Sapping : PewterTrait("Sapping", 0x8A134E) {
     override fun onHit(tool: ItemStack, player: EntityLivingBase, target: EntityLivingBase, damage: Float, isCritical: Boolean) {
 
         val healthToSteal = min(target.health, damage) / 7.0f

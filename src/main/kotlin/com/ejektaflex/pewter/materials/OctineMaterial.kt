@@ -2,18 +2,22 @@ package com.ejektaflex.pewter.materials
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class OctineMaterial : MaterialDSL("octine", "#E67B18", {
+class OctineMaterial : MaterialDSL("octine", "#F39C20", {
     locale("en_7S " to "Ye Illuminating Treasure")
     forge { true }
     craft { false }
     ingots("thebetweenlands:octine_ingot")
     defaultMetalParts()
     defaultTrait("corrosive")
+    traitList(
+            "HEAD" to "corrosive",
+            "HEAD" to "sparking"
+    )
     harvestLevel(1)
     shininess(0.5f)
     head {
         durability { 270 }
-        attack { 5.5f }
+        attack { 5.0f }
         speed { 5.5f }
     }
     handle {

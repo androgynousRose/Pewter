@@ -33,7 +33,7 @@ class Corrosive : PewterTrait("Corrosive", 0x70FF3D) {
             return
 
         val percent = TagUtil.getToolTag(event.itemStack).get<Int>(CORROSION_TAG).toDouble() / TagUtil.getOriginalToolStats(event.itemStack).durability
-        event.toolTip.add(2, I18n.format("modifier.corrosive.tooltip", String.format("%.0f",percent * 100)+"%"))
+        event.toolTip.add(4, I18n.format("modifier.corrosive.tooltip", String.format("%.0f",percent * 100)+"%"))
     }
 
     override fun onUpdate(tool: ItemStack, world: World, entity: Entity, itemSlot: Int, isSelected: Boolean) {
@@ -55,7 +55,6 @@ class Corrosive : PewterTrait("Corrosive", 0x70FF3D) {
             // Change attack value based on corrosion value
             val corrosionPercent = newCorrosion.toDouble() / origStats.durability.toDouble()
             val newAttack = origStats.attack * (1.0 - corrosionPercent)
-            println("Corrosion percent: $corrosionPercent, Orig attk: ${origStats.attack}, New attk: $newAttack")
             toolTag[Tags.ATTACK] = max(origStats.attack.toDouble() * MIN_ATTACK_PERCENT, newAttack).toFloat()
         }
     }
@@ -66,18 +65,19 @@ class Corrosive : PewterTrait("Corrosive", 0x70FF3D) {
     }
 
     override fun damage(tool: ItemStack?, player: EntityLivingBase?, target: EntityLivingBase?, damage: Float, newDamage: Float, isCritical: Boolean): Float {
-        var newDamage = damage
+        var theNewDamage = damage
         // Bonus damage against BL mobs
         if (target is IEntityBL) {
-            newDamage *= 1.25f
+            theNewDamage *= (1f + ATTACK_BONUS)
             TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_BLOOD, target, 2)
         }
-        return newDamage
+        return theNewDamage
     }
 
     companion object {
         const val CORROSION_TAG = "BL_Corrosion"
+        const val ATTACK_BONUS = 0.35f
         const val MIN_ATTACK_PERCENT = 0.35 // Will always do at least 35% of it's original damage
-        const val CHANCE = 0.002f // Chance on a given tick to add Corrosion?
+        const val CHANCE = 0.0012f // Chance on a given tick to add Corrosion?
     }
 }

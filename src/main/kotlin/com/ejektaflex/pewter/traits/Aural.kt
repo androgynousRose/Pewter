@@ -4,7 +4,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import thaumcraft.api.aura.AuraHelper
 
-class Aural : PewterTrait("Aural", 0xFFFFFF) {
+class Aural : PewterTrait("Aural", 0xC867D7) {
     override fun onToolDamage(tool: ItemStack?, damage: Int, newDamage: Int, entity: EntityLivingBase): Int {
         val protoDamage = when (random.nextFloat() < chance) {
             true -> {

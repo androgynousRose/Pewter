@@ -7,7 +7,7 @@ import thaumcraft.api.ThaumcraftApi
 import thaumcraft.api.capabilities.IPlayerWarp
 
 
-class Warping : PewterTrait("Warping", 0x2A114A) {
+class Warping : PewterTrait("Warping", 0x4F1D3C) {
     override fun onToolDamage(tool: ItemStack?, damage: Int, newDamage: Int, entity: EntityLivingBase): Int {
 
         if (entity is EntityPlayer) {

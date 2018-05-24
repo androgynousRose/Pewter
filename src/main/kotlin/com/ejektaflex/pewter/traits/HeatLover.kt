@@ -7,7 +7,7 @@ import kotlin.math.abs
 import kotlin.math.ceil
 
 
-class HeatLover : PewterTrait("Heat Lover", 0xFFFFFF) {
+class HeatLover : PewterTrait("Heat Lover", 0xD7301E) {
 
     override fun onToolDamage(tool: ItemStack?, damage: Int, newDamage: Int, entity: EntityLivingBase): Int {
 
