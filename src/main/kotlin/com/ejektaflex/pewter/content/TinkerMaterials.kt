@@ -21,7 +21,8 @@ object TinkerMaterials {
             "thebetweenlands" to listOf(
                     OctineMaterial(),
                     SyrmoriteMaterial(),
-                    DragonflyMaterial()
+                    DragonflyMaterial(),
+                    ValoniteMaterial()
             )
     )
 

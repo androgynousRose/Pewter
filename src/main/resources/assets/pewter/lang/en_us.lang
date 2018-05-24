@@ -21,6 +21,9 @@ fluid.pewter.syrmorite.name=Molten Syrmorite
 material.thaumium.name=Thaumium
 fluid.pewter.thaumium.name=Molten Thaumium
 
+material.valonite.name=Valonite
+# no fluid available for valonite
+
 material.voidmetal.name=Void Metal
 fluid.pewter.voidmetal.name=Molten Void Metal
 

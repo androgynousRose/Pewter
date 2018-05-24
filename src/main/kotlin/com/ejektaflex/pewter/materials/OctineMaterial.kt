@@ -18,7 +18,7 @@ class OctineMaterial : MaterialDSL("octine", "#F39C20", {
     shininess(0.5f)
     head {
         durability { 270 }
-        attack { 5.0f }
+        attack { 4.2f }
         speed { 5.5f }
     }
     handle {

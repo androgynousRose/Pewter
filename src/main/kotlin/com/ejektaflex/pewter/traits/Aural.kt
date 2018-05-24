@@ -18,7 +18,7 @@ class Aural : PewterTrait("Aural", 0xC867D7) {
 
     companion object {
         const val chance = 0.25f
-        const val amount = 1.0f
+        const val amount = 1.8f
     }
 
 }

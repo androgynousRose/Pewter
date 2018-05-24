@@ -2,34 +2,34 @@ package com.ejektaflex.pewter.materials
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class SyrmoriteMaterial : MaterialDSL("syrmorite", "#1E336C", {
-    forge { true }
-    craft { false }
-    ingots("thebetweenlands:items_misc:11")
-    ores("thebetweenlands:syrmorite_ore")
-    blocks("thebetweenlands:syrmorite_block")
+class ValoniteMaterial : MaterialDSL("valonite", "#845784", {
+    forge { false }
+    craft { true }
+    ingots("thebetweenlands:items_misc:19")
+    ores("thebetweenlands:valonite_ore")
+    blocks("thebetweenlands:valonite_block")
     defaultMetalParts()
     defaultTrait("corrosive")
     traitList(
             "HEAD" to "corrosive",
-            "HEAD" to "gritty"
+            "HEAD" to "sharp"
     )
     harvestLevel(2)
-    shininess(0.25f)
+    shininess(0.7f)
     head {
-        durability { 620 }
-        attack { 5.1f }
-        speed { 5.2f }
+        durability { 775 }
+        attack { 5.6f }
+        speed { 5.7f }
     }
     handle {
-        durability { -45 }
-        modifier { 1.15f }
+        durability { -75 }
+        modifier { 1.0f }
     }
     extra {
-        durability { 125 }
+        durability { 160 }
     }
     bow {
-        speed(2.5f)
+        speed(4f)
         accuracy { 1.0f }
         range { 0.5f }
         string { 0.85f }

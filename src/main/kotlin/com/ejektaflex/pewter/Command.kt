@@ -45,14 +45,16 @@ class Command : ICommand {
             return
         }
 
+
+
         if (args[0] == "traits") {
-            var traitString = ""
+            var traitList = listOf<String>()
             for (modifier in TinkerRegistry.getAllModifiers()) {
                 if (modifier is Modifier && modifier !is ModifierTrait) {
-                    if (traitString.isNotEmpty()) traitString += ", "
-                    traitString += "\"" + modifier.getIdentifier() + "\""
+                    traitList += modifier.getIdentifier()
                 }
             }
+            val traitString = traitList.sorted().joinToString(", ")
             sender.sendMessage(TextComponentString("The following Traits are registered: \u00A7e$traitString"))
         }
 

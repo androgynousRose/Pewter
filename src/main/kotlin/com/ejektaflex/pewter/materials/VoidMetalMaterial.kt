@@ -18,7 +18,7 @@ class VoidMetalMaterial : MaterialDSL("voidmetal", "#2A114A", {
     head {
         durability { 740 }
         attack { 5.3f }
-        speed { 5.0f }
+        speed { 5.8f }
     }
     handle {
         durability { -15 }
