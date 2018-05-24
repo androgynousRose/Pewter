@@ -12,7 +12,8 @@ class TinkerTraits {
                 Essentia(),
                 Aural(),
                 Warping(),
-                Sapping()
+                Sapping(),
+                Corrosive()
         )
     }
 
