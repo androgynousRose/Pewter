@@ -22,7 +22,8 @@ object TinkerMaterials {
                     OctineMaterial(),
                     SyrmoriteMaterial(),
                     DragonflyMaterial(),
-                    ValoniteMaterial()
+                    ValoniteMaterial(),
+                    WeedwoodMaterial()
             )
     )
 

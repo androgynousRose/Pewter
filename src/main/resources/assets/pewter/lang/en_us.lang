@@ -27,6 +27,9 @@ material.valonite.name=Valonite
 material.voidmetal.name=Void Metal
 fluid.pewter.voidmetal.name=Molten Void Metal
 
+material.weedwood.name=Weedwood
+# no fluid available for weedwood
+
 
 ### Traits ###
 
