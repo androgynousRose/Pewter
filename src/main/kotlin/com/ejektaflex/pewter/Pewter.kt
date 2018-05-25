@@ -56,7 +56,7 @@ object Pewter {
 
     const val MODID = "pewter"
     const val NAME = "Pewter"
-    const val VERSION = "0.3.2"
+    const val VERSION = "0.4.0"
     const val VERSIONS = "1.12"
     const val DEPENDS = "required-after:tconstruct;" +
             "required-after:forgelin;" +
