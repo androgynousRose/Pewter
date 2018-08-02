@@ -52,7 +52,7 @@ repositories {
 
 dependencies {
     // Forgelin
-    compile group: "net.shadowfacts", name: "Forgelin", version: "1.6.0"
+    compile group: "net.shadowfacts", name: "Forgelin", version: "1.7.4"
     // Mantle
     compile group: "slimeknights.mantle", name: "Mantle", version: "${v_minecraft_root}-${v_mantle}"
     // Tinkers' Construct
