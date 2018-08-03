@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.materials
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class OctineMaterial : MaterialDSL("octine", "#F39C20", {
+class OctineMaterial : MaterialDSL("octine", "#F38A20", {
     locale("en_7S " to "Ye Illuminating Treasure")
     forge { true }
     craft { false }

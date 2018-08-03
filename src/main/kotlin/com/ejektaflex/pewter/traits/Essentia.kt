@@ -31,7 +31,7 @@ class Essentia : PewterTrait("Essentia", 0xD79291) {
     }
 
     companion object {
-        const val blockChance = 0.03f
+        const val blockChance = 0.035f
         const val entityChance = 0.10f
 
         private fun getBlockCrystal(b: Block): ItemStack {

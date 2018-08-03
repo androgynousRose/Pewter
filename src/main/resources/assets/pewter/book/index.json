@@ -1,10 +1,10 @@
 [
   {
-    "name": "pewter_mods",
+    "name": "pewter_modifiers",
     "data": "sections/modifiers.json",
     "icon": {
       "item": {
-        "id": "minecraft:glowstone_dust"
+        "id": "minecraft:gunpowder"
       }
     }
   }
