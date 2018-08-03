@@ -61,10 +61,12 @@ class ClientProxy : CommonProxy() {
     override fun postInit(e: FMLPostInitializationEvent) {
         super.postInit(e)
 
+        /*
         val repo = FileRepository("${Pewter.MODID}:book")
         TinkerBook.INSTANCE.addRepository(repo)
         TinkerBook.INSTANCE.addTransformer(PewterModSectionTransformer(repo.sections[0].name))
         Pewter.LOGGER.info("Added modifiers to book.")
+        */
 
     }
 

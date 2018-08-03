@@ -8,7 +8,7 @@ import slimeknights.tconstruct.library.modifiers.Modifier
 object TinkerModifiers {
     val modifiers = mapOf<Modifier, Modifier.() -> Unit>(
             // Not ready for debut yet; They don't show up in the book!
-            //*
+            /*
             ModStick() to { it: Modifier ->
                 it.addItem("minecraft:stick".toItemStack!!.item)
             },
@@ -17,7 +17,7 @@ object TinkerModifiers {
                 it.addItem("minecraft:stone".toItemStack!!.item)
             }
 
-            //*/
+            */
     )
 }
 
