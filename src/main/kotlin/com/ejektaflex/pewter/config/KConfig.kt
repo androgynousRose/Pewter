@@ -1,6 +1,5 @@
 package com.ejektaflex.pewter.config
 
-import com.ejektaflex.pewter.Pewter
 import net.minecraftforge.common.config.Configuration
 import java.io.File
 

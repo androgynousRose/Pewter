@@ -30,7 +30,6 @@ class MaterialRegistrar(val stats: MaterialStats) {
     lateinit var fluidItem: ItemBlock
 
     init {
-        //addToOreDict()
         createMaterial()
         makeFluid()
         integrateMaterial()

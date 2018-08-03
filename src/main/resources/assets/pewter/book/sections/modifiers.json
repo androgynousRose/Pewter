@@ -1,0 +1,10 @@
+[
+  {
+    "type": "modifier",
+    "data": "modifiers/shtick.json"
+  },
+  {
+    "type": "modifier",
+    "data": "modifiers/shtone.json"
+  }
+]

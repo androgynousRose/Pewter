@@ -2,6 +2,8 @@ package com.ejektaflex.pewter.proxy
 
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ResourceManager
+import com.ejektaflex.pewter.book.PewterModSectionTransformer
+import com.ejektaflex.pewter.ext.resource
 import com.ejektaflex.pewter.logic.FluidStateMapper
 import com.google.common.base.Function
 import net.minecraft.client.Minecraft
@@ -15,8 +17,16 @@ import net.minecraftforge.client.model.Attributes
 import net.minecraftforge.client.model.IModel
 import net.minecraftforge.client.model.ModelFluid
 import net.minecraftforge.client.model.ModelLoader
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import slimeknights.mantle.client.book.BookTransformer
+import slimeknights.mantle.client.book.data.content.ContentTableOfContents
+import slimeknights.mantle.client.book.repository.BookRepository
+import slimeknights.mantle.client.book.repository.FileRepository
+import slimeknights.tconstruct.library.book.TinkerBook
+import slimeknights.tconstruct.library.book.sectiontransformer.ContentListingSectionTransformer
+import slimeknights.tconstruct.library.book.sectiontransformer.ModifierSectionTransformer
 import slimeknights.tconstruct.library.client.MaterialRenderInfo
 import java.awt.Color
 
@@ -47,6 +57,23 @@ class ClientProxy : CommonProxy() {
         // Load localizations
         (Minecraft.getMinecraft().resourceManager as IReloadableResourceManager).registerReloadListener(ResourceManager())
     }
+
+    override fun postInit(e: FMLPostInitializationEvent) {
+        super.postInit(e)
+
+        val repo = FileRepository("${Pewter.MODID}:book")
+        TinkerBook.INSTANCE.addRepository(repo)
+        //Pewter.LOGGER.info("NOOT ${repo.sections[0].name}")
+        TinkerBook.INSTANCE.addTransformer(PewterModSectionTransformer(repo.sections[0].name))
+
+        //TinkerBook.INSTANCE.
+
+        //TinkerBook.INSTANCE
+        Pewter.LOGGER.info("Added modifiers to book.")
+
+
+    }
+
 
     override fun makePewterFluid() {
         super.makePewterFluid()

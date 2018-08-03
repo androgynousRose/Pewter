@@ -1,0 +1,17 @@
+{
+  "modifier": "shtick",
+  "text": [
+    {
+      "text": "It's a stick!"
+    }
+  ],
+  "effects": [
+    "Blah A",
+    "Blah B",
+    "Multiple blah levels"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:arrow"
+  ]
+}
