@@ -3,17 +3,17 @@ package com.ejektaflex.pewter.content
 import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.modifiers.ModStick
 import com.ejektaflex.pewter.modifiers.ModStone
-import com.ejektaflex.pewter.modifiers.PewterMod
+import slimeknights.tconstruct.library.modifiers.Modifier
 
 object TinkerModifiers {
-    val modifiers = mapOf<PewterMod, PewterMod.() -> Unit>(
+    val modifiers = mapOf<Modifier, Modifier.() -> Unit>(
             // Not ready for debut yet; They don't show up in the book!
             //*
-            ModStick() to { it: PewterMod ->
+            ModStick() to { it: Modifier ->
                 it.addItem("minecraft:stick".toItemStack!!.item)
             },
 
-            ModStone() to { it: PewterMod ->
+            ModStone() to { it: Modifier ->
                 it.addItem("minecraft:stone".toItemStack!!.item)
             }
 

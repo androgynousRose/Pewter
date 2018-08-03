@@ -20,8 +20,8 @@ class ResourceManager : IResourceManagerReloadListener {
 
         // TODO Switch to hardcoding modifiers
         for (mod in TinkerModifiers.modifiers.keys) {
-            data += "modifier.${mod.identifier}.name=${mod.name}\n"
-            data += "modifier.${mod.identifier}.desc=§o${mod.motto}§r\\n${mod.description}\n"
+            //data += "modifier.${mod.identifier}.name=${mod.name}\n"
+            //data += "modifier.${mod.identifier}.desc=§o${mod.motto}§r\\n${mod.description}\n"
         }
 
         LanguageMap.inject(ByteArrayInputStream(data.toByteArray()))

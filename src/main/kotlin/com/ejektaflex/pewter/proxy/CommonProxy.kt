@@ -16,6 +16,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.registry.ForgeRegistries
 import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.smeltery.block.BlockMolten
+import slimeknights.tconstruct.tools.AbstractToolPulse
 
 
 open class CommonProxy : IProxy {
