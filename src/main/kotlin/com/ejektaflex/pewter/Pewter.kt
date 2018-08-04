@@ -60,6 +60,7 @@ object Pewter {
     const val VERSIONS = "1.12"
     const val DEPENDS = "required-after:tconstruct;" +
             "required-after:forgelin;" +
+            "after:conarm;" +
             "after:astralsorcery;" +
             "after:thaumcraft;" +
             "after:betterwithmods;" +

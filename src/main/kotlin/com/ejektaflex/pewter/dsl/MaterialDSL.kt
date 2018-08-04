@@ -46,7 +46,11 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
                 MaterialStats.MatPart.HANDLE,
                 MaterialStats.MatPart.EXTRA,
                 MaterialStats.MatPart.BOW,
-                MaterialStats.MatPart.PROJECTILE
+                MaterialStats.MatPart.PROJECTILE,
+                // Armor
+                MaterialStats.MatPart.CORE,
+                MaterialStats.MatPart.PLATES,
+                MaterialStats.MatPart.TRIM
         )
         parts(*metalParts)
     }

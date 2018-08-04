@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.logic
 
+import c4.conarm.lib.materials.*
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*
 
@@ -45,6 +46,24 @@ class MaterialStats {
             "nugget" to mutableListOf(),
             "ore" to mutableListOf()
     )
+
+    var registerArmor = true
+
+    var armor = mutableMapOf(
+            "core" to mutableMapOf(
+                    "durability" to 1f,
+                    "defense" to 1f
+            ),
+            "plates" to mutableMapOf(
+                    "modifier" to 1f,
+                    "durability" to 1f,
+                    "toughness" to 1f
+            ),
+            "trim" to mutableMapOf(
+                    "extraDurability" to 1f
+            )
+    )
+
     var specificTraits = mutableMapOf<String, MutableList<String>>(
 
     )
@@ -65,7 +84,7 @@ class MaterialStats {
         }
     }
 
-    enum class MatPart(val dependency: String, val stats: (it: MaterialStats) -> IMaterialStats?) {
+    enum class MatPart(val dependency: String, val stats: (it: MaterialStats) -> IMaterialStats?, val isArmorPart: Boolean = false) {
         HEAD(MaterialTypes.HEAD, { HeadMaterialStats(it.durability, it.toolSpeed, it.toolAttackDamage, it.toolHarvestLevel) }),
         HANDLE(MaterialTypes.HANDLE, { HandleMaterialStats(it.handleMult, it.handleDurability) }),
         EXTRA(MaterialTypes.EXTRA, { ExtraMaterialStats(it.bindingDurability) }),
@@ -73,7 +92,19 @@ class MaterialStats {
         SHAFT(MaterialTypes.SHAFT, { ArrowShaftMaterialStats(it.arrowShaftModifier, it.arrowShaftBonusAmmo) }),
         FLETCHING(MaterialTypes.FLETCHING, { FletchingMaterialStats(it.bowAccuracy, it.arrowFletchingModifier) }),
         BOWSTRING(MaterialTypes.BOWSTRING, { BowStringMaterialStats(it.bowStringModifier) }),
-        PROJECTILE(MaterialTypes.PROJECTILE, { ProjectileMaterialStats() })
+        PROJECTILE(MaterialTypes.PROJECTILE, { ProjectileMaterialStats() }),
+        CORE("core", { CoreMaterialStats(
+                it.armor["core"]!!["durability"]!!,
+                it.armor["core"]!!["defense"]!!)
+        }, isArmorPart = true),
+        PLATES("plates", { PlatesMaterialStats(
+                it.armor["plates"]!!["modifier"]!!,
+                it.armor["plates"]!!["durability"]!!,
+                it.armor["plates"]!!["toughness"]!!)
+        }, isArmorPart = true),
+        TRIM("trim", { TrimMaterialStats(
+                it.armor["trim"]!!["extraDurability"]!!)
+        }, isArmorPart = true)
     }
 
 }
