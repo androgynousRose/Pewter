@@ -44,6 +44,7 @@ class SyrmoriteMaterial : MaterialDSL("syrmorite", "#1E336C", {
     }
 
     armor {
+        armorTrait("corrosive_armor")
         core {
             durability { 16.5f }
             defense { 16f }

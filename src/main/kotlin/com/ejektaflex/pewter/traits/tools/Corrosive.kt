@@ -60,7 +60,10 @@ class Corrosive : PewterTrait("Corrosive", 0x70FF3D) {
     }
 
     override fun onRepair(tool: ItemStack?, amount: Int) {
-        TagUtil.getToolTag(tool)[CORROSION_TAG] = 0
+        val origStats = TagUtil.getOriginalToolStats(tool)
+        val toolTag = TagUtil.getToolTag(tool)
+        toolTag[CORROSION_TAG] = 0
+        toolTag[Tags.ATTACK] = origStats.attack
         super.onRepair(tool, amount)
     }
 
@@ -78,6 +81,6 @@ class Corrosive : PewterTrait("Corrosive", 0x70FF3D) {
         const val CORROSION_TAG = "BL_Corrosion"
         const val ATTACK_BONUS = 0.35f
         const val MIN_ATTACK_PERCENT = 0.35 // Will always do at least 35% of it's original damage
-        const val CHANCE = 0.0012f // Chance on a given tick to add Corrosion?
+        const val CHANCE = 0.001f // Chance on a given tick to add Corrosion?
     }
 }

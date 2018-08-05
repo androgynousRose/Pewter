@@ -57,6 +57,7 @@ class WeedwoodMaterial : MaterialDSL("weedwood", "#665E31", {
 
     armor {
         armorTrait("ecological_armor")
+        armorTrait("corrosive_armor")
         core {
             durability { 3f }
             defense { 3.5f }

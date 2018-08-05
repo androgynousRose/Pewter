@@ -43,6 +43,9 @@ modifier.corrosive.name=Corrosive
 modifier.corrosive.desc=§oEdgy!§r\nMaterial corrodes over time in The Betweenlands. Does 35% bonus damage to mobs from that dimension. Repair to clear corrosion.
 modifier.corrosive.tooltip=Corrosion: %s
 
+modifier.corrosive_armor.name=Corrosive
+modifier.corrosive_armor.desc=§oEdgy!§r\nMaterial corrodes over time in The Betweenlands. Does 25% damage reduction against mobs from that dimension. Repair to clear corrosion.
+
 modifier.essentia.name=Essentia
 modifier.essentia.desc=§oOnly the essentials!§r\nKilling enemies and breaking blocks has a chance of converting them to crystal essence, generating a tiny amount of flux.
 

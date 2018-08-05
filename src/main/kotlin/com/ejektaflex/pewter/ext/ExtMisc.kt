@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.ext
 import com.ejektaflex.pewter.Pewter
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
+import slimeknights.tconstruct.library.modifiers.Modifier
 import java.util.*
 
 val String.resource: ResourceLocation
@@ -17,3 +18,9 @@ fun Random.range(closed: ClosedRange<Int>): Int {
 
 val <T> List<T>.random: T
     get() = this[Random().range(0 until size)]
+
+fun Random.chanceOf(f: Float, func: () -> Unit) {
+    if (nextFloat() < f) {
+        func()
+    }
+}

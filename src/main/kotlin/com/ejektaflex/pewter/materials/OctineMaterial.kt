@@ -44,6 +44,7 @@ class OctineMaterial : MaterialDSL("octine", "#F38A20", {
     }
 
     armor {
+        armorTrait("corrosive_armor")
         core {
             durability { 13f }
             defense { 14f }
