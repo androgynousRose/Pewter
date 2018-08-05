@@ -18,6 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import slimeknights.tconstruct.library.utils.TagUtil
 import slimeknights.tconstruct.library.utils.TinkerUtil
 import thebetweenlands.api.entity.IEntityBL
+import thebetweenlands.common.config.BetweenlandsConfig
 import kotlin.math.max
 import kotlin.math.min
 
@@ -41,7 +42,7 @@ class ArmorCorrosive : PewterArmorTrait("Corrosive", 0xFF2334) {
         }
 
         // Chance for armor corrosion will be 50% less because armor has on average less durability?
-        if (random.nextFloat() < Corrosive.CHANCE * 0.5f) {
+        if (entity.dimension == BetweenlandsConfig.WORLD_AND_DIMENSION.dimensionId && random.nextFloat() < Corrosive.CHANCE * 0.5f) {
             val origArmorStats = ArmorTagUtil.getOriginalArmorStats(armor)
             val armorTag = ArmorTagUtil.getArmorStats(armor)
             val armorNBT = armorTag.get()

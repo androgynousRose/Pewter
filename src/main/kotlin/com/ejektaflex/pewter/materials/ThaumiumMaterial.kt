@@ -41,8 +41,9 @@ class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
     }
 
     armor {
+        armorTrait("visbarrier_armor")
         core {
-            durability { 12.5f }
+            durability { 12f }
             defense { 14f }
         }
         plates {
