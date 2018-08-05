@@ -33,4 +33,23 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF2E38", {
         modifier { 0.85f }
         bonusAmmo { 15 }
     }
+
+    armor {
+        core {
+            defense { 2f }
+            durability { 2f }
+        }
+
+        plates {
+            durability { 2f }
+            modifier { 2f }
+            toughness { 2f }
+        }
+
+        trim {
+            extraDurability { 2f }
+        }
+
+    }
+
 })

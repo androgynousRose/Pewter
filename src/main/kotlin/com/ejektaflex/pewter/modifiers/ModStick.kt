@@ -32,7 +32,7 @@ class ModStick : PewterModTrait("Shtick", 0xffffff) {
 
         val visInAir = AuraHelper.getVis(player.world, player.position)
 
-        Pewter.LOGGER.info("OOF!! OnHit")
+        Pewter.LOGGER.info("OnHit was called")
 
         target.addPotionEffect(PotionEffect(MobEffects.LEVITATION, 2, 0))
 
@@ -44,7 +44,7 @@ class ModStick : PewterModTrait("Shtick", 0xffffff) {
     override fun applyEffect(rootCompound: NBTTagCompound, modifierTag: NBTTagCompound) {
 
         val data = TagUtil.getToolStats(rootCompound)
-        data.durability += 1000
+        data.durability += 1000 // Just a test for if it works
 
         data.attack += 0.2f
         data.speed += 0.05f

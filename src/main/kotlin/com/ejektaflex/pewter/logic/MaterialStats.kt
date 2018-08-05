@@ -47,7 +47,7 @@ class MaterialStats {
             "ore" to mutableListOf()
     )
 
-    var registerArmor = true
+    var registerArmor = false
 
     var armor = mutableMapOf(
             "core" to mutableMapOf(
@@ -77,11 +77,23 @@ class MaterialStats {
             //Tinkers auto-adds this stat to any tinkMaterial used to make stats heads
             //and trying to add it a second time throws an exception, so check before adding.
             if(!m.hasStats(MaterialTypes.PROJECTILE)) {
+                addStats(m, part)
+            }
+        } else {
+            addStats(m, part)
+        }
+    }
+
+    private fun addStats(m: Material, part: MatPart) {
+        // If it's an armor part, only register if registerArmor is true
+        if (part.isArmorPart) {
+            if (registerArmor) {
                 TinkerRegistry.addMaterialStats(m, part.stats(this))
             }
         } else {
             TinkerRegistry.addMaterialStats(m, part.stats(this))
         }
+
     }
 
     enum class MatPart(val dependency: String, val stats: (it: MaterialStats) -> IMaterialStats?, val isArmorPart: Boolean = false) {

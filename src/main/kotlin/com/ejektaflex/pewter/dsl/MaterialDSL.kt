@@ -217,5 +217,69 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         }
     }
 
+    @TopLevelToolDSL
+    fun armor(func: ArmorCreator.() -> Unit) {
+        tool.registerArmor = true
+        ArmorCreator().apply(func)
+    }
+
+    @TopLevelToolDSL
+    inner class ArmorCreator : DSL<ArmorCreator>() {
+
+        @NestedDSL
+        fun core(func: CoreCreator.() -> Unit) {
+            CoreCreator().apply(func)
+        }
+
+        @NestedDSL
+        fun plates(func: PlatesCreator.() -> Unit) {
+            PlatesCreator().apply(func)
+        }
+
+        @NestedDSL
+        fun trim(func: TrimCreator.() -> Unit) {
+            TrimCreator().apply(func)
+        }
+
+        inner class CoreCreator : DSL<CoreCreator>() {
+            @NestedDSL
+            fun durability(func: () -> Float) {
+                tool.armor["core"]!!["durability"] = func()
+            }
+
+            @NestedDSL
+            fun defense(func: () -> Float) {
+                tool.armor["core"]!!["defense"] = func()
+            }
+        }
+
+        inner class PlatesCreator : DSL<PlatesCreator>() {
+            @NestedDSL
+            fun durability(func: () -> Float) {
+                tool.armor["plates"]!!["durability"] = func()
+            }
+
+            @NestedDSL
+            fun modifier(func: () -> Float) {
+                tool.armor["plates"]!!["modifier"] = func()
+            }
+
+            @NestedDSL
+            fun toughness(func: () -> Float) {
+                tool.armor["plates"]!!["toughness"] = func()
+            }
+        }
+
+        inner class TrimCreator : DSL<TrimCreator>() {
+            @NestedDSL
+            fun extraDurability(func: () -> Float) {
+                tool.armor["trim"]!!["extraDurability"] = func()
+            }
+        }
+
+
+
+    }
+
 
 }

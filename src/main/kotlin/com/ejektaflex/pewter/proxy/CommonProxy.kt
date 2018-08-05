@@ -30,6 +30,7 @@ open class CommonProxy : IProxy {
 
     override fun preInit(e: FMLPreInitializationEvent) {
         val internalTraits = TinkerTraits.traits // Load traits
+        val internalModifiers = TinkerModifiers.modifiers.keys // Load modifiers
         ContentLoader.loadContent()
         makePewterFluid()
     }
