@@ -9,14 +9,14 @@ class SyrmoriteMaterial : MaterialDSL("syrmorite", "#1E336C", {
     ores("thebetweenlands:syrmorite_ore")
     blocks("thebetweenlands:syrmorite_block")
     defaultMetalParts()
-    traitList(
-            "HEAD" to "corrosive",
+    addTraits(
+            //"HEAD" to "corrosive",
             "HEAD" to "gritty"
     )
     shininess(0.25f)
     tool {
 
-        defaultTrait("corrosive")
+        toolTrait("corrosive")
         head {
             durability { 620 }
             attack { 5.1f }

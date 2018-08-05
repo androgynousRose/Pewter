@@ -9,24 +9,24 @@ class WeedwoodMaterial : MaterialDSL("weedwood", "#665E31", {
     ingots("thebetweenlands:weedwood_planks")
     defaultMetalParts()
     parts(MaterialStats.MatPart.SHAFT)
-    traitList(
-            "HEAD" to "corrosive",
+    addTraits(
+            //"HEAD" to "corrosive",
             "HEAD" to "ecological",
-            "HANDLE" to "corrosive",
+            //"HANDLE" to "corrosive",
             "HANDLE" to "ecological",
-            "EXTRA" to "corrosive",
+            //"EXTRA" to "corrosive",
             "EXTRA" to "ecological",
-            "BOW" to "corrosive",
+            //"BOW" to "corrosive",
             "BOW" to "ecological",
-            "SHAFT" to "corrosive",
+            //"SHAFT" to "corrosive",
             "SHAFT" to "ecological",
-            "PROJECTILE" to "corrosive",
+            //"PROJECTILE" to "corrosive",
             "PROJECTILE" to "ecological"
     )
     shininess(0.15f)
     tool {
 
-        defaultTrait("corrosive")
+        toolTrait("corrosive")
 
 
         head {

@@ -58,7 +58,7 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
 
 
     @TopLevelToolDSL
-    fun traitList(vararg pairs: Pair<String, String>) {
+    fun addTraits(vararg pairs: Pair<String, String>) {
         for (pair in pairs) {
             if (pair.first.toUpperCase() in MaterialStats.MatPart.values().map { it.toString() }) {
                 // Add specific trait key if it doesn't exist
@@ -109,8 +109,10 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     inner class ToolCreator : DSL<ToolCreator>() {
 
         @TopLevelToolDSL
-        fun defaultTrait(traitName: String) {
-            material.defaultTrait = traitName
+        fun toolTrait(traitName: String) {
+            for (part in material.matParts.filter { !it.isArmorPart }) {
+                addTraits(part.name to traitName)
+            }
         }
 
         @TopLevelToolDSL
@@ -238,6 +240,13 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
 
     @TopLevelToolDSL
     inner class ArmorCreator : DSL<ArmorCreator>() {
+
+        @TopLevelToolDSL
+        fun armorTrait(traitName: String) {
+            for (part in material.matParts.filter { it.isArmorPart }) {
+                addTraits(part.name to traitName)
+            }
+        }
 
         @NestedDSL
         fun core(func: CoreCreator.() -> Unit) {

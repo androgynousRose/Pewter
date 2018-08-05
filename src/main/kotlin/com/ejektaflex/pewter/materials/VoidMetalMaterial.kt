@@ -9,13 +9,13 @@ class VoidMetalMaterial : MaterialDSL("voidmetal", "#2A114A", {
     blocks("thaumcraft:metal_void")
     nuggets("thaumcraft:nugget:7")
     defaultMetalParts()
-    traitList(
-            "HEAD" to "warping",
+    addTraits(
+            //"HEAD" to "warping",
             "HEAD" to "sapping"
     )
     tool {
 
-        defaultTrait("warping")
+        toolTrait("warping")
 
         head {
             durability { 740 }

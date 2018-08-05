@@ -13,7 +13,6 @@ class MaterialStats {
     var madeInToolForge = false
     var name = "doot"
     var meltingTemperature = 475
-    var defaultTrait = ""
     var looks = mutableMapOf(
             "shininess" to 0.25f,
             "brightness" to 0.25f,

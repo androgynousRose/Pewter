@@ -90,16 +90,9 @@ class MaterialRegistrar(val stats: MaterialStats) {
 
 
     fun addMaterialTraits() {
-        var numGenTraits = 0
         var numSpecTraits = 0
         // Default Trait
-        val defTrait = if (stats.defaultTrait != "") {
-            addTrait(stats.defaultTrait)
-        } else {
-            Pewter.LOGGER.warn("Material ${stats.name} has no default trait, not adding.")
-            false
-        }
-        if (defTrait) numGenTraits++
+
         // Specific Traits
         for ((specificPartName, traitNames) in stats.specificTraits) {
             try {
@@ -113,7 +106,6 @@ class MaterialRegistrar(val stats: MaterialStats) {
                 e.printStackTrace()
             }
         }
-        Pewter.LOGGER.info("Loaded $numGenTraits default traits.")
         Pewter.LOGGER.info("Loaded $numSpecTraits specific traits.")
     }
 
@@ -122,9 +114,7 @@ class MaterialRegistrar(val stats: MaterialStats) {
         return if (imod != null && imod is ITrait) {
             // If no specific part given, given to all material mat parts
             if (matPart == null) {
-                for (part in MatPart.values().filter { !it.isArmorPart }) {
-                    tinkMaterial.addTrait(imod, part.dependency)
-                }
+                tinkMaterial.addTrait(imod)
             } else {
                 tinkMaterial.addTrait(imod, matPart.dependency)
             }

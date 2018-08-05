@@ -9,14 +9,14 @@ class ValoniteMaterial : MaterialDSL("valonite", "#845784", {
     ores("thebetweenlands:valonite_ore")
     blocks("thebetweenlands:valonite_block")
     defaultMetalParts()
-    traitList(
-            "HEAD" to "corrosive",
+    addTraits(
+            //"HEAD" to "corrosive",
             "HEAD" to "sharp"
     )
     shininess(0.7f)
     tool {
 
-        defaultTrait("corrosive")
+        toolTrait("corrosive")
 
         head {
             durability { 775 }

@@ -7,12 +7,12 @@ class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
     craft { false }
     ingots("thaumcraft:ingot:0")
     defaultMetalParts()
-    traitList(
+    addTraits(
             "HEAD" to "essentia"
     )
     tool {
 
-        defaultTrait("aural")
+        toolTrait("aural")
 
         head {
             durability { 300 }

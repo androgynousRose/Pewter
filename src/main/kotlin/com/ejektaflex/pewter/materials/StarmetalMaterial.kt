@@ -7,13 +7,13 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
     craft { false }
     ingots("astralsorcery:itemcraftingcomponent:1")
     defaultMetalParts()
-    traitList(
+    addTraits(
             "EXTRA" to "dense"
     )
     shininess(0.6f)
     tool {
 
-        defaultTrait("brilliance")
+        toolTrait("brilliance")
         head {
             durability { 275 }
             attack { 4.2f }

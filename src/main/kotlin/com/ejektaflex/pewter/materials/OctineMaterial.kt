@@ -9,13 +9,13 @@ class OctineMaterial : MaterialDSL("octine", "#F38A20", {
     ingots("thebetweenlands:octine_ingot")
     ores("thebetweenlands:octine_ore")
     defaultMetalParts()
-    traitList(
-            "HEAD" to "corrosive",
+    addTraits(
+            //"HEAD" to "corrosive",
             "HEAD" to "sparking"
     )
     shininess(0.5f)
     tool {
-        defaultTrait("corrosive")
+        toolTrait("corrosive")
 
         head {
             durability { 270 }

@@ -8,11 +8,11 @@ class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {
     craft { false }
     ingots("minecraft:apple")
     defaultMetalParts()
-    traitList(
+    addTraits(
             "EXTRA" to "dense"
     )
     tool {
-        defaultTrait("brilliance")
+        toolTrait("brilliance")
         head {
             durability { 100 }
             attack { 5f }
