@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.traits
+package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.ext.isHoldingItemWithTrait
 import net.minecraft.entity.EntityLivingBase

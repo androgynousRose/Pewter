@@ -106,7 +106,7 @@ class MaterialRegistrar(val stats: MaterialStats) {
                 e.printStackTrace()
             }
         }
-        Pewter.LOGGER.info("Loaded $numSpecTraits specific traits.")
+        Pewter.LOGGER.info("Loaded $numSpecTraits specific traits for $tinkMaterial.")
     }
 
     private fun addTrait(name: String, matPart: MatPart? = null): Boolean {

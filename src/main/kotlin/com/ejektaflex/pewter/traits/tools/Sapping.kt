@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.traits
+package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.ext.get
 import com.ejektaflex.pewter.ext.random
@@ -8,8 +8,7 @@ import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.shared.client.ParticleEffect
 import slimeknights.tconstruct.tools.TinkerTools
 import kotlin.math.min
-import slimeknights.tconstruct.library.utils.TagUtil
-import slimeknights.tconstruct.library.utils.Tags.DURABILITY
+import slimeknights.tconstruct.library.utils.ToolHelper
 
 
 class Sapping : PewterTrait("Sapping", 0x8A134E) {
@@ -20,9 +19,7 @@ class Sapping : PewterTrait("Sapping", 0x8A134E) {
         if (random.nextFloat() < healChance) {
             TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_BLOOD, target, 1)
             if (player.health == player.maxHealth) {
-                val tag = TagUtil.getToolTag(tool)
-                val tagAttack = tag.get<Float>(DURABILITY)
-                tag[DURABILITY] = tagAttack + durabilityAddValues.random
+                ToolHelper.healTool(tool, durabilityAddValues.random, player)
             } else {
                 player.health += healthToSteal
             }

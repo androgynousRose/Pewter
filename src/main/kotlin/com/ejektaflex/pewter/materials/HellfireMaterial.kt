@@ -2,14 +2,14 @@ package com.ejektaflex.pewter.materials
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class HellfireMaterial : MaterialDSL("hellfire", "#FF2E38", {
+class HellfireMaterial : MaterialDSL("hellfire", "#FF2334", {
     locale("en_7S " to "Ye Fiery Treasure")
     forge { true }
     craft { false }
     ingots("betterwithmods:material:17")
     defaultMetalParts()
     tool {
-        toolTrait("heatlover")
+        toolTrait("kindle")
         head {
             durability { 335 }
             attack { 4f }
@@ -39,7 +39,8 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF2E38", {
     // little more durable little slower mining speed
 
     armor {
-        armorTrait("heatlover")
+        armorTrait("kindle_armor")
+        addTraits("CORE" to "inflamed_armor")
         core {
             defense { 13f }
             durability { 15.5f }

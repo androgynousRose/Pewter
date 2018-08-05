@@ -1,13 +1,15 @@
 package com.ejektaflex.pewter.content
 
-import com.ejektaflex.pewter.traits.*
+import com.ejektaflex.pewter.traits.armor.ArmorInflamed
+import com.ejektaflex.pewter.traits.armor.ArmorKindle
+import com.ejektaflex.pewter.traits.tools.*
 
 class TinkerTraits {
 
     companion object {
         val traits = listOf(
                 Brilliance(),
-                HeatLover(),
+                Kindle(),
                 Polluted(),
                 Essentia(),
                 Aural(),
@@ -15,7 +17,10 @@ class TinkerTraits {
                 Sapping(),
                 Corrosive(),
                 Sparking(),
-                Gritty()
+                Gritty(),
+
+                ArmorKindle(),
+                ArmorInflamed()
         )
     }
 

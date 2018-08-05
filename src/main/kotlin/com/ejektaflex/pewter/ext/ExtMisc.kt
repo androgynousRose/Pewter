@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.ext
 
 import com.ejektaflex.pewter.Pewter
+import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
 import java.util.*
 

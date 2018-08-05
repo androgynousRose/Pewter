@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.traits
+package com.ejektaflex.pewter.traits.tools
 
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack

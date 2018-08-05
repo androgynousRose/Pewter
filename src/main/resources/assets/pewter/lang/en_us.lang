@@ -49,8 +49,14 @@ modifier.essentia.desc=§oOnly the essentials!§r\nKilling enemies and breaking 
 modifier.gritty.name=Gritty
 modifier.gritty.desc=§oFeels So Good!§r\nAs the decay meter drains, bonus damage goes up.
 
-modifier.heatlover.name=Heat Lover
-modifier.heatlover.desc=§oDon't Move!§r\nMore brittle in cold biomes, more durable in warm biomes.
+modifier.inflamed_armor.name=Inflamed
+modifier.inflamed_armor.desc=§oFwoosh!§r\nRepairs armor durability when on fire.
+
+modifier.kindle.name=Kindle
+modifier.kindle.desc=§oSizzlin'!§r\nHas a chance to repair durability if the enemy is on fire or in lava.
+
+modifier.kindle_armor.name=Kindle
+modifier.kindle_armor.desc=§oSizzlin'§r\nHas a chance to repair durability if hit by an enemy on fire or in lava.
 
 modifier.polluted.name=Polluted
 modifier.polluted.desc=§oSlightly Toxic.§r\nHitting enemies has a chance of releasing flux.
