@@ -17,11 +17,12 @@ class ValoniteMaterial : MaterialDSL("valonite", "#845784", {
     tool {
 
         defaultTrait("corrosive")
-        harvestLevel(2)
+
         head {
             durability { 775 }
             attack { 5.6f }
             speed { 5.7f }
+            harvestLevel(2)
         }
         handle {
             durability { -75 }

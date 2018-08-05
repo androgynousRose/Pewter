@@ -10,11 +10,11 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF2E38", {
     defaultMetalParts()
     tool {
         defaultTrait("heatlover")
-        harvestLevel(1)
         head {
             durability { 335 }
             attack { 4f }
             speed { 5.5f }
+            harvestLevel(1)
         }
         handle {
             durability { -75 }

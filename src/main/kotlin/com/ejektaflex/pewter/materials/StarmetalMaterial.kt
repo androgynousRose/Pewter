@@ -14,11 +14,11 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
     tool {
 
         defaultTrait("brilliance")
-        harvestLevel(1)
         head {
             durability { 275 }
             attack { 4.2f }
             speed { 5.7f }
+            harvestLevel(1)
         }
         handle {
             durability { 95 }

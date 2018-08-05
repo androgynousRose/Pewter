@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.materials
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
-import com.ejektaflex.pewter.logic.MaterialStats
+import com.ejektaflex.pewter.logic.stats.MaterialStats
 
 class WeedwoodMaterial : MaterialDSL("weedwood", "#665E31", {
     forge { false }
@@ -27,12 +27,13 @@ class WeedwoodMaterial : MaterialDSL("weedwood", "#665E31", {
     tool {
 
         defaultTrait("corrosive")
-        harvestLevel(0)
+
 
         head {
             durability { 75 }
             attack { 2.2f }
             speed { 2.4f }
+            harvestLevel(0)
         }
         handle {
             durability { 40 }

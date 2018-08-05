@@ -16,11 +16,12 @@ class VoidMetalMaterial : MaterialDSL("voidmetal", "#2A114A", {
     tool {
 
         defaultTrait("warping")
-        harvestLevel(3)
+
         head {
             durability { 740 }
             attack { 5.3f }
             speed { 5.8f }
+            harvestLevel(3)
         }
         handle {
             durability { -15 }

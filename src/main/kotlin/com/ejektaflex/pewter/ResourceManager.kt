@@ -42,7 +42,8 @@ class ResourceManager : IResourceManagerReloadListener {
             // Look up the current locale in the local map. If it exists, then add the entry
             if (locales.keys.isNotEmpty()) {
                 locales[mcLocale]?.let {
-                    data += "material.$materialName.name=$it\n"
+                    println(it)
+                    data += "material.$materialName.name=${it}\n"
                     data += "fluid.${Pewter.MODID}.$materialName.name=$it (Liquid)\n"
                 }
             }

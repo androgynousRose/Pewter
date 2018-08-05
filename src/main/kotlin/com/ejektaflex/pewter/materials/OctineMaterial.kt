@@ -16,12 +16,12 @@ class OctineMaterial : MaterialDSL("octine", "#F38A20", {
     shininess(0.5f)
     tool {
         defaultTrait("corrosive")
-        harvestLevel(1)
 
         head {
             durability { 270 }
             attack { 4.2f }
             speed { 5.5f }
+            harvestLevel(1)
         }
         handle {
             durability { 55 }

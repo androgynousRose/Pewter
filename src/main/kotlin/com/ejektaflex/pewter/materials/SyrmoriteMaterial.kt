@@ -17,11 +17,11 @@ class SyrmoriteMaterial : MaterialDSL("syrmorite", "#1E336C", {
     tool {
 
         defaultTrait("corrosive")
-        harvestLevel(2)
         head {
             durability { 620 }
             attack { 5.1f }
             speed { 5.2f }
+            harvestLevel(2)
         }
         handle {
             durability { -45 }

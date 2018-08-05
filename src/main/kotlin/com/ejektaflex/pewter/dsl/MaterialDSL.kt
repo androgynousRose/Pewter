@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.dsl
 
-import com.ejektaflex.pewter.logic.MaterialStats
+import com.ejektaflex.pewter.logic.stats.ArmorStats
+import com.ejektaflex.pewter.logic.stats.MaterialStats
 
 open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>() {
 
@@ -108,11 +109,6 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     inner class ToolCreator : DSL<ToolCreator>() {
 
         @TopLevelToolDSL
-        fun harvestLevel(n: Int) {
-            material.toolHarvestLevel = n
-        }
-
-        @TopLevelToolDSL
         fun defaultTrait(traitName: String) {
             material.defaultTrait = traitName
         }
@@ -126,18 +122,24 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
 
             @NestedDSL
             fun durability(func: () -> Int) {
-                material.durability = func()
+                material.tool.head.durability = func()
             }
 
             @NestedDSL
             fun attack(func: () -> Float) {
-                material.toolAttackDamage = func()
+                material.tool.head.attackDamage = func()
             }
 
             @NestedDSL
             fun speed(func: () -> Float) {
-                material.toolSpeed = func()
+                material.tool.head.speed = func()
             }
+
+            @TopLevelToolDSL
+            fun harvestLevel(n: Int) {
+                material.tool.head.harvestLevel = n
+            }
+
         }
 
         @TopLevelToolDSL
@@ -148,12 +150,12 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         inner class HandleCreator : DSL<HandleCreator>() {
             @NestedDSL
             fun durability(func: () -> Int) {
-                material.handleDurability = func()
+                material.tool.handle.durability = func()
             }
 
             @NestedDSL
             fun modifier(func: () -> Float) {
-                material.handleMult = func()
+                material.tool.handle.modifier = func()
             }
         }
 
@@ -165,7 +167,7 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         inner class ExtraCreator : DSL<ExtraCreator>() {
             @NestedDSL
             fun durability(func: () -> Int) {
-                material.bindingDurability = func()
+                material.tool.extra.durability = func()
             }
         }
 
@@ -177,32 +179,32 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         inner class BowCreator : DSL<BowCreator>() {
             @NestedDSL
             fun accuracy(func: () -> Float) {
-                material.bowAccuracy = func()
+                material.tool.fletching.accuracy = func()
             }
 
             @NestedDSL
             fun speed(f: Float) {
-                material.bowSpeed = 1f / f
+                material.tool.bow.speed = 1f / f
             }
 
             @NestedDSL
             fun bonusDamage(func: () -> Float) {
-                material.bowBonusDamage = func()
+                material.tool.bow.bonusDamage = func()
             }
 
             @NestedDSL
             fun range(func: () -> Float) {
-                material.bowRange = func()
+                material.tool.bow.range = func()
             }
 
             @NestedDSL
             fun string(func: () -> Float) {
-                material.bowStringModifier = func()
+                material.tool.bowstring.modifier = func()
             }
 
             @NestedDSL
             fun fletchingMod(f: Float) {
-                material.arrowFletchingModifier = f
+                material.tool.fletching.modifier = f
             }
 
         }
@@ -215,12 +217,12 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         inner class ShaftCreator : DSL<ShaftCreator>() {
             @NestedDSL
             fun modifier(func: () -> Float) {
-                material.arrowShaftModifier = func()
+                material.tool.arrowShaft.modifier = func()
             }
 
             @NestedDSL
             fun bonusAmmo(func: () -> Int) {
-                material.arrowShaftBonusAmmo = func()
+                material.tool.arrowShaft.bonusAmmo = func()
             }
         }
     }
@@ -230,7 +232,7 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
 
     @TopLevelToolDSL
     fun armor(func: ArmorCreator.() -> Unit) {
-        material.registerArmor = true
+        material.armor = ArmorStats()
         ArmorCreator().apply(func)
     }
 
@@ -255,36 +257,36 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         inner class CoreCreator : DSL<CoreCreator>() {
             @NestedDSL
             fun durability(func: () -> Float) {
-                material.armor["core"]!!["durability"] = func()
+                material.armor!!.core.durability = func()
             }
 
             @NestedDSL
             fun defense(func: () -> Float) {
-                material.armor["core"]!!["defense"] = func()
+                material.armor!!.core.defense = func()
             }
         }
 
         inner class PlatesCreator : DSL<PlatesCreator>() {
             @NestedDSL
             fun durability(func: () -> Float) {
-                material.armor["plates"]!!["durability"] = func()
+                material.armor!!.plates.durability = func()
             }
 
             @NestedDSL
             fun modifier(func: () -> Float) {
-                material.armor["plates"]!!["modifier"] = func()
+                material.armor!!.plates.modifier = func()
             }
 
             @NestedDSL
             fun toughness(func: () -> Float) {
-                material.armor["plates"]!!["toughness"] = func()
+                material.armor!!.plates.toughness = func()
             }
         }
 
         inner class TrimCreator : DSL<TrimCreator>() {
             @NestedDSL
             fun extraDurability(func: () -> Float) {
-                material.armor["trim"]!!["extraDurability"] = func()
+                material.armor!!.trim.extraDurability = func()
             }
         }
 

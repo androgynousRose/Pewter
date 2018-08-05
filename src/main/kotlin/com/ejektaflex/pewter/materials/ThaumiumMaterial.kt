@@ -13,11 +13,12 @@ class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
     tool {
 
         defaultTrait("aural")
-        harvestLevel(1)
+
         head {
             durability { 300 }
             attack { 4f }
             speed { 6.5f }
+            harvestLevel(1)
         }
         handle {
             durability { 95 }

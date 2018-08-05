@@ -3,7 +3,8 @@ package com.ejektaflex.pewter.logic
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ext.resource
 import com.ejektaflex.pewter.ext.toItemStack
-import com.ejektaflex.pewter.logic.MaterialStats.MatPart
+import com.ejektaflex.pewter.logic.stats.MaterialStats
+import com.ejektaflex.pewter.logic.stats.MaterialStats.MatPart
 import net.minecraft.block.Block
 import net.minecraft.item.ItemBlock
 import net.minecraftforge.fluids.Fluid
