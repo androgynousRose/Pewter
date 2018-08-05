@@ -39,4 +39,22 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
             bonusAmmo { 5 }
         }
     }
+
+    // higher attack lower speed
+    armor {
+        core {
+            durability { 14f }
+            defense { 10f }
+        }
+        plates {
+            modifier { 0.8f }
+            durability { 2.5f }
+            toughness { 0f }
+        }
+        trim {
+            extraDurability { 7.5f }
+        }
+    }
+
+
 })

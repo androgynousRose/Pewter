@@ -42,4 +42,20 @@ class OctineMaterial : MaterialDSL("octine", "#F38A20", {
             bonusAmmo { 15 }
         }
     }
+
+    armor {
+        core {
+            durability { 13f }
+            defense { 14f }
+        }
+        plates {
+            modifier { 0.7f }
+            durability { 5.5f }
+            toughness { 0f }
+        }
+        trim {
+            extraDurability { 4f }
+        }
+    }
+
 })

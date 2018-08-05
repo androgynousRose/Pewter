@@ -13,14 +13,14 @@ import slimeknights.tconstruct.library.utils.ToolHelper
 import kotlin.math.abs
 import kotlin.math.ceil
 
-class ArmorInflamed : PewterArmorTrait("Inflamed", 0xFF2334) {
+class ArmorExperimental : PewterArmorTrait("CHANGEME", 0xFF2334) {
 
     override fun onDamaged(armor: ItemStack?, player: EntityPlayer?, source: DamageSource, damage: Float, newDamage: Float, evt: LivingDamageEvent?): Float {
         val healAmount = 2 + if (random.nextFloat() < 0.3) 1 else 0
 
-        if (source.isFireDamage) {
-            ArmorHelper.repairArmor(armor, healAmount, player)
-        }
+        Pewter.LOGGER.info(source.isMagicDamage)
+        Pewter.LOGGER.info(damage)
+        evt
 
         return super.onDamaged(armor, player, source, damage, newDamage, evt)
     }

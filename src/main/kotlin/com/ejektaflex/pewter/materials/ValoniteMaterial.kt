@@ -43,4 +43,21 @@ class ValoniteMaterial : MaterialDSL("valonite", "#845784", {
             bonusAmmo { 15 }
         }
     }
+
+    armor {
+        core {
+            durability { 12.5f }
+            defense { 15.5f }
+        }
+        plates {
+            modifier { 0.95f }
+            durability { -5f }
+            toughness { 0.5f }
+        }
+        trim {
+            extraDurability { 5.5f }
+        }
+    }
+
+
 })

@@ -39,4 +39,20 @@ class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
             bonusAmmo { 5 }
         }
     }
+
+    armor {
+        core {
+            durability { 12.5f }
+            defense { 14f }
+        }
+        plates {
+            modifier { 0.9f }
+            durability { 6f }
+            toughness { 0f }
+        }
+        trim {
+            extraDurability { 3.5f }
+        }
+    }
+
 })

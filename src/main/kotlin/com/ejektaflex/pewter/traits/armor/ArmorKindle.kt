@@ -22,7 +22,6 @@ class ArmorKindle : PewterArmorTrait("Kindle", 0xFF2334) {
     }
 
     override fun onDamaged(armor: ItemStack?, player: EntityPlayer?, source: DamageSource, damage: Float, newDamage: Float, evt: LivingDamageEvent?): Float {
-        Pewter.LOGGER.info("DOOT DOOT!")
 
         var healAmount = 0
 
@@ -43,8 +42,6 @@ class ArmorKindle : PewterArmorTrait("Kindle", 0xFF2334) {
             }
         }
 
-        Pewter.LOGGER.info("Healing for $healAmount")
-        //ArmorHelper.healTool(tool, healAmount, player)
         ArmorHelper.repairArmor(armor, healAmount, player)
 
         return super.onDamaged(armor, player, source, damage, newDamage, evt)

@@ -42,4 +42,21 @@ class SyrmoriteMaterial : MaterialDSL("syrmorite", "#1E336C", {
             bonusAmmo { 15 }
         }
     }
+
+    armor {
+        core {
+            durability { 16.5f }
+            defense { 16f }
+        }
+        plates {
+            modifier { 0.9f }
+            durability { 6f }
+            toughness { 05f }
+        }
+        trim {
+            extraDurability { 8.5f }
+        }
+    }
+
+
 })

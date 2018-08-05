@@ -42,4 +42,21 @@ class VoidMetalMaterial : MaterialDSL("voidmetal", "#2A114A", {
             bonusAmmo { 5 }
         }
     }
+
+    armor {
+        core {
+            durability { 16.5f }
+            defense { 17.5f }
+        }
+        plates {
+            modifier { 1.05f }
+            durability { -3.5f }
+            toughness { 1f }
+        }
+        trim {
+            extraDurability { 6f }
+        }
+    }
+
+
 })

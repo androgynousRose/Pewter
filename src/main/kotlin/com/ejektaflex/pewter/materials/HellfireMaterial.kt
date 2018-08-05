@@ -40,10 +40,9 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF2334", {
 
     armor {
         armorTrait("kindle_armor")
-        addTraits("CORE" to "inflamed_armor")
         core {
-            defense { 13f }
             durability { 15.5f }
+            defense { 13f }
         }
         plates {
             modifier { 0.75f }

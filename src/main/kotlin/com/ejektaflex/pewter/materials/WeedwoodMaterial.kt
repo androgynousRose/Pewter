@@ -54,4 +54,22 @@ class WeedwoodMaterial : MaterialDSL("weedwood", "#665E31", {
             bonusAmmo { 15 }
         }
     }
+
+    armor {
+        armorTrait("ecological_armor")
+        core {
+            durability { 3f }
+            defense { 3.5f }
+        }
+        plates {
+            modifier { 1.05f }
+            durability { 1.25f }
+            toughness { 0f }
+        }
+        trim {
+            extraDurability { 0.5f }
+        }
+    }
+
+
 })
