@@ -9,34 +9,37 @@ class SyrmoriteMaterial : MaterialDSL("syrmorite", "#1E336C", {
     ores("thebetweenlands:syrmorite_ore")
     blocks("thebetweenlands:syrmorite_block")
     defaultMetalParts()
-    defaultTrait("corrosive")
     traitList(
             "HEAD" to "corrosive",
             "HEAD" to "gritty"
     )
-    harvestLevel(2)
     shininess(0.25f)
-    head {
-        durability { 620 }
-        attack { 5.1f }
-        speed { 5.2f }
-    }
-    handle {
-        durability { -45 }
-        modifier { 1.15f }
-    }
-    extra {
-        durability { 125 }
-    }
-    bow {
-        speed(2.5f)
-        accuracy { 1.0f }
-        range { 0.5f }
-        string { 0.85f }
-        bonusDamage { 1.5f }
-    }
-    shaft {
-        modifier { 0.85f }
-        bonusAmmo { 15 }
+    tool {
+
+        defaultTrait("corrosive")
+        harvestLevel(2)
+        head {
+            durability { 620 }
+            attack { 5.1f }
+            speed { 5.2f }
+        }
+        handle {
+            durability { -45 }
+            modifier { 1.15f }
+        }
+        extra {
+            durability { 125 }
+        }
+        bow {
+            speed(2.5f)
+            accuracy { 1.0f }
+            range { 0.5f }
+            string { 0.85f }
+            bonusDamage { 1.5f }
+        }
+        shaft {
+            modifier { 0.85f }
+            bonusAmmo { 15 }
+        }
     }
 })

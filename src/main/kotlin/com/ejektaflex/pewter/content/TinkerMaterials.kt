@@ -38,7 +38,7 @@ object TinkerMaterials {
         }
 
     fun materialsMatching(names: List<String>): List<Pair<String, MaterialDSL>> {
-        return flattened.filter { it.second.tool.name in names }
+        return flattened.filter { it.second.material.name in names }
     }
 
 }

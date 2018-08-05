@@ -4,11 +4,11 @@ import com.ejektaflex.pewter.logic.MaterialStats
 
 open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>() {
 
-    var tool = MaterialStats()
+    var material = MaterialStats()
 
     init {
-        tool.color = initColor
-        tool.name = initName
+        material.color = initColor
+        material.name = initName
         apply(initFunc)
     }
 
@@ -20,22 +20,22 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
 
     @TopLevelToolDSL
     fun locale(vararg pairs: Pair<String, String>) {
-        tool.nameLocales = pairs.toMap().toMutableMap()
+        material.nameLocales = pairs.toMap().toMutableMap()
     }
 
     @TopLevelToolDSL
     fun parts(vararg someParts: MaterialStats.MatPart) {
-        someParts.forEach { tool.matParts.add(it) }
+        someParts.forEach { material.matParts.add(it) }
     }
 
     @TopLevelToolDSL
     fun meltsAt(n: Int) {
-        tool.meltingTemperature = n
+        material.meltingTemperature = n
     }
 
     @TopLevelToolDSL
     fun shininess(f: Float) {
-        tool.looks["shininess"] = f
+        material.looks["shininess"] = f
     }
 
     @TopLevelToolDSL
@@ -55,25 +55,16 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         parts(*metalParts)
     }
 
-    @TopLevelToolDSL
-    fun harvestLevel(n: Int) {
-        tool.toolHarvestLevel = n
-    }
-
-    @TopLevelToolDSL
-    fun defaultTrait(traitName: String) {
-        tool.defaultTrait = traitName
-    }
 
     @TopLevelToolDSL
     fun traitList(vararg pairs: Pair<String, String>) {
         for (pair in pairs) {
             if (pair.first.toUpperCase() in MaterialStats.MatPart.values().map { it.toString() }) {
                 // Add specific trait key if it doesn't exist
-                if (pair.first !in tool.specificTraits.keys) {
-                    tool.specificTraits[pair.first] = mutableListOf()
+                if (pair.first !in material.specificTraits.keys) {
+                    material.specificTraits[pair.first] = mutableListOf()
                 }
-                tool.specificTraits[pair.first]!!.add(pair.second)
+                material.specificTraits[pair.first]!!.add(pair.second)
             }
         }
     }
@@ -81,145 +72,165 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     @TopLevelToolDSL
     fun ingots(vararg ing: String) {
         // Add all ingots to map
-        tool.smelting["ingot"]!!.addAll(ing)
+        material.smelting["ingot"]!!.addAll(ing)
     }
 
     @TopLevelToolDSL
     fun blocks(vararg blo: String) {
-        tool.smelting["block"]!!.addAll(blo)
+        material.smelting["block"]!!.addAll(blo)
     }
 
     @TopLevelToolDSL
     fun nuggets(vararg blo: String) {
-        tool.smelting["nugget"]!!.addAll(blo)
+        material.smelting["nugget"]!!.addAll(blo)
     }
 
     @TopLevelToolDSL
     fun ores(vararg blo: String) {
-        tool.smelting["ore"]!!.addAll(blo)
+        material.smelting["ore"]!!.addAll(blo)
     }
 
     @TopLevelToolDSL
     fun forge(func: () -> Boolean) {
-        tool.madeInToolForge = func()
+        material.madeInToolForge = func()
     }
 
     @TopLevelToolDSL
     fun craft(func: () -> Boolean) {
-        tool.craftable = func()
-    }
-
-
-    @TopLevelToolDSL
-    fun head(func: HeadCreator.() -> Unit) {
-        HeadCreator().apply(func)
-    }
-
-    inner class HeadCreator : DSL<HeadCreator>() {
-
-        @NestedDSL
-        fun durability(func: () -> Int) {
-            tool.durability = func()
-        }
-
-        @NestedDSL
-        fun attack(func: () -> Float) {
-            tool.toolAttackDamage = func()
-        }
-
-        @NestedDSL
-        fun speed(func: () -> Float) {
-            tool.toolSpeed = func()
-        }
+        material.craftable = func()
     }
 
     @TopLevelToolDSL
-    fun handle(func: HandleCreator.() -> Unit) {
-        HandleCreator().apply(func)
+    fun tool(func: ToolCreator.() -> Unit) {
+        ToolCreator().apply(func)
     }
 
-    inner class HandleCreator : DSL<HandleCreator>() {
-        @NestedDSL
-        fun durability(func: () -> Int) {
-            tool.handleDurability = func()
+    inner class ToolCreator : DSL<ToolCreator>() {
+
+        @TopLevelToolDSL
+        fun harvestLevel(n: Int) {
+            material.toolHarvestLevel = n
         }
 
-        @NestedDSL
-        fun modifier(func: () -> Float) {
-            tool.handleMult = func()
+        @TopLevelToolDSL
+        fun defaultTrait(traitName: String) {
+            material.defaultTrait = traitName
+        }
+
+        @TopLevelToolDSL
+        fun head(func: HeadCreator.() -> Unit) {
+            HeadCreator().apply(func)
+        }
+
+        inner class HeadCreator : DSL<HeadCreator>() {
+
+            @NestedDSL
+            fun durability(func: () -> Int) {
+                material.durability = func()
+            }
+
+            @NestedDSL
+            fun attack(func: () -> Float) {
+                material.toolAttackDamage = func()
+            }
+
+            @NestedDSL
+            fun speed(func: () -> Float) {
+                material.toolSpeed = func()
+            }
+        }
+
+        @TopLevelToolDSL
+        fun handle(func: HandleCreator.() -> Unit) {
+            HandleCreator().apply(func)
+        }
+
+        inner class HandleCreator : DSL<HandleCreator>() {
+            @NestedDSL
+            fun durability(func: () -> Int) {
+                material.handleDurability = func()
+            }
+
+            @NestedDSL
+            fun modifier(func: () -> Float) {
+                material.handleMult = func()
+            }
+        }
+
+        @TopLevelToolDSL
+        fun extra(func: ExtraCreator.() -> Unit) {
+            ExtraCreator().apply(func)
+        }
+
+        inner class ExtraCreator : DSL<ExtraCreator>() {
+            @NestedDSL
+            fun durability(func: () -> Int) {
+                material.bindingDurability = func()
+            }
+        }
+
+        @TopLevelToolDSL
+        fun bow(func: BowCreator.() -> Unit) {
+            BowCreator().apply(func)
+        }
+
+        inner class BowCreator : DSL<BowCreator>() {
+            @NestedDSL
+            fun accuracy(func: () -> Float) {
+                material.bowAccuracy = func()
+            }
+
+            @NestedDSL
+            fun speed(f: Float) {
+                material.bowSpeed = 1f / f
+            }
+
+            @NestedDSL
+            fun bonusDamage(func: () -> Float) {
+                material.bowBonusDamage = func()
+            }
+
+            @NestedDSL
+            fun range(func: () -> Float) {
+                material.bowRange = func()
+            }
+
+            @NestedDSL
+            fun string(func: () -> Float) {
+                material.bowStringModifier = func()
+            }
+
+            @NestedDSL
+            fun fletchingMod(f: Float) {
+                material.arrowFletchingModifier = f
+            }
+
+        }
+
+        @TopLevelToolDSL
+        fun shaft(func: ShaftCreator.() -> Unit) {
+            ShaftCreator().apply(func)
+        }
+
+        inner class ShaftCreator : DSL<ShaftCreator>() {
+            @NestedDSL
+            fun modifier(func: () -> Float) {
+                material.arrowShaftModifier = func()
+            }
+
+            @NestedDSL
+            fun bonusAmmo(func: () -> Int) {
+                material.arrowShaftBonusAmmo = func()
+            }
         }
     }
 
-    @TopLevelToolDSL
-    fun extra(func: ExtraCreator.() -> Unit) {
-        ExtraCreator().apply(func)
-    }
 
-    inner class ExtraCreator : DSL<ExtraCreator>() {
-        @NestedDSL
-        fun durability(func: () -> Int) {
-            tool.bindingDurability = func()
-        }
-    }
 
-    @TopLevelToolDSL
-    fun bow(func: BowCreator.() -> Unit) {
-        BowCreator().apply(func)
-    }
-
-    inner class BowCreator : DSL<BowCreator>() {
-        @NestedDSL
-        fun accuracy(func: () -> Float) {
-            tool.bowAccuracy = func()
-        }
-
-        @NestedDSL
-        fun speed(f: Float) {
-            tool.bowSpeed = 1f / f
-        }
-
-        @NestedDSL
-        fun bonusDamage(func: () -> Float) {
-            tool.bowBonusDamage = func()
-        }
-
-        @NestedDSL
-        fun range(func: () -> Float) {
-            tool.bowRange = func()
-        }
-
-        @NestedDSL
-        fun string(func: () -> Float) {
-            tool.bowStringModifier = func()
-        }
-
-        @NestedDSL
-        fun fletchingMod(f: Float) {
-            tool.arrowFletchingModifier = f
-        }
-
-    }
-
-    @TopLevelToolDSL
-    fun shaft(func: ShaftCreator.() -> Unit) {
-        ShaftCreator().apply(func)
-    }
-
-    inner class ShaftCreator : DSL<ShaftCreator>() {
-        @NestedDSL
-        fun modifier(func: () -> Float) {
-            tool.arrowShaftModifier = func()
-        }
-
-        @NestedDSL
-        fun bonusAmmo(func: () -> Int) {
-            tool.arrowShaftBonusAmmo = func()
-        }
-    }
 
     @TopLevelToolDSL
     fun armor(func: ArmorCreator.() -> Unit) {
-        tool.registerArmor = true
+        material.registerArmor = true
         ArmorCreator().apply(func)
     }
 
@@ -244,36 +255,36 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
         inner class CoreCreator : DSL<CoreCreator>() {
             @NestedDSL
             fun durability(func: () -> Float) {
-                tool.armor["core"]!!["durability"] = func()
+                material.armor["core"]!!["durability"] = func()
             }
 
             @NestedDSL
             fun defense(func: () -> Float) {
-                tool.armor["core"]!!["defense"] = func()
+                material.armor["core"]!!["defense"] = func()
             }
         }
 
         inner class PlatesCreator : DSL<PlatesCreator>() {
             @NestedDSL
             fun durability(func: () -> Float) {
-                tool.armor["plates"]!!["durability"] = func()
+                material.armor["plates"]!!["durability"] = func()
             }
 
             @NestedDSL
             fun modifier(func: () -> Float) {
-                tool.armor["plates"]!!["modifier"] = func()
+                material.armor["plates"]!!["modifier"] = func()
             }
 
             @NestedDSL
             fun toughness(func: () -> Float) {
-                tool.armor["plates"]!!["toughness"] = func()
+                material.armor["plates"]!!["toughness"] = func()
             }
         }
 
         inner class TrimCreator : DSL<TrimCreator>() {
             @NestedDSL
             fun extraDurability(func: () -> Float) {
-                tool.armor["trim"]!!["extraDurability"] = func()
+                material.armor["trim"]!!["extraDurability"] = func()
             }
         }
 

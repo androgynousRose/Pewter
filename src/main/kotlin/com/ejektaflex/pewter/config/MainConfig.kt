@@ -30,7 +30,7 @@ open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
 
         for ((mod, materialList) in TinkerMaterials.materials) {
             val catName = "material blacklist: $mod"
-            val comment = "Possible materials you can blacklist: ${materialList.map { it.tool.name }}"
+            val comment = "Possible materials you can blacklist: ${materialList.map { it.material.name }}"
             config.addCustomCategoryComment(catName, comment)
             val got = config.getStringList(
                     "materialBlacklist",

@@ -119,7 +119,7 @@ class MaterialRegistrar(val stats: MaterialStats) {
     private fun addTrait(name: String, matPart: MatPart? = null): Boolean {
         val imod = TinkerRegistry.getModifier(name)
         return if (imod != null && imod is ITrait) {
-            // If no specific part given, given to all tool mat parts
+            // If no specific part given, given to all material mat parts
             if (matPart == null) {
                 for (part in MatPart.values().filter { !it.isArmorPart }) {
                     tinkMaterial.addTrait(imod, part.dependency)

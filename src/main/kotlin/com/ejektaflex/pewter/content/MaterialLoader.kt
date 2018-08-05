@@ -14,7 +14,7 @@ import java.io.FileWriter
 import java.io.IOException
 import java.nio.file.Files
 
-object ContentLoader {
+object MaterialLoader {
 
     fun loadContent() {
         saveInternalData()
@@ -41,8 +41,8 @@ object ContentLoader {
     private fun saveDSLMaterial(location: File, materialDSL: MaterialDSL, fileName: String? = null) {
         val gson = GsonBuilder().setPrettyPrinting().create()
         try {
-            FileWriter("$location\\${fileName ?: materialDSL.tool.name}.json").use { writer ->
-                gson.toJson(materialDSL.tool, writer)
+            FileWriter("$location\\${fileName ?: materialDSL.material.name}.json").use { writer ->
+                gson.toJson(materialDSL.material, writer)
             }
         } catch (e: IOException) {
             e.printStackTrace()
@@ -52,11 +52,11 @@ object ContentLoader {
     private fun saveInternalData() {
         val existingFiles = Pewter.CONFIG.BUILTINDIR.listFiles()
         val flatMaterials = TinkerMaterials.flattened
-        val materialsToSave = flatMaterials.filter { it.second.tool.name !in Pewter.CONFIG.MAIN.blacklistedMaterials }
+        val materialsToSave = flatMaterials.filter { it.second.material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials }
         val materialsToPurge = flatMaterials - materialsToSave
 
         if (Pewter.CONFIG.MAIN.purge) {
-            val namesOfMaterialsToPurge = materialsToPurge.map { it.second.tool.name }
+            val namesOfMaterialsToPurge = materialsToPurge.map { it.second.material.name }
             for (file in existingFiles) {
                 if (file.nameWithoutExtension in namesOfMaterialsToPurge) {
                     Pewter.LOGGER.info("Purging material ${file.nameWithoutExtension}")
@@ -68,11 +68,11 @@ object ContentLoader {
         // For all builtin materials, save them
         for ((modName, dsl) in materialsToSave) {
             if (Loader.isModLoaded(modName)) {
-                if (dsl.tool.name !in existingFiles.map { it.nameWithoutExtension } || Pewter.CONFIG.MAIN.overwrite) {
-                    Pewter.LOGGER.info("Saving mod $modName material ${dsl.tool.name}")
+                if (dsl.material.name !in existingFiles.map { it.nameWithoutExtension } || Pewter.CONFIG.MAIN.overwrite) {
+                    Pewter.LOGGER.info("Saving mod $modName material ${dsl.material.name}")
                     saveDSLMaterial(Pewter.CONFIG.BUILTINDIR, dsl)
                 } else {
-                    Pewter.LOGGER.info("Skipping integration of ${dsl.tool.name}; file already exists")
+                    Pewter.LOGGER.info("Skipping integration of ${dsl.material.name}; file already exists")
                 }
             } else {
                 Pewter.LOGGER.info("$modName is not loaded, skipping integration...")
