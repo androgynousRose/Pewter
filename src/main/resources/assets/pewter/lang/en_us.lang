@@ -61,6 +61,9 @@ modifier.kindle.desc=§oSizzlin'!§r\nHas a chance to repair durability if the e
 modifier.kindle_armor.name=Kindle
 modifier.kindle_armor.desc=§oSizzlin'§r\nHas a chance to repair durability if hit by an enemy that is on fire or in lava.
 
+modifier.maniacal_armor.name=Maniacal
+modifier.maniacal_armor.desc=§oMad Scientist!§r\nIncreased defense based on how much warp the player has accumulated.
+
 modifier.polluted.name=Polluted
 modifier.polluted.desc=§oSlightly Toxic.§r\nHitting enemies has a chance of releasing flux.
 
@@ -75,3 +78,4 @@ modifier.warping.desc=§oDon't Forget The Soap!§r\nTool usage slowly warps the 
 
 modifier.visbarrier_armor.name=Vis Barrier
 modifier.visbarrier_armor.desc=§oUse the Vis!§r\nTaking damage has a chance of repairing the armor, feeding off of vis from the Aura.
+

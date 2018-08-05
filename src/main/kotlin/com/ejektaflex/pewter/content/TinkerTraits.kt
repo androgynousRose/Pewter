@@ -1,9 +1,6 @@
 package com.ejektaflex.pewter.content
 
-import com.ejektaflex.pewter.traits.armor.ArmorCorrosive
-import com.ejektaflex.pewter.traits.armor.ArmorInflamed
-import com.ejektaflex.pewter.traits.armor.ArmorKindle
-import com.ejektaflex.pewter.traits.armor.ArmorVisBarrier
+import com.ejektaflex.pewter.traits.armor.*
 import com.ejektaflex.pewter.traits.tools.*
 
 class TinkerTraits {
@@ -24,7 +21,8 @@ class TinkerTraits {
                 ArmorKindle(),
                 ArmorInflamed(),
                 ArmorCorrosive(),
-                ArmorVisBarrier()
+                ArmorVisBarrier(),
+                ArmorManiacal()
         )
     }
 

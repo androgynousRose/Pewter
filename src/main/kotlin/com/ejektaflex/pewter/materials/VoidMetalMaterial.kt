@@ -44,6 +44,7 @@ class VoidMetalMaterial : MaterialDSL("voidmetal", "#2A114A", {
     }
 
     armor {
+        armorTrait("maniacal_armor")
         core {
             durability { 16.5f }
             defense { 17.5f }
