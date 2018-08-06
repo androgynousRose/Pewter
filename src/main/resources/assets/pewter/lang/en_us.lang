@@ -44,7 +44,7 @@ modifier.corrosive.desc=§oEdgy!§r\nMaterial corrodes over time in The Betweenl
 modifier.corrosive.tooltip=Corrosion: %s
 
 modifier.corrosive_armor.name=Corrosive
-modifier.corrosive_armor.desc=§oEdgy!§r\nMaterial corrodes over time in The Betweenlands. Does 25% damage reduction against mobs from that dimension. Repair to clear corrosion.
+modifier.corrosive_armor.desc=§oEdgy!§r\nMaterial corrodes over time in The Betweenlands. 25% damage reduction against mobs from that dimension. Repair to clear corrosion.
 
 modifier.essentia.name=Essentia
 modifier.essentia.desc=§oOnly the essentials!§r\nKilling enemies and breaking blocks has a chance of converting them to crystal essence, generating a tiny amount of flux.
@@ -52,14 +52,14 @@ modifier.essentia.desc=§oOnly the essentials!§r\nKilling enemies and breaking 
 modifier.gritty.name=Gritty
 modifier.gritty.desc=§oFeels So Good!§r\nAs the decay meter drains, bonus damage goes up.
 
+modifier.heatlover.name=Kindle
+modifier.heatlover.desc=§oSizzlin'!§r\nHas a chance to repair durability if the enemy is on fire or in lava.
+
+modifier.heatlover_armor.name=Kindle
+modifier.heatlover_armor.desc=§oSizzlin'§r\nHas a chance to repair durability if hit by an enemy that is on fire or in lava.
+
 modifier.inflamed_armor.name=Inflamed
 modifier.inflamed_armor.desc=§oFwoosh!§r\nRepairs armor durability when on fire.
-
-modifier.kindle.name=Kindle
-modifier.kindle.desc=§oSizzlin'!§r\nHas a chance to repair durability if the enemy is on fire or in lava.
-
-modifier.kindle_armor.name=Kindle
-modifier.kindle_armor.desc=§oSizzlin'§r\nHas a chance to repair durability if hit by an enemy that is on fire or in lava.
 
 modifier.maniacal_armor.name=Maniacal
 modifier.maniacal_armor.desc=§oMad Scientist!§r\nIncreased defense based on how much warp the player has accumulated.
@@ -72,6 +72,9 @@ modifier.sapping.desc=§oAlchemical Trade!§r\nDamaging enemies usually steals a
 
 modifier.sparking.name=Spark
 modifier.sparking.desc=§oFighting With Fire!§r\nHitting enemies has a chance of setting them on fire. Hitting enemies on fire does 33% bonus damage.
+
+modifier.splash_armor.name=Splash
+modifier.splash_armor.desc=§oNothing happened!§r\nReflects damage taken on attackers when in water.
 
 modifier.warping.name=Warping
 modifier.warping.desc=§oDon't Forget The Soap!§r\nTool usage slowly warps the user's mind.

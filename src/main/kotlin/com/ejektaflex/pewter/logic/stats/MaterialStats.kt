@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.logic.stats
 
 import c4.conarm.lib.materials.*
+import com.ejektaflex.pewter.Pewter
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*
 
@@ -58,7 +59,7 @@ class MaterialStats {
     private fun addStats(m: Material, part: MatPart) {
         // If it's an armor part, only register if we have armor stats
         if (part.isArmorPart) {
-            if (armor != null) {
+            if (armor != null && Pewter.CONFIG.MAIN.conarmIntegration) {
                 TinkerRegistry.addMaterialStats(m, part.stats(this))
             }
         } else {

@@ -17,6 +17,7 @@ class SyrmoriteMaterial : MaterialDSL("syrmorite", "#1E336C", {
     tool {
 
         toolTrait("corrosive")
+
         head {
             durability { 620 }
             attack { 5.1f }
@@ -45,6 +46,8 @@ class SyrmoriteMaterial : MaterialDSL("syrmorite", "#1E336C", {
 
     armor {
         armorTrait("corrosive_armor")
+        armorTrait("splash_armor")
+
         core {
             durability { 16.5f }
             defense { 16f }

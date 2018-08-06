@@ -23,6 +23,7 @@ class ArmorVisBarrier : PewterArmorTrait("Vis Barrier", 0xFF2334) {
         val visInAir = AuraHelper.getVis(player.world, player.position)
 
         if (visInAir > DRAIN_AMOUNT && random.nextFloat() < DRAIN_CHANCE) {
+            // Particles.ENDSPEED
             TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_ARMOR, player, 1)
             ArmorHelper.repairArmor(armor, REPAIR_AMOUNT, player)
             AuraHelper.drainVis(player.world, player.position, DRAIN_AMOUNT, false)

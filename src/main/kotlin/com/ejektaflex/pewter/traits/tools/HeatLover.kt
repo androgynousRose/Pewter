@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.library.utils.ToolHelper
 
 
-class Kindle : PewterTrait("Kindle", 0xFF2334) {
+class HeatLover : PewterTrait("Heat Lover", 0xFF2334) {
     override fun onHit(tool: ItemStack, player: EntityLivingBase, target: EntityLivingBase, damage: Float, isCritical: Boolean) {
         if (target.isBurning) {
             val prob = random.nextFloat()

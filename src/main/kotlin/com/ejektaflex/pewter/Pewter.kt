@@ -4,6 +4,7 @@ import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.logic.MaterialRegistrar
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraftforge.common.MinecraftForge
+import net.minecraftforge.fml.common.Loader
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventHandler
 import net.minecraftforge.fml.common.SidedProxy
@@ -26,6 +27,10 @@ object Pewter {
         CONFIG.initialize(event.modConfigurationDirectory)
 
         CONFIG.save()
+
+        // Set integration
+        CONFIG.MAIN.conarmIntegration = CONFIG.MAIN.conarmIntegration && Loader.isModLoaded("conarm")
+
         proxy.preInit(event)
         CONFIG.load()
 
@@ -56,7 +61,7 @@ object Pewter {
 
     const val MODID = "pewter"
     const val NAME = "Pewter"
-    const val VERSION = "0.4.0"
+    const val VERSION = "0.5.0"
     const val VERSIONS = "1.12"
     const val DEPENDS = "required-after:tconstruct;" +
             "required-after:forgelin;" +

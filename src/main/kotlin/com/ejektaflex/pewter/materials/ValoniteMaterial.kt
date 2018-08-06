@@ -46,6 +46,8 @@ class ValoniteMaterial : MaterialDSL("valonite", "#845784", {
 
     armor {
         armorTrait("corrosive_armor")
+        armorTrait("rough_armor")
+
         core {
             durability { 12.5f }
             defense { 15.5f }

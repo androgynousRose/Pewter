@@ -13,7 +13,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper
 import kotlin.math.abs
 import kotlin.math.ceil
 
-class ArmorKindle : PewterArmorTrait("Kindle", 0xFF2334) {
+class ArmorHeatLover : PewterArmorTrait("Heat Lover", 0xFF2334) {
 
     override fun onHit(tool: ItemStack, player: EntityLivingBase, target: EntityLivingBase, damage: Float, isCritical: Boolean) {
 

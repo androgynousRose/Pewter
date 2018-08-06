@@ -2,28 +2,36 @@ package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.traits.armor.*
 import com.ejektaflex.pewter.traits.tools.*
+import net.minecraftforge.fml.common.Loader
+import slimeknights.tconstruct.library.modifiers.Modifier
 
-class TinkerTraits {
+object TinkerTraits {
 
-    companion object {
-        val traits = listOf(
-                Brilliance(),
-                Kindle(),
-                Polluted(),
-                Essentia(),
-                Aural(),
-                Warping(),
-                Sapping(),
-                Corrosive(),
-                Sparking(),
-                Gritty(),
+    val traits = mutableListOf<Modifier>(
+            Brilliance(),
+            HeatLover(),
+            Polluted(),
+            Essentia(),
+            Aural(),
+            Warping(),
+            Sapping(),
+            Corrosive(),
+            Sparking(),
+            Gritty()
+    )
 
-                ArmorKindle(),
-                ArmorInflamed(),
-                ArmorCorrosive(),
-                ArmorVisBarrier(),
-                ArmorManiacal()
-        )
+    init {
+        if (Loader.isModLoaded("conarm")) {
+            val conArmTraits = listOf(
+                    ArmorHeatLover(),
+                    ArmorInflamed(),
+                    ArmorCorrosive(),
+                    ArmorVisBarrier(),
+                    ArmorManiacal(),
+                    ArmorSplash()
+            )
+            traits.addAll(conArmTraits)
+        }
     }
 
 }

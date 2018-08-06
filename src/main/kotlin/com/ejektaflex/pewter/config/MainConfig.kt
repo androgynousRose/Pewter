@@ -6,6 +6,7 @@ import com.ejektaflex.pewter.content.TinkerMaterials
 open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
     open var overwrite: Boolean = true
     open var purge: Boolean = true
+    open var conarmIntegration: Boolean = true
 
     var blacklistedMaterials = mutableListOf<String>()
 
@@ -26,6 +27,13 @@ open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
                 "purgeUnusedIntegrations",
                 true,
                 "If set to true, will remove integration files for materials that have been turned off"
+        ).boolean
+
+        conarmIntegration = config.get(
+                CATEGORY_GENERAL,
+                "ConstructsArmoryIntegration",
+                true,
+                "If set to true, will add materials as armor to Construct's Armory where available"
         ).boolean
 
         for ((mod, materialList) in TinkerMaterials.materials) {

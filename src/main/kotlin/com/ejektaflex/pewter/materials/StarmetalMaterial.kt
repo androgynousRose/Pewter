@@ -8,7 +8,7 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
     ingots("astralsorcery:itemcraftingcomponent:1")
     defaultMetalParts()
     addTraits(
-            "EXTRA" to "dense"
+            "HEAD" to "dense"
     )
     shininess(0.6f)
     tool {
@@ -42,6 +42,7 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
 
     // higher attack lower speed
     armor {
+        armorTrait("featherweight_armor")
         core {
             durability { 14f }
             defense { 10f }
