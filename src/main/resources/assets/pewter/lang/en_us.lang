@@ -58,10 +58,10 @@ modifier.essentia.desc=§oOnly the essentials!§r\nKilling enemies and breaking 
 modifier.gritty.name=Gritty
 modifier.gritty.desc=§oFeels So Good!§r\nAs the decay meter drains, bonus damage goes up.
 
-modifier.heatlover.name=Kindle
+modifier.heatlover.name=Heat Lover
 modifier.heatlover.desc=§oSizzlin'!§r\nHas a chance to repair durability if the enemy is on fire or in lava.
 
-modifier.heatlover_armor.name=Kindle
+modifier.heatlover_armor.name=Heat Lover
 modifier.heatlover_armor.desc=§oSizzlin'§r\nHas a chance to repair durability if hit by an enemy that is on fire or in lava.
 
 modifier.heavyweight.name=Heavyweight

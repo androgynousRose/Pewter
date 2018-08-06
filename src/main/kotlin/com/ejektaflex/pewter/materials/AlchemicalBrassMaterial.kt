@@ -12,7 +12,10 @@ class AlchemicalBrassMaterial : MaterialDSL("alchemicalbrass", "#D2983A", {
     fluid("brass")
     defaultMetalParts()
     addTraits(
-            "HEAD" to "attuned"
+            "HEAD" to "attuned",
+            "CORE" to "shielding_armor",
+            "PLATES" to "dense_armor",
+            "TRIM" to "dense_armor"
     )
     tool {
 
@@ -45,7 +48,7 @@ class AlchemicalBrassMaterial : MaterialDSL("alchemicalbrass", "#D2983A", {
     }
 
     armor {
-        //armorTrait("visbarrier_armor")
+
         core {
             durability { 12f }
             defense { 14f }
@@ -56,7 +59,7 @@ class AlchemicalBrassMaterial : MaterialDSL("alchemicalbrass", "#D2983A", {
             toughness { 0f }
         }
         trim {
-            extraDurability { 3.5f }
+            extraDurability { 4f }
         }
     }
 
