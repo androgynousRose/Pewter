@@ -1,5 +1,8 @@
 ### Materials ###
 
+material.alchemicalbrass.name=Alchemical Brass
+# fluid already taken from tinkers'
+
 material.hellfire.name=Hellfire
 fluid.pewter.hellfire.name=Molten Hellfire
 

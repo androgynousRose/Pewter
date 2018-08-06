@@ -40,10 +40,14 @@ class ClientProxy : CommonProxy() {
             material.fluid?.let {
                 val mapper = FluidStateMapper(it)
                 // Item Model
-                ModelLoader.registerItemVariants(material.fluidItem)
-                ModelLoader.setCustomMeshDefinition(material.fluidItem, mapper)
+                if (material.fluidItem != null) {
+                    ModelLoader.registerItemVariants(material.fluidItem)
+                    ModelLoader.setCustomMeshDefinition(material.fluidItem, mapper)
+                }
                 // Block Model
-                ModelLoader.setCustomStateMapper(material.block, mapper)
+                if (material.block != null) {
+                    ModelLoader.setCustomStateMapper(material.block, mapper)
+                }
             }
             material.tinkMaterial.setRenderInfo(
                     MaterialRenderInfo.Metal(Color.decode(material.stats.color).rgb,

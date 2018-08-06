@@ -16,7 +16,8 @@ object TinkerMaterials {
             ),
             "thaumcraft" to listOf(
                     ThaumiumMaterial(),
-                    VoidMetalMaterial()
+                    VoidMetalMaterial(),
+                    AlchemicalBrassMaterial()
             ),
             "thebetweenlands" to listOf(
                     OctineMaterial(),

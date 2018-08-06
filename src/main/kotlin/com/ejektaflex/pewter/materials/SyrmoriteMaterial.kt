@@ -62,5 +62,4 @@ class SyrmoriteMaterial : MaterialDSL("syrmorite", "#1E336C", {
         }
     }
 
-
 })

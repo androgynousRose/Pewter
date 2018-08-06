@@ -2,6 +2,7 @@ package com.ejektaflex.pewter.logic.stats
 
 import c4.conarm.lib.materials.*
 import com.ejektaflex.pewter.Pewter
+import net.minecraftforge.fluids.Fluid
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*
 
@@ -13,12 +14,14 @@ class MaterialStats {
     var craftable = false
     var madeInToolForge = false
     var name = "doot"
+    var createMeltingRecipes = true
     var meltingTemperature = 475
     var looks = mutableMapOf(
             "shininess" to 0.25f,
             "brightness" to 0.25f,
             "hueshift" to -0.1f
     )
+    var fluidName: String? = null
     var fluid = mutableMapOf(
             "viscosity" to 8000,
             "density" to 1500,

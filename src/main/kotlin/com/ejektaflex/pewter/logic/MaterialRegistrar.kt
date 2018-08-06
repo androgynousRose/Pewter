@@ -18,7 +18,6 @@ import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.library.materials.Material
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe
 import slimeknights.tconstruct.library.traits.ITrait
-import slimeknights.tconstruct.smeltery.TinkerSmeltery
 import slimeknights.tconstruct.smeltery.block.BlockMolten
 import java.awt.Color
 
@@ -27,8 +26,8 @@ class MaterialRegistrar(val stats: MaterialStats) {
     private lateinit var integration: MaterialIntegration
     lateinit var tinkMaterial: Material
     var fluid: Fluid? = null
-    lateinit var block: Block
-    lateinit var fluidItem: ItemBlock
+    var block: Block? = null
+    var fluidItem: ItemBlock? = null
 
     init {
         createMaterial()
@@ -60,14 +59,15 @@ class MaterialRegistrar(val stats: MaterialStats) {
                     OreDictionary.registerOre(tag, itemStack) // This may not be working?
                     tinkMaterial.addItem(itemStack, 1, strMap[type]!!)
 
-                    // Register melting the item into it's fluid form (if there is a fluid)
-                    fluid?.let {
+                    if (fluid != null && stats.createMeltingRecipes) {
+                        //*
                         val meltingRecipe = MeltingRecipe(
                                 RecipeMatch.of(itemStack, strMap[type]!!),
                                 fluid,
                                 stats.meltingTemperature
                         )
                         TinkerRegistry.registerMelting(meltingRecipe)
+                        //*/
                     }
                 } else {
                     Pewter.LOGGER.warn("Could not associate $itemString with material named '${stats.name}'! Reason is because the item doesn't exist.")
@@ -81,7 +81,7 @@ class MaterialRegistrar(val stats: MaterialStats) {
         val itemToRepresentWith = stats.smelting["ingot"]?.get(0)?.toItemStack
 
         itemToRepresentWith?.let {
-            tinkMaterial.addItem(it, 1, Material.VALUE_Ingot)
+            //tinkMaterial.addItem(it, 1, Material.VALUE_Ingot)
             Pewter.LOGGER.info("Representing ${stats.name} with a $it")
             tinkMaterial.representativeItem = it
             Pewter.LOGGER.info("${stats.name} is being represented by a ${tinkMaterial.representativeItem}")
@@ -140,6 +140,20 @@ class MaterialRegistrar(val stats: MaterialStats) {
             return
         }
 
+        if (stats.fluidName != null) {
+            Pewter.LOGGER.info("Instead of making a fluid for material ${stats.name}, we are going to use ${stats.fluidName}")
+            Pewter.LOGGER.info("All fluids: ${FluidRegistry.getBucketFluids().map { it.unlocalizedName }}")
+
+            val fluidToUse = FluidRegistry.getFluid(stats.fluidName)
+            if (fluidToUse != null) {
+                fluid = fluidToUse
+                return
+            } else {
+                throw Exception("No fluid was found matching the name: ${stats.fluidName}. " +
+                        "These were the fluids that WERE found: ${FluidRegistry.getBucketFluids().map { it.name }}")
+            }
+        }
+
         Pewter.LOGGER.info("Making fluid for material ${stats.name}")
 
         var name = stats.name.toLowerCase()
@@ -155,9 +169,10 @@ class MaterialRegistrar(val stats: MaterialStats) {
 
         name = "molten_$name"
         // Create block
-        block = BlockMolten(fluid)
-        block.unlocalizedName = "${Pewter.MODID}.$name"
-        block.registryName = name.resource
+        block = BlockMolten(fluid).apply {
+            unlocalizedName = "${Pewter.MODID}.$name"
+            registryName = name.resource
+        }
         //block.setCreativeTab(null)
 
         ForgeRegistries.BLOCKS.register(block)
@@ -183,16 +198,8 @@ class MaterialRegistrar(val stats: MaterialStats) {
         val prefix = "ingot"
         val suffix = stats.name.capitalize()
 
-        // Add ingot for item
-        /*
-        ingot.let {
-            tinkMaterial.addItem(prefix + suffix, 1, Material.VALUE_Ingot)
-            tinkMaterial.representativeItem = it
-        }
-        */
-
         // Integrate
-        integration = MaterialIntegration(prefix + suffix, tinkMaterial, fluid, suffix).apply {
+        integration = MaterialIntegration(prefix + suffix, tinkMaterial, fluid, null).apply {
             if (stats.madeInToolForge) { this.toolforge() }
             preInit()
         }

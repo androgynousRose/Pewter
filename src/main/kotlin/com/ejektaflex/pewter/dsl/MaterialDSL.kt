@@ -30,8 +30,18 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     }
 
     @TopLevelToolDSL
+    fun noMeltRecipes() {
+        material.createMeltingRecipes = false
+    }
+
+    @TopLevelToolDSL
     fun meltsAt(n: Int) {
         material.meltingTemperature = n
+    }
+
+    @TopLevelToolDSL
+    fun brightness(f: Float) {
+        material.looks["brightness"] = f
     }
 
     @TopLevelToolDSL
@@ -89,6 +99,11 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     @TopLevelToolDSL
     fun ores(vararg blo: String) {
         material.smelting["ore"]!!.addAll(blo)
+    }
+
+    @TopLevelToolDSL
+    fun fluid(flu: String) {
+        material.fluidName = flu
     }
 
     @TopLevelToolDSL
