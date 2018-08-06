@@ -24,7 +24,7 @@ class VoidMetalMaterial : MaterialDSL("voidmetal", "#2A114A", {
             harvestLevel(3)
         }
         handle {
-            durability { -15 }
+            durability { -55 }
             modifier { 1.15f }
         }
         extra {
