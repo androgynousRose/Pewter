@@ -28,11 +28,11 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
             durability { 65 }
         }
         bow {
-            speed(2.5f)
+            speed(2.1f)
             accuracy { 1.0f }
-            range { 1.6f }
+            range { 1.1f }
             string { 0.2f }
-            bonusDamage { 6.5f }
+            bonusDamage { 4.5f }
         }
         shaft {
             modifier { 1.2f }

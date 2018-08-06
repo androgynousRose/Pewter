@@ -25,7 +25,6 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF362C", {
         }
         bow {
             speed(2.5f)
-            accuracy { 0.0f }
             range { 0.5f }
             string { 0.85f }
             bonusDamage { -0.5f }

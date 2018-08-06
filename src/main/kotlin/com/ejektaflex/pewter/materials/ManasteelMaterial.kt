@@ -9,6 +9,7 @@ class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
     ingots("botania:manaresource")
     nuggets("botania:manaresource:17")
     defaultMetalParts()
+    shininess(0.8f)
     addTraits(
             "HEAD" to "essentia"
     )
@@ -18,8 +19,8 @@ class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
 
         head {
             durability { 256 }
-            attack { 4.5f }
-            speed { 6.25f }
+            attack { 4.2f }
+            speed { 6f }
             harvestLevel(1)
         }
         handle {
@@ -31,7 +32,6 @@ class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
         }
         bow {
             speed(2.5f)
-            accuracy { 0.85f }
             range { 1.75f }
             string { 0.05f }
             bonusDamage { 6.5f }

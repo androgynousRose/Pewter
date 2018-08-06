@@ -35,10 +35,9 @@ class AlchemicalBrassMaterial : MaterialDSL("alchemicalbrass", "#D2983A", {
             durability { 35 }
         }
         bow {
-            speed(2.5f)
-            accuracy { 0.85f }
-            range { 1.75f }
-            string { 0.05f }
+            speed(6f)
+            range { 1f }
+            //string { 0.05f }
             bonusDamage { 6.5f }
         }
         shaft {

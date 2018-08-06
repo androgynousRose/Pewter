@@ -2,14 +2,14 @@ package com.ejektaflex.pewter.materials
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
+class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
     forge { true }
     craft { false }
-    blocks("botania:storage")
-    ingots("botania:manaresource")
-    nuggets("botania:manaresource:17")
+    blocks("botania:storage:1")
+    ingots("botania:manaresource:4")
+    nuggets("botania:manaresource:18")
     defaultMetalParts()
-    shininess(0.8f)
+    shininess(0.35f)
     addTraits(
             "HEAD" to "essentia"
     )
@@ -18,21 +18,20 @@ class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
         toolTrait("manainfused")
 
         head {
-            durability { 256 }
-            attack { 4.2f }
-            speed { 6.25f }
-            harvestLevel(1)
+            durability { 1504 }
+            attack { 5.1f }
+            speed { 6f }
+            harvestLevel(2)
         }
         handle {
-            durability { 100 }
-            modifier { 0.85f }
+            durability { 0 }
+            modifier { 0.9f }
         }
         extra {
-            durability { 75 }
+            durability { 85 }
         }
         bow {
             speed(2.5f)
-            accuracy { 0.85f }
             range { 1.75f }
             string { 0.05f }
             bonusDamage { 6.5f }

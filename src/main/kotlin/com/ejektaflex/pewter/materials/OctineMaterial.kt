@@ -31,11 +31,10 @@ class OctineMaterial : MaterialDSL("octine", "#F38A20", {
             durability { 95 }
         }
         bow {
-            speed(2.5f)
-            accuracy { 0.0f }
-            range { 0.5f }
+            speed(2f)
+            range { 0.7f }
             string { 0.85f }
-            bonusDamage { -0.5f }
+            bonusDamage { -1.5f }
         }
         shaft {
             modifier { 0.85f }

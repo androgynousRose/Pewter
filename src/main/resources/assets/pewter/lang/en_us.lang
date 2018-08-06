@@ -9,6 +9,9 @@ fluid.pewter.hellfire.name=Molten Hellfire
 material.dragonflywing.name=Dragonfly Wing
 # no fluid available for dragonfly wint
 
+material.manasteel.name=Manasteel
+fluid.pewter.manasteel.name=Molten Manasteel
+
 material.manastring.name=Mana String
 # no fluid available for manastring
 

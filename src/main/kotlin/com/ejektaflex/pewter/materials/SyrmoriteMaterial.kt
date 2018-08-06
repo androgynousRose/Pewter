@@ -33,7 +33,6 @@ class SyrmoriteMaterial : MaterialDSL("syrmorite", "#1E336C", {
         }
         bow {
             speed(2.5f)
-            accuracy { 1.0f }
             range { 0.5f }
             string { 0.85f }
             bonusDamage { 1.5f }

@@ -32,8 +32,7 @@ class ValoniteMaterial : MaterialDSL("valonite", "#845784", {
             durability { 160 }
         }
         bow {
-            speed(4f)
-            accuracy { 1.0f }
+            speed(5f)
             range { 0.5f }
             string { 0.85f }
             bonusDamage { 1.5f }
