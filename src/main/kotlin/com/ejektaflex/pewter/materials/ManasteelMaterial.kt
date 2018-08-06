@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.materials
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class ManasteelMaterial : MaterialDSL("manasteel", "#6F43E8", {
+class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
     forge { true }
     craft { false }
     blocks("botania:storage")

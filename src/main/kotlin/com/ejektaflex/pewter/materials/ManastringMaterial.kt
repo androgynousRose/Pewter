@@ -10,6 +10,7 @@ class ManastringMaterial : MaterialDSL("manastring", "#6BBEBF", {
     parts(MatPart.BOWSTRING)
     //toolTrait("heatlover")
     tool {
+        toolTrait("manainfused")
         bow {
             string { 0.85f }
         }
