@@ -1,31 +1,35 @@
-package com.ejektaflex.pewter.materials
+package com.ejektaflex.pewter.materials.botania
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
+class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
     forge { true }
     craft { false }
-    ingots("thaumcraft:ingot:0")
+    blocks("botania:storage:1")
+    ingots("botania:manaresource:4")
+    nuggets("botania:manaresource:18")
     defaultMetalParts()
+    brightness(0.1f)
+    shininess(0.35f)
     addTraits(
             "HEAD" to "essentia"
     )
     tool {
 
-        toolTrait("aural")
+        toolTrait("manainfused")
 
         head {
-            durability { 300 }
-            attack { 4f }
-            speed { 6.5f }
-            harvestLevel(1)
+            durability { 1504 }
+            attack { 5.1f }
+            speed { 6f }
+            harvestLevel(2)
         }
         handle {
-            durability { 65 }
+            durability { 0 }
             modifier { 0.9f }
         }
         extra {
-            durability { 35 }
+            durability { 85 }
         }
         bow {
             speed(2.5f)
@@ -43,7 +47,7 @@ class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
         armorTrait("visbarrier_armor")
         core {
             durability { 12f }
-            defense { 14f }
+            defense { 18f }
         }
         plates {
             modifier { 0.9f }

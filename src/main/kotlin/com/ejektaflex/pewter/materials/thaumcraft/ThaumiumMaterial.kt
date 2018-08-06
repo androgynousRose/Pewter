@@ -1,43 +1,36 @@
-package com.ejektaflex.pewter.materials
+package com.ejektaflex.pewter.materials.thaumcraft
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class AlchemicalBrassMaterial : MaterialDSL("alchemicalbrass", "#D2983A", {
+class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
     forge { true }
     craft { false }
-    ingots("thaumcraft:ingot:2")
-    nuggets("thaumcraft:nugget:8")
-    blocks("thaumcraft:metal_brass")
-    noMeltRecipes()
-    fluid("brass")
+    ingots("thaumcraft:ingot:0")
     defaultMetalParts()
     addTraits(
-            "HEAD" to "attuned",
-            "CORE" to "shielding_armor",
-            "PLATES" to "dense_armor",
-            "TRIM" to "dense_armor"
+            "HEAD" to "essentia"
     )
     tool {
 
-        toolTrait("heavyweight")
+        toolTrait("aural")
 
         head {
-            durability { 240 }
+            durability { 300 }
             attack { 4f }
             speed { 6.5f }
             harvestLevel(1)
         }
         handle {
-            durability { 105 }
-            modifier { 1.05f }
+            durability { 65 }
+            modifier { 0.9f }
         }
         extra {
             durability { 35 }
         }
         bow {
-            speed(6f)
-            range { 1f }
-            //string { 0.05f }
+            speed(2.5f)
+            range { 1.75f }
+            string { 0.05f }
             bonusDamage { 6.5f }
         }
         shaft {
@@ -47,7 +40,7 @@ class AlchemicalBrassMaterial : MaterialDSL("alchemicalbrass", "#D2983A", {
     }
 
     armor {
-
+        armorTrait("visbarrier_armor")
         core {
             durability { 12f }
             defense { 14f }
@@ -58,7 +51,7 @@ class AlchemicalBrassMaterial : MaterialDSL("alchemicalbrass", "#D2983A", {
             toughness { 0f }
         }
         trim {
-            extraDurability { 4f }
+            extraDurability { 3.5f }
         }
     }
 

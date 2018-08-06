@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.dsl.MaterialDSL
-import com.ejektaflex.pewter.materials.ExampleMaterial
+import com.ejektaflex.pewter.materials.example.ExampleMaterial
 import com.ejektaflex.pewter.logic.MaterialRegistrar
 import com.ejektaflex.pewter.logic.stats.MaterialStats
 import com.google.gson.Gson

@@ -24,6 +24,9 @@ fluid.pewter.starmetal.name=Molten Starmetal
 material.syrmorite.name=Syrmorite
 fluid.pewter.syrmorite.name=Molten Syrmorite
 
+material.terrasteel.name=Terrasteel
+fluid.pewter.terrasteel.name=Molten Terrasteel
+
 material.thaumium.name=Thaumium
 fluid.pewter.thaumium.name=Molten Thaumium
 
