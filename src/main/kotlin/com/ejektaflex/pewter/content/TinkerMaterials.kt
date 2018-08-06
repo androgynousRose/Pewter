@@ -12,6 +12,7 @@ object TinkerMaterials {
                     HellfireMaterial()
             ),
             "botania" to listOf(
+                    ManasteelMaterial(),
                     ManastringMaterial()
             ),
             "thaumcraft" to listOf(

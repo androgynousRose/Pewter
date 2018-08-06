@@ -70,6 +70,9 @@ modifier.heavyweight.desc=§oThunk.§r\n10% bonus attack damage, 5% less attack 
 modifier.inflamed_armor.name=Inflamed
 modifier.inflamed_armor.desc=§oFwoosh!§r\nRepairs armor durability when on fire.
 
+modifier.manainfused.name=Mana Infused
+modifier.manainfused.desc=§oMagic!§r\nDraws from mana items in your inventory to repair itself.
+
 modifier.maniacal_armor.name=Maniacal
 modifier.maniacal_armor.desc=§oMad Scientist!§r\nIncreased defense based on how much warp the player has accumulated.
 
