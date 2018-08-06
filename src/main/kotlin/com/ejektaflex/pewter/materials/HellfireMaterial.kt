@@ -9,7 +9,7 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF362C", {
     ingots("betterwithmods:material:17")
     defaultMetalParts()
     tool {
-        toolTrait("kindle")
+        toolTrait("heatlover")
         head {
             durability { 335 }
             attack { 4f }
@@ -39,7 +39,7 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF362C", {
     // little more durable little slower mining speed
 
     armor {
-        armorTrait("kindle_armor")
+        armorTrait("heatlover_armor")
         core {
             durability { 15.5f }
             defense { 13f }

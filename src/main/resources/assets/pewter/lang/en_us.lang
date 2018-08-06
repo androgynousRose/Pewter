@@ -36,6 +36,9 @@ material.weedwood.name=Weedwood
 
 ### Traits ###
 
+modifier.attuned.name=Attuned
+modifier.attuned.desc=§oIn sync with the world!§r\nRepairing gives bonus durability based on vis and flux in the Aura.
+
 modifier.aural.name=Aural
 modifier.aural.desc=§oIt all bounces back, right?§r\nTool use has a chance of feeding off of the Aura instead of using durability
 
@@ -60,6 +63,9 @@ modifier.heatlover.desc=§oSizzlin'!§r\nHas a chance to repair durability if th
 
 modifier.heatlover_armor.name=Kindle
 modifier.heatlover_armor.desc=§oSizzlin'§r\nHas a chance to repair durability if hit by an enemy that is on fire or in lava.
+
+modifier.heavyweight.name=Heavyweight
+modifier.heavyweight.desc=§oThunk.§r\n10% bonus attack damage, 5% less attack speed. Stacks with other heavyweight parts.
 
 modifier.inflamed_armor.name=Inflamed
 modifier.inflamed_armor.desc=§oFwoosh!§r\nRepairs armor durability when on fire.

@@ -12,11 +12,11 @@ class AlchemicalBrassMaterial : MaterialDSL("alchemicalbrass", "#D2983A", {
     fluid("brass")
     defaultMetalParts()
     addTraits(
-            "HEAD" to "essentia"
+            "HANDLE" to "attuned"
     )
     tool {
 
-        toolTrait("dense")
+        toolTrait("heavyweight")
 
         head {
             durability { 300 }

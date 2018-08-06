@@ -1,8 +1,8 @@
 package com.ejektaflex.pewter.content
 
+import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.traits.armor.*
 import com.ejektaflex.pewter.traits.tools.*
-import net.minecraftforge.fml.common.Loader
 import slimeknights.tconstruct.library.modifiers.Modifier
 
 object TinkerTraits {
@@ -17,20 +17,21 @@ object TinkerTraits {
             Sapping(),
             Corrosive(),
             Sparking(),
-            Gritty()
+            Gritty(),
+            Heavyweight(),
+            Attuned()
     )
 
     init {
-        if (Loader.isModLoaded("conarm")) {
-            val conArmTraits = listOf(
+        if (Pewter.CONFIG.MAIN.conarmIntegration) {
+            traits.addAll(listOf(
                     ArmorHeatLover(),
                     ArmorInflamed(),
                     ArmorCorrosive(),
                     ArmorVisBarrier(),
                     ArmorManiacal(),
                     ArmorSplash()
-            )
-            traits.addAll(conArmTraits)
+            ))
         }
     }
 
