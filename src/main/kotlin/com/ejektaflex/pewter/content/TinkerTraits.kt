@@ -35,7 +35,7 @@ object TinkerTraits {
                     ArmorManiacal(),
                     ArmorSplash(),
                     ArmorManaInfused(),
-                    ArmorManaHarvest()
+                    ArmorAdapting()
             ))
         }
     }

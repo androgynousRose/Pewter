@@ -22,7 +22,8 @@ object TinkerMaterials {
                     ManastringMaterial(),
                     TerrasteelMaterial(),
                     ElementiumMaterial(),
-                    LivingwoodMaterial()
+                    LivingwoodMaterial(),
+                    LivingrockMaterial()
             ),
             "thaumcraft" to listOf(
                     ThaumiumMaterial(),

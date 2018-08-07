@@ -12,6 +12,9 @@ material.dragonflywing.name=Dragonfly Wing
 material.elementium.name=Elementium
 fluid.pewter.elementium.name=Molten Elementium
 
+material.livingrock.name=Livingrock
+# no fluid for this stone
+
 material.livingwood.name=Livingwood
 # no fluid for this wood
 
@@ -47,6 +50,9 @@ material.weedwood.name=Weedwood
 
 
 ### Traits ###
+
+modifier.adapting_armor.name=Adapting
+modifier.adapting_armor.desc=§oResponds to change!§r\nYou become tougher after being attacked, at the cost of mana
 
 modifier.attuned.name=Attuned
 modifier.attuned.desc=§oIn sync with the world!§r\nRepairing gives bonus durability based on vis and flux in the Aura.
