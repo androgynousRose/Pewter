@@ -11,7 +11,7 @@ class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
     defaultMetalParts()
     shininess(0.8f)
     addTraits(
-            "HEAD" to "essentia"
+            //"HEAD" to "essentia"
     )
     tool {
 
@@ -31,8 +31,8 @@ class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
             durability { 75 }
         }
         bow {
-            speed(2.5f)
-            range { 1.75f }
+            speed(2.2f)
+            range { 1.2f }
             bonusDamage { 6.5f }
         }
     }

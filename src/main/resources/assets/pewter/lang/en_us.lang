@@ -12,6 +12,9 @@ material.dragonflywing.name=Dragonfly Wing
 material.elementium.name=Elementium
 fluid.pewter.elementium.name=Molten Elementium
 
+material.livingwood.name=Livingwood
+# no fluid for this wood
+
 material.manasteel.name=Manasteel
 fluid.pewter.manasteel.name=Molten Manasteel
 
@@ -82,11 +85,17 @@ modifier.heavyweight.desc=§oThunk.§r\n10% bonus attack damage, 5% less attack 
 modifier.inflamed_armor.name=Inflamed
 modifier.inflamed_armor.desc=§oFwoosh!§r\nRepairs armor durability when on fire.
 
+modifier.manaharvest.name=Mana Harvest
+modifier.manaharvest.desc=§oGo Get 'Em!§r\nKilling mobs fills mana-containing items with mana.
+
+modifier.manaharvest_armor.name=Mana Harvest
+modifier.manaharvest_armor.desc=§oVitalizing!§r\nTaking damage generates mana for mana-containing items in your inventory.
+
 modifier.manainfused.name=Mana Infused
-modifier.manainfused.desc=§oMagic!§r\nDraws from mana items in your inventory to repair itself.
+modifier.manainfused.desc=§oMagic!§r\nDraws from mana-containing items in your inventory to repair itself.
 
 modifier.manainfused_armor.name=Mana Infused
-modifier.manainfused_armor.desc=§oMagic!§r\nDraws from mana items in your inventory to repair itself.
+modifier.manainfused_armor.desc=§oMagic!§r\nDraws from mana-containing items in your inventory to repair itself.
 
 modifier.maniacal_armor.name=Maniacal
 modifier.maniacal_armor.desc=§oMad Scientist!§r\nIncreased defense based on how much warp the player has accumulated.

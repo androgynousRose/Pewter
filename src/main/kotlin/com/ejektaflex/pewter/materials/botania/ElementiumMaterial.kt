@@ -11,7 +11,7 @@ class ElementiumMaterial : MaterialDSL("elementium", "#ED339A", {
     defaultMetalParts()
     shininess(0.6f)
     addTraits(
-            "HEAD" to "essentia"
+            //"HEAD" to "essentia"
     )
     tool {
 
@@ -45,7 +45,7 @@ class ElementiumMaterial : MaterialDSL("elementium", "#ED339A", {
         }
         plates {
             modifier { 1.3f }
-            durability { -2f }
+            durability { -6f }
             toughness { 0.5f }
         }
         trim {

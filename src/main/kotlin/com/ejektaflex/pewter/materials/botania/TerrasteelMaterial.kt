@@ -22,7 +22,7 @@ class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
             durability { 1504 }
             attack { 5.1f }
             speed { 6f }
-            harvestLevel(2)
+            harvestLevel(3)
         }
         handle {
             durability { 0 }
@@ -32,8 +32,8 @@ class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
             durability { 85 }
         }
         bow {
-            speed(2.5f)
-            range { 1.75f }
+            speed(1.85f)
+            range { 1.1f }
             bonusDamage { 6.5f }
         }
     }

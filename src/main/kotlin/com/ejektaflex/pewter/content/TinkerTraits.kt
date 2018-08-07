@@ -21,7 +21,8 @@ object TinkerTraits {
             Heavyweight(),
             Attuned(),
             ManaInfused(),
-            Basher()
+            Basher(),
+            ManaHarvest()
     )
 
     init {
@@ -33,7 +34,8 @@ object TinkerTraits {
                     ArmorVisBarrier(),
                     ArmorManiacal(),
                     ArmorSplash(),
-                    ArmorManaInfused()
+                    ArmorManaInfused(),
+                    ArmorManaHarvest()
             ))
         }
     }

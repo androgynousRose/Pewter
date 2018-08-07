@@ -4,10 +4,7 @@ import com.ejektaflex.pewter.dsl.MaterialDSL
 import com.ejektaflex.pewter.materials.astralsorcery.StarmetalMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.HellfireMaterial
 import com.ejektaflex.pewter.materials.betweenlands.*
-import com.ejektaflex.pewter.materials.botania.ElementiumMaterial
-import com.ejektaflex.pewter.materials.botania.ManasteelMaterial
-import com.ejektaflex.pewter.materials.botania.ManastringMaterial
-import com.ejektaflex.pewter.materials.botania.TerrasteelMaterial
+import com.ejektaflex.pewter.materials.botania.*
 import com.ejektaflex.pewter.materials.thaumcraft.BrassMaterial
 import com.ejektaflex.pewter.materials.thaumcraft.ThaumiumMaterial
 import com.ejektaflex.pewter.materials.thaumcraft.VoidMetalMaterial
@@ -24,7 +21,8 @@ object TinkerMaterials {
                     ManasteelMaterial(),
                     ManastringMaterial(),
                     TerrasteelMaterial(),
-                    ElementiumMaterial()
+                    ElementiumMaterial(),
+                    LivingwoodMaterial()
             ),
             "thaumcraft" to listOf(
                     ThaumiumMaterial(),

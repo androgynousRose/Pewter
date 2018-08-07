@@ -23,7 +23,7 @@ class Basher : PewterTrait("basher", 0xE18EFF) {
     override fun knockBack(tool: ItemStack?, player: EntityLivingBase?, target: EntityLivingBase?, damage: Float, knockback: Float, newKnockback: Float, isCritical: Boolean): Float {
 
         val knockAmount = if (isCritical) {
-            TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_BLOOD, target, 1)
+            TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_BLOOD, target, 2)
             1f
         } else {
             0f
