@@ -8,7 +8,7 @@ import com.ejektaflex.pewter.materials.botania.ElementiumMaterial
 import com.ejektaflex.pewter.materials.botania.ManasteelMaterial
 import com.ejektaflex.pewter.materials.botania.ManastringMaterial
 import com.ejektaflex.pewter.materials.botania.TerrasteelMaterial
-import com.ejektaflex.pewter.materials.thaumcraft.AlchemicalBrassMaterial
+import com.ejektaflex.pewter.materials.thaumcraft.BrassMaterial
 import com.ejektaflex.pewter.materials.thaumcraft.ThaumiumMaterial
 import com.ejektaflex.pewter.materials.thaumcraft.VoidMetalMaterial
 
@@ -29,7 +29,7 @@ object TinkerMaterials {
             "thaumcraft" to listOf(
                     ThaumiumMaterial(),
                     VoidMetalMaterial(),
-                    AlchemicalBrassMaterial()
+                    BrassMaterial()
             ),
             "thebetweenlands" to listOf(
                     OctineMaterial(),

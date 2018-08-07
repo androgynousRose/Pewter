@@ -12,7 +12,7 @@ class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
     brightness(0.1f)
     shininess(0.35f)
     addTraits(
-            "HEAD" to "essentia"
+            //"HEAD" to "essentia"
     )
     tool {
 

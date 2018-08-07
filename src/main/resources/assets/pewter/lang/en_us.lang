@@ -1,6 +1,6 @@
 ### Materials ###
 
-material.alchemicalbrass.name=Alchemical Brass
+material.brass.name=Brass
 # fluid already taken from tinkers'
 
 material.hellfire.name=Hellfire
@@ -50,6 +50,9 @@ modifier.attuned.desc=§oIn sync with the world!§r\nRepairing gives bonus durab
 
 modifier.aural.name=Aural
 modifier.aural.desc=§oIt all bounces back, right?§r\nTool use has a chance of feeding off of the Aura instead of using durability
+
+modifier.basher.name=Basher
+modifier.basher.desc=§oHeavy hitting!§r\nCritical hits do additional knockback.
 
 modifier.brilliance.name=Brilliance
 modifier.brilliance.desc=§oShine!§r\nEnemies that hit you glow and receive night vision.

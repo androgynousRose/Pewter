@@ -20,7 +20,8 @@ object TinkerTraits {
             Gritty(),
             Heavyweight(),
             Attuned(),
-            ManaInfused()
+            ManaInfused(),
+            Basher()
     )
 
     init {
