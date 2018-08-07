@@ -31,7 +31,8 @@ object TinkerTraits {
                     ArmorCorrosive(),
                     ArmorVisBarrier(),
                     ArmorManiacal(),
-                    ArmorSplash()
+                    ArmorSplash(),
+                    ArmorManaInfused()
             ))
         }
     }

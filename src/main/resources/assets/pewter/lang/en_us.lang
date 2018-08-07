@@ -9,6 +9,9 @@ fluid.pewter.hellfire.name=Molten Hellfire
 material.dragonflywing.name=Dragonfly Wing
 # no fluid available for dragonfly wint
 
+material.elementium.name=Elementium
+fluid.pewter.elementium.name=Molten Elementium
+
 material.manasteel.name=Manasteel
 fluid.pewter.manasteel.name=Molten Manasteel
 
@@ -78,6 +81,9 @@ modifier.inflamed_armor.desc=§oFwoosh!§r\nRepairs armor durability when on fir
 
 modifier.manainfused.name=Mana Infused
 modifier.manainfused.desc=§oMagic!§r\nDraws from mana items in your inventory to repair itself.
+
+modifier.manainfused_armor.name=Mana Infused
+modifier.manainfused_armor.desc=§oMagic!§r\nDraws from mana items in your inventory to repair itself.
 
 modifier.maniacal_armor.name=Maniacal
 modifier.maniacal_armor.desc=§oMad Scientist!§r\nIncreased defense based on how much warp the player has accumulated.

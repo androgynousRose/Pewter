@@ -45,12 +45,7 @@ class WeedwoodMaterial : MaterialDSL("weedwood", "#665E31", {
         bow {
             speed(0.95f)
             range { 0.9f }
-            string { 0.85f }
             bonusDamage { -0.5f }
-        }
-        shaft {
-            modifier { 0.9f }
-            bonusAmmo { 15 }
         }
     }
 

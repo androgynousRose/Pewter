@@ -33,17 +33,12 @@ class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
         bow {
             speed(2.5f)
             range { 1.75f }
-            string { 0.05f }
             bonusDamage { 6.5f }
-        }
-        shaft {
-            modifier { 1.1f }
-            bonusAmmo { 5 }
         }
     }
 
     armor {
-        armorTrait("visbarrier_armor")
+        armorTrait("manainfused_armor")
         core {
             durability { 12f }
             defense { 14f }

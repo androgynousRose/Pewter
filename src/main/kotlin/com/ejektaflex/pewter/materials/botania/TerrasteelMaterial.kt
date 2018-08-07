@@ -34,28 +34,23 @@ class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
         bow {
             speed(2.5f)
             range { 1.75f }
-            string { 0.05f }
             bonusDamage { 6.5f }
-        }
-        shaft {
-            modifier { 1.1f }
-            bonusAmmo { 5 }
         }
     }
 
     armor {
-        armorTrait("visbarrier_armor")
+        armorTrait("manainfused_armor")
         core {
-            durability { 12f }
-            defense { 18f }
+            durability { 20.2f }
+            defense { 16f }
         }
         plates {
-            modifier { 0.9f }
-            durability { 6f }
-            toughness { 0f }
+            modifier { 0.95f }
+            durability { 5f }
+            toughness { 1f }
         }
         trim {
-            extraDurability { 3.5f }
+            extraDurability { 3f }
         }
     }
 
