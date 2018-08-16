@@ -17,12 +17,27 @@ import java.nio.file.Files
 object MaterialLoader {
 
     fun loadContent() {
-        saveInternalData()
-        loadData(Pewter.CONFIG.BUILTINDIR)
-        loadData(Pewter.CONFIG.CUSTOMDIR)
+        //saveInternalData()
+        loadAllGameData()
         if (Pewter.CONFIG.CUSTOMDIR.listFiles().isEmpty()) {
             saveExampleMaterial()
         }
+    }
+
+    private fun loadAllGameData() {
+        if (Pewter.CUSTOM_LOAD) {
+            loadData(Pewter.CONFIG.BUILTINDIR)
+            loadData(Pewter.CONFIG.CUSTOMDIR)
+        } else {
+            Pewter.materials.addAll(
+                    TinkerMaterials.flattened.filter {
+                        Loader.isModLoaded(it.first)
+                    }.map {
+                        MaterialRegistrar(it.second.material)
+                    }
+            )
+        }
+        Pewter.LOGGER.info("Loaded ${Pewter.materials.size} materials.")
     }
 
     private fun loadData(dir: File) {
@@ -31,7 +46,6 @@ object MaterialLoader {
             MaterialRegistrar(it)
         }
         Pewter.materials.addAll(loadedMaterials)
-        Pewter.LOGGER.info("Loaded ${loadedMaterials.size} materials.")
     }
 
     private fun saveExampleMaterial() {
@@ -49,6 +63,7 @@ object MaterialLoader {
         }
     }
 
+    /*
     private fun saveInternalData() {
         val existingFiles = Pewter.CONFIG.BUILTINDIR.listFiles()
         val flatMaterials = TinkerMaterials.flattened
@@ -79,6 +94,7 @@ object MaterialLoader {
             }
         }
     }
+    */
 
     private fun getMaterialList(dir: File): MutableList<MaterialStats> {
 

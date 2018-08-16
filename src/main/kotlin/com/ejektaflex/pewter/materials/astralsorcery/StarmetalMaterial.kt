@@ -6,6 +6,7 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
     forge { true }
     craft { false }
     ingots("astralsorcery:itemcraftingcomponent:1")
+    //fluids("astral_starmetal")
     defaultMetalParts()
     addTraits(
             "HEAD" to "dense"

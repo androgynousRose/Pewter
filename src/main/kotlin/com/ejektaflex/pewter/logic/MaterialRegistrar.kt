@@ -136,25 +136,25 @@ class MaterialRegistrar(val stats: MaterialStats) {
 
     private fun makeFluid() {
 
-        if (stats.craftable) { // If not craftable, must be castable and need a fluid
+        if (stats.craftable) { // If not craftable, must be castable and need a fluids
             return
         }
 
-        if (stats.fluidName != null) {
-            Pewter.LOGGER.info("Instead of making a fluid for material ${stats.name}, we are going to use ${stats.fluidName}")
+        if (stats.fluidNames != null) {
+            Pewter.LOGGER.info("Instead of making a fluids for material ${stats.name}, we are going to try to load one of these: ${stats.fluidNames}")
             Pewter.LOGGER.info("All fluids: ${FluidRegistry.getBucketFluids().map { it.unlocalizedName }}")
 
-            val fluidToUse = FluidRegistry.getFluid(stats.fluidName)
+            val fluidToUse = stats.fluidNames!!.map { FluidRegistry.getFluid(it) }.firstOrNull()
             if (fluidToUse != null) {
                 fluid = fluidToUse
                 return
             } else {
-                throw Exception("No fluid was found matching the name: ${stats.fluidName}. " +
+                throw Exception("No fluids was found matching these names: ${stats.fluidNames}. " +
                         "These were the fluids that WERE found: ${FluidRegistry.getBucketFluids().map { it.name }}")
             }
         }
 
-        Pewter.LOGGER.info("Making fluid for material ${stats.name}")
+        Pewter.LOGGER.info("Making fluids for material ${stats.name}")
 
         var name = stats.name.toLowerCase()
         fluid = FluidMolten(name, Color.decode(stats.color).rgb).apply {

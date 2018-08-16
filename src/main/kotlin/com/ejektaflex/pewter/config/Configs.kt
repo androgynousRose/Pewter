@@ -30,8 +30,10 @@ object Configs {
 
     fun initialize(root: File) {
         DIR = ensureDirectory(root, Pewter.MODID)
-        BUILTINDIR = ensureDirectory(DIR, "builtin")
-        CUSTOMDIR = ensureDirectory(DIR, "custom")
+        if (Pewter.CUSTOM_LOAD) {
+            BUILTINDIR = ensureDirectory(DIR, "builtin")
+            CUSTOMDIR = ensureDirectory(DIR, "custom")
+        }
         MAIN = MainConfig(DIR.path)
     }
 

@@ -41,7 +41,6 @@ object Pewter {
 
     @EventHandler
     fun init(event: FMLInitializationEvent) {
-
         proxy.init(event)
     }
 
@@ -57,14 +56,13 @@ object Pewter {
 
 
 
-
-
     const val MODID = "pewter"
     const val NAME = "Pewter"
-    const val VERSION = "0.5.0"
+    const val VERSION = "0.5.1"
     const val VERSIONS = "1.12"
     const val DEPENDS = "required-after:tconstruct;" +
             "required-after:forgelin;" +
+            "after:jaopca;" + // JAOPCA Compat?
             "after:conarm;" +
             "after:astralsorcery;" +
             "after:thaumcraft;" +
@@ -74,6 +72,9 @@ object Pewter {
     const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
     private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
     private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
+
+    // For now, this feature has to go. Goodbye, custom load!
+    var CUSTOM_LOAD = false
 
     lateinit var LOGGER: Logger
     lateinit var CONFIG: Configs

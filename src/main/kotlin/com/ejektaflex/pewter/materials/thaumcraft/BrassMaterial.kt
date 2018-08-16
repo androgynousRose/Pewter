@@ -8,8 +8,8 @@ class BrassMaterial : MaterialDSL("brass", "#D2983A", {
     ingots("thaumcraft:ingot:2")
     nuggets("thaumcraft:nugget:8")
     blocks("thaumcraft:metal_brass")
+    fluids("brass")
     noMeltRecipes()
-    fluid("brass")
     defaultMetalParts()
     addTraits(
             "HEAD" to "basher",

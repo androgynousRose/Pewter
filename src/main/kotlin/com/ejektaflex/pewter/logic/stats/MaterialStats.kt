@@ -21,7 +21,7 @@ class MaterialStats {
             "brightness" to 0.25f,
             "hueshift" to -0.1f
     )
-    var fluidName: String? = null
+    var fluidNames: MutableList<String>? = null
     var fluid = mutableMapOf(
             "viscosity" to 8000,
             "density" to 1500,

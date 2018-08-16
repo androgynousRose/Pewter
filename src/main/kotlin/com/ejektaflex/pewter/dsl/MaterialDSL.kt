@@ -102,8 +102,11 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     }
 
     @TopLevelToolDSL
-    fun fluid(flu: String) {
-        material.fluidName = flu
+    fun fluids(vararg flu: String) {
+        if (material.fluidNames == null) {
+            material.fluidNames = mutableListOf()
+        }
+        material.fluidNames?.addAll(flu)
     }
 
     @TopLevelToolDSL
