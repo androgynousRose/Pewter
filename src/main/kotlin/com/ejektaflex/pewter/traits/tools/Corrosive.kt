@@ -41,7 +41,7 @@ class Corrosive : PewterTrait("Corrosive", 0x70FF3D), TinkerNBTChanger {
         if (entity !is EntityPlayer || entity.getEntityWorld().isRemote) {
             return
         }
-        
+
         modifyToolStats(tool) { original, current ->
             if (!current.hasKey(CORROSION_TAG)) {
                 current[CORROSION_TAG] = 0
@@ -50,7 +50,6 @@ class Corrosive : PewterTrait("Corrosive", 0x70FF3D), TinkerNBTChanger {
             if (entity.dimension == BetweenlandsConfig.WORLD_AND_DIMENSION.dimensionId && random.nextFloat() < CHANCE) {
                 val newCorrosion = min(current.get<Int>(CORROSION_TAG) + 1, original.durability)
                 current[CORROSION_TAG] = newCorrosion
-
                 // Change attack value based on corrosion value
                 val corrosionPercent = newCorrosion.toDouble() / original.durability.toDouble()
                 val newAttack = original.attack * (1.0 - corrosionPercent)
@@ -61,10 +60,10 @@ class Corrosive : PewterTrait("Corrosive", 0x70FF3D), TinkerNBTChanger {
     }
 
     override fun onRepair(tool: ItemStack?, amount: Int) {
-        val origStats = TagUtil.getOriginalToolStats(tool)
-        val toolTag = TagUtil.getToolTag(tool)
-        toolTag[CORROSION_TAG] = 0
-        toolTag[Tags.ATTACK] = origStats.attack
+        modifyToolStats(tool!!) { original, current ->
+            current[CORROSION_TAG] = 0f
+            current[Tags.ATTACK] = original.attack
+        }
         super.onRepair(tool, amount)
     }
 

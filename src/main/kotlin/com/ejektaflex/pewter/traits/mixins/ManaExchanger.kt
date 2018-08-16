@@ -14,4 +14,8 @@ interface ManaExchanger {
         return hasEnoughMana
     }
 
+    fun hasEnoughMana(item: ItemStack, player: EntityPlayer, amount: Int): Boolean {
+        return ManaItemHandler.requestManaExactForTool(item, player, amount, false)
+    }
+
 }

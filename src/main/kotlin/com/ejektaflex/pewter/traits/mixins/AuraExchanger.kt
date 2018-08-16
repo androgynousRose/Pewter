@@ -14,6 +14,7 @@ interface AuraExchanger {
         AuraHelper.polluteAura(e.world, e.pos, amount, true)
     }
 
+
     fun drainVisFor(e: EntityLivingBase, amount: Float) {
         AuraHelper.drainVis(e.world, e.position, amount, false)
     }

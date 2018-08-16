@@ -14,7 +14,8 @@ class ManaInfused : PewterTrait("manainfused", 0x005EE0), ManaExchanger {
     override fun onUpdate(tool: ItemStack, world: World, entity: Entity?, itemSlot: Int, isSelected: Boolean) {
 
         if (!world.isRemote && entity is EntityPlayer && !isAtMaxDurability(tool)) {
-            if (drainManaFor(tool, entity, MANA_COST) && entity.ticksExisted % 5 == 0) {
+            if (hasEnoughMana(tool, entity, MANA_COST) && entity.ticksExisted % 5 == 0) {
+                drainManaFor(tool, entity, MANA_COST)
                 if (ToolHelper.isBroken(tool)) {
                     ToolHelper.unbreakTool(tool)
                 }
