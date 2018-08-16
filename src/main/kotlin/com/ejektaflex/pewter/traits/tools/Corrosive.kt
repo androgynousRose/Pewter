@@ -2,6 +2,7 @@ package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.ext.get
 import com.ejektaflex.pewter.ext.set
+import com.ejektaflex.pewter.traits.mixins.TinkerNBTChanger
 import net.minecraft.client.resources.I18n
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
@@ -23,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import kotlin.math.max
 
 
-class Corrosive : PewterTrait("Corrosive", 0x70FF3D) {
+class Corrosive : PewterTrait("Corrosive", 0x70FF3D), TinkerNBTChanger {
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
@@ -40,23 +41,23 @@ class Corrosive : PewterTrait("Corrosive", 0x70FF3D) {
         if (entity !is EntityPlayer || entity.getEntityWorld().isRemote) {
             return
         }
-        val origStats = TagUtil.getOriginalToolStats(tool)
-        val toolTag = TagUtil.getToolTag(tool)
+        
+        modifyToolStats(tool) { original, current ->
+            if (!current.hasKey(CORROSION_TAG)) {
+                current[CORROSION_TAG] = 0
+            }
+            // Add corrosion if we are in The Betweenlands
+            if (entity.dimension == BetweenlandsConfig.WORLD_AND_DIMENSION.dimensionId && random.nextFloat() < CHANCE) {
+                val newCorrosion = min(current.get<Int>(CORROSION_TAG) + 1, original.durability)
+                current[CORROSION_TAG] = newCorrosion
 
-        if (!toolTag.hasKey(CORROSION_TAG)) {
-            toolTag[CORROSION_TAG] = 0
+                // Change attack value based on corrosion value
+                val corrosionPercent = newCorrosion.toDouble() / original.durability.toDouble()
+                val newAttack = original.attack * (1.0 - corrosionPercent)
+                current[Tags.ATTACK] = max(original.attack.toDouble() * MIN_ATTACK_PERCENT, newAttack).toFloat()
+            }
         }
 
-        // Add corrosion if we are in The Betweenlands
-        if (entity.dimension == BetweenlandsConfig.WORLD_AND_DIMENSION.dimensionId && random.nextFloat() < CHANCE) {
-            val newCorrosion = min(toolTag.get<Int>(CORROSION_TAG) + 1, origStats.durability)
-            toolTag[CORROSION_TAG] = newCorrosion
-
-            // Change attack value based on corrosion value
-            val corrosionPercent = newCorrosion.toDouble() / origStats.durability.toDouble()
-            val newAttack = origStats.attack * (1.0 - corrosionPercent)
-            toolTag[Tags.ATTACK] = max(origStats.attack.toDouble() * MIN_ATTACK_PERCENT, newAttack).toFloat()
-        }
     }
 
     override fun onRepair(tool: ItemStack?, amount: Int) {

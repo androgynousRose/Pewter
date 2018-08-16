@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.traits.armor
 import c4.conarm.common.armor.utils.ArmorTagUtil
 import com.ejektaflex.pewter.ext.get
 import com.ejektaflex.pewter.ext.set
+import com.ejektaflex.pewter.traits.mixins.TinkerNBTChanger
 import com.ejektaflex.pewter.traits.tools.Corrosive
 import net.minecraft.client.resources.I18n
 import net.minecraft.entity.Entity
@@ -23,7 +24,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 
-class ArmorCorrosive : PewterArmorTrait("Corrosive", 0xFF2334) {
+class ArmorCorrosive : PewterArmorTrait("Corrosive", 0xFF2334), TinkerNBTChanger {
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
@@ -43,31 +44,26 @@ class ArmorCorrosive : PewterArmorTrait("Corrosive", 0xFF2334) {
 
         // Chance for armor corrosion will be 50% less because armor has on average less durability?
         if (entity.dimension == BetweenlandsConfig.WORLD_AND_DIMENSION.dimensionId && random.nextFloat() < Corrosive.CHANCE * 0.5f) {
-            val origArmorStats = ArmorTagUtil.getOriginalArmorStats(armor)
-            val armorTag = ArmorTagUtil.getArmorStats(armor)
-            val armorNBT = armorTag.get()
-
-            if (!armorNBT.hasKey(Corrosive.CORROSION_TAG)) {
-                armorNBT[Corrosive.CORROSION_TAG] = 0f
+            modifyArmorStats(armor) { original, current ->
+                val newCorrosion = min(current.getFloat(Corrosive.CORROSION_TAG) + 1, original.durability.toFloat())
+                val corrosionPercent = newCorrosion.toDouble() / original.durability.toDouble()
+                val newDefense = original.defense * (1.0 - corrosionPercent)
+                current[ArmorTagUtil.DEFENSE] = max(original.defense.toDouble() * MIN_DEFENSE_PERCENT, newDefense).toFloat()
+                current[Corrosive.CORROSION_TAG] = if (current.hasKey(Corrosive.CORROSION_TAG)) {
+                    newCorrosion
+                } else {
+                    0f
+                }
             }
-
-            val newCorrosion = min(armorNBT.getFloat(Corrosive.CORROSION_TAG) + 1, origArmorStats.durability.toFloat())
-            val corrosionPercent = newCorrosion.toDouble() / origArmorStats.durability.toDouble()
-            val newDefense = origArmorStats.defense * (1.0 - corrosionPercent)
-
-            armorTag.defense = max(origArmorStats.defense.toDouble() * MIN_DEFENSE_PERCENT, newDefense).toFloat()
-            val toBeWritten = armorTag.get()
-            toBeWritten[Corrosive.CORROSION_TAG] = newCorrosion
-
-            TagUtil.setToolTag(armor, toBeWritten)
         }
+
     }
 
     override fun onRepair(armor: ItemStack?, amount: Int) {
-        val theTag = ArmorTagUtil.getArmorStats(armor).get()
-        theTag[Corrosive.CORROSION_TAG] = 0f
-        theTag[ArmorTagUtil.DEFENSE] = ArmorTagUtil.getOriginalArmorStats(armor).defense
-        TagUtil.setToolTag(armor, theTag)
+        modifyArmorStats(armor!!) { original, current ->
+            current[ArmorTagUtil.DEFENSE] = original.defense
+            current[Corrosive.CORROSION_TAG] = 0f
+        }
         super.onRepair(armor, amount)
     }
 
