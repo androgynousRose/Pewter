@@ -22,7 +22,7 @@ class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
             durability { 1504 }
             attack { 5.6f }
             speed { 6f }
-            harvestLevel(3)
+            harvestLevel(4)
         }
         handle {
             durability { 0 }

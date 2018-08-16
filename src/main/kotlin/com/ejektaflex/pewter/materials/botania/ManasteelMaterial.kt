@@ -18,10 +18,10 @@ class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
         toolTrait("manainfused")
 
         head {
-            durability { 256 }
+            durability { 276 }
             attack { 4.2f }
             speed { 6f }
-            harvestLevel(1)
+            harvestLevel(2)
         }
         handle {
             durability { 100 }

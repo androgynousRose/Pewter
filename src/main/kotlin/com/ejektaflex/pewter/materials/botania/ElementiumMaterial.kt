@@ -21,7 +21,7 @@ class ElementiumMaterial : MaterialDSL("elementium", "#ED339A", {
             durability { 480 }
             attack { 4.5f }
             speed { 6.25f }
-            harvestLevel(1)
+            harvestLevel(2)
         }
         handle {
             durability { 30 }
