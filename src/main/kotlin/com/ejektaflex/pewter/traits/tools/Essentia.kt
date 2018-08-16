@@ -2,6 +2,7 @@ package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.ext.plusAssign
 import com.ejektaflex.pewter.ext.random
+import com.ejektaflex.pewter.traits.mixins.AuraExchanger
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
@@ -10,12 +11,12 @@ import thaumcraft.api.ThaumcraftApiHelper
 import thaumcraft.api.aspects.AspectHelper
 import thaumcraft.api.aura.AuraHelper
 
-class Essentia : PewterTrait("Essentia", 0xD79291) {
+class Essentia : PewterTrait("Essentia", 0xD79291), AuraExchanger {
 
     override fun blockHarvestDrops(tool: ItemStack, event: BlockEvent.HarvestDropsEvent) {
         if (random.nextFloat() <= blockChance) {
             event.harvester.inventory += getBlockCrystal(event.state.block)
-            AuraHelper.polluteAura(event.world, event.pos, 1.0f, true)
+            addFluxFor(event, 1f)
         }
         super.blockHarvestDrops(tool, event)
     }
@@ -24,7 +25,7 @@ class Essentia : PewterTrait("Essentia", 0xD79291) {
         if (target.health < damage) {
             if (random.nextFloat() <= entityChance) {
                 target.entityDropItem(getEntityCrystal(target), 1f)
-                AuraHelper.polluteAura(target.world, target.position, 1.0f, true)
+                addFluxFor(target, 1f)
             }
         }
         super.onHit(tool, player, target, damage, isCritical)

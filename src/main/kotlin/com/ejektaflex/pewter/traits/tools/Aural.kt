@@ -1,14 +1,15 @@
 package com.ejektaflex.pewter.traits.tools
 
+import com.ejektaflex.pewter.traits.mixins.AuraExchanger
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import thaumcraft.api.aura.AuraHelper
 
-class Aural : PewterTrait("Aural", 0xC867D7) {
+class Aural : PewterTrait("Aural", 0xC867D7), AuraExchanger {
     override fun onToolDamage(tool: ItemStack?, damage: Int, newDamage: Int, entity: EntityLivingBase): Int {
         val protoDamage = when (random.nextFloat() < chance) {
             true -> {
-                AuraHelper.drainVis(entity.world, entity.position, amount, false)
+                drainVisFor(entity, amount)
                 newDamage - 1
             }
             false -> newDamage
