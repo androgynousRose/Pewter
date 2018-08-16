@@ -6,8 +6,8 @@ import java.io.File
 object Configs {
 
     private lateinit var DIR: File
-    lateinit var BUILTINDIR: File
-    lateinit var CUSTOMDIR: File
+    var BUILTINDIR: File? = null
+    var CUSTOMDIR: File? = null
 
     lateinit var MAIN: MainConfig
 

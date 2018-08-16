@@ -19,19 +19,19 @@ object MaterialLoader {
     fun loadContent() {
         //saveInternalData()
         loadAllGameData()
-        if (Pewter.CONFIG.CUSTOMDIR.listFiles().isEmpty()) {
+        if (Pewter.CONFIG.CUSTOMDIR?.listFiles()?.isEmpty() == true) {
             saveExampleMaterial()
         }
     }
 
     private fun loadAllGameData() {
         if (Pewter.CUSTOM_LOAD) {
-            loadData(Pewter.CONFIG.BUILTINDIR)
-            loadData(Pewter.CONFIG.CUSTOMDIR)
+            loadData(Pewter.CONFIG.BUILTINDIR!!)
+            loadData(Pewter.CONFIG.CUSTOMDIR!!)
         } else {
             Pewter.materials.addAll(
                     TinkerMaterials.flattened.filter {
-                        Loader.isModLoaded(it.first)
+                        Loader.isModLoaded(it.first) && it.second.material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials
                     }.map {
                         MaterialRegistrar(it.second.material)
                     }
@@ -49,7 +49,7 @@ object MaterialLoader {
     }
 
     private fun saveExampleMaterial() {
-        saveDSLMaterial(Pewter.CONFIG.CUSTOMDIR, ExampleMaterial(), "_example")
+        saveDSLMaterial(Pewter.CONFIG.CUSTOMDIR!!, ExampleMaterial(), "_example")
     }
 
     private fun saveDSLMaterial(location: File, materialDSL: MaterialDSL, fileName: String? = null) {
