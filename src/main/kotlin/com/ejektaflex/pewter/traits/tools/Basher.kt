@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.traits.tools
 
+import com.ejektaflex.pewter.traits.mixins.AuraExchanger
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.shared.client.ParticleEffect
@@ -10,9 +11,9 @@ import kotlin.math.min
 import kotlin.math.pow
 
 
-class Basher : PewterTrait("basher", 0xE18EFF) {
+class Basher : PewterTrait("basher", 0xE18EFF), AuraExchanger {
     override fun onToolHeal(tool: ItemStack?, amount: Int, newAmount: Int, entity: EntityLivingBase): Int {
-        val netVis = AuraHelper.getVis(entity.world, entity.position) - AuraHelper.getFlux(entity.world, entity.position)
+        val netVis = getVisAt(entity) - getFluxAt(entity)
         val visLog = log10(min(1f, netVis))
         val visMult = min(1f, visLog.pow(0.4f))
 
@@ -33,3 +34,4 @@ class Basher : PewterTrait("basher", 0xE18EFF) {
     }
 
 }
+

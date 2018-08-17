@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.traits.armor
 import c4.conarm.common.armor.utils.ArmorHelper
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ext.temperature
+import com.ejektaflex.pewter.traits.mixins.AuraExchanger
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -16,17 +17,16 @@ import thaumcraft.api.aura.AuraHelper
 import kotlin.math.abs
 import kotlin.math.ceil
 
-class ArmorVisBarrier : PewterArmorTrait("Vis Barrier", 0xFF2334) {
+class ArmorVisBarrier : PewterArmorTrait("Vis Barrier", 0xFF2334), AuraExchanger {
 
     override fun onDamaged(armor: ItemStack?, player: EntityPlayer, source: DamageSource, damage: Float, newDamage: Float, evt: LivingDamageEvent?): Float {
 
         val visInAir = AuraHelper.getVis(player.world, player.position)
 
         if (visInAir > DRAIN_AMOUNT && random.nextFloat() < DRAIN_CHANCE) {
-            // Particles.ENDSPEED
             TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_ARMOR, player, 1)
             ArmorHelper.repairArmor(armor, REPAIR_AMOUNT, player)
-            AuraHelper.drainVis(player.world, player.position, DRAIN_AMOUNT, false)
+            drainVisFor(player, DRAIN_AMOUNT)
         }
 
         return super.onDamaged(armor, player, source, damage, newDamage, evt)
