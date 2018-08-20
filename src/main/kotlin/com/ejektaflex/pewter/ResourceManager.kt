@@ -1,7 +1,5 @@
 package com.ejektaflex.pewter
 
-import com.ejektaflex.pewter.content.TinkerModifiers
-import com.ejektaflex.pewter.content.TinkerTraits
 import com.ejektaflex.pewter.logic.MaterialRegistrar
 import net.minecraft.client.Minecraft
 import net.minecraft.client.resources.IResourceManagerReloadListener
@@ -16,12 +14,6 @@ class ResourceManager : IResourceManagerReloadListener {
         // Write all custom materials
         Pewter.materials.filter { it.stats.isInCustomFolder }.forEach {
             data += writeMaterial(it)
-        }
-
-        // TODO Switch to hardcoding modifiers
-        for (mod in Pewter.modifiers) {
-            //data += "modifier.${mod.identifier}.name=${mod.name}\n"
-            //data += "modifier.${mod.identifier}.desc=§o${mod.motto}§r\\n${mod.description}\n"
         }
 
         LanguageMap.inject(ByteArrayInputStream(data.toByteArray()))

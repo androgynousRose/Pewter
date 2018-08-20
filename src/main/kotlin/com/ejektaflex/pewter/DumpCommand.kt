@@ -15,11 +15,6 @@ import slimeknights.tconstruct.library.tools.TinkerToolCore
 import slimeknights.tconstruct.library.utils.TagUtil
 import java.util.*
 
-
-/**
- * Bulk of this class was taken from CraftTweaker where the Authors were listed as below
- * @author BloodWorkXGaming, Stan, Jared
- */
 class DumpCommand : ICommand {
 
     override fun compareTo(other: ICommand): Int {

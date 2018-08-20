@@ -2,7 +2,6 @@ package com.ejektaflex.pewter
 
 import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.logic.MaterialRegistrar
-import com.ejektaflex.pewter.modifiers.PewterModTrait
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Loader

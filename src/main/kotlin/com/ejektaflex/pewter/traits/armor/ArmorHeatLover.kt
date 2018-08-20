@@ -15,12 +15,6 @@ import kotlin.math.ceil
 
 class ArmorHeatLover : PewterArmorTrait("Heat Lover", 0xFF2334) {
 
-    override fun onHit(tool: ItemStack, player: EntityLivingBase, target: EntityLivingBase, damage: Float, isCritical: Boolean) {
-
-
-        super.onHit(tool, player, target, damage, isCritical)
-    }
-
     override fun onDamaged(armor: ItemStack?, player: EntityPlayer?, source: DamageSource, damage: Float, newDamage: Float, evt: LivingDamageEvent?): Float {
 
         var healAmount = 0

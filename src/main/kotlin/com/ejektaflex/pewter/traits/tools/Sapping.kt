@@ -1,14 +1,12 @@
 package com.ejektaflex.pewter.traits.tools
 
-import com.ejektaflex.pewter.ext.get
 import com.ejektaflex.pewter.ext.random
-import com.ejektaflex.pewter.ext.set
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
+import slimeknights.tconstruct.library.utils.ToolHelper
 import slimeknights.tconstruct.shared.client.ParticleEffect
 import slimeknights.tconstruct.tools.TinkerTools
 import kotlin.math.min
-import slimeknights.tconstruct.library.utils.ToolHelper
 
 
 class Sapping : PewterTrait("Sapping", 0x8A134E) {
