@@ -47,6 +47,9 @@ class WeedwoodMaterial : MaterialDSL("weedwood", "#665E31", {
             range { 0.9f }
             bonusDamage { -0.5f }
         }
+        shaft {
+            modifier { 0.8f }
+        }
     }
 
     armor {

@@ -8,9 +8,12 @@ class DragonflyMaterial : MaterialDSL("dragonflywing", "#6BBEBF", {
     craft { true }
     ingots("thebetweenlands:items_misc:3")
     parts(MaterialStats.MatPart.FLETCHING)
+    addTraits(
+            "FLETCHING" to "buzzing"
+            )
     tool {
         bow {
-            fletchingMod(1.1f)
+            fletchingMod(1.35f)
             accuracy { 0.85f }
         }
     }

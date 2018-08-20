@@ -9,6 +9,7 @@ class TinkerTraits {
 
     val traits = mutableListOf<Modifier>(
             Brilliance(),
+            Buzzing(),
             HeatLover(),
             Polluted(),
             Essentia(),
