@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter.traits.tools
 
-import com.ejektaflex.pewter.traits.mixins.AuraExchanger
+import com.ejektaflex.pewter.mixins.AuraExchanger
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import kotlin.math.log10

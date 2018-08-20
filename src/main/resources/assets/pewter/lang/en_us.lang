@@ -109,6 +109,9 @@ modifier.maniacal_armor.desc=§oMad Scientist!§r\nIncreased defense based on ho
 modifier.polluted.name=Polluted
 modifier.polluted.desc=§oSlightly Toxic.§r\nHitting enemies has a chance of releasing flux.
 
+modifier.sanitizing.name=Sanitizing
+modifier.sanitizing.desc=§oSudsing & Bubbly!§r\nReduces warp gained from Warping Tinker tools.
+
 modifier.sapping.name=Sapping
 modifier.sapping.desc=§oAlchemical Trade!§r\nDamaging enemies usually steals a small portion of their health. If your health is full, may regen tool durability instead.
 

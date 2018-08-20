@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.traits.mixins
+package com.ejektaflex.pewter.mixins
 
 import net.minecraft.entity.EntityLivingBase
 import net.minecraftforge.event.world.BlockEvent

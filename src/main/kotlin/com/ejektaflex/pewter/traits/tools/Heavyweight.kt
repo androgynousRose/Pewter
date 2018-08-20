@@ -1,11 +1,9 @@
 package com.ejektaflex.pewter.traits.tools
 
-import com.ejektaflex.pewter.traits.mixins.TinkerNBTChanger
-import com.google.common.collect.ImmutableList
+import com.ejektaflex.pewter.mixins.TinkerNBTChanger
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.event.entity.player.PlayerEvent
-import slimeknights.tconstruct.library.Util
 import slimeknights.tconstruct.library.tinkering.Category
 import slimeknights.tconstruct.library.tools.ProjectileLauncherNBT
 import slimeknights.tconstruct.library.utils.TagUtil

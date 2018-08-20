@@ -56,7 +56,7 @@ object Pewter {
 
     @EventHandler
     fun serverLoad(event: FMLServerStartingEvent) {
-        event.registerServerCommand(Command())
+        event.registerServerCommand(DumpCommand())
     }
 
 

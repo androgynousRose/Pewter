@@ -25,7 +25,8 @@ enum class NBTMap(
 ) {
     FLOAT(Float::class, NBTTagCompound::getFloat, { key, it -> setFloat(key, it as Float) } ),
     INT(Int::class, NBTTagCompound::getInteger, { key, it -> setInteger(key, it as Int) } ),
-    LONG(Long::class, NBTTagCompound::getLong, { key, it -> setLong(key, it as Long) })
+    LONG(Long::class, NBTTagCompound::getLong, { key, it -> setLong(key, it as Long) } ),
+    BOOLEAN(Boolean::class, NBTTagCompound::getBoolean, { key, it -> setBoolean(key, it as kotlin.Boolean) } )
 }
 
 inline operator fun <reified T : Any> NBTTagCompound.get(key: String): T {

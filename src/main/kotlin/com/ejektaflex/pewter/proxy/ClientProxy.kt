@@ -68,7 +68,9 @@ class ClientProxy : CommonProxy() {
         //*
         val repo = FileRepository("${Pewter.MODID}:book")
         TinkerBook.INSTANCE.addRepository(repo)
+        println(repo.sections.map { it.name })
         TinkerBook.INSTANCE.addTransformer(PewterModSectionTransformer(repo.sections[0].name))
+        //TinkerBook.INSTANCE.addTransformer(PewterModSectionTransformer("pewter_modifiers"))
         Pewter.LOGGER.info("Added modifiers to book.")
         //*/
 

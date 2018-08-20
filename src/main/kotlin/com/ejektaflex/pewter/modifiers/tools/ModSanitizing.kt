@@ -2,19 +2,17 @@ package com.ejektaflex.pewter.modifiers.tools
 
 
 import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.ext.set
 import com.ejektaflex.pewter.ext.toItem
 import com.ejektaflex.pewter.modifiers.PewterModTrait
 import com.ejektaflex.pewter.mixins.TinkerNBTChanger
-import net.minecraft.entity.EntityLivingBase
+import com.ejektaflex.pewter.traits.tools.Warping
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import slimeknights.tconstruct.library.modifiers.ModifierAspect
-import slimeknights.tconstruct.library.utils.TagUtil
-import net.minecraft.init.MobEffects
-import net.minecraft.potion.PotionEffect
 
 
-class ModStick : PewterModTrait("Shtick", 0xffff88), TinkerNBTChanger {
+class ModSanitizing : PewterModTrait("sanitizing", 0xCCA5E6), TinkerNBTChanger {
 
     init {
         addAspects(
@@ -22,24 +20,27 @@ class ModStick : PewterModTrait("Shtick", 0xffff88), TinkerNBTChanger {
         )
     }
 
-    override fun onHit(tool: ItemStack?, player: EntityLivingBase?, target: EntityLivingBase?, damage: Float, isCritical: Boolean) {
-        val duration = getData(tool).level * 20
-        target!!.addPotionEffect(PotionEffect(MobEffects.SLOWNESS, duration, 1))
-
-        Pewter.LOGGER.info("OnHit was called")
-    }
 
     override fun applyEffect(rootCompound: NBTTagCompound, modifierTag: NBTTagCompound) {
-        val tool = TagUtil.getToolStats(rootCompound)
-
-        tool.durability += 1000
-
-        TagUtil.setToolTag(rootCompound, tool.get())
-
         super.applyEffect(rootCompound, modifierTag)
+
+        if (!rootCompound.hasKey(SANITIZING_TAG)) {
+            rootCompound[SANITIZING_TAG] = true
+        }
+        rootCompound[SANITIZING_TAG] = true
     }
 
     override fun configure() {
         addItem("thaumcraft:sanity_soap".toItem)
     }
+
+
+    override fun canApplyCustom(stack: ItemStack?): Boolean {
+        return Pewter.traits.first { it is Warping }.identifier in getTraits(stack!!)
+    }
+
+    companion object {
+        const val SANITIZING_TAG = "TC_SANITIZING"
+    }
+
 }

@@ -1,13 +1,12 @@
 package com.ejektaflex.pewter.traits.armor
 
 import com.ejektaflex.pewter.ext.isAtMaxDurability
-import com.ejektaflex.pewter.traits.mixins.ManaExchanger
+import com.ejektaflex.pewter.mixins.ManaExchanger
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 import slimeknights.tconstruct.library.utils.ToolHelper
-import vazkii.botania.api.mana.ManaItemHandler
 
 class ArmorManaInfused : PewterArmorTrait("Mana Infused", 0x005EE0), ManaExchanger {
 

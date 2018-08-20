@@ -1,5 +1,7 @@
 package com.ejektaflex.pewter.traits.tools
 
+import com.ejektaflex.pewter.modifiers.tools.ModSanitizing
+import com.ejektaflex.pewter.mixins.TinkerNBTChanger
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -7,20 +9,26 @@ import thaumcraft.api.ThaumcraftApi
 import thaumcraft.api.capabilities.IPlayerWarp
 
 
-class Warping : PewterTrait("Warping", 0x4F1D3C) {
+class Warping : PewterTrait("Warping", 0x4F1D3C), TinkerNBTChanger {
     override fun onToolDamage(tool: ItemStack?, damage: Int, newDamage: Int, entity: EntityLivingBase): Int {
-
         if (entity is EntityPlayer) {
-            if (random.nextFloat() < chance) {
-                ThaumcraftApi.internalMethods.addWarpToPlayer(entity, 1, IPlayerWarp.EnumWarpType.TEMPORARY)
+            if (random.nextFloat() < calculateChance(tool!!)) {
+                ThaumcraftApi.internalMethods.addWarpToPlayer(entity, 2, IPlayerWarp.EnumWarpType.TEMPORARY)
             }
         }
-
         return super.onToolDamage(tool, damage, newDamage, entity)
     }
 
+    private fun calculateChance(tool: ItemStack): Float {
+        return if (hasTag(tool, ModSanitizing.SANITIZING_TAG)) {
+            baseChance / 2
+        } else {
+            baseChance
+        }
+    }
+
     companion object {
-        const val chance = 0.05f
+        const val baseChance = 0.05f
     }
 
 }

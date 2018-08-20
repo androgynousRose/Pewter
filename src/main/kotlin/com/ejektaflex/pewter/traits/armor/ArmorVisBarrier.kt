@@ -1,21 +1,13 @@
 package com.ejektaflex.pewter.traits.armor
 
 import c4.conarm.common.armor.utils.ArmorHelper
-import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.ext.temperature
-import com.ejektaflex.pewter.traits.mixins.AuraExchanger
-import net.minecraft.entity.EntityLivingBase
+import com.ejektaflex.pewter.mixins.AuraExchanger
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.DamageSource
 import net.minecraftforge.event.entity.living.LivingDamageEvent
-import slimeknights.tconstruct.library.traits.AbstractTrait
-import slimeknights.tconstruct.library.utils.ToolHelper
 import slimeknights.tconstruct.shared.client.ParticleEffect
 import slimeknights.tconstruct.tools.TinkerTools
-import thaumcraft.api.aura.AuraHelper
-import kotlin.math.abs
-import kotlin.math.ceil
 
 class ArmorVisBarrier : PewterArmorTrait("Vis Barrier", 0xFF2334), AuraExchanger {
 

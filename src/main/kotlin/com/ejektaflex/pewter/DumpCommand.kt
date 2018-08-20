@@ -11,6 +11,8 @@ import net.minecraft.util.text.TextComponentString
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.modifiers.Modifier
 import slimeknights.tconstruct.library.modifiers.ModifierTrait
+import slimeknights.tconstruct.library.tools.TinkerToolCore
+import slimeknights.tconstruct.library.utils.TagUtil
 import java.util.*
 
 
@@ -18,7 +20,7 @@ import java.util.*
  * Bulk of this class was taken from CraftTweaker where the Authors were listed as below
  * @author BloodWorkXGaming, Stan, Jared
  */
-class Command : ICommand {
+class DumpCommand : ICommand {
 
     override fun compareTo(other: ICommand): Int {
         return 0
@@ -29,7 +31,7 @@ class Command : ICommand {
     }
 
     override fun getUsage(sender: ICommandSender): String {
-        return "/${Pewter.MODID} traits"
+        return "/${Pewter.MODID}"
     }
 
     override fun getAliases(): List<String> {
@@ -45,18 +47,19 @@ class Command : ICommand {
             return
         }
 
+        val player = sender.commandSenderEntity as EntityPlayer
 
+        val itemInHand = player.heldItemMainhand
 
-        if (args[0] == "traits") {
-            var traitList = listOf<String>()
-            for (modifier in TinkerRegistry.getAllModifiers()) {
-                if (modifier is Modifier && modifier !is ModifierTrait) {
-                    traitList += modifier.getIdentifier()
+        when (args[0]) {
+            "dump" -> {
+                if (itemInHand.item is TinkerToolCore) {
+                    sender.sendMessage(TextComponentString("Materials: ${TagUtil.getBaseMaterialsTagList(itemInHand)}"))
                 }
             }
-            val traitString = traitList.sorted().joinToString(", ")
-            sender.sendMessage(TextComponentString("The following Traits are registered: \u00A7e$traitString"))
         }
+
+
 
     }
 

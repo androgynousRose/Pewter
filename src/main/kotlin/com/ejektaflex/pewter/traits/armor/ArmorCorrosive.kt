@@ -3,7 +3,7 @@ package com.ejektaflex.pewter.traits.armor
 import c4.conarm.common.armor.utils.ArmorTagUtil
 import com.ejektaflex.pewter.ext.get
 import com.ejektaflex.pewter.ext.set
-import com.ejektaflex.pewter.traits.mixins.TinkerNBTChanger
+import com.ejektaflex.pewter.mixins.TinkerNBTChanger
 import com.ejektaflex.pewter.traits.tools.Corrosive
 import net.minecraft.client.resources.I18n
 import net.minecraft.entity.Entity

@@ -1,11 +1,10 @@
 package com.ejektaflex.pewter.traits.tools
 
-import com.ejektaflex.pewter.traits.mixins.AuraExchanger
+import com.ejektaflex.pewter.mixins.AuraExchanger
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.shared.client.ParticleEffect
 import slimeknights.tconstruct.tools.TinkerTools
-import thaumcraft.api.aura.AuraHelper
 import kotlin.math.log10
 import kotlin.math.min
 import kotlin.math.pow

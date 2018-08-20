@@ -2,14 +2,13 @@ package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.ext.plusAssign
 import com.ejektaflex.pewter.ext.random
-import com.ejektaflex.pewter.traits.mixins.AuraExchanger
+import com.ejektaflex.pewter.mixins.AuraExchanger
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import net.minecraftforge.event.world.BlockEvent
 import thaumcraft.api.ThaumcraftApiHelper
 import thaumcraft.api.aspects.AspectHelper
-import thaumcraft.api.aura.AuraHelper
 
 class Essentia : PewterTrait("Essentia", 0xD79291), AuraExchanger {
 
