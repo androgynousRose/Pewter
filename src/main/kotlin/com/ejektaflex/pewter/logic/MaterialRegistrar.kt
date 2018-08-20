@@ -53,7 +53,7 @@ class MaterialRegistrar(val stats: MaterialStats) {
             stats.smelting[type]!!.forEach { itemString ->
                 val itemStack = itemString.toItemStack
                 val tag = type + stats.name.capitalize()
-                // If that item exists, register it
+                // If that item exists, configure it
                 if (itemStack != null) {
                     Pewter.LOGGER.info("Registering item $itemStack with ore dictionary tag $tag")
                     OreDictionary.registerOre(tag, itemStack) // This may not be working?

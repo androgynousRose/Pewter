@@ -28,7 +28,6 @@ class ArmorManaInfused : PewterArmorTrait("Mana Infused", 0x005EE0), ManaExchang
 
     companion object {
         const val MANA_COST = 120
-        const val UNBREAK_COST = 60
     }
 
 }

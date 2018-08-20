@@ -9,15 +9,16 @@ import com.ejektaflex.pewter.materials.thaumcraft.BrassMaterial
 import com.ejektaflex.pewter.materials.thaumcraft.ThaumiumMaterial
 import com.ejektaflex.pewter.materials.thaumcraft.VoidMetalMaterial
 
-object TinkerMaterials {
-    val materials = mapOf(
-            "astralsorcery" to listOf(
+class TinkerMaterials : ContentList<MaterialDSL>() {
+    override val content = mapOf(
+            "astralsorcery" to mutableListOf<MaterialDSL>(
                     StarmetalMaterial()
             ),
-            "betterwithmods" to listOf(
-                    HellfireMaterial()
+            "betterwithmods" to mutableListOf<MaterialDSL>(
+                    HellfireMaterial()//,
+                    //SoulforgedSteelMaterial()
             ),
-            "botania" to listOf(
+            "botania" to mutableListOf(
                     ManasteelMaterial(),
                     ManastringMaterial(),
                     TerrasteelMaterial(),
@@ -25,12 +26,12 @@ object TinkerMaterials {
                     LivingwoodMaterial(),
                     LivingrockMaterial()
             ),
-            "thaumcraft" to listOf(
+            "thaumcraft" to mutableListOf(
                     ThaumiumMaterial(),
                     VoidMetalMaterial(),
                     BrassMaterial()
             ),
-            "thebetweenlands" to listOf(
+            "thebetweenlands" to mutableListOf(
                     OctineMaterial(),
                     SyrmoriteMaterial(),
                     DragonflyMaterial(),
@@ -39,18 +40,6 @@ object TinkerMaterials {
             )
     )
 
-    val inListForm: List<MaterialDSL>
-        get() {
-            return materials.flatMap { entries -> entries.value }
-        }
 
-    val flattened: List<Pair<String, MaterialDSL>>
-        get() {
-            return materials.map { entry -> entry.value.map { entry.key to it } }.flatten()
-        }
-
-    fun materialsMatching(names: List<String>): List<Pair<String, MaterialDSL>> {
-        return flattened.filter { it.second.material.name in names }
-    }
 
 }

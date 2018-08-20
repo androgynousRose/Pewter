@@ -38,7 +38,6 @@ class ArmorHeatLover : PewterArmorTrait("Heat Lover", 0xFF2334) {
                 if (target.isInLava) {
                     healAmount++
                 }
-
             }
         }
 

@@ -1,26 +1,12 @@
 package com.ejektaflex.pewter.content
 
-import com.ejektaflex.pewter.ext.toItemStack
-import com.ejektaflex.pewter.modifiers.ModStick
-import com.ejektaflex.pewter.modifiers.ModStone
+import com.ejektaflex.pewter.modifiers.tools.ModSanitized
 import slimeknights.tconstruct.library.modifiers.Modifier
 
-class TinkerModifiers {
-    companion object {
-        val modifiers = mapOf<Modifier, Modifier.() -> Unit>(
-                // Not ready for debut yet; They don't show up in the book!
-                /*
-                ModStick() to { it: Modifier ->
-                    it.addItem("minecraft:stick".toItemStack!!.item)
-                },
-
-                ModStone() to { it: Modifier ->
-                    it.addItem("minecraft:stone".toItemStack!!.item)
-                }
-
-                */
-        )
-    }
+class TinkerModifiers : ContentList<Modifier>() {
+    override val content = mapOf(
+            "thaumcraft" to mutableListOf<Modifier>(
+                    ModSanitized()
+            )
+    )
 }
-
-//it.addItem("minecraft:stick".toItemStack!!.item)

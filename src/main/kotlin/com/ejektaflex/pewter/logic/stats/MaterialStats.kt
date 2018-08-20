@@ -60,7 +60,7 @@ class MaterialStats {
     }
 
     private fun addStats(m: Material, part: MatPart) {
-        // If it's an armor part, only register if we have armor stats
+        // If it's an armor part, only configure if we have armor stats
         if (part.isArmorPart) {
             if (armor != null && Pewter.CONFIG.MAIN.conarmIntegration) {
                 TinkerRegistry.addMaterialStats(m, part.stats(this))

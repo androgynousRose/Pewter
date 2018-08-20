@@ -36,7 +36,7 @@ open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
                 "If set to true, will add materials as armor to Construct's Armory where available"
         ).boolean
 
-        for ((mod, materialList) in TinkerMaterials.materials) {
+        for ((mod, materialList) in TinkerMaterials().content) {
             val catName = "material blacklist: $mod"
             val comment = "Possible materials you can blacklist: ${materialList.map { it.material.name }}"
             config.addCustomCategoryComment(catName, comment)

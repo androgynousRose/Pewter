@@ -21,9 +21,7 @@ class ArmorVisBarrier : PewterArmorTrait("Vis Barrier", 0xFF2334), AuraExchanger
 
     override fun onDamaged(armor: ItemStack?, player: EntityPlayer, source: DamageSource, damage: Float, newDamage: Float, evt: LivingDamageEvent?): Float {
 
-        val visInAir = AuraHelper.getVis(player.world, player.position)
-
-        if (visInAir > DRAIN_AMOUNT && random.nextFloat() < DRAIN_CHANCE) {
+        if (getVisAt(player) > DRAIN_AMOUNT && random.nextFloat() < DRAIN_CHANCE) {
             TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_ARMOR, player, 1)
             ArmorHelper.repairArmor(armor, REPAIR_AMOUNT, player)
             drainVisFor(player, DRAIN_AMOUNT)

@@ -19,4 +19,10 @@ interface TinkerNBTChanger {
         func(TagUtil.getOriginalToolStats(tool), TagUtil.getToolTag(tool))
     }
 
+    fun modifyToolStats(root: NBTTagCompound, func: ToolNBT.() -> Unit) {
+        val toolData = TagUtil.getToolStats(root)
+        toolData.apply(func)
+        TagUtil.setToolTag(root, toolData.get())
+    }
+
 }

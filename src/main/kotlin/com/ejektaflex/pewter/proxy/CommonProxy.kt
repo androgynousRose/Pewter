@@ -2,10 +2,10 @@ package com.ejektaflex.pewter.proxy
 
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.content.MaterialLoader
-import com.ejektaflex.pewter.content.TinkerMaterials
 import com.ejektaflex.pewter.content.TinkerModifiers
 import com.ejektaflex.pewter.content.TinkerTraits
 import com.ejektaflex.pewter.ext.resource
+import com.ejektaflex.pewter.modifiers.ConfigurableModifier
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
@@ -24,12 +24,10 @@ open class CommonProxy : IProxy {
     lateinit var block: Block
     lateinit var item: Item
 
-    //private var internalModifiers = TinkerModifiers.modifiers
-    private var internalMaterials = TinkerMaterials.materials
-
     override fun preInit(e: FMLPreInitializationEvent) {
-        val internalTraits = TinkerTraits.traits // Load traits
-        val internalModifiers = TinkerModifiers.modifiers.keys // Load modifiers
+        Pewter.traits = TinkerTraits().traits.toMutableList()
+        Pewter.modifiers = TinkerModifiers().loaded.toMutableList()
+
         MaterialLoader.loadContent()
         makePewterFluid()
     }
@@ -40,7 +38,7 @@ open class CommonProxy : IProxy {
             it.addMaterialTraits()
             it.represent()
         }
-        addModifiers()
+        configureModifiers()
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
@@ -50,9 +48,11 @@ open class CommonProxy : IProxy {
     }
 
     // Assign modifiers to items
-    private fun addModifiers() {
-        for (mod in TinkerModifiers.modifiers) {
-            mod.key.apply(mod.value)
+    private fun configureModifiers() {
+        for (mod in Pewter.modifiers) {
+            if (mod is ConfigurableModifier) {
+                mod.configure()
+            }
         }
     }
 

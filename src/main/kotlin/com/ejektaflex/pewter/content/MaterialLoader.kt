@@ -30,10 +30,10 @@ object MaterialLoader {
             loadData(Pewter.CONFIG.CUSTOMDIR!!)
         } else {
             Pewter.materials.addAll(
-                    TinkerMaterials.flattened.filter {
-                        Loader.isModLoaded(it.first) && it.second.material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials
+                    TinkerMaterials().loaded.filter {
+                        it.material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials
                     }.map {
-                        MaterialRegistrar(it.second.material)
+                        MaterialRegistrar(it.material)
                     }
             )
         }
@@ -41,7 +41,7 @@ object MaterialLoader {
     }
 
     private fun loadData(dir: File) {
-        // Load materials as MaterialStats and then register them all
+        // Load materials as MaterialStats and then configure them all
         val loadedMaterials = getMaterialList(dir).map {
             MaterialRegistrar(it)
         }

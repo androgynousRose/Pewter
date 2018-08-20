@@ -2,6 +2,7 @@ package com.ejektaflex.pewter
 
 import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.logic.MaterialRegistrar
+import com.ejektaflex.pewter.modifiers.PewterModTrait
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Loader
@@ -13,12 +14,16 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent
 import org.apache.logging.log4j.Logger
+import slimeknights.tconstruct.library.modifiers.Modifier
 
 
 @Mod(modid = Pewter.MODID, name = Pewter.NAME, acceptedMinecraftVersions = Pewter.VERSIONS, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
 object Pewter {
 
+    // All content gets loaded into here via preinit
     var materials = mutableListOf<MaterialRegistrar>()
+    var modifiers = mutableListOf<Modifier>()
+    var traits = mutableListOf<Modifier>()
 
     @EventHandler
     fun preInit(event: FMLPreInitializationEvent) {

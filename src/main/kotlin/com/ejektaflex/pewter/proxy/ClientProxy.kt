@@ -41,12 +41,12 @@ class ClientProxy : CommonProxy() {
                 val mapper = FluidStateMapper(it)
                 // Item Model
                 if (material.fluidItem != null) {
-                    ModelLoader.registerItemVariants(material.fluidItem)
-                    ModelLoader.setCustomMeshDefinition(material.fluidItem, mapper)
+                    ModelLoader.registerItemVariants(material.fluidItem!!)
+                    ModelLoader.setCustomMeshDefinition(material.fluidItem!!, mapper)
                 }
                 // Block Model
                 if (material.block != null) {
-                    ModelLoader.setCustomStateMapper(material.block, mapper)
+                    ModelLoader.setCustomStateMapper(material.block!!, mapper)
                 }
             }
             material.tinkMaterial.setRenderInfo(
@@ -65,12 +65,12 @@ class ClientProxy : CommonProxy() {
     override fun postInit(e: FMLPostInitializationEvent) {
         super.postInit(e)
 
-        /*
+        //*
         val repo = FileRepository("${Pewter.MODID}:book")
         TinkerBook.INSTANCE.addRepository(repo)
         TinkerBook.INSTANCE.addTransformer(PewterModSectionTransformer(repo.sections[0].name))
         Pewter.LOGGER.info("Added modifiers to book.")
-        */
+        //*/
 
     }
 
