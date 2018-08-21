@@ -2,7 +2,8 @@ package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.ext.plusAssign
 import com.ejektaflex.pewter.ext.random
-import com.ejektaflex.pewter.mixins.AuraExchanger
+import com.ejektaflex.pewter.lib.mixins.AuraExchanger
+import com.ejektaflex.pewter.lib.traits.tools.PewterTrait
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack

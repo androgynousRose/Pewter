@@ -1,0 +1,18 @@
+{
+  "modifier": "topaz",
+  "text": [
+    {
+      "text": "This dark orange mineral is one of the hardest naturally occurring gemstones in the world. It comes in many colors, although it's only been seen in orange here."
+    }
+  ],
+  "effects": [
+    "Large boost to tool durability",
+    "Moderate increase in attack speed",
+    "Does not stack with BOP gems",
+    "Looks good on engagement rings"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:pickaxe"
+  ]
+}

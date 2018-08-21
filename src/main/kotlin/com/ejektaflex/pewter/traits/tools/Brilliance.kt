@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.ext.isHoldingItemWithTrait
+import com.ejektaflex.pewter.lib.traits.tools.PewterTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.init.MobEffects
 import net.minecraft.potion.PotionEffect

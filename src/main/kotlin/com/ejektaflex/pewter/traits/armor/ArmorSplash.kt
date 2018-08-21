@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.traits.armor
 
+import com.ejektaflex.pewter.lib.traits.armor.PewterArmorTrait
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.DamageSource

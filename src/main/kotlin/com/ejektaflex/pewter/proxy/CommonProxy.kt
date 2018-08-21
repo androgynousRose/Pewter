@@ -5,7 +5,7 @@ import com.ejektaflex.pewter.content.MaterialLoader
 import com.ejektaflex.pewter.content.TinkerModifiers
 import com.ejektaflex.pewter.content.TinkerTraits
 import com.ejektaflex.pewter.ext.resource
-import com.ejektaflex.pewter.modifiers.ConfigurableModifier
+import com.ejektaflex.pewter.lib.mixins.ConfigurableModifier
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock

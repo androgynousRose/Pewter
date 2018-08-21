@@ -4,7 +4,8 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.DamageSource
 import c4.conarm.lib.armor.ArmorModifications
-import com.ejektaflex.pewter.mixins.ManaExchanger
+import com.ejektaflex.pewter.lib.mixins.ManaExchanger
+import com.ejektaflex.pewter.lib.traits.armor.PewterArmorTrait
 
 class ArmorAdapting : PewterArmorTrait("Adapting", 0xE5DFCF), ManaExchanger {
     override fun getModifications(player: EntityPlayer?, mods: ArmorModifications, armor: ItemStack?, source: DamageSource?, damage: Double, slot: Int): ArmorModifications {

@@ -1,0 +1,18 @@
+{
+  "modifier": "amber",
+  "text": [
+    {
+      "text": "Amber is created through the fossilization of resin from coniferous trees. As such, it can often be found underground in forest biomes."
+    }
+  ],
+  "effects": [
+    "Small boost to tool durability",
+    "Moderate increase in attack speed",
+    "Does not stack with BOP gems",
+    "Mostly free of fossilized bugs"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:pickaxe"
+  ]
+}

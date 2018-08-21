@@ -1,0 +1,18 @@
+{
+  "modifier": "tanzanite",
+  "text": [
+    {
+      "text": "This somewhat hard gemstone is quite rare, featuring a deep violet hue. Often found in cold, coniferous biomes, it greatly improves mining speed."
+    }
+  ],
+  "effects": [
+    "Greatly improves tool mining speed",
+    "Moderate boost to tool durability",
+    "Does not stack with BOP gems",
+    "named after Tanzania"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:pickaxe"
+  ]
+}

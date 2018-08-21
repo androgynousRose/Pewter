@@ -37,7 +37,7 @@ val String.toItemStack: ItemStack?
     }
 
 val String.toItem: Item?
-    get() = toItemStack!!.item
+    get() = toItemStack?.item
 
 val String.isInOreDict: Boolean
     get() = startsWith("ore:")

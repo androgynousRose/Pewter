@@ -54,6 +54,9 @@ material.weedwood.name=Weedwood
 modifier.adapting_armor.name=Adapting
 modifier.adapting_armor.desc=§oResponds to change!§r\nYou become tougher after being attacked, at the cost of mana
 
+modifier.amber.name=Amber
+modifier.amber.desc=§oFind them all!§r\nDurability+, Speed++
+
 modifier.attuned.name=Attuned
 modifier.attuned.desc=§oIn sync with the world!§r\nRepairing gives bonus durability based on vis and flux in the Aura.
 
@@ -76,6 +79,9 @@ modifier.corrosive.tooltip=Corrosion: %s
 modifier.corrosive_armor.name=Corrosive
 modifier.corrosive_armor.desc=§oEdgy!§r\nMaterial corrodes over time in The Betweenlands. 25% damage reduction against mobs from that dimension. Repair to clear corrosion.
 
+modifier.enderamethyst.name=Ender Amethyst
+modifier.enderamethyst.desc=§oFind them all!§r\nDurability++++, Speed+++
+
 modifier.essentia.name=Essentia
 modifier.essentia.desc=§oOnly the essentials!§r\nKilling enemies and breaking blocks has a chance of converting them to crystal essence, generating a tiny amount of flux.
 
@@ -94,6 +100,9 @@ modifier.heavyweight.desc=§oThunk.§r\n10% bonus attack damage, 5% less attack 
 modifier.inflamed_armor.name=Inflamed
 modifier.inflamed_armor.desc=§oFwoosh!§r\nRepairs armor durability when on fire.
 
+modifier.malachite.name=Malachite
+modifier.malachite.desc=§oFind them all!§r\nDurability+, Bonus durability on repair
+
 modifier.manaharvest.name=Mana Harvest
 modifier.manaharvest.desc=§oGo Get 'Em!§r\nKilling mobs fills mana-containing items with mana.
 
@@ -109,11 +118,20 @@ modifier.manainfused_armor.desc=§oMagic!§r\nDraws from mana-containing items i
 modifier.maniacal_armor.name=Maniacal
 modifier.maniacal_armor.desc=§oMad Scientist!§r\nIncreased defense based on how much warp the player has accumulated.
 
+modifier.peridot.name=Peridot
+modifier.peridot.desc=§oFind them all!§r\nDurability++, Speed+
+
 modifier.polluted.name=Polluted
 modifier.polluted.desc=§oSlightly Toxic.§r\nHitting enemies has a chance of releasing flux.
 
+modifier.ruby.name=Ruby
+modifier.ruby.desc=§oFind them all!§r\nDurability+++, Attack+, Speed-
+
 modifier.sanitizing.name=Sanitizing
 modifier.sanitizing.desc=§oSudsing & Bubbly!§r\nReduces warp gained from Warping Tinker tools.
+
+modifier.sapphire.name=Sapphire
+modifier.sapphire.desc=§oFind them all!§r\nDurability+++, Speed++
 
 modifier.sapping.name=Sapping
 modifier.sapping.desc=§oAlchemical Trade!§r\nDamaging enemies usually steals a small portion of their health. If your health is full, may regen tool durability instead.
@@ -123,6 +141,12 @@ modifier.sparking.desc=§oFighting With Fire!§r\nHitting enemies has a chance o
 
 modifier.splash_armor.name=Splash
 modifier.splash_armor.desc=§oNothing happened!§r\nReflects damage taken on attackers when in water.
+
+modifier.tanzanite.name=Tanzanite
+modifier.tanzanite.desc=§oFind them all!§r\nDurability++, Speed+++
+
+modifier.topaz.name=Topaz
+modifier.topaz.desc=§oFind them all!§r\nDurability+++, Speed++
 
 modifier.warping.name=Warping
 modifier.warping.desc=§oDon't Forget The Soap!§r\nTool usage slowly warps the user's mind.

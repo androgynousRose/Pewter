@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.traits.tools
 
+import com.ejektaflex.pewter.lib.traits.tools.PewterProjectileTrait
 import net.minecraft.util.EnumParticleTypes
 import net.minecraft.world.World
 import slimeknights.tconstruct.library.entity.EntityProjectileBase

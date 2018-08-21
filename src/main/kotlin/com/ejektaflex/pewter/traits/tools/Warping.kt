@@ -1,7 +1,8 @@
 package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.modifiers.tools.ModSanitizing
-import com.ejektaflex.pewter.mixins.TinkerNBTChanger
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
+import com.ejektaflex.pewter.lib.traits.tools.PewterTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack

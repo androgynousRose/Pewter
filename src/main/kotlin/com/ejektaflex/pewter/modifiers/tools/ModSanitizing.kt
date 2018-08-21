@@ -4,8 +4,8 @@ package com.ejektaflex.pewter.modifiers.tools
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ext.set
 import com.ejektaflex.pewter.ext.toItem
-import com.ejektaflex.pewter.modifiers.PewterModTrait
-import com.ejektaflex.pewter.mixins.TinkerNBTChanger
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
+import com.ejektaflex.pewter.lib.modifiers.PewterModTrait
 import com.ejektaflex.pewter.traits.tools.Warping
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound

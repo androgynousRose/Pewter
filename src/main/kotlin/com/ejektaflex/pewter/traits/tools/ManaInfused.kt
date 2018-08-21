@@ -1,7 +1,8 @@
 package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.ext.isAtMaxDurability
-import com.ejektaflex.pewter.mixins.ManaExchanger
+import com.ejektaflex.pewter.lib.mixins.ManaExchanger
+import com.ejektaflex.pewter.lib.traits.tools.PewterTrait
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack

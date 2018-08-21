@@ -1,0 +1,18 @@
+{
+  "modifier": "peridot",
+  "text": [
+    {
+      "text": "This bright, green gemstone can be found underground within plains biomes. Often mistaken for emeralds, they can are one of few naturally occurring green gemstones."
+    }
+  ],
+  "effects": [
+    "Moderate boost to tool durability",
+    "Slight increase in attack speed",
+    "Does not stack with BOP gems",
+    "Reminiscent of green apples"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:pickaxe"
+  ]
+}

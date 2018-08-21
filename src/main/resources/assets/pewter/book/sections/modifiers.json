@@ -2,5 +2,37 @@
   {
     "type": "modifier",
     "data": "modifiers/sanitizing.json"
+  },
+  {
+    "type": "modifier",
+    "data": "modifiers/enderamethyst.json"
+  },
+  {
+    "type": "modifier",
+    "data": "modifiers/ruby.json"
+  },
+  {
+    "type": "modifier",
+    "data": "modifiers/peridot.json"
+  },
+  {
+    "type": "modifier",
+    "data": "modifiers/topaz.json"
+  },
+  {
+    "type": "modifier",
+    "data": "modifiers/tanzanite.json"
+  },
+  {
+    "type": "modifier",
+    "data": "modifiers/malachite.json"
+  },
+  {
+    "type": "modifier",
+    "data": "modifiers/sapphire.json"
+  },
+  {
+    "type": "modifier",
+    "data": "modifiers/amber.json"
   }
 ]

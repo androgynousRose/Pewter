@@ -17,7 +17,7 @@ import slimeknights.tconstruct.library.modifiers.Modifier
 
 
 @Mod(modid = Pewter.MODID, name = Pewter.NAME, acceptedMinecraftVersions = Pewter.VERSIONS, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
-object Pewter {
+object Pewter : IProxy {
 
     // All content gets loaded into here via preinit
     var materials = mutableListOf<MaterialRegistrar>()
@@ -25,7 +25,7 @@ object Pewter {
     var traits = mutableListOf<Modifier>()
 
     @EventHandler
-    fun preInit(event: FMLPreInitializationEvent) {
+    override fun preInit(event: FMLPreInitializationEvent) {
         LOGGER = event.modLog
         CONFIG = Configs
         CONFIG.initialize(event.modConfigurationDirectory)
@@ -44,12 +44,12 @@ object Pewter {
 
 
     @EventHandler
-    fun init(event: FMLInitializationEvent) {
+    override fun init(event: FMLInitializationEvent) {
         proxy.init(event)
     }
 
     @EventHandler
-    fun postInit(event: FMLPostInitializationEvent) {
+    override fun postInit(event: FMLPostInitializationEvent) {
         proxy.postInit(event)
     }
 
@@ -71,6 +71,7 @@ object Pewter {
             "after:astralsorcery;" +
             "after:thaumcraft;" +
             "after:betterwithmods;" +
+            "after:biomesoplenty;" +
             "after:botania;" +
             "after:thebetweenlands;"
     const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"

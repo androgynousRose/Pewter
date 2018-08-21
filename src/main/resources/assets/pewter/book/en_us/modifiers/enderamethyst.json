@@ -1,0 +1,17 @@
+{
+  "modifier": "enderamethyst",
+  "text": [
+    {
+      "text": "Ender amethyst, a rare form of purple amethyst found in the end, has exceptionally high durability and increases speed of attack."
+    }
+  ],
+  "effects": [
+    "Very large boost to tool durability",
+    "Large increase in attack speed",
+    "Does not stack with BOP gems"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:pickaxe"
+  ]
+}

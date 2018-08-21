@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.traits.tools
 
+import com.ejektaflex.pewter.lib.traits.tools.PewterTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 
