@@ -1,6 +1,7 @@
-package com.ejektaflex.pewter.modifiers.base
+package com.ejektaflex.pewter.modifiers.base.gems
 
 import c4.conarm.lib.armor.ArmorNBT
+import com.ejektaflex.pewter.modifiers.base.IModGem
 import slimeknights.tconstruct.library.tools.ToolNBT
 
 interface IModMalachite : IModGem {

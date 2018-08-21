@@ -1,18 +1,18 @@
-package com.ejektaflex.pewter.modifiers.base
+package com.ejektaflex.pewter.modifiers.base.gems
 
 import c4.conarm.lib.armor.ArmorNBT
+import com.ejektaflex.pewter.modifiers.base.IModGem
 import slimeknights.tconstruct.library.tools.ToolNBT
 
-interface IModRuby : IModGem {
+interface IModAmber : IModGem {
 
     override val gemMeta: Int
-        get() = 1
+        get() = 7
 
     override val toolMod: ToolNBT.() -> Unit
         get() = {
-            durability += 350
-            attack += 0.15f
-            speed -= 0.25f
+            durability += 150
+            speed += 0.5f
         }
 
     override val armorMod: ArmorNBT.() -> Unit

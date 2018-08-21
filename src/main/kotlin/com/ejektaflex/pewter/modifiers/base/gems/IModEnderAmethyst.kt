@@ -1,9 +1,7 @@
-package com.ejektaflex.pewter.modifiers.base
+package com.ejektaflex.pewter.modifiers.base.gems
 
 import c4.conarm.lib.armor.ArmorNBT
-import com.ejektaflex.pewter.ext.toItemStack
-import com.ejektaflex.pewter.lib.traits.base.SharedTrait
-import net.minecraft.item.ItemStack
+import com.ejektaflex.pewter.modifiers.base.IModGem
 import slimeknights.tconstruct.library.tools.ToolNBT
 
 interface IModEnderAmethyst : IModGem {

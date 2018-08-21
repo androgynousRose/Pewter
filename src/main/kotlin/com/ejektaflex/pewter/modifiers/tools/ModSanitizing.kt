@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.modifiers.tools
 
 
-import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.ext.getModifier
 import com.ejektaflex.pewter.ext.set
 import com.ejektaflex.pewter.ext.toItem
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
@@ -36,7 +36,7 @@ class ModSanitizing : PewterModifier("sanitizing", 0xCCA5E6), TinkerNBTChanger {
 
 
     override fun canApplyCustom(stack: ItemStack?): Boolean {
-        return Pewter.traits.first { it is Warping }.identifier in getTraits(stack!!)
+        return getModifier<Warping>() in getTraits(stack!!)
     }
 
     companion object {
