@@ -84,7 +84,7 @@ object MaterialLoader {
         for ((modName, dsl) in materialsToSave) {
             if (Loader.isModLoaded(modName)) {
                 if (dsl.material.name !in existingFiles.map { it.nameWithoutExtension } || Pewter.CONFIG.MAIN.overwrite) {
-                    Pewter.LOGGER.info("Saving mod $modName material ${dsl.material.name}")
+                    Pewter.LOGGER.info("Saving toolMod $modName material ${dsl.material.name}")
                     saveDSLMaterial(Pewter.CONFIG.BUILTINDIR, dsl)
                 } else {
                     Pewter.LOGGER.info("Skipping integration of ${dsl.material.name}; file already exists")

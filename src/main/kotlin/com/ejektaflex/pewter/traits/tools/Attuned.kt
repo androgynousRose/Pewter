@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.lib.mixins.AuraExchanger
-import com.ejektaflex.pewter.lib.traits.tools.PewterTrait
+import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import kotlin.math.log10
@@ -9,7 +9,7 @@ import kotlin.math.min
 import kotlin.math.pow
 
 
-class Attuned : PewterTrait("attuned", 0xE18EFF), AuraExchanger {
+class Attuned : PewterToolTrait("attuned", 0xE18EFF), AuraExchanger {
     override fun onToolHeal(tool: ItemStack?, amount: Int, newAmount: Int, entity: EntityLivingBase): Int {
         val netVis = getVisAt(entity) - getFluxAt(entity)
         val visLog = log10(min(1f, netVis))

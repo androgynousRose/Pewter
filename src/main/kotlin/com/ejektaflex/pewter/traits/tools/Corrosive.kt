@@ -3,7 +3,7 @@ package com.ejektaflex.pewter.traits.tools
 import com.ejektaflex.pewter.ext.get
 import com.ejektaflex.pewter.ext.set
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
-import com.ejektaflex.pewter.lib.traits.tools.PewterTrait
+import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
 import net.minecraft.client.resources.I18n
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import kotlin.math.max
 
 
-class Corrosive : PewterTrait("Corrosive", 0x70FF3D), TinkerNBTChanger {
+class Corrosive : PewterToolTrait("Corrosive", 0x70FF3D), TinkerNBTChanger {
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent

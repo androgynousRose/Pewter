@@ -1,10 +1,10 @@
 package com.ejektaflex.pewter.traits.tools
 
-import com.ejektaflex.pewter.lib.traits.tools.PewterTrait
+import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 
-class Sparking : PewterTrait("Sparking", 0xF3B72A) {
+class Sparking : PewterToolTrait("Sparking", 0xF3B72A) {
     override fun onHit(tool: ItemStack?, player: EntityLivingBase?, target: EntityLivingBase?, damage: Float, isCritical: Boolean) {
         if (!target!!.isDead && random.nextFloat() < CHANCE) {
             target.setFire(BURNING_LENGTH)

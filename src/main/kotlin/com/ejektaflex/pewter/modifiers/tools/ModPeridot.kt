@@ -1,20 +1,9 @@
 package com.ejektaflex.pewter.modifiers.tools
 
 
-import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.lib.modifiers.BOPGemModifier
-import net.minecraft.item.ItemStack
-import slimeknights.tconstruct.library.tools.ToolNBT
+import com.ejektaflex.pewter.modifiers.base.IModPeridot
 
 
-class ModPeridot : BOPGemModifier("peridot", 0x74A92F) {
-
-    override val gem: ItemStack? = "biomesoplenty:gem:2".toItemStack
-
-    override val mod: ToolNBT.() -> Unit = {
-        durability += 150
-        speed += 0.25f
-    }
-
-}
+class ModPeridot : BOPGemModifier("peridot", 0x74A92F), IModPeridot
 

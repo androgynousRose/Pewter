@@ -1,12 +1,12 @@
 package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.ext.ifHasCapability
-import com.ejektaflex.pewter.lib.traits.tools.PewterTrait
+import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import thebetweenlands.common.registries.CapabilityRegistry
 
-class Gritty : PewterTrait("Gritty", 0xC867D7) {
+class Gritty : PewterToolTrait("Gritty", 0xC867D7) {
     override fun damage(tool: ItemStack?, player: EntityLivingBase?, target: EntityLivingBase?, damage: Float, newDamage: Float, isCritical: Boolean): Float {
         var toReturn = damage
         player!!.ifHasCapability(CapabilityRegistry.CAPABILITY_DECAY) {

@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.traits.base
 
 import com.ejektaflex.pewter.ext.isAtMaxDurability
 import com.ejektaflex.pewter.lib.mixins.ManaExchanger
-import com.ejektaflex.pewter.lib.traits.common.SharedTrait
+import com.ejektaflex.pewter.lib.traits.base.SharedTrait
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack

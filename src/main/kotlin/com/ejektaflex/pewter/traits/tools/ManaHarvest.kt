@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter.traits.tools
 
-import com.ejektaflex.pewter.lib.traits.tools.PewterTrait
+import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -8,7 +8,7 @@ import slimeknights.tconstruct.shared.client.ParticleEffect
 import slimeknights.tconstruct.tools.TinkerTools
 import vazkii.botania.api.mana.ManaItemHandler
 
-class ManaHarvest : PewterTrait("manaharvest", 0x005EE0) {
+class ManaHarvest : PewterToolTrait("manaharvest", 0x005EE0) {
 
     override fun damage(tool: ItemStack?, player: EntityLivingBase, target: EntityLivingBase, damage: Float, newDamage: Float, isCritical: Boolean): Float {
 

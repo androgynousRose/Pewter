@@ -5,14 +5,14 @@ import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ext.set
 import com.ejektaflex.pewter.ext.toItem
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
-import com.ejektaflex.pewter.lib.modifiers.PewterModTrait
+import com.ejektaflex.pewter.lib.modifiers.PewterModifier
 import com.ejektaflex.pewter.traits.tools.Warping
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import slimeknights.tconstruct.library.modifiers.ModifierAspect
 
 
-class ModSanitizing : PewterModTrait("sanitizing", 0xCCA5E6), TinkerNBTChanger {
+class ModSanitizing : PewterModifier("sanitizing", 0xCCA5E6), TinkerNBTChanger {
 
     init {
         addAspects(

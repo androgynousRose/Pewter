@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.ext.isHoldingItemWithTrait
-import com.ejektaflex.pewter.lib.traits.tools.PewterTrait
+import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.init.MobEffects
 import net.minecraft.potion.PotionEffect
@@ -10,7 +10,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent
 import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
-class Brilliance : PewterTrait("Brilliance", 0x66D7FB) {
+class Brilliance : PewterToolTrait("Brilliance", 0x66D7FB) {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     fun defend(event: LivingHurtEvent) {
         if (event.source is EntityDamageSource && event.entityLiving.isHoldingItemWithTrait(identifier)){
