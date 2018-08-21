@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.library.tools.ToolNBT
 
 
-class ModSapphire : BOPGemModifier("sapphire", 0xCCA5E6) {
+class ModSapphire : BOPGemModifier("sapphire", 0x2481AD) {
 
     override val gem: ItemStack? = "biomesoplenty:gem:6".toItemStack
 

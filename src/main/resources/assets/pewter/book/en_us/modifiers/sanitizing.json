@@ -8,7 +8,7 @@
   "effects": [
     "Reduces warp gained from Warping Tinker tools",
     "Can only be applied once",
-    "Bubbling and sudsing power",
+    "Can only be applied to tools with Warping",
     "Fresh lavender scent"
   ],
   "demoTool": [

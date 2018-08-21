@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.library.tools.ToolNBT
 
 
-class ModEnderAmethyst : BOPGemModifier("enderamethyst", 0xCCA5E6) {
+class ModEnderAmethyst : BOPGemModifier("enderamethyst", 0xE051ED) {
 
     override val gem: ItemStack? = "biomesoplenty:gem:0".toItemStack
 

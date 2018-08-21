@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.library.tools.ToolNBT
 
 
-class ModMalachite : BOPGemModifier("malachite", 0xCCA5E6) {
+class ModMalachite : BOPGemModifier("malachite", 0x079971) {
 
     override val gem: ItemStack? = "biomesoplenty:gem:5".toItemStack
 

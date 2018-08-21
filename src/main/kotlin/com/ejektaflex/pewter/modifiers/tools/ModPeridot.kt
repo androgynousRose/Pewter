@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.library.tools.ToolNBT
 
 
-class ModPeridot : BOPGemModifier("peridot", 0xCCA5E6) {
+class ModPeridot : BOPGemModifier("peridot", 0x74A92F) {
 
     override val gem: ItemStack? = "biomesoplenty:gem:2".toItemStack
 
