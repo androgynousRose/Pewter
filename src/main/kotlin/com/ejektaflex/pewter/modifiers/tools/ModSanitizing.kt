@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.modifiers.tools
 
 
-import com.ejektaflex.pewter.ext.getModifier
+import com.ejektaflex.pewter.ext.getTinkersModifier
 import com.ejektaflex.pewter.ext.set
 import com.ejektaflex.pewter.ext.toItem
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
@@ -20,7 +20,6 @@ class ModSanitizing : PewterModifier("sanitizing", 0xCCA5E6), TinkerNBTChanger {
         )
     }
 
-
     override fun applyEffect(rootCompound: NBTTagCompound, modifierTag: NBTTagCompound) {
         super.applyEffect(rootCompound, modifierTag)
 
@@ -34,9 +33,8 @@ class ModSanitizing : PewterModifier("sanitizing", 0xCCA5E6), TinkerNBTChanger {
         addItem("thaumcraft:sanity_soap".toItem)
     }
 
-
     override fun canApplyCustom(stack: ItemStack?): Boolean {
-        return getModifier<Warping>() in getTraits(stack!!)
+        return getTinkersModifier<Warping>() in getTraits(stack!!)
     }
 
     companion object {
