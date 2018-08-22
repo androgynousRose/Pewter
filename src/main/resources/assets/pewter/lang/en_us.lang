@@ -82,6 +82,9 @@ modifier.corrosive_armor.desc=§oEdgy!§r\nMaterial corrodes over time in The Be
 modifier.enderamethyst.name=Ender Amethyst
 modifier.enderamethyst.desc=§oFind them all!§r\nDurability++++, Speed+++
 
+modifier.envious_armor.name=Envious
+modifier.envious_armor.desc=§oLooks so good!§r\nYou take less damage from enemies that are also armored.
+
 modifier.essentia.name=Essentia
 modifier.essentia.desc=§oOnly the essentials!§r\nKilling enemies and breaking blocks has a chance of converting them to crystal essence, generating a tiny amount of flux.
 

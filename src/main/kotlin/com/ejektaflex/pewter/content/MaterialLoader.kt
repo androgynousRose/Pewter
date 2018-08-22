@@ -28,7 +28,7 @@ object MaterialLoader {
                 }
         )
 
-        Pewter.LOGGER.info("Loaded ${Pewter.materials.size} materials.")
+        Pewter.LOGGER.info("Loaded ${Pewter.materials.size} dependencies.")
     }
 
 }

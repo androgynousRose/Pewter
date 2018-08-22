@@ -36,7 +36,8 @@ class PewterTraits {
                     ArmorManiacal(),
                     ArmorSplash(),
                     ArmorManaInfused(),
-                    ArmorAdapting()
+                    ArmorAdapting(),
+                    ArmorEnvious()
             ))
         }
     }

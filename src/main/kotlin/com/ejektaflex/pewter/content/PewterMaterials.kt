@@ -14,11 +14,14 @@ object PewterMaterials {
     val content: List<MaterialDSL>
         get() {
             return listOf(
+                    // Astral Sorcery
                     StarmetalMaterial(),
 
+                    // Better With Mods
                     HellfireMaterial(),
                     SoulforgedSteelMaterial(),
 
+                    // Botania
                     ManasteelMaterial(),
                     ManastringMaterial(),
                     TerrasteelMaterial(),
@@ -26,10 +29,12 @@ object PewterMaterials {
                     LivingwoodMaterial(),
                     LivingrockMaterial(),
 
+                    // Thaumcraft
                     ThaumiumMaterial(),
                     VoidMetalMaterial(),
-                    //AlchemicalBrassMaterial(),
+                    //AlchemicalBrassMaterial(), :( Goodbye friend!
 
+                    // The Betweenlands
                     OctineMaterial(),
                     SyrmoriteMaterial(),
                     DragonflyMaterial(),

@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.materials.example
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
-import com.ejektaflex.pewter.lib.materials.ExampleDependency
+import com.ejektaflex.pewter.lib.dependencies.ExampleDependency
 
 class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {
     locale("en_us" to "Test Material.", "en_pt" to "Ye Olde Material")

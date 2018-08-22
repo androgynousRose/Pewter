@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.materials.betterwithmods
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
-import com.ejektaflex.pewter.lib.materials.BetterWithModsDependency
+import com.ejektaflex.pewter.lib.dependencies.BetterWithModsDependency
 
 class HellfireMaterial : MaterialDSL("hellfire", "#FF362C", {
     locale("en_7S " to "Ye Fiery Treasure")
@@ -12,7 +12,7 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF362C", {
     tool {
         toolTrait("heatlover")
         head {
-            durability { 335 }
+            durability { 355 }
             attack { 4f }
             speed { 5.5f }
             harvestLevel(1)

@@ -11,7 +11,7 @@ class ResourceManager : IResourceManagerReloadListener {
 
     override fun onResourceManagerReload(resourceManager: IResourceManager) {
         var data = ""
-        // Write all custom materials
+        // Write all custom dependencies
         Pewter.materials.filter { it.data.isInCustomFolder }.forEach {
             data += writeMaterial(it)
         }

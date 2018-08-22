@@ -19,32 +19,32 @@ open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
                 CATEGORY_GENERAL,
                 "lockedIntegrations",
                 true,
-                "If set to false, you can customize materials in the ${Pewter.MODID}/builtins folder and they won't be overwritten."
+                "If set to false, you can customize dependencies in the ${Pewter.MODID}/builtins folder and they won't be overwritten."
         ).boolean
 
         purge = config.get(
                 CATEGORY_GENERAL,
                 "purgeUnusedIntegrations",
                 true,
-                "If set to true, will remove integration files for materials that have been turned off"
+                "If set to true, will remove integration files for dependencies that have been turned off"
         ).boolean
 
         conarmIntegration = config.get(
                 CATEGORY_GENERAL,
                 "ConstructsArmoryIntegration",
                 true,
-                "If set to true, will add materials as armor to Construct's Armory where available"
+                "If set to true, will add dependencies as armor to Construct's Armory where available"
         ).boolean
 
         val mats = PewterMaterials.content
         val catName = "material blacklist:"
-        config.addCustomCategoryComment(catName, "Possible materials you can blacklist: ${mats.map { it.material.name }}")
+        config.addCustomCategoryComment(catName, "Possible dependencies you can blacklist: ${mats.map { it.material.name }}")
 
         val got = config.getStringList(
                 "materialBlacklist",
                 catName,
                 listOf<String>().toTypedArray(),
-                "Blacklist for Pewter. Add the materials you don't want and they will not be loaded on startup"
+                "Blacklist for Pewter. Add the dependencies you don't want and they will not be loaded on startup"
         )
         got.forEach { blacklistedMaterials.add(it) }
 

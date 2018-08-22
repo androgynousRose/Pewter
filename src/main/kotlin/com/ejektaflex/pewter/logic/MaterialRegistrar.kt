@@ -76,14 +76,12 @@ class MaterialRegistrar(val data: MaterialData) : IProxy {
                     tinkMaterial.addItem(itemStack, 1, smeltingType.amount)
 
                     if (fluid != null && data.createMeltingRecipes) {
-                        //*
                         val meltingRecipe = MeltingRecipe(
                                 RecipeMatch.of(itemStack, smeltingType.amount),
                                 fluid,
                                 data.meltingTemperature
                         )
                         TinkerRegistry.registerMelting(meltingRecipe)
-                        //*/
                     }
                 } else {
                     Pewter.LOGGER.warn("Could not associate $itemString with material named '${data.name}'! Reason is because the item doesn't exist.")
@@ -94,13 +92,11 @@ class MaterialRegistrar(val data: MaterialData) : IProxy {
 
     private fun represent() {
         // Material will be represented in Table of Contents by first ingot we get
-        //val itemToRepresentWith = data.smelting["ingot"]?.get(0)?.toItemStack
         val itemToRepresentWith = data.smelting.allItemNames().first().toItemStack
 
         itemToRepresentWith?.let {
-            Pewter.LOGGER.info("Representing ${data.name} with a $it")
             tinkMaterial.representativeItem = it
-            Pewter.LOGGER.info("${data.name} is being represented by a ${tinkMaterial.representativeItem}")
+            Pewter.LOGGER.info("${data.name} is being represented by a ${tinkMaterial.representativeItem.unlocalizedName}")
         }
     }
 
