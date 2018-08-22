@@ -1,5 +1,7 @@
 package com.ejektaflex.pewter.logic.stats
 
+import com.ejektaflex.pewter.ext.toItemStack
+import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.library.materials.Material
 
 class SmeltingStats {
@@ -13,8 +15,12 @@ class SmeltingStats {
         return type.getter(this)
     }
 
-    fun allItems(): List<String> {
+    fun allItemNames(): List<String> {
         return SmeltingType.values().map { it.getter(this) }.flatten()
+    }
+
+    fun allItemStacks(): List<ItemStack> {
+        return allItemNames().mapNotNull { it.toItemStack }
     }
 
     enum class SmeltingType(val getter: SmeltingStats.() -> MutableList<String>, val amount: Int) {

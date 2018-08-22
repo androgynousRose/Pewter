@@ -1,14 +1,11 @@
 package com.ejektaflex.pewter.dsl
 
-import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.content.IDependency
-import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.logic.stats.ArmorStats
 import com.ejektaflex.pewter.logic.stats.MaterialData
 
-abstract class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>(), IDependency {
+abstract class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>(), IMaterialDependency {
 
-    var material = MaterialData()
+    final override val material = MaterialData()
 
     init {
         material.color = initColor
@@ -19,12 +16,12 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
     /*
     // Only load the material if we have met all dependencies
     override fun hasMetDependencies(): Boolean {
-        val meltableItems = material.smelting.allItems().mapNotNull { it.toItemStack }
+        val meltableItems = material.smelting.allItemNames().mapNotNull { it.toItemStack }
         Pewter.LOGGER.info("Dependencies for ${material.name}: ${meltableItems.map { it.unlocalizedName }}")
         val isNotBlacklisted = material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials
         return meltableItems.isNotEmpty() && isNotBlacklisted
-    }
-    */
+    }*/
+
 
     @DslMarker
     annotation class TopLevelToolDSL
@@ -330,9 +327,6 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
             }
         }
 
-
-
     }
-
 
 }

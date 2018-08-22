@@ -9,16 +9,20 @@ import com.ejektaflex.pewter.logic.stats.SmeltingStats
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraft.block.Block
 import net.minecraft.item.ItemBlock
+import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fluids.Fluid
 import net.minecraftforge.fluids.FluidRegistry
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.registry.ForgeRegistries
 import net.minecraftforge.oredict.OreDictionary
 import slimeknights.mantle.util.RecipeMatch
 import slimeknights.tconstruct.library.MaterialIntegration
 import slimeknights.tconstruct.library.TinkerRegistry
+import slimeknights.tconstruct.library.events.MaterialEvent
+import slimeknights.tconstruct.library.events.TinkerRegisterEvent
 import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.library.materials.Material
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe
@@ -33,6 +37,10 @@ class MaterialRegistrar(val data: MaterialData) : IProxy {
     var fluid: Fluid? = null
     var block: Block? = null
     var fluidItem: ItemBlock? = null
+
+    init {
+        MinecraftForge.EVENT_BUS.register(this)
+    }
 
     override fun preInit(e: FMLPreInitializationEvent) {
         createMaterial()
@@ -87,7 +95,7 @@ class MaterialRegistrar(val data: MaterialData) : IProxy {
     private fun represent() {
         // Material will be represented in Table of Contents by first ingot we get
         //val itemToRepresentWith = data.smelting["ingot"]?.get(0)?.toItemStack
-        val itemToRepresentWith = data.smelting.allItems().first().toItemStack
+        val itemToRepresentWith = data.smelting.allItemNames().first().toItemStack
 
         itemToRepresentWith?.let {
             Pewter.LOGGER.info("Representing ${data.name} with a $it")

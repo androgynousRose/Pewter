@@ -28,7 +28,7 @@ object PewterMaterials {
 
                     ThaumiumMaterial(),
                     VoidMetalMaterial(),
-                    AlchemicalBrassMaterial(),
+                    //AlchemicalBrassMaterial(),
 
                     OctineMaterial(),
                     SyrmoriteMaterial(),
