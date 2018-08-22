@@ -24,15 +24,15 @@ open class CommonProxy : IProxy {
 
     override fun preInit(e: FMLPreInitializationEvent) {
         MaterialLoader.loadContent()
+        Pewter.materials.forEach {
+            it.preInit(e)
+        }
         makePewterFluid()
     }
 
     override fun init(e: FMLInitializationEvent) {
-
         Pewter.materials.forEach {
-            it.associate()
-            it.addMaterialTraits()
-            it.represent()
+            it.init(e)
         }
         configureModifiers()
     }

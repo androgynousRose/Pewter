@@ -6,10 +6,14 @@ import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.logic.stats.MaterialData
 import com.ejektaflex.pewter.logic.stats.MaterialData.MatPart
 import com.ejektaflex.pewter.logic.stats.SmeltingStats
+import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraft.block.Block
 import net.minecraft.item.ItemBlock
 import net.minecraftforge.fluids.Fluid
 import net.minecraftforge.fluids.FluidRegistry
+import net.minecraftforge.fml.common.event.FMLInitializationEvent
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.registry.ForgeRegistries
 import net.minecraftforge.oredict.OreDictionary
 import slimeknights.mantle.util.RecipeMatch
@@ -22,7 +26,7 @@ import slimeknights.tconstruct.library.traits.ITrait
 import slimeknights.tconstruct.smeltery.block.BlockMolten
 import java.awt.Color
 
-class MaterialRegistrar(val data: MaterialData) {
+class MaterialRegistrar(val data: MaterialData) : IProxy {
 
     private lateinit var integration: MaterialIntegration
     lateinit var tinkMaterial: Material
@@ -30,15 +34,25 @@ class MaterialRegistrar(val data: MaterialData) {
     var block: Block? = null
     var fluidItem: ItemBlock? = null
 
-    init {
+    override fun preInit(e: FMLPreInitializationEvent) {
         createMaterial()
         makeFluid()
         integrateMaterial()
         addMaterialStats()
     }
 
+    override fun init(e: FMLInitializationEvent) {
+        associate()
+        addMaterialTraits()
+        represent()
+    }
+
+    override fun postInit(e: FMLPostInitializationEvent) {
+        // Nothing to do postInit
+    }
+
     // Register all associated items in the Ore Dictionary
-    fun associate() {
+    private fun associate() {
 
         // Register for melting on a casting table
         //TinkerSmeltery.registerToolpartMeltingCasting(tinkMaterial)
@@ -70,7 +84,7 @@ class MaterialRegistrar(val data: MaterialData) {
         }
     }
 
-    fun represent() {
+    private fun represent() {
         // Material will be represented in Table of Contents by first ingot we get
         //val itemToRepresentWith = data.smelting["ingot"]?.get(0)?.toItemStack
         val itemToRepresentWith = data.smelting.allItems().first().toItemStack
@@ -83,7 +97,7 @@ class MaterialRegistrar(val data: MaterialData) {
     }
 
 
-    fun addMaterialTraits() {
+    private fun addMaterialTraits() {
         var numSpecTraits = 0
         // Default Trait
 
