@@ -3,13 +3,11 @@ package com.ejektaflex.pewter.content
 import com.ejektaflex.pewter.modifiers.tools.*
 import slimeknights.tconstruct.library.modifiers.Modifier
 
-class TinkerModifiers : ContentList<Modifier>() {
-    override val content = mapOf(
-            "thaumcraft" to mutableListOf<Modifier>(
-                    ModSanitizing()
-            ),
-            "biomesoplenty" to mutableListOf<Modifier>(
-                    // BOP
+object TinkerModifiers {
+    val content: List<Modifier>
+        get() {
+            return listOf(
+                    ModSanitizing(),
                     ModEnderAmethyst(),
                     ModRuby(),
                     ModPeridot(),
@@ -19,5 +17,5 @@ class TinkerModifiers : ContentList<Modifier>() {
                     ModSapphire(),
                     ModAmber()
             )
-    )
+        }
 }

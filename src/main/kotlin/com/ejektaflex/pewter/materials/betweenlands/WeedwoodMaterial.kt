@@ -1,14 +1,14 @@
 package com.ejektaflex.pewter.materials.betweenlands
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
-import com.ejektaflex.pewter.logic.stats.MaterialStats
+import com.ejektaflex.pewter.logic.stats.MaterialData
 
 class WeedwoodMaterial : MaterialDSL("weedwood", "#665E31", {
     forge { false }
     craft { true }
     ingots("thebetweenlands:weedwood_planks")
     defaultMetalParts()
-    parts(MaterialStats.MatPart.SHAFT)
+    parts(MaterialData.MatPart.SHAFT)
     addTraits(
             //"HEAD" to "corrosive",
             "HEAD" to "ecological",

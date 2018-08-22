@@ -2,13 +2,13 @@ package com.ejektaflex.pewter.materials.thaumcraft
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
 
-class BrassMaterial : MaterialDSL("brass", "#D2983A", {
+class AlchemicalBrassMaterial : MaterialDSL("alchemicalbrass", "#D2983A", {
     forge { true }
     craft { false }
     ingots("thaumcraft:ingot:2")
     nuggets("thaumcraft:nugget:8")
     blocks("thaumcraft:metal_brass")
-    fluids("brass")
+    //fluids("brass")
     noMeltRecipes()
     defaultMetalParts()
     addTraits(

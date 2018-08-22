@@ -3,7 +3,6 @@ package com.ejektaflex.pewter.proxy
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ResourceManager
 import com.ejektaflex.pewter.book.PewterModSectionTransformer
-import com.ejektaflex.pewter.ext.resource
 import com.ejektaflex.pewter.logic.FluidStateMapper
 import com.google.common.base.Function
 import net.minecraft.client.Minecraft
@@ -20,13 +19,8 @@ import net.minecraftforge.client.model.ModelLoader
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
-import slimeknights.mantle.client.book.BookTransformer
-import slimeknights.mantle.client.book.data.content.ContentTableOfContents
-import slimeknights.mantle.client.book.repository.BookRepository
 import slimeknights.mantle.client.book.repository.FileRepository
 import slimeknights.tconstruct.library.book.TinkerBook
-import slimeknights.tconstruct.library.book.sectiontransformer.ContentListingSectionTransformer
-import slimeknights.tconstruct.library.book.sectiontransformer.ModifierSectionTransformer
 import slimeknights.tconstruct.library.client.MaterialRenderInfo
 import java.awt.Color
 
@@ -50,10 +44,10 @@ class ClientProxy : CommonProxy() {
                 }
             }
             material.tinkMaterial.setRenderInfo(
-                    MaterialRenderInfo.Metal(Color.decode(material.stats.color).rgb,
-                            material.stats.looks["shininess"] ?: 1.0f,
-                            material.stats.looks["brightness"] ?: 1.0f,
-                            material.stats.looks["hueshift"] ?: 1.0f
+                    MaterialRenderInfo.Metal(Color.decode(material.data.color).rgb,
+                            material.data.looks["shininess"] ?: 1.0f,
+                            material.data.looks["brightness"] ?: 1.0f,
+                            material.data.looks["hueshift"] ?: 1.0f
                     )
             )
         }

@@ -51,7 +51,7 @@ class Corrosive : PewterToolTrait("Corrosive", 0x70FF3D), TinkerNBTChanger {
             if (entity.dimension == BetweenlandsConfig.WORLD_AND_DIMENSION.dimensionId && random.nextFloat() < CHANCE) {
                 val newCorrosion = min(current.get<Int>(CORROSION_TAG) + 1, original.durability)
                 current[CORROSION_TAG] = newCorrosion
-                // Change attack value based on corrosion value
+                // Change attack amount based on corrosion amount
                 val corrosionPercent = newCorrosion.toDouble() / original.durability.toDouble()
                 val newAttack = original.attack * (1.0 - corrosionPercent)
                 current[Tags.ATTACK] = max(original.attack.toDouble() * MIN_ATTACK_PERCENT, newAttack).toFloat()

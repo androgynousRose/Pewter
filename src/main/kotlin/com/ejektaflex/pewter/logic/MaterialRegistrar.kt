@@ -3,8 +3,9 @@ package com.ejektaflex.pewter.logic
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ext.resource
 import com.ejektaflex.pewter.ext.toItemStack
-import com.ejektaflex.pewter.logic.stats.MaterialStats
-import com.ejektaflex.pewter.logic.stats.MaterialStats.MatPart
+import com.ejektaflex.pewter.logic.stats.MaterialData
+import com.ejektaflex.pewter.logic.stats.MaterialData.MatPart
+import com.ejektaflex.pewter.logic.stats.SmeltingStats
 import net.minecraft.block.Block
 import net.minecraft.item.ItemBlock
 import net.minecraftforge.fluids.Fluid
@@ -21,7 +22,7 @@ import slimeknights.tconstruct.library.traits.ITrait
 import slimeknights.tconstruct.smeltery.block.BlockMolten
 import java.awt.Color
 
-class MaterialRegistrar(val stats: MaterialStats) {
+class MaterialRegistrar(val data: MaterialData) {
 
     private lateinit var integration: MaterialIntegration
     lateinit var tinkMaterial: Material
@@ -39,38 +40,31 @@ class MaterialRegistrar(val stats: MaterialStats) {
     // Register all associated items in the Ore Dictionary
     fun associate() {
 
-        val strMap = mapOf(
-                "ingot" to Material.VALUE_Ingot,
-                "nugget" to Material.VALUE_Nugget,
-                "block" to Material.VALUE_Block,
-                "ore" to Material.VALUE_Ore()
-        )
-
         // Register for melting on a casting table
         //TinkerSmeltery.registerToolpartMeltingCasting(tinkMaterial)
 
-        for (type in stats.smelting.keys ) {
-            stats.smelting[type]!!.forEach { itemString ->
+        for (smeltingSize in SmeltingStats.SmeltingType.values() ) {
+            data.smelting[smeltingSize]!!.forEach { itemString ->
                 val itemStack = itemString.toItemStack
-                val tag = type + stats.name.capitalize()
+                val tag = smeltingSize.name.toLowerCase() + data.name.capitalize()
                 // If that item exists, configure it
                 if (itemStack != null) {
                     Pewter.LOGGER.info("Registering item $itemStack with ore dictionary tag $tag")
                     OreDictionary.registerOre(tag, itemStack) // This may not be working?
-                    tinkMaterial.addItem(itemStack, 1, strMap[type]!!)
+                    tinkMaterial.addItem(itemStack, 1, smeltingSize.amount)
 
-                    if (fluid != null && stats.createMeltingRecipes) {
+                    if (fluid != null && data.createMeltingRecipes) {
                         //*
                         val meltingRecipe = MeltingRecipe(
-                                RecipeMatch.of(itemStack, strMap[type]!!),
+                                RecipeMatch.of(itemStack, smeltingSize.amount),
                                 fluid,
-                                stats.meltingTemperature
+                                data.meltingTemperature
                         )
                         TinkerRegistry.registerMelting(meltingRecipe)
                         //*/
                     }
                 } else {
-                    Pewter.LOGGER.warn("Could not associate $itemString with material named '${stats.name}'! Reason is because the item doesn't exist.")
+                    Pewter.LOGGER.warn("Could not associate $itemString with material named '${data.name}'! Reason is because the item doesn't exist.")
                 }
             }
         }
@@ -78,13 +72,13 @@ class MaterialRegistrar(val stats: MaterialStats) {
 
     fun represent() {
         // Material will be represented in Table of Contents by first ingot we get
-        val itemToRepresentWith = stats.smelting["ingot"]?.get(0)?.toItemStack
+        //val itemToRepresentWith = data.smelting["ingot"]?.get(0)?.toItemStack
+        val itemToRepresentWith = data.smelting.allItems().first().toItemStack
 
         itemToRepresentWith?.let {
-            //tinkMaterial.addItem(it, 1, Material.VALUE_Ingot)
-            Pewter.LOGGER.info("Representing ${stats.name} with a $it")
+            Pewter.LOGGER.info("Representing ${data.name} with a $it")
             tinkMaterial.representativeItem = it
-            Pewter.LOGGER.info("${stats.name} is being represented by a ${tinkMaterial.representativeItem}")
+            Pewter.LOGGER.info("${data.name} is being represented by a ${tinkMaterial.representativeItem}")
         }
     }
 
@@ -94,7 +88,7 @@ class MaterialRegistrar(val stats: MaterialStats) {
         // Default Trait
 
         // Specific Traits
-        for ((specificPartName, traitNames) in stats.specificTraits) {
+        for ((specificPartName, traitNames) in data.specificTraits) {
             try {
                 val matPart = MatPart.valueOf(specificPartName)
                 for (traitName in traitNames) {
@@ -126,43 +120,43 @@ class MaterialRegistrar(val stats: MaterialStats) {
     }
 
     private fun createMaterial() {
-        tinkMaterial = TinkerRegistry.getMaterial(stats.name)
+        tinkMaterial = TinkerRegistry.getMaterial(data.name)
         if (tinkMaterial != Material.UNKNOWN) {
             println("Material already registered.")
         } else {
-            tinkMaterial = Material(stats.name, Color.decode(stats.color).rgb)
+            tinkMaterial = Material(data.name, Color.decode(data.color).rgb)
         }
     }
 
     private fun makeFluid() {
 
-        if (stats.craftable) { // If not craftable, must be castable and need a fluids
+        if (data.craftable) { // If not craftable, must be castable and need a fluids
             return
         }
 
-        if (stats.fluidNames != null) {
-            Pewter.LOGGER.info("Instead of making a fluids for material ${stats.name}, we are going to try to load one of these: ${stats.fluidNames}")
+        if (data.fluidNames != null) {
+            Pewter.LOGGER.info("Instead of making a fluids for material ${data.name}, we are going to try to load one of these: ${data.fluidNames}")
             Pewter.LOGGER.info("All fluids: ${FluidRegistry.getBucketFluids().map { it.unlocalizedName }}")
 
-            val fluidToUse = stats.fluidNames!!.map { FluidRegistry.getFluid(it) }.firstOrNull()
+            val fluidToUse = data.fluidNames!!.map { FluidRegistry.getFluid(it) }.firstOrNull()
             if (fluidToUse != null) {
                 fluid = fluidToUse
                 return
             } else {
-                throw Exception("No fluids was found matching these names: ${stats.fluidNames}. " +
+                throw Exception("No fluids was found matching these names: ${data.fluidNames}. " +
                         "These were the fluids that WERE found: ${FluidRegistry.getBucketFluids().map { it.name }}")
             }
         }
 
-        Pewter.LOGGER.info("Making fluids for material ${stats.name}")
+        Pewter.LOGGER.info("Making fluids for material ${data.name}")
 
-        var name = stats.name.toLowerCase()
-        fluid = FluidMolten(name, Color.decode(stats.color).rgb).apply {
+        var name = data.name.toLowerCase()
+        fluid = FluidMolten(name, Color.decode(data.color).rgb).apply {
             unlocalizedName = "${Pewter.MODID}.$name"
-            viscosity = stats.fluid["viscosity"] ?: 0
-            density = stats.fluid["density"] ?: 0
-            temperature = stats.fluid["temperature"] ?: 0
-            luminosity = stats.fluid["luminosity"] ?: 0
+            viscosity = data.fluid["viscosity"] ?: 0
+            density = data.fluid["density"] ?: 0
+            temperature = data.fluid["temperature"] ?: 0
+            luminosity = data.fluid["luminosity"] ?: 0
         }
         FluidRegistry.registerFluid(fluid)
 
@@ -192,29 +186,29 @@ class MaterialRegistrar(val stats: MaterialStats) {
 
 
     private fun integrateMaterial() {
-        tinkMaterial.isCraftable = stats.craftable
-        tinkMaterial.isCastable = !stats.craftable
+        tinkMaterial.isCraftable = data.craftable
+        tinkMaterial.isCastable = !data.craftable
 
         val prefix = "ingot"
-        val suffix = stats.name.capitalize()
+        val suffix = data.name.capitalize()
 
         // Integrate
         integration = MaterialIntegration(prefix + suffix, tinkMaterial, fluid, null).apply {
-            if (stats.madeInToolForge) { this.toolforge() }
+            if (data.madeInToolForge) { this.toolforge() }
             preInit()
         }
     }
 
     private fun addMaterialStats() {
         // Load all MatParts if none are specified
-        val matsToLoad: Collection<MaterialStats.MatPart> = if (stats.matParts.isEmpty()) {
-            MaterialStats.MatPart.values().toList()
+        val matsToLoad: Collection<MaterialData.MatPart> = if (data.matParts.isEmpty()) {
+            MaterialData.MatPart.values().toList()
         } else {
-            stats.matParts
+            data.matParts
         }
-        // Register stats for each MatPart
+        // Register data for each MatPart
         matsToLoad.forEach {
-            stats.registerStats(tinkMaterial, it)
+            data.registerStats(tinkMaterial, it)
         }
     }
 

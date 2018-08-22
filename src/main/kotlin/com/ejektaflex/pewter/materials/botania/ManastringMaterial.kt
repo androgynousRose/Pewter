@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.materials.botania
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
-import com.ejektaflex.pewter.logic.stats.MaterialStats.MatPart
+import com.ejektaflex.pewter.logic.stats.MaterialData.MatPart
 
 class ManastringMaterial : MaterialDSL("manastring", "#6BBEBF", {
     forge { false }

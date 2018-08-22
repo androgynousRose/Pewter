@@ -26,13 +26,14 @@ open class CommonProxy : IProxy {
 
     override fun preInit(e: FMLPreInitializationEvent) {
         Pewter.traits = TinkerTraits().traits.toMutableList()
-        Pewter.modifiers = TinkerModifiers().loaded.toMutableList()
-
-        MaterialLoader.loadContent()
-        makePewterFluid()
+        Pewter.modifiers = TinkerModifiers.content.toMutableList()
     }
 
     override fun init(e: FMLInitializationEvent) {
+
+        MaterialLoader.loadContent()
+        makePewterFluid()
+
         Pewter.materials.forEach {
             it.associate()
             it.addMaterialTraits()

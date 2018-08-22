@@ -2,12 +2,11 @@ package com.ejektaflex.pewter.logic.stats
 
 import c4.conarm.lib.materials.*
 import com.ejektaflex.pewter.Pewter
-import net.minecraftforge.fluids.Fluid
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*
 
 
-class MaterialStats {
+class MaterialData {
     var tool = ToolStats()
 
     var color = "#448844"
@@ -30,12 +29,15 @@ class MaterialStats {
     )
     var matParts = mutableSetOf<MatPart>()
     var nameLocales = mutableMapOf<String, String>()
+    /*
     var smelting = mutableMapOf<String, MutableList<String>>(
             "ingot" to mutableListOf(),
             "block" to mutableListOf(),
             "nugget" to mutableListOf(),
             "ore" to mutableListOf()
     )
+    */
+    var smelting = SmeltingStats()
 
     var armor: ArmorStats? = null
 
@@ -49,8 +51,8 @@ class MaterialStats {
     fun registerStats(m: Material, part: MatPart) {
         if (part == MatPart.PROJECTILE) {
             // Quoting MrJohz/LakMoore:
-            //Tinkers auto-adds this stat to any tinkMaterial used to make stats heads
-            //and trying to add it a second time throws an exception, so check before adding.
+            //Tinkers auto-adds this stat to any tinkMaterial used to make data heads
+            //and trying to add it a second time throws an exception, so hasMetDependencies before adding.
             if(!m.hasStats(MaterialTypes.PROJECTILE)) {
                 addStats(m, part)
             }
@@ -60,7 +62,7 @@ class MaterialStats {
     }
 
     private fun addStats(m: Material, part: MatPart) {
-        // If it's an armor part, only configure if we have armor stats
+        // If it's an armor part, only configure if we have armor data
         if (part.isArmorPart) {
             if (armor != null && Pewter.CONFIG.MAIN.conarmIntegration) {
                 TinkerRegistry.addMaterialStats(m, part.stats(this))
@@ -71,7 +73,7 @@ class MaterialStats {
 
     }
 
-    enum class MatPart(val dependency: String, val stats: (it: MaterialStats) -> IMaterialStats?, val isArmorPart: Boolean = false) {
+    enum class MatPart(val dependency: String, val stats: (it: MaterialData) -> IMaterialStats?, val isArmorPart: Boolean = false) {
         // Tools
         HEAD(MaterialTypes.HEAD, { HeadMaterialStats(it.tool.head.durability, it.tool.head.speed, it.tool.head.attackDamage, it.tool.head.harvestLevel) }),
         HANDLE(MaterialTypes.HANDLE, { HandleMaterialStats(it.tool.handle.modifier, it.tool.handle.durability) }),

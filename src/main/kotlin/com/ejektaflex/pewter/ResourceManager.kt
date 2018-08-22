@@ -12,7 +12,7 @@ class ResourceManager : IResourceManagerReloadListener {
     override fun onResourceManagerReload(resourceManager: IResourceManager) {
         var data = ""
         // Write all custom materials
-        Pewter.materials.filter { it.stats.isInCustomFolder }.forEach {
+        Pewter.materials.filter { it.data.isInCustomFolder }.forEach {
             data += writeMaterial(it)
         }
 
@@ -25,8 +25,8 @@ class ResourceManager : IResourceManagerReloadListener {
             get() = Minecraft.getMinecraft().languageManager.currentLanguage.languageCode.toLowerCase()
 
         fun writeMaterial(mat: MaterialRegistrar): String {
-            val locales = mat.stats.nameLocales
-            val materialName = mat.stats.name.toLowerCase()
+            val locales = mat.data.nameLocales
+            val materialName = mat.data.name.toLowerCase()
             var data = ""
 
             Pewter.LOGGER.info("$mcLocale ... ${locales[mcLocale]}")

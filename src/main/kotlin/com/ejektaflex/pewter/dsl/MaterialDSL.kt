@@ -1,16 +1,24 @@
 package com.ejektaflex.pewter.dsl
 
+import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.content.IDependency
+import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.logic.stats.ArmorStats
-import com.ejektaflex.pewter.logic.stats.MaterialStats
+import com.ejektaflex.pewter.logic.stats.MaterialData
 
-open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>() {
+abstract class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>(), IDependency {
 
-    var material = MaterialStats()
+    var material = MaterialData()
 
     init {
         material.color = initColor
         material.name = initName
         apply(initFunc)
+    }
+
+    // Only load the material if we have met all dependencies
+    override fun hasMetDependencies(): Boolean {
+        return material.smelting.allItems().mapNotNull { it.toItemStack }.isNotEmpty() && material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials
     }
 
     @DslMarker
@@ -25,7 +33,7 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     }
 
     @TopLevelToolDSL
-    fun parts(vararg someParts: MaterialStats.MatPart) {
+    fun parts(vararg someParts: MaterialData.MatPart) {
         someParts.forEach { material.matParts.add(it) }
     }
 
@@ -53,15 +61,15 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     fun defaultMetalParts() {
         // No fletching or bowstring
         val metalParts = arrayOf(
-                MaterialStats.MatPart.HEAD,
-                MaterialStats.MatPart.HANDLE,
-                MaterialStats.MatPart.EXTRA,
-                MaterialStats.MatPart.BOW,
-                MaterialStats.MatPart.PROJECTILE,
+                MaterialData.MatPart.HEAD,
+                MaterialData.MatPart.HANDLE,
+                MaterialData.MatPart.EXTRA,
+                MaterialData.MatPart.BOW,
+                MaterialData.MatPart.PROJECTILE,
                 // Armor
-                MaterialStats.MatPart.CORE,
-                MaterialStats.MatPart.PLATES,
-                MaterialStats.MatPart.TRIM
+                MaterialData.MatPart.CORE,
+                MaterialData.MatPart.PLATES,
+                MaterialData.MatPart.TRIM
         )
         parts(*metalParts)
     }
@@ -70,7 +78,7 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     @TopLevelToolDSL
     fun addTraits(vararg pairs: Pair<String, String>) {
         for (pair in pairs) {
-            if (pair.first.toUpperCase() in MaterialStats.MatPart.values().map { it.toString() }) {
+            if (pair.first.toUpperCase() in MaterialData.MatPart.values().map { it.toString() }) {
                 // Add specific trait key if it doesn't exist
                 if (pair.first !in material.specificTraits.keys) {
                     material.specificTraits[pair.first] = mutableListOf()
@@ -83,22 +91,22 @@ open class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDS
     @TopLevelToolDSL
     fun ingots(vararg ing: String) {
         // Add all ingots to map
-        material.smelting["ingot"]!!.addAll(ing)
+        material.smelting.ingot.addAll(ing)
     }
 
     @TopLevelToolDSL
     fun blocks(vararg blo: String) {
-        material.smelting["block"]!!.addAll(blo)
+        material.smelting.block.addAll(blo)
     }
 
     @TopLevelToolDSL
     fun nuggets(vararg blo: String) {
-        material.smelting["nugget"]!!.addAll(blo)
+        material.smelting.nugget.addAll(blo)
     }
 
     @TopLevelToolDSL
     fun ores(vararg blo: String) {
-        material.smelting["ore"]!!.addAll(blo)
+        material.smelting.ore.addAll(blo)
     }
 
     @TopLevelToolDSL

@@ -1,13 +1,13 @@
 package com.ejektaflex.pewter.materials.betweenlands
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
-import com.ejektaflex.pewter.logic.stats.MaterialStats
+import com.ejektaflex.pewter.logic.stats.MaterialData
 
 class DragonflyMaterial : MaterialDSL("dragonflywing", "#6BBEBF", {
     forge { false }
     craft { true }
     ingots("thebetweenlands:items_misc:3")
-    parts(MaterialStats.MatPart.FLETCHING)
+    parts(MaterialData.MatPart.FLETCHING)
     addTraits(
             "FLETCHING" to "buzzing"
             )
