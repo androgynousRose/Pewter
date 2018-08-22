@@ -43,20 +43,20 @@ class MaterialRegistrar(val data: MaterialData) {
         // Register for melting on a casting table
         //TinkerSmeltery.registerToolpartMeltingCasting(tinkMaterial)
 
-        for (smeltingSize in SmeltingStats.SmeltingType.values() ) {
-            data.smelting[smeltingSize]!!.forEach { itemString ->
+        for (smeltingType in SmeltingStats.SmeltingType.values() ) {
+            data.smelting[smeltingType].forEach { itemString ->
                 val itemStack = itemString.toItemStack
-                val tag = smeltingSize.name.toLowerCase() + data.name.capitalize()
+                val tag = smeltingType.name.toLowerCase() + data.name.capitalize()
                 // If that item exists, configure it
                 if (itemStack != null) {
                     Pewter.LOGGER.info("Registering item $itemStack with ore dictionary tag $tag")
                     OreDictionary.registerOre(tag, itemStack) // This may not be working?
-                    tinkMaterial.addItem(itemStack, 1, smeltingSize.amount)
+                    tinkMaterial.addItem(itemStack, 1, smeltingType.amount)
 
                     if (fluid != null && data.createMeltingRecipes) {
                         //*
                         val meltingRecipe = MeltingRecipe(
-                                RecipeMatch.of(itemStack, smeltingSize.amount),
+                                RecipeMatch.of(itemStack, smeltingType.amount),
                                 fluid,
                                 data.meltingTemperature
                         )

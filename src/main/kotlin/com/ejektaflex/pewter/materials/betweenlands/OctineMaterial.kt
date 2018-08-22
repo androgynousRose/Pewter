@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.materials.betweenlands
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
+import com.ejektaflex.pewter.lib.materials.BetweenlandsDependency
 
 class OctineMaterial : MaterialDSL("octine", "#F38A20", {
     locale("en_7S " to "Ye Illuminating Treasure")
@@ -53,4 +54,4 @@ class OctineMaterial : MaterialDSL("octine", "#F38A20", {
         }
     }
 
-})
+}), BetweenlandsDependency

@@ -16,10 +16,15 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
         apply(initFunc)
     }
 
+    /*
     // Only load the material if we have met all dependencies
     override fun hasMetDependencies(): Boolean {
-        return material.smelting.allItems().mapNotNull { it.toItemStack }.isNotEmpty() && material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials
+        val meltableItems = material.smelting.allItems().mapNotNull { it.toItemStack }
+        Pewter.LOGGER.info("Dependencies for ${material.name}: ${meltableItems.map { it.unlocalizedName }}")
+        val isNotBlacklisted = material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials
+        return meltableItems.isNotEmpty() && isNotBlacklisted
     }
+    */
 
     @DslMarker
     annotation class TopLevelToolDSL

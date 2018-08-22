@@ -24,12 +24,16 @@ object MaterialLoader {
     }
 
     private fun loadAllGameData() {
+
+        Pewter.traits = PewterTraits().traits.toMutableList()
+        Pewter.modifiers = PewterModifiers.content.toMutableList()
+
         if (Pewter.CUSTOM_LOAD) {
             //loadData(Pewter.CONFIG.BUILTINDIR!!)
             //loadData(Pewter.CONFIG.CUSTOMDIR!!)
         } else {
             Pewter.materials.addAll(
-                    TinkerMaterials().loaded.filter {
+                    PewterMaterials.content.filter {
                         it.hasMetDependencies()
                     }.map {
                         MaterialRegistrar(it.material)
@@ -67,7 +71,7 @@ object MaterialLoader {
     /*
     private fun saveInternalData() {
         val existingFiles = Pewter.CONFIG.BUILTINDIR.listFiles()
-        val flatMaterials = TinkerMaterials.allItems
+        val flatMaterials = PewterMaterials.allItems
         val materialsToSave = flatMaterials.filter { it.second.material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials }
         val materialsToPurge = flatMaterials - materialsToSave
 

@@ -10,37 +10,31 @@ import com.ejektaflex.pewter.materials.thaumcraft.AlchemicalBrassMaterial
 import com.ejektaflex.pewter.materials.thaumcraft.ThaumiumMaterial
 import com.ejektaflex.pewter.materials.thaumcraft.VoidMetalMaterial
 
-class TinkerMaterials : ContentList<MaterialDSL>() {
-    override val content = mapOf(
-            "astralsorcery" to mutableListOf<MaterialDSL>(
-                    StarmetalMaterial()
-            ),
-            "betterwithmods" to mutableListOf(
+object PewterMaterials {
+    val content: List<MaterialDSL>
+        get() {
+            return listOf(
+                    StarmetalMaterial(),
+
                     HellfireMaterial(),
-                    SoulforgedSteelMaterial()
-            ),
-            "botania" to mutableListOf(
+                    SoulforgedSteelMaterial(),
+
                     ManasteelMaterial(),
                     ManastringMaterial(),
                     TerrasteelMaterial(),
                     ElementiumMaterial(),
                     LivingwoodMaterial(),
-                    LivingrockMaterial()
-            ),
-            "thaumcraft" to mutableListOf(
+                    LivingrockMaterial(),
+
                     ThaumiumMaterial(),
                     VoidMetalMaterial(),
-                    AlchemicalBrassMaterial()
-            ),
-            "thebetweenlands" to mutableListOf(
+                    AlchemicalBrassMaterial(),
+
                     OctineMaterial(),
                     SyrmoriteMaterial(),
                     DragonflyMaterial(),
                     ValoniteMaterial(),
                     WeedwoodMaterial()
             )
-    )
-
-
-
+        }
 }

@@ -5,7 +5,7 @@ import com.ejektaflex.pewter.traits.armor.*
 import com.ejektaflex.pewter.traits.tools.*
 import slimeknights.tconstruct.library.modifiers.Modifier
 
-class TinkerTraits {
+class PewterTraits {
 
     val traits = mutableListOf<Modifier>(
             Brilliance(),

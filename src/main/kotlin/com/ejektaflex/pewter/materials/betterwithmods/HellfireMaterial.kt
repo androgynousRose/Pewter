@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.materials.betterwithmods
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
+import com.ejektaflex.pewter.lib.materials.BetterWithModsDependency
 
 class HellfireMaterial : MaterialDSL("hellfire", "#FF362C", {
     locale("en_7S " to "Ye Fiery Treasure")
@@ -48,4 +49,4 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF362C", {
         }
     }
 
-})
+}), BetterWithModsDependency

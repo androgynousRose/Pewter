@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.materials.botania
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
+import com.ejektaflex.pewter.lib.materials.BotaniaDependency
 
 class LivingrockMaterial : MaterialDSL("livingrock", "#E5DFCF", {
     forge { false }
@@ -53,4 +54,4 @@ class LivingrockMaterial : MaterialDSL("livingrock", "#E5DFCF", {
     }
 
 
-})
+}), BotaniaDependency

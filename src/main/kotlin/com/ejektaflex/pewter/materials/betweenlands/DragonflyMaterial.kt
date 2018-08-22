@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.materials.betweenlands
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
+import com.ejektaflex.pewter.lib.materials.BetweenlandsDependency
 import com.ejektaflex.pewter.logic.stats.MaterialData
 
 class DragonflyMaterial : MaterialDSL("dragonflywing", "#6BBEBF", {
@@ -17,4 +18,4 @@ class DragonflyMaterial : MaterialDSL("dragonflywing", "#6BBEBF", {
             accuracy { 0.85f }
         }
     }
-})
+}), BetweenlandsDependency

@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.config
 
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.content.TinkerMaterials
+import com.ejektaflex.pewter.content.PewterMaterials
 
 open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
     open var overwrite: Boolean = true
@@ -36,18 +36,17 @@ open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
                 "If set to true, will add materials as armor to Construct's Armory where available"
         ).boolean
 
-        for ((mod, materialList) in TinkerMaterials().content) {
-            val catName = "material blacklist: $mod"
-            val comment = "Possible materials you can blacklist: ${materialList.map { it.material.name }}"
-            config.addCustomCategoryComment(catName, comment)
-            val got = config.getStringList(
-                    "materialBlacklist",
-                    catName,
-                    listOf<String>().toTypedArray(),
-                    "Blacklist for $mod. Add the materials you don't want and they will not be loaded on startup"
-            )
-            got.forEach { blacklistedMaterials.add(it) }
-        }
+        val mats = PewterMaterials.content
+        val catName = "material blacklist:"
+        config.addCustomCategoryComment(catName, "Possible materials you can blacklist: ${mats.map { it.material.name }}")
+
+        val got = config.getStringList(
+                "materialBlacklist",
+                catName,
+                listOf<String>().toTypedArray(),
+                "Blacklist for Pewter. Add the materials you don't want and they will not be loaded on startup"
+        )
+        got.forEach { blacklistedMaterials.add(it) }
 
     }
 

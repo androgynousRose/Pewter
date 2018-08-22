@@ -1,9 +1,7 @@
 package com.ejektaflex.pewter.proxy
 
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.content.MaterialLoader
-import com.ejektaflex.pewter.content.TinkerModifiers
-import com.ejektaflex.pewter.content.TinkerTraits
+import com.ejektaflex.pewter.content.*
 import com.ejektaflex.pewter.ext.resource
 import com.ejektaflex.pewter.lib.mixins.ConfigurableModifier
 import net.minecraft.block.Block
@@ -25,14 +23,11 @@ open class CommonProxy : IProxy {
     lateinit var item: Item
 
     override fun preInit(e: FMLPreInitializationEvent) {
-        Pewter.traits = TinkerTraits().traits.toMutableList()
-        Pewter.modifiers = TinkerModifiers.content.toMutableList()
+        MaterialLoader.loadContent()
+        makePewterFluid()
     }
 
     override fun init(e: FMLInitializationEvent) {
-
-        MaterialLoader.loadContent()
-        makePewterFluid()
 
         Pewter.materials.forEach {
             it.associate()
