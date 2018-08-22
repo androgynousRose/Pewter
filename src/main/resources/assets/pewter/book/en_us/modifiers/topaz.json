@@ -8,7 +8,7 @@
   "effects": [
     "Large boost to tool durability",
     "Moderate increase in attack speed",
-    "Does not stack with BOP gems",
+    "Can only be applied once",
     "Looks good on engagement rings"
   ],
   "demoTool": [

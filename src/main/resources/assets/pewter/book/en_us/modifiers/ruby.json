@@ -9,7 +9,7 @@
     "Large boost to tool durability",
     "Slight increase in attack damage",
     "Slight decrease in attack speed",
-    "Does not stack with BOP gems"
+    "Can only be applied once"
   ],
   "demoTool": [
     "tconstruct:broadsword",

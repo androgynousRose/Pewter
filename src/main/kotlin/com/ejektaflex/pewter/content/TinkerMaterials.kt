@@ -6,7 +6,7 @@ import com.ejektaflex.pewter.materials.betterwithmods.HellfireMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.SoulforgedSteelMaterial
 import com.ejektaflex.pewter.materials.betweenlands.*
 import com.ejektaflex.pewter.materials.botania.*
-import com.ejektaflex.pewter.materials.thaumcraft.BrassMaterial
+import com.ejektaflex.pewter.materials.thaumcraft.AlchemicalBrassMaterial
 import com.ejektaflex.pewter.materials.thaumcraft.ThaumiumMaterial
 import com.ejektaflex.pewter.materials.thaumcraft.VoidMetalMaterial
 
@@ -30,7 +30,7 @@ class TinkerMaterials : ContentList<MaterialDSL>() {
             "thaumcraft" to mutableListOf(
                     ThaumiumMaterial(),
                     VoidMetalMaterial(),
-                    BrassMaterial()
+                    AlchemicalBrassMaterial()
             ),
             "thebetweenlands" to mutableListOf(
                     OctineMaterial(),

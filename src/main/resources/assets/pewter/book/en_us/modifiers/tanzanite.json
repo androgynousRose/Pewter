@@ -8,7 +8,7 @@
   "effects": [
     "Greatly improves tool mining speed",
     "Moderate boost to tool durability",
-    "Does not stack with BOP gems",
+    "Can only be applied once",
     "named after Tanzania"
   ],
   "demoTool": [

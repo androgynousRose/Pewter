@@ -8,7 +8,7 @@
   "effects": [
     "Very small boost to tool durability",
     "Grants bonus durability when repairing tools",
-    "Does not stack with BOP gems",
+    "Can only be applied once",
     "Named after its resemblance to a plant"
   ],
   "demoTool": [

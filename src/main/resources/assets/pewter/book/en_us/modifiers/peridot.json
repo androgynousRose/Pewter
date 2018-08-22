@@ -8,7 +8,7 @@
   "effects": [
     "Moderate boost to tool durability",
     "Slight increase in attack speed",
-    "Does not stack with BOP gems",
+    "Can only be applied once",
     "Reminiscent of green apples"
   ],
   "demoTool": [
