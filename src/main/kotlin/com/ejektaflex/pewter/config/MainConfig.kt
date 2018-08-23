@@ -1,7 +1,6 @@
 package com.ejektaflex.pewter.config
 
 import com.ejektaflex.pewter.content.PewterMaterials
-import com.ejektaflex.pewter.logic.MaterialRegistrar
 
 open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
     open var conarmIntegration: Boolean = true

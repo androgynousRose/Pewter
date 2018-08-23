@@ -6,8 +6,6 @@ import java.io.File
 object Configs {
 
     private lateinit var DIR: File
-    var BUILTINDIR: File? = null
-    var CUSTOMDIR: File? = null
 
     lateinit var MAIN: MainConfig
 
@@ -31,11 +29,6 @@ object Configs {
     fun initialize(root: File) {
         DIR = ensureDirectory(root, Pewter.MODID)
         MAIN = MainConfig(DIR.path)
-        if (Pewter.CUSTOM_LOAD) {
-            BUILTINDIR = ensureDirectory(DIR, "builtin")
-            CUSTOMDIR = ensureDirectory(DIR, "custom")
-        }
-
     }
 
 

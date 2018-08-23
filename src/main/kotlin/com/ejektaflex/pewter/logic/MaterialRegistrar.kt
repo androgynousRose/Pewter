@@ -119,7 +119,6 @@ class MaterialRegistrar(val data: MaterialData) : IProxy {
         // Material will be represented in Table of Contents by first ingot we get from OreDict tags or items
         val repTagItem = data.smeltingTags.representativeItem(isOreDict = true)
         val repItem = data.smeltingItems.representativeItem(isOreDict = false)
-        Pewter.LOGGER.info("Representing ${data.name}.. choosing between ${repTagItem?.unlocalizedName} || ${repItem?.unlocalizedName}")
         val itemToRepresentWith = repTagItem ?: repItem
 
         itemToRepresentWith?.let {
