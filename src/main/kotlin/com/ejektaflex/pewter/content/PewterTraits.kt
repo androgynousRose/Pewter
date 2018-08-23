@@ -8,7 +8,7 @@ import slimeknights.tconstruct.library.modifiers.Modifier
 class PewterTraits {
 
     val traits = mutableListOf<Modifier>(
-            Brilliance(),
+            //Brilliance(),
             Buzzing(),
             HeatLover(),
             Polluted(),

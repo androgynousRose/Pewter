@@ -6,8 +6,8 @@ import slimeknights.tconstruct.library.tools.ToolNBT
 
 interface IModEnderAmethyst : IModGem {
 
-    override val gemMeta: Int
-        get() = 0
+    override val oreTags: List<String>
+        get() = listOf("gemAmethyst")
 
     override val toolMod: ToolNBT.() -> Unit
         get() = {

@@ -6,8 +6,8 @@ import slimeknights.tconstruct.library.tools.ToolNBT
 
 interface IModTopaz : IModGem {
 
-    override val gemMeta: Int
-        get() = 3
+    override val oreTags: List<String>
+        get() = listOf("gemTopaz")
 
     override val toolMod: ToolNBT.() -> Unit
         get() = {

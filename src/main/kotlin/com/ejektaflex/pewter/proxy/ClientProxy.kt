@@ -19,6 +19,7 @@ import net.minecraftforge.client.model.ModelLoader
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import slimeknights.mantle.client.book.data.BookData
 import slimeknights.mantle.client.book.repository.FileRepository
 import slimeknights.tconstruct.library.book.TinkerBook
 import slimeknights.tconstruct.library.client.MaterialRenderInfo
@@ -57,19 +58,16 @@ class ClientProxy : CommonProxy() {
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
+        addBookSection(TinkerBook.INSTANCE, "book")
         super.postInit(e)
-
-        //*
-        val repo = FileRepository("${Pewter.MODID}:book")
-        TinkerBook.INSTANCE.addRepository(repo)
-        println(repo.sections.map { it.name })
-        TinkerBook.INSTANCE.addTransformer(PewterModSectionTransformer(repo.sections[0].name))
-        //TinkerBook.INSTANCE.addTransformer(PewterModSectionTransformer("pewter_modifiers"))
-        Pewter.LOGGER.info("Added modifiers to book.")
-        //*/
-
     }
 
+    private fun addBookSection(book: BookData, repository: String) {
+        val repo = FileRepository("${Pewter.MODID}:$repository")
+        book.addRepository(repo)
+        book.addTransformer(PewterModSectionTransformer(repo.sections[0].name))
+        Pewter.LOGGER.info("Added modifiers to book named \"${book.appearance.title}\".")
+    }
 
     override fun makePewterFluid() {
         super.makePewterFluid()
