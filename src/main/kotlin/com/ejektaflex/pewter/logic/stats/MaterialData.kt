@@ -30,14 +30,16 @@ class MaterialData {
     var matParts = mutableSetOf<MatPart>()
     var nameLocales = mutableMapOf<String, String>()
     /*
-    var smelting = mutableMapOf<String, MutableList<String>>(
+    var smeltingItems = mutableMapOf<String, MutableList<String>>(
             "ingot" to mutableListOf(),
             "block" to mutableListOf(),
             "nugget" to mutableListOf(),
             "ore" to mutableListOf()
     )
     */
-    var smelting = SmeltingStats()
+    var smeltingItems = SmeltingStats()
+
+    var smeltingTags = SmeltingStats()
 
     var armor: ArmorStats? = null
 

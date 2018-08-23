@@ -15,14 +15,11 @@ import net.minecraftforge.fluids.FluidRegistry
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.registry.ForgeRegistries
 import net.minecraftforge.oredict.OreDictionary
 import slimeknights.mantle.util.RecipeMatch
 import slimeknights.tconstruct.library.MaterialIntegration
 import slimeknights.tconstruct.library.TinkerRegistry
-import slimeknights.tconstruct.library.events.MaterialEvent
-import slimeknights.tconstruct.library.events.TinkerRegisterEvent
 import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.library.materials.Material
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe
@@ -59,40 +56,61 @@ class MaterialRegistrar(val data: MaterialData) : IProxy {
         // Nothing to do postInit
     }
 
-    // Register all associated items in the Ore Dictionary
     private fun associate() {
+        associateItems()
+        associateTags()
+    }
 
-        // Register for melting on a casting table
-        //TinkerSmeltery.registerToolpartMeltingCasting(tinkMaterial)
-
+    private fun associateTags() {
         for (smeltingType in SmeltingStats.SmeltingType.values() ) {
-            data.smelting[smeltingType].forEach { itemString ->
-                val itemStack = itemString.toItemStack
-                val tag = smeltingType.name.toLowerCase() + data.name.capitalize()
-                // If that item exists, configure it
-                if (itemStack != null) {
-                    Pewter.LOGGER.info("Registering item $itemStack with ore dictionary tag $tag")
-                    OreDictionary.registerOre(tag, itemStack) // This may not be working?
-                    tinkMaterial.addItem(itemStack, 1, smeltingType.amount)
-
-                    if (fluid != null && data.createMeltingRecipes) {
-                        val meltingRecipe = MeltingRecipe(
-                                RecipeMatch.of(itemStack, smeltingType.amount),
-                                fluid,
-                                data.meltingTemperature
-                        )
-                        TinkerRegistry.registerMelting(meltingRecipe)
-                    }
-                } else {
-                    Pewter.LOGGER.warn("Could not associate $itemString with material named '${data.name}'! Reason is because the item doesn't exist.")
-                }
+            data.smeltingTags[smeltingType].forEach { tagString ->
+                associateTag(tagString, smeltingType)
             }
         }
     }
 
+    private fun associateTag(tagString: String, smeltingType: SmeltingStats.SmeltingType) {
+        if (fluid != null && data.createMeltingRecipes) {
+            val meltingRecipe = MeltingRecipe(
+                    RecipeMatch.of(tagString, smeltingType.amount),
+                    fluid,
+                    data.meltingTemperature
+            )
+            TinkerRegistry.registerMelting(meltingRecipe)
+        }
+    }
+
+    private fun associateItems() {
+        for (smeltingType in SmeltingStats.SmeltingType.values() ) {
+            data.smeltingItems[smeltingType].forEach { itemString ->
+                associateItem(itemString, smeltingType)
+            }
+        }
+    }
+
+    private fun associateItem(itemString: String, smeltingType: SmeltingStats.SmeltingType) {
+        val itemStack = itemString.toItemStack
+        // If that item exists, configure it
+        if (itemStack != null) {
+            tinkMaterial.addItem(itemStack, 1, smeltingType.amount)
+
+            if (fluid != null && data.createMeltingRecipes) {
+                val meltingRecipe = MeltingRecipe(
+                        RecipeMatch.of(itemStack, smeltingType.amount),
+                        fluid,
+                        data.meltingTemperature
+                )
+                TinkerRegistry.registerMelting(meltingRecipe)
+            }
+        } else {
+            Pewter.LOGGER.warn("Could not associate $itemString with material named '${data.name}'! Reason is because the item doesn't exist.")
+        }
+    }
+
+
     private fun represent() {
         // Material will be represented in Table of Contents by first ingot we get
-        val itemToRepresentWith = data.smelting.allItemNames().first().toItemStack
+        val itemToRepresentWith = data.smeltingItems.allItemNames().first().toItemStack
 
         itemToRepresentWith?.let {
             tinkMaterial.representativeItem = it

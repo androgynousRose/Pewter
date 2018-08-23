@@ -7,8 +7,8 @@ class ElementiumMaterial : MaterialDSL("elementium", "#ED339A", {
     forge { true }
     craft { false }
     blocks("botania:storage:2")
-    ingots("botania:manaresource:7")
-    nuggets("botania:manaresource:19")
+    ingotTags("ingotElvenElementium")
+    nuggetTags("nuggetElvenElementium")
     defaultMetalParts()
     shininess(0.6f)
     addTraits(

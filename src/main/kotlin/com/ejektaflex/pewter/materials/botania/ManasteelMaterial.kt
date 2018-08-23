@@ -7,8 +7,8 @@ class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
     forge { true }
     craft { false }
     blocks("botania:storage")
-    ingots("botania:manaresource")
-    nuggets("botania:manaresource:17")
+    ingotTags("ingotManasteel")
+    nuggetTags("nuggetManasteel")
     defaultMetalParts()
     shininess(0.8f)
     addTraits(

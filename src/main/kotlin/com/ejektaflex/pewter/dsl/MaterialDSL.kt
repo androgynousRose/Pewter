@@ -16,7 +16,7 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
     /*
     // Only load the material if we have met all dependencies
     override fun hasMetDependencies(): Boolean {
-        val meltableItems = material.smelting.allItemNames().mapNotNull { it.toItemStack }
+        val meltableItems = material.smeltingItems.allItemNames().mapNotNull { it.toItemStack }
         Pewter.LOGGER.info("Dependencies for ${material.name}: ${meltableItems.map { it.unlocalizedName }}")
         val isNotBlacklisted = material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials
         return meltableItems.isNotEmpty() && isNotBlacklisted
@@ -93,22 +93,43 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
     @TopLevelToolDSL
     fun ingots(vararg ing: String) {
         // Add all ingots to map
-        material.smelting.ingot.addAll(ing)
+        material.smeltingItems.ingot.addAll(ing)
+    }
+
+    @TopLevelToolDSL
+    fun ingotTags(vararg ing: String) {
+        // Add all ingots to map
+        material.smeltingTags.ingot.addAll(ing)
     }
 
     @TopLevelToolDSL
     fun blocks(vararg blo: String) {
-        material.smelting.block.addAll(blo)
+        material.smeltingItems.block.addAll(blo)
+    }
+
+    @TopLevelToolDSL
+    fun blockTags(vararg blo: String) {
+        material.smeltingTags.block.addAll(blo)
     }
 
     @TopLevelToolDSL
     fun nuggets(vararg blo: String) {
-        material.smelting.nugget.addAll(blo)
+        material.smeltingItems.nugget.addAll(blo)
+    }
+
+    @TopLevelToolDSL
+    fun nuggetTags(vararg blo: String) {
+        material.smeltingTags.nugget.addAll(blo)
     }
 
     @TopLevelToolDSL
     fun ores(vararg blo: String) {
-        material.smelting.ore.addAll(blo)
+        material.smeltingItems.ore.addAll(blo)
+    }
+
+    @TopLevelToolDSL
+    fun oreTags(vararg blo: String) {
+        material.smeltingTags.ore.addAll(blo)
     }
 
     @TopLevelToolDSL

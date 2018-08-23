@@ -25,8 +25,8 @@ class SmeltingStats {
 
     enum class SmeltingType(val getter: SmeltingStats.() -> MutableList<String>, val amount: Int) {
         INGOT({ ingot }, Material.VALUE_Ingot),
-        BLOCK({ block }, Material.VALUE_Nugget),
-        NUGGET({ nugget }, Material.VALUE_Block),
+        BLOCK({ block }, Material.VALUE_Block),
+        NUGGET({ nugget }, Material.VALUE_Nugget),
         ORE({ ore }, Material.VALUE_Ore())
     }
 
