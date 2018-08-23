@@ -1,17 +1,7 @@
 package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.dsl.MaterialDSL
-import com.ejektaflex.pewter.materials.example.ExampleMaterial
 import com.ejektaflex.pewter.logic.MaterialRegistrar
-import com.ejektaflex.pewter.logic.stats.MaterialData
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonSyntaxException
-import java.io.File
-import java.io.FileWriter
-import java.io.IOException
-import java.nio.file.Files
 
 object MaterialLoader {
 

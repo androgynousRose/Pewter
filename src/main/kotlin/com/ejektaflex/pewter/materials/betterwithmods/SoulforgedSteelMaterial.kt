@@ -36,16 +36,16 @@ class SoulforgedSteelMaterial : MaterialDSL("soulforgedsteel", "#464646", {
     armor {
         armorTrait("envious_armor")
         core {
-            durability { 19.5f }
+            durability { 18.5f }
             defense { 16f }
         }
         plates {
             modifier { 1.2f }
-            durability { 1f }
+            durability { 2f }
             toughness { 1f }
         }
         trim {
-            extraDurability { 0.5f }
+            extraDurability { 1.5f }
         }
     }
 
