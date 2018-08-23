@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter
 
+import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.logic.MaterialRegistrar
 import net.minecraft.client.Minecraft
 import net.minecraft.client.resources.IResourceManagerReloadListener
@@ -12,7 +13,7 @@ class ResourceManager : IResourceManagerReloadListener {
     override fun onResourceManagerReload(resourceManager: IResourceManager) {
         var data = ""
         // Write all custom dependencies
-        Pewter.materials.filter { it.data.isInCustomFolder }.forEach {
+        PewterMaterials.content.filter { it.data.isInCustomFolder }.forEach {
             data += writeMaterial(it)
         }
 

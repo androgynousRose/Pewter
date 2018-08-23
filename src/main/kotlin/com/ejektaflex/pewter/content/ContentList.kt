@@ -21,7 +21,7 @@ abstract class ContentList<T> {
 
     /*
     fun materialsMatching(names: List<String>): List<Pair<String, MaterialDSL>> {
-        return allItemNames.filter { it.second.material.name in names }
+        return names.filter { it.second.material.name in names }
     }
     */
 

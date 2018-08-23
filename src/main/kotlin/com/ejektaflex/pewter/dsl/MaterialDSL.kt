@@ -16,7 +16,7 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
     /*
     // Only load the material if we have met all dependencies
     override fun hasMetDependencies(): Boolean {
-        val meltableItems = material.smeltingItems.allItemNames().mapNotNull { it.toItemStack }
+        val meltableItems = material.smeltingItems.names().mapNotNull { it.toItemStack }
         Pewter.LOGGER.info("Dependencies for ${material.name}: ${meltableItems.map { it.unlocalizedName }}")
         val isNotBlacklisted = material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials
         return meltableItems.isNotEmpty() && isNotBlacklisted

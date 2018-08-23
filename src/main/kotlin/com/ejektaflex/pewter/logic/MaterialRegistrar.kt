@@ -71,6 +71,13 @@ class MaterialRegistrar(val data: MaterialData) : IProxy {
 
     private fun associateTag(tagString: String, smeltingType: SmeltingStats.SmeltingType) {
         if (fluid != null && data.createMeltingRecipes) {
+            /*
+            for (taggedItem in OreDictionary.getOres(tagString)) {
+                tinkMaterial.addItem()
+            }
+            */
+            tinkMaterial.addItem(tagString)
+
             val meltingRecipe = MeltingRecipe(
                     RecipeMatch.of(tagString, smeltingType.amount),
                     fluid,
@@ -109,8 +116,11 @@ class MaterialRegistrar(val data: MaterialData) : IProxy {
 
 
     private fun represent() {
-        // Material will be represented in Table of Contents by first ingot we get
-        val itemToRepresentWith = data.smeltingItems.allItemNames().first().toItemStack
+        // Material will be represented in Table of Contents by first ingot we get from OreDict tags or items
+        val repTagItem = data.smeltingTags.representativeItem(isOreDict = true)
+        val repItem = data.smeltingItems.representativeItem(isOreDict = false)
+        Pewter.LOGGER.info("Representing ${data.name}.. choosing between ${repTagItem?.unlocalizedName} || ${repItem?.unlocalizedName}")
+        val itemToRepresentWith = repTagItem ?: repItem
 
         itemToRepresentWith?.let {
             tinkMaterial.representativeItem = it

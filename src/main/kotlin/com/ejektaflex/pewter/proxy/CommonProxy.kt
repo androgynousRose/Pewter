@@ -23,29 +23,35 @@ open class CommonProxy : IProxy {
     lateinit var item: Item
 
     override fun preInit(e: FMLPreInitializationEvent) {
-        MaterialLoader.loadContent()
-        Pewter.materials.forEach {
-            it.preInit(e)
+        PewterTraits.loadContent()
+        PewterModifiers.loadContent()
+        PewterMaterials.loadContent()
+
+        Pewter.LOGGER.info("Loaded ${PewterMaterials.content.size} dependencies.")
+
+        for (mat in PewterMaterials) {
+            mat.preInit(e)
         }
+
         makePewterFluid()
     }
 
     override fun init(e: FMLInitializationEvent) {
-        Pewter.materials.forEach {
-            it.init(e)
+        for (mat in PewterMaterials) {
+            mat.init(e)
         }
         configureModifiers()
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
-        Pewter.materials.forEach {
-            it.integrate()
+        for (mat in PewterMaterials) {
+            mat.integrate()
         }
     }
 
     // Assign modifiers to items
     private fun configureModifiers() {
-        for (mod in Pewter.modifiers) {
+        for (mod in PewterModifiers) {
             if (mod is ConfigurableModifier) {
                 mod.configure()
             }

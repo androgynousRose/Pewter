@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.proxy
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ResourceManager
 import com.ejektaflex.pewter.book.PewterModSectionTransformer
+import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.logic.FluidStateMapper
 import com.google.common.base.Function
 import net.minecraft.client.Minecraft
@@ -31,7 +32,7 @@ class ClientProxy : CommonProxy() {
     override fun preInit(e: FMLPreInitializationEvent) {
         super.preInit(e)
 
-        Pewter.materials.forEach { material ->
+        for (material in PewterMaterials) {
             material.fluid?.let {
                 val mapper = FluidStateMapper(it)
                 // Item Model
@@ -85,7 +86,7 @@ class ClientProxy : CommonProxy() {
         var location: ModelResourceLocation
         var model: IModel
         var baked: IBakedModel
-        for (mat in Pewter.materials) {
+        for (mat in PewterMaterials) {
             if (mat.fluid != null) {
                 model = ModelFluid(mat.fluid!!)
                 baked = model.bake(model.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter)

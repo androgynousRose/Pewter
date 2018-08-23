@@ -5,8 +5,8 @@ import com.ejektaflex.pewter.modifiers.armor.ArmorModAmber
 import com.ejektaflex.pewter.modifiers.tools.*
 import slimeknights.tconstruct.library.modifiers.Modifier
 
-object PewterModifiers {
-    val content: List<Modifier> by lazy {
+object PewterModifiers : IPewterContent<Modifier> {
+    override val content: List<Modifier> by lazy {
         // Regular Modifiers
         val mods = mutableListOf<Modifier>(
                 // Thaumcraft

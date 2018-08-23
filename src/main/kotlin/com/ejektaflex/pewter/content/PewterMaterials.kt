@@ -1,45 +1,63 @@
 package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.dsl.MaterialDSL
+import com.ejektaflex.pewter.logic.MaterialRegistrar
 import com.ejektaflex.pewter.materials.astralsorcery.StarmetalMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.HellfireMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.SoulforgedSteelMaterial
 import com.ejektaflex.pewter.materials.betweenlands.*
 import com.ejektaflex.pewter.materials.botania.*
-import com.ejektaflex.pewter.materials.thaumcraft.AlchemicalBrassMaterial
 import com.ejektaflex.pewter.materials.thaumcraft.ThaumiumMaterial
 import com.ejektaflex.pewter.materials.thaumcraft.VoidMetalMaterial
 
-object PewterMaterials {
-    val content: List<MaterialDSL>
-        get() {
-            return listOf(
-                    // Astral Sorcery
-                    StarmetalMaterial(),
+object PewterMaterials : IPewterContent<MaterialRegistrar> {
 
-                    // Better With Mods
-                    HellfireMaterial(),
-                    SoulforgedSteelMaterial(),
+    override fun loadContent(): List<MaterialRegistrar> {
+        content = storedContent
+        return content
+    }
 
-                    // Botania
-                    ManasteelMaterial(),
-                    ManastringMaterial(),
-                    TerrasteelMaterial(),
-                    ElementiumMaterial(),
-                    LivingwoodMaterial(),
-                    LivingrockMaterial(),
+    private val storedContent: List<MaterialRegistrar> by lazy {
+        return@lazy mutableListOf(
+                // Astral Sorcery
+                StarmetalMaterial(),
 
-                    // Thaumcraft
-                    ThaumiumMaterial(),
-                    VoidMetalMaterial(),
-                    //AlchemicalBrassMaterial(), :( Goodbye friend!
+                // Better With Mods
+                HellfireMaterial(),
+                SoulforgedSteelMaterial(),
 
-                    // The Betweenlands
-                    OctineMaterial(),
-                    SyrmoriteMaterial(),
-                    DragonflyMaterial(),
-                    ValoniteMaterial(),
-                    WeedwoodMaterial()
-            )
+                // Botania
+                ManasteelMaterial(),
+                ManastringMaterial(),
+                TerrasteelMaterial(),
+                ElementiumMaterial(),
+                LivingwoodMaterial(),
+                LivingrockMaterial(),
+
+                // Thaumcraft
+                ThaumiumMaterial(),
+                VoidMetalMaterial(),
+                //AlchemicalBrassMaterial(), :( Goodbye friend!
+
+                // The Betweenlands
+                OctineMaterial(),
+                SyrmoriteMaterial(),
+                DragonflyMaterial(),
+                ValoniteMaterial(),
+                WeedwoodMaterial()
+        ).mapNotNull {
+            dependencyCheck(it)
         }
+    }
+
+    override var content = listOf<MaterialRegistrar>()
+
+    private fun dependencyCheck(matDSL: MaterialDSL): MaterialRegistrar? {
+        return if (matDSL.hasMetDependencies()) {
+            MaterialRegistrar(matDSL.material)
+        } else {
+            null
+        }
+    }
+
 }
