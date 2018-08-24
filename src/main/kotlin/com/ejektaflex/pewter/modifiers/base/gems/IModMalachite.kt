@@ -16,8 +16,8 @@ interface IModMalachite : IModGem {
 
     override val armorMod: ArmorNBT.() -> Unit
         get() = {
-            defense += 2f
-            durability += 10
+            defense += 1f
+            durability = (durability * 1.05).toInt()
         }
 
 }

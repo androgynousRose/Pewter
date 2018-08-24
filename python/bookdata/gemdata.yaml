@@ -1,0 +1,98 @@
+gems:
+
+  amber:
+    desc: >
+      Amber is created through the fossilization of resin from coniferous
+      trees. As such, it can often be found underground in forest biomes.
+    tool:
+      - Small boost to tool durability
+      - Moderate increase in attack speed
+    armor:
+      - Small boost to armor durability
+      - Small increase in defense
+    all:
+      - Mostly free of fossilized bugs
+
+  enderamethyst:
+    desc: >
+      TODO
+    tool:
+      - Very large boost to tool durability
+      - Large increase in attack speed
+    armor:
+      - Semi-large boost to armor durability and defense
+    
+  malachite:
+    desc: >
+      This greenish-torquoise gemstone is not very hard at all, so much
+      so that it's very difficult to polish. It can be found underneath
+      swamplands.
+    tool:
+      - Small boost to durability
+      - Grants bonus durability when repairing tools
+    armor:
+      - Small boost to armor durability and defense
+    all:
+      - Named after its resemblance to a plant
+    
+  peridot:
+    desc: >
+      This bright, green gemstone can be found underground within plains
+      biomes. Often mistaken for emeralds, they can are one of few
+      naturally occurring green gemstones.
+    tool:
+      - Moderate boost to tool durability
+      - Slight increase in attack speed
+    armor:
+      - Moderate boost to tool durability and defense
+    all:
+      - Reminiscent of green apples
+  
+  ruby:
+    desc: >
+      This gemstone is very hard and quite sharp, and is often found
+      in warm, dry areas of the planet. They are made from corundum,
+      and are almost always flawed.
+    tool:
+      - Large boost to tool durability
+      - Slight increase in attack damage
+      - Slight decrease in attack speed
+    armor:
+      - Somewhat large boost to armor durability and defense
+  
+  sapphire:
+    desc: >
+      This gemstone is most commonly deep blue in appearance and is
+      found under the ocean to match. It is very hard, and quite sharp.
+    tool:
+      - Very large boost to tool durability
+      - Moderate increase in attack speed
+    armor:
+      - Large boost to armor durability and defense
+    all:
+      - Blue!
+  
+  tanzanite:
+    desc: >
+      This somewhat hard gemstone is quite rare, featuring a deep violet
+      hue. Often found in cold, coniferous biomes, it greatly improves
+      mining speed.
+    tool:
+      - Greatly improves tool mining speed
+      - Moderate boost to tool durability
+    armor:
+      - Moderate boost to armor durability and defense
+    all:
+      - Named after Tanzania
+  
+  topaz:
+    desc: >
+      This dark orange mineral is one of the hardest naturally occurring
+      gemstones in the world. It comes in many colors, although it's only
+      been seen in orange here.
+    tool:
+      - Large boost to tool durability
+      - Moderate increase in attack speed
+    armor:
+      - Moderate increase to armor durability and defense
+

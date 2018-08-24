@@ -17,8 +17,8 @@ interface IModSapphire : IModGem {
 
     override val armorMod: ArmorNBT.() -> Unit
         get() = {
-            defense += 2f
-            durability += 10
+            defense += 2.5f
+            durability = (durability * 1.175).toInt()
         }
 
 }

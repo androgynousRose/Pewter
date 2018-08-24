@@ -1,18 +1,20 @@
 {
-  "modifier": "amber_armor",
+  "armormodifier": "amber_armor",
   "text": [
     {
       "text": "Amber is created through the fossilization of resin from coniferous trees. As such, it can often be found underground in forest biomes."
     }
   ],
   "effects": [
-    "Small boost to tool durability",
-    "Moderate increase in attack speed",
+    "Small boost to armor durability",
+    "Small increase in defense",
     "Can only be applied once",
     "Mostly free of fossilized bugs"
   ],
-  "demoTool": [
-    "tconstruct:broadsword",
-    "tconstruct:pickaxe"
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
   ]
 }

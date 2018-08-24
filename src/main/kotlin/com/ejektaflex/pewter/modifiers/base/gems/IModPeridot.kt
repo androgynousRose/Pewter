@@ -17,8 +17,8 @@ interface IModPeridot : IModGem {
 
     override val armorMod: ArmorNBT.() -> Unit
         get() = {
-            defense += 2f
-            durability += 10
+            defense += 1.5f
+            durability = (durability * 1.075).toInt()
         }
 
 }
