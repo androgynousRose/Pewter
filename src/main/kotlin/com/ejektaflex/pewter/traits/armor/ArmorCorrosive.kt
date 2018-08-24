@@ -35,7 +35,12 @@ class ArmorCorrosive : PewterArmorTrait("Corrosive", 0xFF2334), TinkerNBTChanger
             return
 
         val percent = ArmorTagUtil.getArmorStats(event.itemStack).get().get<Int>(Corrosive.CORROSION_TAG).toDouble() / ArmorTagUtil.getOriginalArmorStats(event.itemStack).durability
-        event.toolTip.add(1, I18n.format("modifier.corrosive.tooltip", String.format("%.0f",percent * 100)+"%"))
+
+        val corrIndex = event.toolTip.withIndex().find { "Corrosive" in it.value }
+        corrIndex?.let {
+            event.toolTip[corrIndex.index] += " (" + String.format("%.0f",percent * 100) + "%)"
+        }
+        
     }
 
     override fun onUpdate(armor: ItemStack, world: World, entity: Entity, itemSlot: Int, isSelected: Boolean) {
