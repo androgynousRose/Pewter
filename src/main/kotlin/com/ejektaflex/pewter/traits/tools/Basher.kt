@@ -12,13 +12,17 @@ import kotlin.math.pow
 
 
 class Basher : PewterToolTrait("basher", 0xE18EFF), AuraExchanger {
-    override fun onToolHeal(tool: ItemStack?, amount: Int, newAmount: Int, entity: EntityLivingBase): Int {
-        val netVis = getVisAt(entity) - getFluxAt(entity)
-        val visLog = log10(min(1f, netVis))
-        val visMult = min(1f, visLog.pow(0.4f))
+    override fun onToolHeal(tool: ItemStack?, amount: Int, newAmount: Int, entity: EntityLivingBase?): Int {
+        // *thinking* this may never fire if no entity exists (repair on a tooltable?) Oh well, it's disabled for now
+        entity?.let {
+            val netVis = getVisAt(entity) - getFluxAt(entity)
+            val visLog = log10(min(1f, netVis))
+            val visMult = min(1f, visLog.pow(0.4f))
 
-        return (super.onToolHeal(tool, amount, newAmount, entity) * visMult).toInt()
+            return (super.onToolHeal(tool, amount, newAmount, entity) * visMult).toInt()
+        }
 
+        return super.onToolHeal(tool, amount, newAmount, entity)
     }
 
     override fun knockBack(tool: ItemStack?, player: EntityLivingBase?, target: EntityLivingBase?, damage: Float, knockback: Float, newKnockback: Float, isCritical: Boolean): Float {
