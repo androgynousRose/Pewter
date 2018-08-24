@@ -1,8 +1,8 @@
 {
-  "modifier": "ruby_armor",
+  "armormodifier": "ruby_armor",
   "text": [
     {
-      "text": "This gemstone is very hard and quite sharp, and is often found in warm, dry areas of the planet."
+      "text": "This gemstone is very hard and quite sharp, and is often found in warm, dry areas of the planet. They are made from corundum, and are almost always flawed."
     }
   ],
   "effects": [
@@ -11,8 +11,10 @@
     "Slight decrease in attack speed",
     "Can only be applied once"
   ],
-  "demoTool": [
-    "tconstruct:broadsword",
-    "tconstruct:pickaxe"
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
   ]
 }

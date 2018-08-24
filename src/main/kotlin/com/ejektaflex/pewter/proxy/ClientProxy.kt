@@ -3,7 +3,8 @@ package com.ejektaflex.pewter.proxy
 import c4.conarm.lib.book.ArmoryBook
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ResourceManager
-import com.ejektaflex.pewter.book.PewterModSectionTransformer
+import com.ejektaflex.pewter.book.PewterArmorSectionTransformer
+import com.ejektaflex.pewter.book.PewterToolSectionTransformer
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.logic.FluidStateMapper
 import com.google.common.base.Function
@@ -24,6 +25,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import slimeknights.mantle.client.book.data.BookData
 import slimeknights.mantle.client.book.repository.FileRepository
 import slimeknights.tconstruct.library.book.TinkerBook
+import slimeknights.tconstruct.library.book.sectiontransformer.ContentListingSectionTransformer
 import slimeknights.tconstruct.library.client.MaterialRenderInfo
 import java.awt.Color
 
@@ -60,15 +62,24 @@ class ClientProxy : CommonProxy() {
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
-        addBookSection(TinkerBook.INSTANCE, "tinker_book")
-        addBookSection(ArmoryBook.INSTANCE, "armory_book")
+        addTinkerBookSection(TinkerBook.INSTANCE, "tinker_book")
+        if (Pewter.CONFIG.MAIN.conarmIntegration) {
+            addArmoryBookSection(ArmoryBook.INSTANCE, "armory_book")
+        }
         super.postInit(e)
     }
 
-    private fun addBookSection(book: BookData, repository: String) {
+    private fun addTinkerBookSection(book: BookData, repository: String) {
         val repo = FileRepository("${Pewter.MODID}:$repository")
         book.addRepository(repo)
-        book.addTransformer(PewterModSectionTransformer(repo.sections[0].name))
+        book.addTransformer(PewterToolSectionTransformer(repo.sections[0].name))
+        Pewter.LOGGER.info("Added modifiers to book named \"${book.appearance.title}\".")
+    }
+
+    private fun addArmoryBookSection(book: BookData, repository: String) {
+        val repo = FileRepository("${Pewter.MODID}:$repository")
+        book.addRepository(repo)
+        book.addTransformer(PewterArmorSectionTransformer(repo.sections[0].name))
         Pewter.LOGGER.info("Added modifiers to book named \"${book.appearance.title}\".")
     }
 

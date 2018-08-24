@@ -1,35 +1,35 @@
 [
 
   {
-    "type": "modifier",
+    "type": "armormodifier",
     "data": "modifiers/enderamethyst.json"
   },
   {
-    "type": "modifier",
+    "type": "armormodifier",
     "data": "modifiers/ruby.json"
   },
   {
-    "type": "modifier",
+    "type": "armormodifier",
     "data": "modifiers/peridot.json"
   },
   {
-    "type": "modifier",
+    "type": "armormodifier",
     "data": "modifiers/topaz.json"
   },
   {
-    "type": "modifier",
+    "type": "armormodifier",
     "data": "modifiers/tanzanite.json"
   },
   {
-    "type": "modifier",
+    "type": "armormodifier",
     "data": "modifiers/malachite.json"
   },
   {
-    "type": "modifier",
+    "type": "armormodifier",
     "data": "modifiers/sapphire.json"
   },
   {
-    "type": "modifier",
+    "type": "armormodifier",
     "data": "modifiers/amber.json"
   }
 ]
