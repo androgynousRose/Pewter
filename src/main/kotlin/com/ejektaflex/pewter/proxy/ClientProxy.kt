@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.proxy
 
+import c4.conarm.lib.book.ArmoryBook
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ResourceManager
 import com.ejektaflex.pewter.book.PewterModSectionTransformer
@@ -59,7 +60,8 @@ class ClientProxy : CommonProxy() {
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
-        addBookSection(TinkerBook.INSTANCE, "book")
+        addBookSection(TinkerBook.INSTANCE, "tinker_book")
+        addBookSection(ArmoryBook.INSTANCE, "armory_book")
         super.postInit(e)
     }
 

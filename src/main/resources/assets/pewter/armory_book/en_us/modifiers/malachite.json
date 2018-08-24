@@ -1,0 +1,18 @@
+{
+  "modifier": "malachite_armor",
+  "text": [
+    {
+      "text": "This greenish-torquoise gemstone is not very hard at all, so much so that it's very difficult to polish. It can be found underneath swamplands."
+    }
+  ],
+  "effects": [
+    "Very small boost to tool durability",
+    "Grants bonus durability when repairing tools",
+    "Can only be applied once",
+    "Named after its resemblance to a plant"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:pickaxe"
+  ]
+}

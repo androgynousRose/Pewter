@@ -1,0 +1,18 @@
+{
+  "modifier": "ruby_armor",
+  "text": [
+    {
+      "text": "This gemstone is very hard and quite sharp, and is often found in warm, dry areas of the planet."
+    }
+  ],
+  "effects": [
+    "Large boost to tool durability",
+    "Slight increase in attack damage",
+    "Slight decrease in attack speed",
+    "Can only be applied once"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:pickaxe"
+  ]
+}
