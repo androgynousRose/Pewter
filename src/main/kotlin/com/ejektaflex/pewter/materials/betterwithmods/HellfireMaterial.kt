@@ -9,6 +9,7 @@ class HellfireMaterial : MaterialDSL("hellfire", "#FF362C", {
     craft { false }
     ingots("betterwithmods:material:17")
     defaultMetalParts()
+    allTags("Hellfire")
     tool {
         toolTrait("heatlover")
         head {

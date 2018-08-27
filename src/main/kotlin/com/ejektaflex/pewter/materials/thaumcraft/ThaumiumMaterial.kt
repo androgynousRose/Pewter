@@ -6,7 +6,7 @@ import com.ejektaflex.pewter.lib.dependencies.ThaumcraftDependency
 class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
     forge { true }
     craft { false }
-    ingots("thaumcraft:ingot:0")
+    allTags("Thaumium")
     defaultMetalParts()
     addTraits(
             "HEAD" to "essentia"
@@ -32,7 +32,7 @@ class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
             speed(3.5f)
             range { 1.75f }
             string { 0.05f }
-            bonusDamage { -1.5f }
+            bonusDamage { 2f }
         }
         shaft {
             modifier { 1.1f }

@@ -133,6 +133,14 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
     }
 
     @TopLevelToolDSL
+    fun allTags(vararg tags: String) {
+        nuggetTags(*tags.map { "nugget$it" }.toTypedArray())
+        ingotTags(*tags.map { "ingot$it" }.toTypedArray())
+        blockTags(*tags.map { "block$it" }.toTypedArray())
+        oreTags(*tags.map { "ore$it" }.toTypedArray())
+    }
+
+    @TopLevelToolDSL
     fun fluids(vararg flu: String) {
         if (material.fluidNames == null) {
             material.fluidNames = mutableListOf()

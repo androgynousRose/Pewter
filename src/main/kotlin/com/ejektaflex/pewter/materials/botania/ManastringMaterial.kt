@@ -7,7 +7,7 @@ import com.ejektaflex.pewter.logic.stats.MaterialData.MatPart
 class ManastringMaterial : MaterialDSL("manastring", "#6BBEBF", {
     forge { false }
     craft { true }
-    ingots("botania:manaresource:16")
+    ingotTags("manaString")
     parts(MatPart.BOWSTRING)
     //toolTrait("heatlover")
     tool {

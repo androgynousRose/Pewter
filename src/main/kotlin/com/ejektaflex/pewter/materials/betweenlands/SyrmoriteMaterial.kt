@@ -6,9 +6,7 @@ import com.ejektaflex.pewter.lib.dependencies.BetweenlandsDependency
 class SyrmoriteMaterial : MaterialDSL("syrmorite", "#1E336C", {
     forge { true }
     craft { false }
-    ingots("thebetweenlands:items_misc:11")
-    ores("thebetweenlands:syrmorite_ore")
-    blocks("thebetweenlands:syrmorite_block")
+    allTags("Syrmorite")
     defaultMetalParts()
     addTraits(
             //"HEAD" to "corrosive",

@@ -7,8 +7,7 @@ class ElementiumMaterial : MaterialDSL("elementium", "#ED339A", {
     forge { true }
     craft { false }
     blocks("botania:storage:2")
-    ingotTags("ingotElvenElementium")
-    nuggetTags("nuggetElvenElementium")
+    allTags("ElvenElementium")
     defaultMetalParts()
     shininess(0.6f)
     addTraits(
@@ -34,7 +33,7 @@ class ElementiumMaterial : MaterialDSL("elementium", "#ED339A", {
         bow {
             speed(1.6f)
             range { 1f }
-            bonusDamage { 1.75f }
+            bonusDamage { 6f }
         }
     }
 

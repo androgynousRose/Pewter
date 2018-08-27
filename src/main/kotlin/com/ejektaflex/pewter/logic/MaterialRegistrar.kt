@@ -73,9 +73,10 @@ class MaterialRegistrar(val data: MaterialData) : IProxy {
         if (fluid != null && data.createMeltingRecipes) {
             /*
             for (taggedItem in OreDictionary.getOres(tagString)) {
-                tinkMaterial.addItem()
+                tinkMaterial.addItem(taggedItem, 1, smeltingType.amount)
             }
             */
+
             tinkMaterial.addItem(tagString)
 
             val meltingRecipe = MeltingRecipe(
@@ -238,7 +239,7 @@ class MaterialRegistrar(val data: MaterialData) : IProxy {
         val suffix = data.name.capitalize()
 
         // Integrate
-        integration = MaterialIntegration(prefix + suffix, tinkMaterial, fluid, null).apply {
+        integration = MaterialIntegration(null, tinkMaterial, fluid, null).apply {
             if (data.madeInToolForge) { this.toolforge() }
             preInit()
         }

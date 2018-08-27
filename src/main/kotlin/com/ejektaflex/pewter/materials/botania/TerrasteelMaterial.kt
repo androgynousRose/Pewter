@@ -7,8 +7,7 @@ class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
     forge { true }
     craft { false }
     blocks("botania:storage:1")
-    ingots("botania:manaresource:4")
-    nuggets("botania:manaresource:18")
+    allTags("Terrasteel")
     defaultMetalParts()
     brightness(0.1f)
     shininess(0.35f)
@@ -35,7 +34,7 @@ class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
         bow {
             speed(1.85f)
             range { 1.1f }
-            bonusDamage { 2.5f }
+            bonusDamage { 8f }
         }
     }
 

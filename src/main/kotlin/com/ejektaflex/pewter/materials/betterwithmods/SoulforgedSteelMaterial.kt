@@ -6,9 +6,7 @@ import com.ejektaflex.pewter.lib.dependencies.BetterWithModsDependency
 class SoulforgedSteelMaterial : MaterialDSL("soulforgedsteel", "#464646", {
     forge { true }
     craft { false }
-    nuggets("betterwithmods:material:30")
-    ingots("betterwithmods:material:14")
-    blocks("betterwithmods:steel_block")
+    allTags("SoulforgedSteel")
     defaultMetalParts()
     shininess(0.6f)
     tool {
@@ -28,8 +26,8 @@ class SoulforgedSteelMaterial : MaterialDSL("soulforgedsteel", "#464646", {
         }
         bow {
             speed(1.75f)
-            range { 1.1f }
-            bonusDamage { -2.5f }
+            range { 1.4f }
+            bonusDamage { 7f }
         }
     }
 

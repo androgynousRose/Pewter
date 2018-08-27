@@ -6,9 +6,8 @@ import com.ejektaflex.pewter.lib.dependencies.BotaniaDependency
 class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
     forge { true }
     craft { false }
+    allTags("Manasteel")
     blocks("botania:storage")
-    ingotTags("ingotManasteel")
-    nuggetTags("nuggetManasteel")
     defaultMetalParts()
     shininess(0.8f)
     addTraits(
@@ -34,7 +33,7 @@ class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
         bow {
             speed(2.2f)
             range { 1.2f }
-            bonusDamage { 1.5f }
+            bonusDamage { 4f }
         }
     }
 

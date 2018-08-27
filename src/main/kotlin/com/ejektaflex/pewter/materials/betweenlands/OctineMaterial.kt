@@ -7,7 +7,7 @@ class OctineMaterial : MaterialDSL("octine", "#F38A20", {
     locale("en_7S " to "Ye Illuminating Treasure")
     forge { true }
     craft { false }
-    ingots("thebetweenlands:octine_ingot")
+    allTags("Octine")
     ores("thebetweenlands:octine_ore")
     defaultMetalParts()
     addTraits(
