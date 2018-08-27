@@ -4,7 +4,7 @@ import c4.conarm.lib.armor.ArmorNBT
 import com.ejektaflex.pewter.modifiers.base.IModGem
 import slimeknights.tconstruct.library.tools.ToolNBT
 
-interface IModEnderAmethyst : IModGem {
+interface IModAmethyst : IModGem {
 
     override val oreTags: List<String>
         get() = listOf("gemAmethyst")
@@ -22,3 +22,4 @@ interface IModEnderAmethyst : IModGem {
         }
 
 }
+

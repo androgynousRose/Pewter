@@ -12,7 +12,7 @@ object PewterModifiers : IPewterContent<Modifier> {
                 // Thaumcraft
                 ModSanitizing(),
                 // Biomes O' Plenty
-                ModEnderAmethyst(),
+                ModAmethyst(),
                 ModRuby(),
                 ModPeridot(),
                 ModTopaz(),
@@ -26,7 +26,7 @@ object PewterModifiers : IPewterContent<Modifier> {
         if (Pewter.CONFIG.MAIN.conarmIntegration) {
             mods += mutableListOf<Modifier>(
                     ArmorModAmber(),
-                    ArmorModEnderAmethyst(),
+                    ArmorModAmethyst(),
                     ArmorModMalachite(),
                     ArmorModPeridot(),
                     ArmorModRuby(),

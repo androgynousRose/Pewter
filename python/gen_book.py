@@ -2,6 +2,9 @@ import os
 from os.path import isfile, join
 from pathlib import Path
 from library import util
+import yaml
+from library.FileUtil import FileUtil
+from library.GemUtil import GemUtil
 
 util.fixWorkingDirectory()
 
@@ -9,10 +12,15 @@ print(os.getcwd())
 
 print("Hello, World!")
 
-print("Code for generating book jsons from yaml files will go here eventually.")
+b = FileUtil.get_yaml_as_json("python/bookdata", "gemdata.yaml")
 
-mypath = "."
+for gem_name, gem in b["gems"].items():
 
-onlyfiles = [f for f in os.listdir(mypath) if not isfile(join(mypath, f))]
+    GemUtil(gem_name, gem, False).save()
+    GemUtil(gem_name, gem, True).save()
 
-print(onlyfiles)
+
+print("Gem stuff saved.")
+
+#print(b)
+

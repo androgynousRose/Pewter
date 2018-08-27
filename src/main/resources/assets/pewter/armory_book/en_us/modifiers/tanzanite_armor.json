@@ -1,15 +1,15 @@
 {
-    "demoTool": [
-        "tconstruct:pickaxe",
-        "tconstruct:broadsword",
-        "tconstruct:arrow"
+    "armormodifier": "tanzanite_armor",
+    "demoArmor": [
+        "conarm:helmet",
+        "conarm:chestplate",
+        "conarm:leggings",
+        "conarm:boots"
     ],
     "effects": [
-        "Greatly improves tool mining speed",
-        "Moderate boost to tool durability",
+        "Moderate boost to armor durability and defense",
         "Named after Tanzania"
     ],
-    "modifier": "tanzanite",
     "text": [
         {
             "text": "This somewhat hard gemstone is quite rare, featuring a deep violet hue. It greatly improves mining speed and is thought to have many special properties.\n"

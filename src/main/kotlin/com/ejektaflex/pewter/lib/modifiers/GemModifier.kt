@@ -19,8 +19,6 @@ abstract class GemModifier(name: String, color: Int) : PewterModifier(name, colo
     override fun applyEffect(rootCompound: NBTTagCompound, modifierTag: NBTTagCompound?) {
         modifyToolStats(rootCompound, toolMod)
         super.applyEffect(rootCompound, modifierTag)
-
-        println("Doot")
     }
 
     override fun configure() {

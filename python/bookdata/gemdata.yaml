@@ -3,7 +3,7 @@ gems:
   amber:
     desc: >
       Amber is created through the fossilization of resin from coniferous
-      trees. As such, it can often be found underground in forest biomes.
+      trees. "Electricity" comes from the greek word for Amber.
     tool:
       - Small boost to tool durability
       - Moderate increase in attack speed
@@ -13,9 +13,11 @@ gems:
     all:
       - Mostly free of fossilized bugs
 
-  enderamethyst:
+  amethyst:
     desc: >
-      TODO
+      This purple gemstone is actually a variety of quartz, having gotten
+      its color in part from radiation. It is quite hard, and therefore very
+      durable.
     tool:
       - Very large boost to tool durability
       - Large increase in attack speed
@@ -25,8 +27,8 @@ gems:
   malachite:
     desc: >
       This greenish-torquoise gemstone is not very hard at all, so much
-      so that it's very difficult to polish. It can be found underneath
-      swamplands.
+      so that it's very difficult to polish. Egyptians saw Malachite as
+      a powerful symbol.
     tool:
       - Small boost to durability
       - Grants bonus durability when repairing tools
@@ -37,9 +39,9 @@ gems:
     
   peridot:
     desc: >
-      This bright, green gemstone can be found underground within plains
-      biomes. Often mistaken for emeralds, they can are one of few
-      naturally occurring green gemstones.
+      Often mistaken for emeralds, they can are one of few
+      naturally occurring green gemstones. Symbolizes the tears of Helle, the
+      goddess of volcanoes.
     tool:
       - Moderate boost to tool durability
       - Slight increase in attack speed
@@ -50,9 +52,9 @@ gems:
   
   ruby:
     desc: >
-      This gemstone is very hard and quite sharp, and is often found
-      in warm, dry areas of the planet. They are made from corundum,
-      and are almost always flawed.
+      This gemstone is very hard and quite sharp. It is a type of corundum,
+      and is almost always flawed. The name Ruby comes from the Latin name
+      for "red".
     tool:
       - Large boost to tool durability
       - Slight increase in attack damage
@@ -62,8 +64,8 @@ gems:
   
   sapphire:
     desc: >
-      This gemstone is most commonly deep blue in appearance and is
-      found under the ocean to match. It is very hard, and quite sharp.
+      This gemstone is most commonly deep blue in appearance. Because of its hardness,
+      sapphire can also be used in some electronics and other niche applications.
     tool:
       - Very large boost to tool durability
       - Moderate increase in attack speed
@@ -75,8 +77,8 @@ gems:
   tanzanite:
     desc: >
       This somewhat hard gemstone is quite rare, featuring a deep violet
-      hue. Often found in cold, coniferous biomes, it greatly improves
-      mining speed.
+      hue. It greatly improves mining speed and is thought to have many special
+      properties.
     tool:
       - Greatly improves tool mining speed
       - Moderate boost to tool durability
@@ -88,8 +90,8 @@ gems:
   topaz:
     desc: >
       This dark orange mineral is one of the hardest naturally occurring
-      gemstones in the world. It comes in many colors, although it's only
-      been seen in orange here.
+      gemstones in the world. It is the hardest naturally occurring silicate
+      mineral.
     tool:
       - Large boost to tool durability
       - Moderate increase in attack speed

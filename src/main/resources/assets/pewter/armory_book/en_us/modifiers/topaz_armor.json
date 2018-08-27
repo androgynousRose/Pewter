@@ -1,14 +1,14 @@
 {
-    "demoTool": [
-        "tconstruct:pickaxe",
-        "tconstruct:broadsword",
-        "tconstruct:arrow"
+    "armormodifier": "topaz_armor",
+    "demoArmor": [
+        "conarm:helmet",
+        "conarm:chestplate",
+        "conarm:leggings",
+        "conarm:boots"
     ],
     "effects": [
-        "Large boost to tool durability",
-        "Moderate increase in attack speed"
+        "Moderate increase to armor durability and defense"
     ],
-    "modifier": "topaz",
     "text": [
         {
             "text": "This dark orange mineral is one of the hardest naturally occurring gemstones in the world. It is the hardest naturally occurring silicate mineral.\n"
