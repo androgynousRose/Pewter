@@ -29,10 +29,10 @@ class ThaumiumMaterial : MaterialDSL("thaumium", "#6F43E8", {
             durability { 35 }
         }
         bow {
-            speed(2.5f)
+            speed(3.5f)
             range { 1.75f }
             string { 0.05f }
-            bonusDamage { 6.5f }
+            bonusDamage { -1.5f }
         }
         shaft {
             modifier { 1.1f }

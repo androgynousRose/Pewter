@@ -35,7 +35,7 @@ class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
         bow {
             speed(1.85f)
             range { 1.1f }
-            bonusDamage { 6.5f }
+            bonusDamage { 2.5f }
         }
     }
 

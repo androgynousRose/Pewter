@@ -10,7 +10,7 @@ class SoulforgedSteelMaterial : MaterialDSL("soulforgedsteel", "#464646", {
     ingots("betterwithmods:material:14")
     blocks("betterwithmods:steel_block")
     defaultMetalParts()
-    shininess(0.4f)
+    shininess(0.6f)
     tool {
         toolTrait("sharp")
         head {

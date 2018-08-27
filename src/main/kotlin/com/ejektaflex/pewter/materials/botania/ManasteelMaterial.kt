@@ -34,7 +34,7 @@ class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {
         bow {
             speed(2.2f)
             range { 1.2f }
-            bonusDamage { 6.5f }
+            bonusDamage { 1.5f }
         }
     }
 

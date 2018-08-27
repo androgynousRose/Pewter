@@ -34,7 +34,7 @@ class ElementiumMaterial : MaterialDSL("elementium", "#ED339A", {
         bow {
             speed(1.6f)
             range { 1f }
-            bonusDamage { 3.5f }
+            bonusDamage { 1.75f }
         }
     }
 
