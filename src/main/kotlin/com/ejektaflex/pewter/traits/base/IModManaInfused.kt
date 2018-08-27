@@ -4,6 +4,7 @@ import com.ejektaflex.pewter.ext.isAtMaxDurability
 import com.ejektaflex.pewter.lib.mixins.ManaExchanger
 import com.ejektaflex.pewter.lib.traits.base.SharedTrait
 import net.minecraft.entity.Entity
+import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
@@ -21,6 +22,19 @@ interface IModManaInfused : SharedTrait, ManaExchanger {
                 ToolHelper.healTool(tool, 1, entity)
             }
         }
+    }
+
+    override fun onToolDamage(tool: ItemStack, damage: Int, newDamage: Int, entity: EntityLivingBase?): Int {
+        var toDamage = newDamage
+        entity?.let {
+            if (!entity.world.isRemote && entity is EntityPlayer && isAtMaxDurability(tool)) {
+                if (hasEnoughMana(tool, entity, MANA_COST)) {
+                    drainManaFor(tool, entity, MANA_COST)
+                    toDamage -= 1
+                }
+            }
+        }
+        return toDamage
     }
 
     companion object {

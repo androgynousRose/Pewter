@@ -42,7 +42,7 @@ class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
         armorTrait("manainfused_armor")
         core {
             durability { 20.2f }
-            defense { 16f }
+            defense { 18f }
         }
         plates {
             modifier { 0.95f }

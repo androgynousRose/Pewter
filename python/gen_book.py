@@ -10,7 +10,7 @@ util.fixWorkingDirectory()
 
 print(os.getcwd())
 
-print("Hello, World!")
+print("About to generate gem book data...")
 
 b = FileUtil.get_yaml_as_json("python/bookdata", "gemdata.yaml")
 
@@ -20,7 +20,7 @@ for gem_name, gem in b["gems"].items():
     GemUtil(gem_name, gem, True).save()
 
 
-print("Gem stuff saved.")
+print("Gem data generated.")
 
 #print(b)
 
