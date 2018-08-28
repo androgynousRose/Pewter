@@ -1,6 +1,10 @@
 [
   {
     "type": "modifier",
+    "data": "modifiers/quicksilver.json"
+  },
+  {
+    "type": "modifier",
     "data": "modifiers/sanitizing.json"
   },
   {

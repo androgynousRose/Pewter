@@ -19,7 +19,7 @@ class ArmorModDragonstone : PewterArmorModifier("dragonstone", 0xED339A), Tinker
 
         val armorMod: ArmorNBT.() -> Unit = {
 
-            durability += 100
+            durability += 75
             //toughness += 0.25f
 
             val numBotaniaMats = baseMaterials(rootCompound).count { it.representativeItem.comesFrom("botania") }.toDouble()

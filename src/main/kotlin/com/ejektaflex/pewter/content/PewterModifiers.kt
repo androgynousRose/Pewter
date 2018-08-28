@@ -11,6 +11,7 @@ object PewterModifiers : IPewterContent<Modifier> {
         val mods = mutableListOf<Modifier>(
                 // Thaumcraft
                 ModSanitizing(),
+                ModQuicksilver(),
                 // Biomes O' Plenty
                 ModAmethyst(),
                 ModRuby(),

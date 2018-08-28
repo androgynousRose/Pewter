@@ -145,6 +145,9 @@ modifier.peridot_armor.desc=§oFind them all!§r\nDurability++, Defense++
 modifier.polluted.name=Polluted
 modifier.polluted.desc=§oSlightly Toxic.§r\nHitting enemies has a chance of releasing flux.
 
+modifier.quicksilver.name=Quicksilver
+modifier.quicksilver.desc=§oSafe to handle!§r\nIncreases damage done to Taint mobs
+
 modifier.ruby.name=Ruby
 modifier.ruby.desc=§oFind them all!§r\nDurability+++, Attack+, Speed-
 
