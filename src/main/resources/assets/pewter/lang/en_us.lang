@@ -145,6 +145,12 @@ modifier.ruby.desc=§oFind them all!§r\nDurability+++, Attack+, Speed-
 modifier.ruby_armor.name=Ruby
 modifier.ruby_armor.desc=§oFind them all!§r\nDurability+++, Defense+++
 
+modifier.runemana.name=Rune of Mana
+modifier.runemana.desc=§oReeks of Mana!§r\nReduces mana usage of Mana Infused Tinker tools.
+
+modifier.runemana_armor.name=Rune of Mana
+modifier.runemana_armor.desc=§oReeks of Mana!§r\nReduces mana usage of Mana Infused Tinker armor.
+
 modifier.sanitizing.name=Sanitizing
 modifier.sanitizing.desc=§oSudsing & Bubbly!§r\nReduces warp gained from Warping Tinker tools.
 

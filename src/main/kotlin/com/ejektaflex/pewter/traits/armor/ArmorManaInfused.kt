@@ -2,12 +2,15 @@ package com.ejektaflex.pewter.traits.armor
 
 import com.ejektaflex.pewter.lib.traits.armor.PewterArmorTrait
 import com.ejektaflex.pewter.traits.base.IModManaInfused
+import com.ejektaflex.pewter.traits.base.methods.IArmorManaCost
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 
-class ArmorManaInfused : PewterArmorTrait("Mana Infused", 0x005EE0), IModManaInfused {
+class ArmorManaInfused : PewterArmorTrait("Mana Infused", 0x005EE0), IModManaInfused, IArmorManaCost {
+
+    override val manaCost = 50
 
     override fun onUpdate(tool: ItemStack, world: World, entity: Entity?, itemSlot: Int, isSelected: Boolean) {
         super<IModManaInfused>.onUpdate(tool, world, entity, itemSlot, isSelected)

@@ -8,8 +8,10 @@ import net.minecraft.nbt.NBTTagString
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.modifiers.IModifier
 import slimeknights.tconstruct.library.modifiers.Modifier
+import slimeknights.tconstruct.library.modifiers.ModifierNBT
 import slimeknights.tconstruct.library.tools.ToolNBT
 import slimeknights.tconstruct.library.utils.TagUtil
+import slimeknights.tconstruct.library.utils.TinkerUtil
 
 interface TinkerNBTChanger {
 
@@ -41,6 +43,16 @@ interface TinkerNBTChanger {
         val toolData = TagUtil.getToolStats(root)
         toolData.apply(func)
         TagUtil.setToolTag(root, toolData.get())
+    }
+
+    fun modifyModifierTag(root: NBTTagCompound, id: String, func: (tag: NBTTagCompound, data: ModifierNBT.IntegerNBT) -> Unit) {
+        val modData = TinkerUtil.getModifierTag(root, id)
+        func(modData, ModifierNBT.readInteger(modData))
+    }
+
+    fun modifyModifierTag(item: ItemStack, id: String, func: (tag: NBTTagCompound, data: ModifierNBT.IntegerNBT) -> Unit) {
+        val modData = TinkerUtil.getModifierTag(item, id)
+        func(modData, ModifierNBT.readInteger(modData))
     }
 
     fun baseMaterials(stack: ItemStack): List<String> {

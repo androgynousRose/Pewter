@@ -2,7 +2,9 @@ package com.ejektaflex.pewter.traits.base
 
 import com.ejektaflex.pewter.ext.isAtMaxDurability
 import com.ejektaflex.pewter.lib.mixins.ManaExchanger
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
 import com.ejektaflex.pewter.lib.traits.base.SharedTrait
+import com.ejektaflex.pewter.traits.base.methods.IModCost
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -10,12 +12,15 @@ import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 import slimeknights.tconstruct.library.utils.ToolHelper
 
-interface IModManaInfused : SharedTrait, ManaExchanger {
+interface IModManaInfused : SharedTrait, ManaExchanger, TinkerNBTChanger, IModCost<Int> {
+
+    val manaCost: Int
 
     override fun onUpdate(tool: ItemStack, world: World, entity: Entity?, itemSlot: Int, isSelected: Boolean) {
         if (!world.isRemote && entity is EntityPlayer && !isAtMaxDurability(tool)) {
-            if (hasEnoughMana(tool, entity, MANA_COST) && entity.ticksExisted % 5 == 0) {
-                drainManaFor(tool, entity, MANA_COST)
+            val cost = modCost(tool)
+            if (hasEnoughMana(tool, entity, cost) && entity.ticksExisted % 5 == 0) {
+                drainManaFor(tool, entity, cost)
                 if (ToolHelper.isBroken(tool)) {
                     ToolHelper.unbreakTool(tool)
                 }
@@ -28,8 +33,9 @@ interface IModManaInfused : SharedTrait, ManaExchanger {
         var toDamage = newDamage
         entity?.let {
             if (!entity.world.isRemote && entity is EntityPlayer && isAtMaxDurability(tool)) {
-                if (hasEnoughMana(tool, entity, MANA_COST)) {
-                    drainManaFor(tool, entity, MANA_COST)
+                val cost = modCost(tool)
+                if (hasEnoughMana(tool, entity, cost)) {
+                    drainManaFor(tool, entity, cost)
                     toDamage -= 1
                 }
             }
@@ -37,8 +43,5 @@ interface IModManaInfused : SharedTrait, ManaExchanger {
         return toDamage
     }
 
-    companion object {
-        const val MANA_COST = 120
-    }
-
 }
+

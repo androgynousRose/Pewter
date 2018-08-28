@@ -19,12 +19,15 @@ object PewterModifiers : IPewterContent<Modifier> {
                 ModTanzanite(),
                 ModMalachite(),
                 ModSapphire(),
-                ModAmber()
+                ModAmber(),
+                // Botania
+                ModRuneMana()
         )
 
         // Construct's Armory Integration
         if (Pewter.CONFIG.MAIN.conarmIntegration) {
             mods += mutableListOf<Modifier>(
+                    // Biomes O' Plenty
                     ArmorModAmber(),
                     ArmorModAmethyst(),
                     ArmorModMalachite(),
@@ -32,7 +35,9 @@ object PewterModifiers : IPewterContent<Modifier> {
                     ArmorModRuby(),
                     ArmorModSapphire(),
                     ArmorModTanzanite(),
-                    ArmorModTopaz()
+                    ArmorModTopaz(),
+                    // Botania
+                    ArmorModRuneMana()
             )
         }
 

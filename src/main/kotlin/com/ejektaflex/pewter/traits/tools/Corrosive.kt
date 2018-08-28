@@ -4,6 +4,7 @@ import com.ejektaflex.pewter.ext.get
 import com.ejektaflex.pewter.ext.set
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
 import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
+import com.ejektaflex.pewter.traits.base.EntityBonus
 import net.minecraft.client.resources.I18n
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
@@ -25,7 +26,17 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import kotlin.math.max
 
 
-class Corrosive : PewterToolTrait("Corrosive", 0x70FF3D), TinkerNBTChanger {
+class Corrosive : PewterToolTrait("Corrosive", 0x70FF3D), EntityBonus<IEntityBL, Float>, TinkerNBTChanger {
+
+    override fun calculateEntityBonus(e: Entity?, original: Float, func: IEntityBL.() -> Unit): Float {
+        return original * (1f + when(e) {
+            is IEntityBL -> {
+                func(e)
+                ATTACK_BONUS
+            }
+            else -> 0f
+        })
+    }
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
@@ -73,13 +84,9 @@ class Corrosive : PewterToolTrait("Corrosive", 0x70FF3D), TinkerNBTChanger {
     }
 
     override fun damage(tool: ItemStack?, player: EntityLivingBase?, target: EntityLivingBase?, damage: Float, newDamage: Float, isCritical: Boolean): Float {
-        var theNewDamage = damage
-        // Bonus damage against BL mobs
-        if (target is IEntityBL) {
-            theNewDamage *= (1f + ATTACK_BONUS)
+        return calculateEntityBonus(target, newDamage) {
             TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_BLOOD, target, 2)
         }
-        return theNewDamage
     }
 
     companion object {

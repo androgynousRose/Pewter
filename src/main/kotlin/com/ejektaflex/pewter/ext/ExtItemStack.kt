@@ -3,6 +3,9 @@ package com.ejektaflex.pewter.ext
 import net.minecraftforge.oredict.OreDictionary
 import java.util.ArrayList
 import net.minecraft.item.ItemStack
+import slimeknights.tconstruct.library.modifiers.Modifier
+import slimeknights.tconstruct.library.modifiers.ModifierNBT
+import slimeknights.tconstruct.library.utils.TinkerUtil
 
 val ItemStack.oreDicts: List<String>
     get() {
@@ -15,3 +18,8 @@ val ItemStack.oreDicts: List<String>
 
         return names
     }
+
+inline fun <reified T : Modifier> ItemStack.getModifierIntNBT(): ModifierNBT.IntegerNBT {
+    val modData = TinkerUtil.getModifierTag(this, getTinkersModifier<T>().identifier)
+    return ModifierNBT.readInteger(modData)
+}
