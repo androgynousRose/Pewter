@@ -39,7 +39,8 @@ object PewterModifiers : IPewterContent<Modifier> {
                     ArmorModTanzanite(),
                     ArmorModTopaz(),
                     // Botania
-                    ArmorModRuneMana()
+                    ArmorModRuneMana(),
+                    ArmorModDragonstone()
             )
         }
 
