@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
 import com.ejektaflex.pewter.traits.base.IModManaInfused
-import com.ejektaflex.pewter.traits.base.methods.IToolManaCost
+import com.ejektaflex.pewter.modifiers.base.methods.IToolManaCost
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack

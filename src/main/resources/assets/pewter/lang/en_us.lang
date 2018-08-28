@@ -145,6 +145,9 @@ modifier.ruby.desc=§oFind them all!§r\nDurability+++, Attack+, Speed-
 modifier.ruby_armor.name=Ruby
 modifier.ruby_armor.desc=§oFind them all!§r\nDurability+++, Defense+++
 
+modifier.runeautumn.name=Rune of Autumn
+modifier.runeautumn.desc=§oLeaves & Pumpkin Pie!§r\nIncreases bonus mana gained from Mana Harvesting Tinker tools.
+
 modifier.runemana.name=Rune of Mana
 modifier.runemana.desc=§oReeks of Mana!§r\nReduces mana usage of Mana Infused Tinker tools.
 

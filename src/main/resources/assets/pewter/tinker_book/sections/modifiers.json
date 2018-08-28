@@ -5,6 +5,10 @@
   },
   {
     "type": "modifier",
+    "data": "modifiers/runeautumn.json"
+  },
+  {
+    "type": "modifier",
     "data": "modifiers/runemana.json"
   },
   {

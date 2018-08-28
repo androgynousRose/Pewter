@@ -4,7 +4,7 @@ import com.ejektaflex.pewter.ext.isAtMaxDurability
 import com.ejektaflex.pewter.lib.mixins.ManaExchanger
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
 import com.ejektaflex.pewter.lib.traits.base.SharedTrait
-import com.ejektaflex.pewter.traits.base.methods.IModCost
+import com.ejektaflex.pewter.modifiers.base.methods.IModChange
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 import slimeknights.tconstruct.library.utils.ToolHelper
 
-interface IModManaInfused : SharedTrait, ManaExchanger, TinkerNBTChanger, IModCost<Int> {
+interface IModManaInfused : SharedTrait, ManaExchanger, TinkerNBTChanger, IModChange<Int> {
 
     val manaCost: Int
 

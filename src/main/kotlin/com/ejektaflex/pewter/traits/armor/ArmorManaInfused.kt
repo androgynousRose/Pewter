@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.traits.armor
 
 import com.ejektaflex.pewter.lib.traits.armor.PewterArmorTrait
 import com.ejektaflex.pewter.traits.base.IModManaInfused
-import com.ejektaflex.pewter.traits.base.methods.IArmorManaCost
+import com.ejektaflex.pewter.modifiers.base.methods.IArmorManaCost
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack

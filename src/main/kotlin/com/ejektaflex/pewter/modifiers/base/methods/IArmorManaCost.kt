@@ -1,16 +1,16 @@
-package com.ejektaflex.pewter.traits.base.methods
+package com.ejektaflex.pewter.modifiers.base.methods
 
 import com.ejektaflex.pewter.ext.getModifierIntNBT
 import com.ejektaflex.pewter.modifiers.armor.ArmorModRuneMana
 import net.minecraft.item.ItemStack
 
-interface IArmorManaCost : IModCost<Int> {
+interface IArmorManaCost : IModChange<Int> {
 
-    override val baseCost
+    override val baseChange
         get() = 80
 
     override fun modCost(item: ItemStack?): Int {
         val modData = item!!.getModifierIntNBT<ArmorModRuneMana>()
-        return (baseCost / (1 + modData.current * 0.165)).toInt()
+        return (baseChange / (1 + modData.current * 0.165)).toInt()
     }
 }

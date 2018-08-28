@@ -17,6 +17,7 @@ class LivingrockMaterial : MaterialDSL("livingrock", "#E5DFCF", {
             "BOW" to "cheap"
     )
     tool {
+        toolTrait("manaharvest")
         head {
             durability { 150 }
             attack { 3f }
