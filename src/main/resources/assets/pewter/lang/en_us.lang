@@ -88,6 +88,9 @@ modifier.amethyst.desc=§oFind them all!§r\nDurability++++, Speed+++
 modifier.amethyst_armor.name=Amethyst
 modifier.amethyst_armor.desc=§oFind them all!§r\nDurability+++, Defense+++
 
+modifier.dragonstone.name=Dragonstone
+modifier.dragonstone.desc=§oDiamond but Better!§r\nIncreased durability, stacks as the number of Botania materials in the tool increases.
+
 modifier.envious_armor.name=Envious
 modifier.envious_armor.desc=§oLooks so good!§r\nYou take less damage from enemies that are also armored.
 

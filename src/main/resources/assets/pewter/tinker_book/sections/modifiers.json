@@ -5,6 +5,10 @@
   },
   {
     "type": "modifier",
+    "data": "modifiers/dragonstone.json"
+  },
+  {
+    "type": "modifier",
     "data": "modifiers/runeautumn.json"
   },
   {

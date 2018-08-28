@@ -6,8 +6,8 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.nbt.NBTTagString
 import slimeknights.tconstruct.library.TinkerRegistry
+import slimeknights.tconstruct.library.materials.Material
 import slimeknights.tconstruct.library.modifiers.IModifier
-import slimeknights.tconstruct.library.modifiers.Modifier
 import slimeknights.tconstruct.library.modifiers.ModifierNBT
 import slimeknights.tconstruct.library.tools.ToolNBT
 import slimeknights.tconstruct.library.utils.TagUtil
@@ -23,6 +23,10 @@ interface TinkerNBTChanger {
 
     fun modifyToolStats(tool: ItemStack, func: (original: ToolNBT, current: NBTTagCompound) -> Unit) {
         func(TagUtil.getOriginalToolStats(tool), TagUtil.getToolTag(tool))
+    }
+
+    fun modifyToolStats(root: NBTTagCompound, func: (original: ToolNBT, current: NBTTagCompound) -> Unit) {
+        func(TagUtil.getOriginalToolStats(root), TagUtil.getToolTag(root))
     }
 
     fun hasToolTag(tool: ItemStack, tagName: String): Boolean {
@@ -55,8 +59,16 @@ interface TinkerNBTChanger {
         func(modData, ModifierNBT.readInteger(modData))
     }
 
-    fun baseMaterials(stack: ItemStack): List<String> {
+    fun baseMaterialNames(stack: ItemStack): List<String> {
         return TagUtil.getBaseMaterialsTagList(stack).filter { it is NBTTagString }.map { (it as NBTTagString).string }
+    }
+
+    fun baseMaterialNames(root: NBTTagCompound): List<String> {
+        return TagUtil.getBaseMaterialsTagList(root).filter { it is NBTTagString }.map { (it as NBTTagString).string }
+    }
+
+    fun baseMaterials(root: NBTTagCompound): List<Material> {
+        return baseMaterialNames(root).map { TinkerRegistry.getMaterial(it) }
     }
 
     /*

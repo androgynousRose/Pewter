@@ -22,7 +22,8 @@ object PewterModifiers : IPewterContent<Modifier> {
                 ModAmber(),
                 // Botania
                 ModRuneMana(),
-                ModRuneAutumn()
+                ModRuneAutumn(),
+                ModDragonstone()
         )
 
         // Construct's Armory Integration

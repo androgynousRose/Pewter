@@ -23,3 +23,8 @@ inline fun <reified T : Modifier> ItemStack.getModifierIntNBT(): ModifierNBT.Int
     val modData = TinkerUtil.getModifierTag(this, getTinkersModifier<T>().identifier)
     return ModifierNBT.readInteger(modData)
 }
+
+fun ItemStack.comesFrom(modName: String): Boolean {
+    return item.registryName?.resourceDomain == modName
+}
+
