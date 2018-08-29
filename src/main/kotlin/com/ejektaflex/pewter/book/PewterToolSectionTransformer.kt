@@ -11,10 +11,11 @@ import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.book.content.ContentListing
 import slimeknights.tconstruct.library.book.content.ContentModifier
 import slimeknights.tconstruct.library.book.sectiontransformer.ContentListingSectionTransformer
-import slimeknights.tconstruct.library.modifiers.IModifier
 
 @SideOnly(Side.CLIENT)
 class PewterToolSectionTransformer(secName: String) : ContentListingSectionTransformer(secName) {
+
+    private var pagesToRemove = mutableListOf<PageData>()
 
     override fun processPage(book: BookData, listing: ContentListing, page: PageData) {
         if (page.content is ContentModifier) {
@@ -26,22 +27,13 @@ class PewterToolSectionTransformer(secName: String) : ContentListingSectionTrans
                         println("${modifier.localizedName} has items: ${modifier.items.flatten().map { it.unlocalizedName }}")
                         listing.addEntry(modifier.localizedName, page)
                     } else {
-                        //println("${modifier.localizedName} is Pewter but has no related items")
+                        pagesToRemove.add(page)
                     }
                 } else {
                     println("${modifier.localizedName} not Pewter modifier, skipping (huh?)")
                 }
 
             }
-        }
-    }
-
-
-    private fun getModifierFromPage(page: PageData): IModifier? {
-        return if (page.content is ContentModifier) {
-            TinkerRegistry.getModifier((page.content as ContentModifier).modifierName)
-        } else {
-            null
         }
     }
 
@@ -55,22 +47,12 @@ class PewterToolSectionTransformer(secName: String) : ContentListingSectionTrans
         listingPage.parent = data
         listingPage.content = listing
 
-        // This gets a map of all pages with pewter modifiers as keys with all associated items as values
-        val pewterItemsFromPages = data.pages.mapNotNull {
-            val modHere = getModifierFromPage(it)
-            when (modHere) {
-                is PewterModifier -> it to modHere.items.flatten()
-                is PewterArmorModifier -> it to modHere.items.flatten()
-                else -> null
-            }
-        }.toMap()
-
-        // Grab all pages
-        val pagesWithoutItems = pewterItemsFromPages.filter { it.value.isEmpty() }
-
-        pagesWithoutItems.forEach { data.pages.remove(it.key) }
-
         data.pages.forEach { sectionPage -> processPage(book, listing, sectionPage) }
+
+        // Remove all pages that processing took care of
+        for (page in pagesToRemove) {
+            data.pages.remove(page)
+        }
 
         if (listing.hasEntries()) {
             listingPage.load()
