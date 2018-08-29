@@ -12,7 +12,7 @@ class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
     brightness(0.1f)
     shininess(0.35f)
     addTraits(
-            //"HEAD" to "essentia"
+            "CORE" to "terra_armor"
     )
     tool {
 
@@ -45,12 +45,12 @@ class TerrasteelMaterial : MaterialDSL("terrasteel", "#5CFF12", {
             defense { 18f }
         }
         plates {
-            modifier { 0.95f }
+            modifier { 0.9f }
             durability { 5f }
-            toughness { 1f }
+            toughness { 1.5f }
         }
         trim {
-            extraDurability { 3f }
+            extraDurability { 13f }
         }
     }
 

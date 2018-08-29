@@ -9,4 +9,6 @@ interface IPewterContent<T> {
 
     operator fun iterator() = content.iterator()
 
+    operator fun get(id: String): T?
+
 }

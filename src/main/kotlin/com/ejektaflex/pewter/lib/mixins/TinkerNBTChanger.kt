@@ -71,6 +71,10 @@ interface TinkerNBTChanger {
         return baseMaterialNames(root).map { TinkerRegistry.getMaterial(it) }
     }
 
+    fun baseMaterials(item: ItemStack): List<Material> {
+        return baseMaterialNames(item).map { TinkerRegistry.getMaterial(it) }
+    }
+
     /*
     fun getModifiers(stack: ItemStack): List<String> {
         return TagUtil.getModifiersTagList(stack).filter { it is NBTTagString }.map { (it as NBTTagString).string }

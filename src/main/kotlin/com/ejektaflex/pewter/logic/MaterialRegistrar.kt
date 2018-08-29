@@ -27,7 +27,7 @@ import slimeknights.tconstruct.library.traits.ITrait
 import slimeknights.tconstruct.smeltery.block.BlockMolten
 import java.awt.Color
 
-class MaterialRegistrar(val data: MaterialData) : IProxy {
+open class MaterialRegistrar(val data: MaterialData) : IProxy {
 
     private lateinit var integration: MaterialIntegration
     lateinit var tinkMaterial: Material

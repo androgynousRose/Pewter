@@ -187,6 +187,9 @@ modifier.tanzanite.desc=§oFind them all!§r\nDurability++, Speed+++
 modifier.tanzanite_armor.name=Tanzanite
 modifier.tanzanite_armor.desc=§oFind them all!§r\nDurability++, Defense++
 
+modifier.terra_armor.name=Terra
+modifier.terra_armor.desc=§oGift from the gods!§r\nHaving a full set of Tinkers armor where all armor cores are made of Terrasteel grants a low amount of passive healing.
+
 modifier.topaz.name=Topaz
 modifier.topaz.desc=§oFind them all!§r\nDurability+++, Speed++
 

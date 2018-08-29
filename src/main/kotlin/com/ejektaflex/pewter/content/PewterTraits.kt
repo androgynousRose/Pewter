@@ -7,6 +7,10 @@ import slimeknights.tconstruct.library.modifiers.Modifier
 
 object PewterTraits : IPewterContent<Modifier> {
 
+    override fun get(id: String): Modifier? {
+        return PewterTraits.content.find { it.identifier == id }
+    }
+
     override val content: List<Modifier> by lazy {
         val traits = mutableListOf<Modifier>(
                 //Brilliance(),
@@ -37,7 +41,8 @@ object PewterTraits : IPewterContent<Modifier> {
                     ArmorSplash(),
                     ArmorManaInfused(),
                     ArmorAdapting(),
-                    ArmorEnvious()
+                    ArmorEnvious(),
+                    ArmorTerra()
             )
         }
 

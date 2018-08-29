@@ -6,6 +6,11 @@ import com.ejektaflex.pewter.modifiers.tools.*
 import slimeknights.tconstruct.library.modifiers.Modifier
 
 object PewterModifiers : IPewterContent<Modifier> {
+
+    override fun get(id: String): Modifier? {
+        return content.find { it.identifier == id }
+    }
+
     override val content: List<Modifier> by lazy {
         // Regular Modifiers
         val mods = mutableListOf<Modifier>(

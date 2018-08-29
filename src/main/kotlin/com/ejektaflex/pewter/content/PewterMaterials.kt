@@ -12,6 +12,10 @@ import com.ejektaflex.pewter.materials.thaumcraft.VoidMetalMaterial
 
 object PewterMaterials : IPewterContent<MaterialRegistrar> {
 
+    override fun get(id: String): MaterialRegistrar? {
+        return content.find { it.data.name == id }
+    }
+
     override fun loadContent(): List<MaterialRegistrar> {
         content = storedContent
         return content
