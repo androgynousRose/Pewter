@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.lib.modifiers
 import c4.conarm.lib.modifiers.ArmorModifier
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.lib.mixins.ConfigurableModifier
+import net.minecraft.item.ItemStack
 import net.minecraftforge.common.MinecraftForge
 
 // Does not actually leak
@@ -17,10 +18,15 @@ abstract class PewterArmorModifier(
     init {
         Pewter.LOGGER.info("Creating armor modifier: $name (id: $identifier)")
         MinecraftForge.EVENT_BUS.register(this)
-
-
-        println("This is new")
-
-
     }
+
+    // Apparently getItems() crashes if there are no registered items
+    fun getItemsSafe(): List<List<ItemStack>>? {
+        return try {
+            getItems()
+        } catch (e: Exception) {
+            null
+        }
+    }
+
 }

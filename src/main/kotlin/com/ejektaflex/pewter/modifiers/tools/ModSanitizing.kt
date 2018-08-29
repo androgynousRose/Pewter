@@ -4,6 +4,7 @@ package com.ejektaflex.pewter.modifiers.tools
 import com.ejektaflex.pewter.ext.getTinkersModifier
 import com.ejektaflex.pewter.ext.set
 import com.ejektaflex.pewter.ext.toItem
+import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
 import com.ejektaflex.pewter.lib.modifiers.PewterModifier
 import com.ejektaflex.pewter.traits.tools.Warping
@@ -30,7 +31,7 @@ class ModSanitizing : PewterModifier("sanitizing", 0xCCA5E6), TinkerNBTChanger {
     }
 
     override fun configure() {
-        addItem("thaumcraft:sanity_soap".toItem)
+        "thaumcraft:sanity_soap".toItemStack?.let { addItem(it, 1, 1) }
     }
 
     override fun canApplyCustom(stack: ItemStack?): Boolean {

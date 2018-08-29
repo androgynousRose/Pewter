@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.modifiers.tools
 
 import com.ejektaflex.pewter.ext.getModifierIntNBT
 import com.ejektaflex.pewter.ext.toItem
+import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
 import com.ejektaflex.pewter.lib.modifiers.PewterModifier
 import net.minecraft.entity.EntityLivingBase
@@ -33,6 +34,6 @@ class ModQuicksilver : PewterModifier("Quicksilver", 0xcccccc, 3, 10), TinkerNBT
 
 
     override fun configure() {
-        addItem("thaumcraft:quicksilver".toItem)
+        "thaumcraft:quicksilver".toItemStack?.let { addItem(it, 1, 1) }
     }
 }

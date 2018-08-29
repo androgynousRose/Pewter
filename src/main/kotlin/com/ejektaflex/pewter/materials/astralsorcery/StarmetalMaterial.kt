@@ -14,7 +14,6 @@ class StarmetalMaterial : MaterialDSL("starmetal", "#222288", {
     )
     shininess(0.6f)
     tool {
-
         toolTrait("brilliance")
         head {
             durability { 275 }

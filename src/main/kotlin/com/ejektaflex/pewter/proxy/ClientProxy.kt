@@ -6,6 +6,9 @@ import com.ejektaflex.pewter.ResourceManager
 import com.ejektaflex.pewter.book.PewterArmorSectionTransformer
 import com.ejektaflex.pewter.book.PewterToolSectionTransformer
 import com.ejektaflex.pewter.content.PewterMaterials
+import com.ejektaflex.pewter.content.PewterModifiers
+import com.ejektaflex.pewter.lib.modifiers.PewterArmorModifier
+import com.ejektaflex.pewter.lib.modifiers.PewterModifier
 import com.ejektaflex.pewter.logic.FluidStateMapper
 import com.google.common.base.Function
 import net.minecraft.client.Minecraft
@@ -70,18 +73,38 @@ class ClientProxy : CommonProxy() {
     }
 
     private fun addTinkerBookSection(book: BookData, repository: String) {
-        val repo = FileRepository("${Pewter.MODID}:$repository")
-        book.addRepository(repo)
-        book.addTransformer(PewterToolSectionTransformer(repo.sections[0].name))
-        book.addTransformer(BookTransformer.IndexTranformer())
-        Pewter.LOGGER.info("Added modifiers to book named \"${book.appearance.title}\".")
+
+        val modifierItems = PewterModifiers.content.filter {
+            it is PewterModifier
+        }.mapNotNull {
+            (it as PewterModifier).getItemsSafe()?.flatten()
+        }.flatten()
+
+        if (modifierItems.isNotEmpty()) {
+            val repo = FileRepository("${Pewter.MODID}:$repository")
+            book.addRepository(repo)
+            book.addTransformer(PewterToolSectionTransformer(repo.sections[0].name))
+            book.addTransformer(BookTransformer.IndexTranformer())
+            Pewter.LOGGER.info("Added modifiers to book named \"${book.appearance.title}\".")
+        }
+
     }
 
     private fun addArmoryBookSection(book: BookData, repository: String) {
-        val repo = FileRepository("${Pewter.MODID}:$repository")
-        book.addRepository(repo)
-        book.addTransformer(PewterArmorSectionTransformer(repo.sections[0].name))
-        Pewter.LOGGER.info("Added modifiers to book named \"${book.appearance.title}\".")
+
+        val armorModifierItems = PewterModifiers.content.filter {
+            it is PewterArmorModifier
+        }.mapNotNull {
+            (it as PewterArmorModifier).getItemsSafe()?.flatten()
+        }.flatten()
+
+        if (armorModifierItems.isNotEmpty()) {
+            val repo = FileRepository("${Pewter.MODID}:$repository")
+            book.addRepository(repo)
+            book.addTransformer(PewterArmorSectionTransformer(repo.sections[0].name))
+            Pewter.LOGGER.info("Added modifiers to book named \"${book.appearance.title}\".")
+        }
+
     }
 
     override fun makePewterFluid() {

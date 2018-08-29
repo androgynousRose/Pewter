@@ -23,11 +23,7 @@ class PewterArmorSectionTransformer(secName: String) : PewterContentListing<Cont
     }
 
     override fun getModItems(mod: IModifier): List<ItemStack>? {
-        return try {
-            (mod as PewterArmorModifier).items.flatten()
-        } catch (e: Exception) {
-            null
-        }
+        return (mod as PewterArmorModifier).getItemsSafe()?.flatten()
     }
 
     override fun processPage(book: BookData, listing: ContentListing, page: PageData) {

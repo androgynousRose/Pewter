@@ -23,7 +23,7 @@ class PewterToolSectionTransformer(secName: String) : PewterContentListing<Conte
     }
 
     override fun getModItems(mod: IModifier): List<ItemStack>? {
-        return (mod as PewterModifier).items.flatten()
+        return (mod as PewterModifier).getItemsSafe()?.flatten()
     }
 
     override fun processPage(book: BookData, listing: ContentListing, page: PageData) {

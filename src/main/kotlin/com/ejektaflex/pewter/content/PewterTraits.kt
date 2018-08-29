@@ -13,7 +13,7 @@ object PewterTraits : IPewterContent<Modifier> {
 
     override val content: List<Modifier> by lazy {
         val traits = mutableListOf<Modifier>(
-                //Brilliance(),
+                Brilliance(),
                 Buzzing(),
                 HeatLover(),
                 Polluted(),

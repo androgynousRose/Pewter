@@ -2,6 +2,7 @@ package com.ejektaflex.pewter.lib.modifiers
 
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.lib.mixins.ConfigurableModifier
+import net.minecraft.item.ItemStack
 import net.minecraftforge.common.MinecraftForge
 import slimeknights.tconstruct.library.modifiers.ModifierTrait
 
@@ -17,5 +18,14 @@ abstract class PewterModifier(
     init {
         Pewter.LOGGER.info("Creating modifier: $name")
         MinecraftForge.EVENT_BUS.register(this)
+    }
+
+    // Apparently getItems() crashes if there are no registered items
+    fun getItemsSafe(): List<List<ItemStack>>? {
+        return try {
+            getItems()
+        } catch (e: Exception) {
+            null
+        }
     }
 }
