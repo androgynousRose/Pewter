@@ -21,7 +21,7 @@ class ArmorModRuneMana : PewterArmorModifier("runemana", 0xFF2AC), TinkerNBTChan
     override fun applyEffect(rootCompound: NBTTagCompound?, modifierTag: NBTTagCompound?) {}
 
     override fun configure() {
-        RecipeMatchHolder.addItem(this, "botania:rune:8".toItemStack, 1, 1)
+        "botania:rune:8".toItemStack?.let { RecipeMatchHolder.addItem(this, it, 1, 1) }
     }
 
     override fun canApplyCustom(stack: ItemStack?): Boolean {

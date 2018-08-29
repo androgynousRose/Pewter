@@ -31,7 +31,7 @@ object PewterTraits : IPewterContent<Modifier> {
                 ManaHarvest()
         )
 
-        if (Pewter.CONFIG.MAIN.conarmIntegration) {
+        if (Pewter.isUsingConArm()) {
             traits += listOf(
                     ArmorHeatLover(),
                     ArmorInflamed(),

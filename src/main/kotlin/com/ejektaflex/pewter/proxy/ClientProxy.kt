@@ -22,10 +22,10 @@ import net.minecraftforge.client.model.ModelLoader
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import slimeknights.mantle.client.book.BookTransformer
 import slimeknights.mantle.client.book.data.BookData
 import slimeknights.mantle.client.book.repository.FileRepository
 import slimeknights.tconstruct.library.book.TinkerBook
-import slimeknights.tconstruct.library.book.sectiontransformer.ContentListingSectionTransformer
 import slimeknights.tconstruct.library.client.MaterialRenderInfo
 import java.awt.Color
 
@@ -63,7 +63,7 @@ class ClientProxy : CommonProxy() {
 
     override fun postInit(e: FMLPostInitializationEvent) {
         addTinkerBookSection(TinkerBook.INSTANCE, "tinker_book")
-        if (Pewter.CONFIG.MAIN.conarmIntegration) {
+        if (Pewter.isUsingConArm()) {
             addArmoryBookSection(ArmoryBook.INSTANCE, "armory_book")
         }
         super.postInit(e)
@@ -73,6 +73,7 @@ class ClientProxy : CommonProxy() {
         val repo = FileRepository("${Pewter.MODID}:$repository")
         book.addRepository(repo)
         book.addTransformer(PewterToolSectionTransformer(repo.sections[0].name))
+        book.addTransformer(BookTransformer.IndexTranformer())
         Pewter.LOGGER.info("Added modifiers to book named \"${book.appearance.title}\".")
     }
 

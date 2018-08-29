@@ -25,6 +25,7 @@ abstract class GemArmorModifier(name: String, color: Int) : PewterArmorModifier(
     override fun configure() {
         oreTags.forEach { tag ->
             OreDictionary.getOres(tag).forEach {
+                println("Configured gem $tag with $it")
                 RecipeMatchHolder.addItem(this, it, 1, 1)
             }
         }

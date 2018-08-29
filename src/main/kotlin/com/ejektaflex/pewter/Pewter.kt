@@ -30,7 +30,7 @@ object Pewter : IProxy {
         CONFIG.load()
 
         // Set integration
-        CONFIG.MAIN.conarmIntegration = CONFIG.MAIN.conarmIntegration && Loader.isModLoaded("conarm")
+
 
         proxy.preInit(event)
 
@@ -42,6 +42,9 @@ object Pewter : IProxy {
         MinecraftForge.EVENT_BUS.register(proxy)
     }
 
+    fun isUsingConArm(): Boolean {
+        return CONFIG.MAIN.conarmIntegration && Loader.isModLoaded("conarm")
+    }
 
     @EventHandler
     override fun init(event: FMLInitializationEvent) {

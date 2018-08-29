@@ -33,7 +33,7 @@ object PewterModifiers : IPewterContent<Modifier> {
         )
 
         // Construct's Armory Integration
-        if (Pewter.CONFIG.MAIN.conarmIntegration) {
+        if (Pewter.isUsingConArm()) {
             mods += mutableListOf<Modifier>(
                     // Biomes O' Plenty
                     ArmorModAmber(),
