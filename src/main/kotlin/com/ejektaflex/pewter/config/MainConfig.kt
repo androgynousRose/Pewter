@@ -4,6 +4,7 @@ import com.ejektaflex.pewter.content.PewterMaterials
 
 open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
     open var conarmIntegration: Boolean = true
+    open var loadExternalContent: Boolean = false
 
     //var materialsToList = listOf<MaterialRegistrar>()
     var blacklistedMaterials = mutableListOf<String>()
@@ -14,6 +15,13 @@ open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
                 "ConstructsArmoryIntegration",
                 true,
                 "If set to true, will add dependencies as armor to Construct's Armory where available"
+        ).boolean
+
+        loadExternalContent = config.get(
+                CATEGORY_GENERAL,
+                "LoadMaterialJSONS",
+                false,
+                "If set to true, will load json files from the config folder (besides _example.json)"
         ).boolean
 
         val mats = PewterMaterials.content

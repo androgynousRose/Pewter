@@ -38,4 +38,21 @@ class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {
             bonusAmmo { 5 }
         }
     }
+
+    armor {
+        armorTrait("heatlover_armor")
+        core {
+            durability { 15.5f }
+            defense { 13f }
+        }
+        plates {
+            modifier { 0.75f }
+            durability { 6f }
+            toughness { 0f }
+        }
+        trim {
+            extraDurability { 6f }
+        }
+    }
+
 }), ExampleDependency

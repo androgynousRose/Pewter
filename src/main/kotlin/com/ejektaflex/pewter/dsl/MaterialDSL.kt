@@ -3,25 +3,17 @@ package com.ejektaflex.pewter.dsl
 import com.ejektaflex.pewter.logic.stats.ArmorStats
 import com.ejektaflex.pewter.logic.stats.MaterialData
 
+@Suppress("LeakingThis")
 abstract class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>(), IMaterialDependency {
 
-    final override val material = MaterialData()
+    override val material = MaterialData()
 
     init {
+        material.isCustomMaterial = false
         material.color = initColor
         material.name = initName
         apply(initFunc)
     }
-
-    /*
-    // Only load the material if we have met all dependencies
-    override fun hasMetDependencies(): Boolean {
-        val meltableItems = material.smeltingItems.names().mapNotNull { it.toItemStack }
-        Pewter.LOGGER.info("Dependencies for ${material.name}: ${meltableItems.map { it.unlocalizedName }}")
-        val isNotBlacklisted = material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials
-        return meltableItems.isNotEmpty() && isNotBlacklisted
-    }*/
-
 
     @DslMarker
     annotation class TopLevelToolDSL

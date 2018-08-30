@@ -46,6 +46,10 @@ object Pewter : IProxy {
         return CONFIG.MAIN.conarmIntegration && Loader.isModLoaded("conarm")
     }
 
+    fun shouldLoadExternalContent(): Boolean {
+        return CONFIG.MAIN.loadExternalContent
+    }
+
     @EventHandler
     override fun init(event: FMLInitializationEvent) {
         proxy.init(event)

@@ -13,7 +13,7 @@ class ResourceManager : IResourceManagerReloadListener {
     override fun onResourceManagerReload(resourceManager: IResourceManager) {
         var data = ""
         // Write all custom dependencies
-        PewterMaterials.content.filter { it.data.isInCustomFolder }.forEach {
+        PewterMaterials.content.filter { it.data.isCustomMaterial }.forEach {
             data += writeMaterial(it)
         }
 
@@ -36,7 +36,7 @@ class ResourceManager : IResourceManagerReloadListener {
             if (locales.keys.isNotEmpty()) {
                 locales[mcLocale]?.let {
                     println(it)
-                    data += "material.$materialName.name=${it}\n"
+                    data += "material.$materialName.name=$it\n"
                     data += "fluids.${Pewter.MODID}.$materialName.name=$it (Liquid)\n"
                 }
             }

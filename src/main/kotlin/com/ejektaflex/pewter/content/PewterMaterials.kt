@@ -1,5 +1,7 @@
 package com.ejektaflex.pewter.content
 
+import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.dsl.MaterialDSL
 import com.ejektaflex.pewter.logic.MaterialRegistrar
 import com.ejektaflex.pewter.materials.astralsorcery.StarmetalMaterial
@@ -18,11 +20,19 @@ object PewterMaterials : IPewterContent<MaterialRegistrar> {
 
     override fun loadContent(): List<MaterialRegistrar> {
         content = storedContent
+        if (Pewter.shouldLoadExternalContent()) {
+            content += loadExternalContent()
+        }
         return content
     }
 
+    private fun loadExternalContent(): List<MaterialRegistrar> {
+        return Configs.externalMaterials.map { MaterialRegistrar(it) }
+    }
+
     private val storedContent: List<MaterialRegistrar> by lazy {
-        return@lazy mutableListOf(
+
+        val toLoad = mutableListOf(
                 // Astral Sorcery
                 StarmetalMaterial(),
 
@@ -49,7 +59,9 @@ object PewterMaterials : IPewterContent<MaterialRegistrar> {
                 DragonflyMaterial(),
                 ValoniteMaterial(),
                 WeedwoodMaterial()
-        ).mapNotNull {
+        )
+
+        return@lazy toLoad.mapNotNull {
             dependencyCheck(it)
         }
     }
