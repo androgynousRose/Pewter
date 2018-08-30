@@ -1,8 +1,11 @@
 package com.ejektaflex.pewter.ext
 
 import com.ejektaflex.pewter.Pewter
+import net.minecraft.command.ICommandSender
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
+import net.minecraft.util.text.ITextComponent
+import net.minecraft.util.text.TextComponentString
 import slimeknights.tconstruct.library.modifiers.Modifier
 import java.util.*
 
@@ -23,4 +26,8 @@ fun Random.chanceOf(f: Float, func: () -> Unit) {
     if (nextFloat() < f) {
         func()
     }
+}
+
+fun ICommandSender.sendMessage(str: String) {
+    sendMessage(TextComponentString(str))
 }

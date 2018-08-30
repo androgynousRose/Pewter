@@ -1,6 +1,8 @@
 package com.ejektaflex.pewter
 
 
+import c4.conarm.lib.ArmoryRegistry
+import com.ejektaflex.pewter.ext.sendMessage
 import net.minecraft.command.CommandException
 import net.minecraft.command.ICommand
 import net.minecraft.command.ICommandSender
@@ -39,7 +41,7 @@ class DumpCommand : ICommand {
     override fun execute(server: MinecraftServer, sender: ICommandSender, args: Array<String>) {
 
         if (args.isEmpty()) {
-            return
+            sender.sendMessage("Valid options: '/pewter tooltraits', '/pewter armortraits'")
         }
 
         val player = sender.commandSenderEntity as EntityPlayer
@@ -49,9 +51,34 @@ class DumpCommand : ICommand {
         when (args[0]) {
             "dump" -> {
                 if (itemInHand.item is TinkerToolCore) {
-                    sender.sendMessage(TextComponentString("Materials: ${TagUtil.getBaseMaterialsTagList(itemInHand)}"))
+                    sender.sendMessage("Materials: ${TagUtil.getBaseMaterialsTagList(itemInHand)}")
                 }
             }
+
+            "armortraits" -> {
+                if (Pewter.isUsingConArm()) {
+                    val armorTraits = ArmoryRegistry.getAllArmorModifiers()
+                    sender.sendMessage("${armorTraits.map { it.identifier}}")
+                } else {
+                    sender.sendMessage("Constructs Armory is not loaded!")
+                }
+            }
+
+            "tooltraits" -> {
+                val toolTraits = TinkerRegistry.getAllModifiers().toMutableList()
+
+                if (Pewter.isUsingConArm()) {
+
+                    toolTraits.removeIf { it in ArmoryRegistry.getAllArmorModifiers() }
+                }
+
+                sender.sendMessage("${toolTraits.map { it.identifier }}")
+            }
+
+            else -> {
+                sender.sendMessage("Invalid command. Valid options are: 'armortraits', 'tooltraits'.")
+            }
+
         }
 
 

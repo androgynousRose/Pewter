@@ -65,11 +65,9 @@ object Pewter : IProxy {
         event.registerServerCommand(DumpCommand())
     }
 
-
-
     const val MODID = "pewter"
     const val NAME = "Pewter"
-    const val VERSION = "1.0.0b"
+    const val VERSION = "1.1.0"
     const val VERSIONS = "1.12"
     const val DEPENDS = "required-after:tconstruct;" +
             "required-after:forgelin;" +
@@ -84,9 +82,6 @@ object Pewter : IProxy {
     const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
     private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
     private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
-
-    // For now, this feature has to go. Goodbye, custom load!
-    var CUSTOM_LOAD = false
 
     lateinit var LOGGER: Logger
     lateinit var CONFIG: Configs
