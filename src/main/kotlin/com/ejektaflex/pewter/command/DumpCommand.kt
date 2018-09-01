@@ -1,8 +1,8 @@
-package com.ejektaflex.pewter
+package com.ejektaflex.pewter.command
 
 
 import c4.conarm.lib.ArmoryRegistry
-import com.ejektaflex.pewter.command.Cycler
+import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ext.sendMessage
 import net.minecraft.command.CommandException
 import net.minecraft.command.ICommand

@@ -13,7 +13,7 @@ import net.minecraft.nbt.NBTTagCompound
 import slimeknights.tconstruct.library.modifiers.IModifierDisplay
 
 
-class ModRuneAutumn : PewterModifier("runeautumn", 0xE8A136, 2, 3), TinkerNBTChanger, IModifierDisplay, IToolHarvestBonus {
+class ModRuneAutumn(modName: String) : PewterModifier(modName, 0xE8A136, 2, 3), TinkerNBTChanger, IModifierDisplay, IToolHarvestBonus {
 
     override fun configure() {
         addItem("botania:rune:6".toItemStack, 1, 1)

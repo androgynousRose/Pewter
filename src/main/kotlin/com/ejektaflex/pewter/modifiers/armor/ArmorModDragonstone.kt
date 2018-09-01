@@ -9,7 +9,7 @@ import com.ejektaflex.pewter.lib.modifiers.PewterArmorModifier
 import net.minecraft.nbt.NBTTagCompound
 import slimeknights.tconstruct.library.modifiers.ModifierAspect
 
-class ArmorModDragonstone : PewterArmorModifier("dragonstone", 0xED339A), TinkerNBTChanger {
+class ArmorModDragonstone(modName: String) : PewterArmorModifier(modName, 0xED339A), TinkerNBTChanger {
 
     init {
         addAspects(ModifierAspect.SingleAspect(this), ModifierAspect.DataAspect(this), ModifierAspect.freeModifier)

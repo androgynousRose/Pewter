@@ -13,7 +13,7 @@ import net.minecraft.nbt.NBTTagCompound
 import slimeknights.tconstruct.library.modifiers.ModifierAspect
 
 
-class ModSanitizing : PewterModifier("sanitizing", 0xCCA5E6), TinkerNBTChanger {
+class ModSanitizing(modName: String) : PewterModifier("sanitizing", 0xCCA5E6), TinkerNBTChanger {
 
     init {
         addAspects(

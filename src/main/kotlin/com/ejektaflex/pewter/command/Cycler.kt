@@ -1,8 +1,5 @@
 package com.ejektaflex.pewter.command
 
-import com.ejektaflex.pewter.DumpCommand
-import net.minecraft.util.text.TextFormatting
-
 class Cycler<T : Any>(val content: List<T>) {
 
     var counter: Int = -1

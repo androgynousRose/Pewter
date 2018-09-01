@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.tools.ToolNBT
 import slimeknights.tconstruct.library.utils.HarvestLevels
 
 
-class ModDragonstone : PewterModifier("dragonstone", 0xED339A), TinkerNBTChanger, IModifierDisplay {
+class ModDragonstone(modName: String) : PewterModifier(modName, 0xED339A), TinkerNBTChanger, IModifierDisplay {
 
     init {
         addAspects(

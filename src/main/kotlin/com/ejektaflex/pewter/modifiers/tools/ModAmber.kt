@@ -6,4 +6,4 @@ import com.ejektaflex.pewter.modifiers.base.gems.IModAmber
 import net.minecraftforge.oredict.OreDictionary
 
 
-class ModAmber : GemModifier("amber", 0xFFB529), IModAmber
+class ModAmber(modName: String) : GemModifier(modName, 0xFFB529), IModAmber
