@@ -37,7 +37,7 @@ class ResourceManager : IResourceManagerReloadListener {
                 locales[mcLocale]?.let {
                     println(it)
                     data += "material.$materialName.name=$it\n"
-                    data += "fluids.${Pewter.MODID}.$materialName.name=$it (Liquid)\n"
+                    data += "fluid.${Pewter.MODID}.$materialName.name=Molten $it\n"
                 }
             }
 

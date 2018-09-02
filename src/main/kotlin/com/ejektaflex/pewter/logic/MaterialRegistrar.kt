@@ -53,7 +53,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
-        // Nothing to do postInit
+        // Nothing to do postInit, this isn't even called right now
     }
 
     private fun associate() {

@@ -8,6 +8,7 @@ class ManastringMaterial : MaterialDSL("manastring", "#6BBEBF", {
     forge { false }
     craft { true }
     ingotTags("manaString")
+    ingots("botania:manaresource:16")
     parts(MatPart.BOWSTRING)
     //toolTrait("heatlover")
     tool {
