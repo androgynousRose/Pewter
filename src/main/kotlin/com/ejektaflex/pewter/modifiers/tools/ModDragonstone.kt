@@ -42,7 +42,7 @@ class ModDragonstone(modName: String) : PewterModifier(modName, 0xED339A), Tinke
     }
 
     override fun configure() {
-        addItem("botania:manaresource:9".toItemStack, 1, 1)
+        "botania:manaresource:9".toItemStack?.let { addItem(it, 1, 1) }
     }
 
 }
