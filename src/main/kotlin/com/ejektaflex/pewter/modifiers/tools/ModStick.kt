@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.modifiers.tools
 
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ext.toItem
+import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
 import com.ejektaflex.pewter.lib.modifiers.PewterModifier
 import net.minecraft.entity.EntityLivingBase
@@ -40,6 +41,6 @@ class ModStick : PewterModifier("Shtick", 0xffff88), TinkerNBTChanger {
     }
 
     override fun configure() {
-        addItem("thaumcraft:sanity_soap".toItem)
+        safeAdd("thaumcraft:sanity_soap".toItemStack)
     }
 }

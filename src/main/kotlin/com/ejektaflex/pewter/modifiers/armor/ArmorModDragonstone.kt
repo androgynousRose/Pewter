@@ -34,7 +34,7 @@ class ArmorModDragonstone(modName: String) : PewterArmorModifier(modName, 0xED33
     }
 
     override fun configure() {
-        "botania:manaresource:9".toItemStack?.let { RecipeMatchHolder.addItem(this, it, 1, 1) }
+        safeAdd("botania:manaresource:9".toItemStack)
     }
 
 }

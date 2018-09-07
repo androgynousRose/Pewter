@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
 import net.minecraft.util.text.ITextComponent
 import net.minecraft.util.text.TextComponentString
+import slimeknights.mantle.util.RecipeMatchRegistry
 import slimeknights.tconstruct.library.modifiers.Modifier
 import java.util.*
 

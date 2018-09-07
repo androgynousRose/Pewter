@@ -4,6 +4,7 @@ import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.lib.mixins.ConfigurableModifier
 import net.minecraft.item.ItemStack
 import net.minecraftforge.common.MinecraftForge
+import slimeknights.mantle.util.RecipeMatchRegistry
 import slimeknights.tconstruct.library.modifiers.ModifierTrait
 
 // This does not actually leak
@@ -28,4 +29,9 @@ abstract class PewterModifier(
             null
         }
     }
+
+    fun safeAdd(stack: ItemStack?) {
+        stack?.let { addItem(it, 1, 1) }
+    }
+
 }

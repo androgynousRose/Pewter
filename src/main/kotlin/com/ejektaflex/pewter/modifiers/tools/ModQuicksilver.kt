@@ -34,6 +34,6 @@ class ModQuicksilver(modName: String) : PewterModifier(modName, 0xcccccc, 3, 10)
 
 
     override fun configure() {
-        "thaumcraft:quicksilver".toItemStack?.let { addItem(it, 1, 1) }
+        safeAdd("thaumcraft:quicksilver".toItemStack)
     }
 }

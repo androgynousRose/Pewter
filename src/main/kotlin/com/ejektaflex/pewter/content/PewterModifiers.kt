@@ -42,7 +42,7 @@ object PewterModifiers : IPewterContent<Modifier> {
                 "runeautumn" to { it -> ModRuneAutumn(it) },
                 "dragonstone" to { it -> ModDragonstone(it) },
 
-                "runemana_armor" to { it -> ArmorModSapphire(it) },
+                "runemana_armor" to { it -> ArmorModRuneMana(it) },
                 "dragonstone_armor" to { it -> ArmorModDragonstone(it) }
         ).mapNotNull {
 

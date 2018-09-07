@@ -14,7 +14,7 @@ import slimeknights.tconstruct.library.modifiers.IModifierDisplay
 class ModRuneMana(modName: String) : PewterModifier(modName, 0xFF5ACB, 2, 3), TinkerNBTChanger, IModifierDisplay, IToolManaCost {
 
     override fun configure() {
-        "botania:rune:8".toItemStack?.let { addItem(it, 1, 1) }
+        safeAdd("botania:rune:8".toItemStack)
     }
 
     override fun canApplyCustom(stack: ItemStack?): Boolean {

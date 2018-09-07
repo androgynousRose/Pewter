@@ -21,7 +21,7 @@ class ArmorModRuneMana(modName: String) : PewterArmorModifier(modName, 0xFF2AC),
     override fun applyEffect(rootCompound: NBTTagCompound?, modifierTag: NBTTagCompound?) {}
 
     override fun configure() {
-        "botania:rune:8".toItemStack?.let { RecipeMatchHolder.addItem(this, it, 1, 1) }
+        safeAdd("botania:rune:8".toItemStack)
     }
 
     override fun canApplyCustom(stack: ItemStack?): Boolean {

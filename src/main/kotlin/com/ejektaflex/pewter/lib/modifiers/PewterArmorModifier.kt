@@ -29,4 +29,8 @@ abstract class PewterArmorModifier(
         }
     }
 
+    fun safeAdd(stack: ItemStack?) {
+        stack?.let { addItem(it, 1, 1) }
+    }
+
 }
