@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.lib.modifiers
 
 import c4.conarm.lib.modifiers.ArmorModifier
+import c4.conarm.lib.utils.RecipeMatchHolder
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.lib.mixins.ConfigurableModifier
 import net.minecraft.item.ItemStack
@@ -30,7 +31,7 @@ abstract class PewterArmorModifier(
     }
 
     fun safeAdd(stack: ItemStack?) {
-        stack?.let { addItem(it, 1, 1) }
+        stack?.let { RecipeMatchHolder.addItem(this, it, 1, 1) }
     }
 
 }
