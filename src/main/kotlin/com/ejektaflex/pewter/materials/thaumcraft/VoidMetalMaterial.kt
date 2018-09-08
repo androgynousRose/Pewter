@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter.materials.thaumcraft
 
-import com.ejektaflex.pewter.dsl.MaterialDSL
+import com.ejektaflex.pewter.api.materials.MaterialDSL
 import com.ejektaflex.pewter.lib.dependencies.ThaumcraftDependency
 
 class VoidMetalMaterial : MaterialDSL("voidmetal", "#2A114A", {

@@ -30,6 +30,7 @@ abstract class PewterArmorModifier(
         }
     }
 
+
     fun safeAdd(stack: ItemStack?) {
         stack?.let { RecipeMatchHolder.addItem(this, it, 1, 1) }
     }

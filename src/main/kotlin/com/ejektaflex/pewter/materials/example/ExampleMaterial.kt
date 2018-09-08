@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter.materials.example
 
-import com.ejektaflex.pewter.dsl.MaterialDSL
+import com.ejektaflex.pewter.api.materials.MaterialDSL
 import com.ejektaflex.pewter.lib.dependencies.ExampleDependency
 
 class ExampleMaterial : MaterialDSL("examplematerial", "#666688", {

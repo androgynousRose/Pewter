@@ -8,7 +8,7 @@ import com.ejektaflex.pewter.book.PewterToolSectionTransformer
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.content.PewterModifiers
 import com.ejektaflex.pewter.lib.modifiers.PewterArmorModifier
-import com.ejektaflex.pewter.lib.modifiers.PewterModifier
+import com.ejektaflex.pewter.lib.modifiers.PewterToolModifier
 import com.ejektaflex.pewter.logic.FluidStateMapper
 import com.google.common.base.Function
 import net.minecraft.client.Minecraft
@@ -75,9 +75,9 @@ class ClientProxy : CommonProxy() {
     private fun addTinkerBookSection(book: BookData, repository: String) {
 
         val modifierItems = PewterModifiers.content.filter {
-            it is PewterModifier
+            it is PewterToolModifier
         }.mapNotNull {
-            (it as PewterModifier).getItemsSafe()?.flatten()
+            (it as PewterToolModifier).getItemsSafe()?.flatten()
         }.flatten()
 
         if (modifierItems.isNotEmpty()) {

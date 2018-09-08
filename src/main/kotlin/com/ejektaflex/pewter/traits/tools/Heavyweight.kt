@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter.traits.tools
 
-import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
 import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.utils.TagUtil
 import slimeknights.tconstruct.library.utils.TinkerUtil
 
 
-class Heavyweight : PewterToolTrait("heavyweight", 0x124026), TinkerNBTChanger {
+class Heavyweight : PewterToolTrait("heavyweight", 0x124026), TinkerNBTHelper {
 
     private val bonus = 1.1f
     private val loss = 0.95f

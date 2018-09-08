@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter.book
 
-import com.ejektaflex.pewter.lib.modifiers.PewterModifier
+import com.ejektaflex.pewter.lib.modifiers.PewterToolModifier
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
@@ -23,11 +23,11 @@ class PewterToolSectionTransformer(secName: String) : PewterContentListing<Conte
     }
 
     override fun getModItems(mod: IModifier): List<ItemStack>? {
-        return (mod as PewterModifier).getItemsSafe()?.flatten()
+        return (mod as PewterToolModifier).getItemsSafe()?.flatten()
     }
 
     override fun processPage(book: BookData, listing: ContentListing, page: PageData) {
-        pewterProcessPage<PewterModifier>(book, listing, page)
+        pewterProcessPage<PewterToolModifier>(book, listing, page)
     }
 
 }

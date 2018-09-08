@@ -2,8 +2,8 @@ package com.ejektaflex.pewter.modifiers.tools
 
 
 import com.ejektaflex.pewter.ext.*
-import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
-import com.ejektaflex.pewter.lib.modifiers.PewterModifier
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
+import com.ejektaflex.pewter.lib.modifiers.PewterToolModifier
 import net.minecraft.nbt.NBTTagCompound
 import slimeknights.tconstruct.library.modifiers.IModifierDisplay
 import slimeknights.tconstruct.library.modifiers.ModifierAspect
@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.tools.ToolNBT
 import slimeknights.tconstruct.library.utils.HarvestLevels
 
 
-class ModDragonstone(modName: String) : PewterModifier(modName, 0xED339A), TinkerNBTChanger, IModifierDisplay {
+class ModDragonstone(modName: String) : PewterToolModifier(modName, 0xED339A), TinkerNBTHelper, IModifierDisplay {
 
     init {
         addAspects(

@@ -2,15 +2,15 @@ package com.ejektaflex.pewter.modifiers.tools
 
 
 import com.ejektaflex.pewter.ext.*
-import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
-import com.ejektaflex.pewter.lib.modifiers.PewterModifier
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
+import com.ejektaflex.pewter.lib.modifiers.PewterToolModifier
 import com.ejektaflex.pewter.traits.tools.Warping
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import slimeknights.tconstruct.library.modifiers.ModifierAspect
 
 
-class ModSanitizing(modName: String) : PewterModifier("sanitizing", 0xCCA5E6), TinkerNBTChanger {
+class ModSanitizing(modName: String) : PewterToolModifier("sanitizing", 0xCCA5E6), TinkerNBTHelper {
 
     init {
         addAspects(

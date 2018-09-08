@@ -1,7 +1,8 @@
-package com.ejektaflex.pewter.dsl
+package com.ejektaflex.pewter.api.materials
 
-import com.ejektaflex.pewter.logic.stats.ArmorStats
-import com.ejektaflex.pewter.logic.stats.MaterialData
+import com.ejektaflex.pewter.logic.DSL
+import com.ejektaflex.pewter.api.materials.stats.ArmorStats
+import com.ejektaflex.pewter.api.materials.stats.MaterialData
 
 @Suppress("LeakingThis")
 abstract class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>(), IMaterialDependency {

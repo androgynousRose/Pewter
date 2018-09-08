@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.logic.stats
+package com.ejektaflex.pewter.api.materials.stats
 
 class ArmorStats {
 

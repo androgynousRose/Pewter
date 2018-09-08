@@ -2,10 +2,9 @@ package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.ext.get
 import com.ejektaflex.pewter.ext.set
-import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
 import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
 import com.ejektaflex.pewter.traits.base.EntityBonus
-import net.minecraft.client.resources.I18n
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -26,7 +25,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import kotlin.math.max
 
 
-class Corrosive : PewterToolTrait("Corrosive", 0x70FF3D), EntityBonus<IEntityBL, Float>, TinkerNBTChanger {
+class Corrosive : PewterToolTrait("Corrosive", 0x70FF3D), EntityBonus<IEntityBL, Float>, TinkerNBTHelper {
 
     override fun calculateEntityBonus(e: Entity?, original: Float, func: IEntityBL.() -> Unit): Float {
         return original * (1f + when(e) {

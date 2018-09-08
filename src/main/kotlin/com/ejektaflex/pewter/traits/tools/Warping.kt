@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.modifiers.tools.ModSanitizing
-import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
 import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -10,7 +10,7 @@ import thaumcraft.api.ThaumcraftApi
 import thaumcraft.api.capabilities.IPlayerWarp
 
 
-class Warping : PewterToolTrait("Warping", 0x4F1D3C), TinkerNBTChanger {
+class Warping : PewterToolTrait("Warping", 0x4F1D3C), TinkerNBTHelper {
     override fun onToolDamage(tool: ItemStack?, damage: Int, newDamage: Int, entity: EntityLivingBase): Int {
         if (entity is EntityPlayer) {
             if (random.nextFloat() < calculateChance(tool!!)) {

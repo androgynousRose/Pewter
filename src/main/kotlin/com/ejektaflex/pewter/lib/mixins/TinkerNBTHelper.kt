@@ -13,7 +13,7 @@ import slimeknights.tconstruct.library.tools.ToolNBT
 import slimeknights.tconstruct.library.utils.TagUtil
 import slimeknights.tconstruct.library.utils.TinkerUtil
 
-interface TinkerNBTChanger {
+interface TinkerNBTHelper {
 
     fun modifyArmorStats(armor: ItemStack, func: (original: ArmorNBT, current: NBTTagCompound) -> Unit) {
         val currentTag = ArmorTagUtil.getArmorStats(armor).get()

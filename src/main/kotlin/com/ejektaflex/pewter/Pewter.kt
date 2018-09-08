@@ -1,7 +1,9 @@
 package com.ejektaflex.pewter
 
+import com.ejektaflex.pewter.api.IPewterAPI
 import com.ejektaflex.pewter.command.DumpCommand
 import com.ejektaflex.pewter.config.Configs
+import com.ejektaflex.pewter.lib.PewterAPI
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Loader
@@ -17,6 +19,8 @@ import org.apache.logging.log4j.Logger
 
 @Mod(modid = Pewter.MODID, name = Pewter.NAME, acceptedMinecraftVersions = Pewter.VERSIONS, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
 object Pewter : IProxy {
+
+    val api: IPewterAPI = PewterAPI()
 
     @EventHandler
     override fun preInit(event: FMLPreInitializationEvent) {

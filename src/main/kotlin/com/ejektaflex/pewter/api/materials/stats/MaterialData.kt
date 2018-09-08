@@ -1,13 +1,9 @@
-package com.ejektaflex.pewter.logic.stats
+package com.ejektaflex.pewter.api.materials.stats
 
 import c4.conarm.lib.materials.*
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.materials.example.ExampleMaterial
-import com.google.gson.GsonBuilder
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*
-import java.io.File
-import java.io.FileWriter
 
 
 class MaterialData {

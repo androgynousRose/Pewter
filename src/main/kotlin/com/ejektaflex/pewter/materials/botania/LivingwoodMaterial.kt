@@ -1,8 +1,8 @@
 package com.ejektaflex.pewter.materials.botania
 
-import com.ejektaflex.pewter.dsl.MaterialDSL
+import com.ejektaflex.pewter.api.materials.MaterialDSL
 import com.ejektaflex.pewter.lib.dependencies.BotaniaDependency
-import com.ejektaflex.pewter.logic.stats.MaterialData
+import com.ejektaflex.pewter.api.materials.stats.MaterialData
 
 class LivingwoodMaterial : MaterialDSL("livingwood", "#401909", {
     forge { false }

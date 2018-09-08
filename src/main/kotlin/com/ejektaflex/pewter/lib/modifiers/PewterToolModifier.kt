@@ -9,7 +9,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierTrait
 
 // This does not actually leak
 @Suppress("LeakingThis")
-abstract class PewterModifier(
+abstract class PewterToolModifier(
         val name: String,
         color: Int,
         maxLevel: Int = 0,

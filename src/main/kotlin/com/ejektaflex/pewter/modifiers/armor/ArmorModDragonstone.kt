@@ -1,15 +1,14 @@
 package com.ejektaflex.pewter.modifiers.armor
 
 import c4.conarm.lib.armor.ArmorNBT
-import c4.conarm.lib.utils.RecipeMatchHolder
 import com.ejektaflex.pewter.ext.comesFrom
 import com.ejektaflex.pewter.ext.toItemStack
-import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
 import com.ejektaflex.pewter.lib.modifiers.PewterArmorModifier
 import net.minecraft.nbt.NBTTagCompound
 import slimeknights.tconstruct.library.modifiers.ModifierAspect
 
-class ArmorModDragonstone(modName: String) : PewterArmorModifier(modName, 0xED339A), TinkerNBTChanger {
+class ArmorModDragonstone(modName: String) : PewterArmorModifier(modName, 0xED339A), TinkerNBTHelper {
 
     init {
         addAspects(ModifierAspect.SingleAspect(this), ModifierAspect.DataAspect(this), ModifierAspect.freeModifier)

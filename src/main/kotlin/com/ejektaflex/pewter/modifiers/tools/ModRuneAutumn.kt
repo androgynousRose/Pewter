@@ -2,18 +2,16 @@ package com.ejektaflex.pewter.modifiers.tools
 
 
 import com.ejektaflex.pewter.ext.*
-import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
-import com.ejektaflex.pewter.lib.modifiers.PewterModifier
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
+import com.ejektaflex.pewter.lib.modifiers.PewterToolModifier
 import com.ejektaflex.pewter.modifiers.base.methods.IToolHarvestBonus
-import com.ejektaflex.pewter.modifiers.base.methods.IToolManaCost
 import com.ejektaflex.pewter.traits.tools.ManaHarvest
-import com.ejektaflex.pewter.traits.tools.ManaInfused
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import slimeknights.tconstruct.library.modifiers.IModifierDisplay
 
 
-class ModRuneAutumn(modName: String) : PewterModifier(modName, 0xE8A136, 2, 3), TinkerNBTChanger, IModifierDisplay, IToolHarvestBonus {
+class ModRuneAutumn(modName: String) : PewterToolModifier(modName, 0xE8A136, 2, 3), TinkerNBTHelper, IModifierDisplay, IToolHarvestBonus {
 
     override fun configure() {
         safeAdd("botania:rune:6".toItemStack)

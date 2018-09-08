@@ -5,12 +5,12 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.lib.mixins.ManaExchanger
-import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
 import com.ejektaflex.pewter.lib.traits.armor.PewterArmorTrait
 import net.minecraft.entity.Entity
 import net.minecraft.world.World
 
-class ArmorTerra : PewterArmorTrait("Terra", 0x83FF37), ManaExchanger, TinkerNBTChanger {
+class ArmorTerra : PewterArmorTrait("Terra", 0x83FF37), ManaExchanger, TinkerNBTHelper {
 
     override fun onUpdate(armor: ItemStack?, world: World?, entity: Entity?, itemSlot: Int, isSelected: Boolean) {
         if (entity == null || entity !is EntityPlayer || entity.getEntityWorld().isRemote) {

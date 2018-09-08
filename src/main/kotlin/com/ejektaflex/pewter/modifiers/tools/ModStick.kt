@@ -2,10 +2,9 @@ package com.ejektaflex.pewter.modifiers.tools
 
 
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.ext.toItem
 import com.ejektaflex.pewter.ext.toItemStack
-import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
-import com.ejektaflex.pewter.lib.modifiers.PewterModifier
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
+import com.ejektaflex.pewter.lib.modifiers.PewterToolModifier
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
@@ -15,7 +14,7 @@ import net.minecraft.init.MobEffects
 import net.minecraft.potion.PotionEffect
 
 
-class ModStick : PewterModifier("Shtick", 0xffff88), TinkerNBTChanger {
+class ModStick : PewterToolModifier("Shtick", 0xffff88), TinkerNBTHelper {
 
     init {
         addAspects(

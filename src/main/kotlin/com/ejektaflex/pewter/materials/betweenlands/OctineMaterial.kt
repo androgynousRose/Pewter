@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter.materials.betweenlands
 
-import com.ejektaflex.pewter.dsl.MaterialDSL
+import com.ejektaflex.pewter.api.materials.MaterialDSL
 import com.ejektaflex.pewter.lib.dependencies.BetweenlandsDependency
 
 class OctineMaterial : MaterialDSL("octine", "#F38A20", {

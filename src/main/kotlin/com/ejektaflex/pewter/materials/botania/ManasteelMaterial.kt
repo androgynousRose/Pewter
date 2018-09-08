@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter.materials.botania
 
-import com.ejektaflex.pewter.dsl.MaterialDSL
+import com.ejektaflex.pewter.api.materials.MaterialDSL
 import com.ejektaflex.pewter.lib.dependencies.BotaniaDependency
 
 class ManasteelMaterial : MaterialDSL("manasteel", "#005EE0", {

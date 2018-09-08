@@ -3,10 +3,9 @@ package com.ejektaflex.pewter.traits.armor
 import c4.conarm.common.armor.utils.ArmorTagUtil
 import com.ejektaflex.pewter.ext.get
 import com.ejektaflex.pewter.ext.set
-import com.ejektaflex.pewter.lib.mixins.TinkerNBTChanger
+import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
 import com.ejektaflex.pewter.lib.traits.armor.PewterArmorTrait
 import com.ejektaflex.pewter.traits.tools.Corrosive
-import net.minecraft.client.resources.I18n
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -25,7 +24,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 
-class ArmorCorrosive : PewterArmorTrait("Corrosive", 0xFF2334), TinkerNBTChanger {
+class ArmorCorrosive : PewterArmorTrait("Corrosive", 0xFF2334), TinkerNBTHelper {
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent

@@ -1,8 +1,8 @@
 package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.api.materials.MaterialDSL
 import com.ejektaflex.pewter.config.Configs
-import com.ejektaflex.pewter.dsl.MaterialDSL
 import com.ejektaflex.pewter.logic.MaterialRegistrar
 import com.ejektaflex.pewter.materials.astralsorcery.StarmetalMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.HellfireMaterial
