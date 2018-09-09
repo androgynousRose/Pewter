@@ -2,6 +2,7 @@ package com.ejektaflex.pewter.api.materials.stats
 
 import c4.conarm.lib.materials.*
 import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.lib.PewterAPI
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*
 
@@ -65,8 +66,8 @@ class MaterialData {
 
     private fun addStats(m: Material, part: MatPart) {
         // If it's an armor part, only configure if we have armor data
-        if (part.isArmorPart) {
-            if (armor != null && Pewter.isUsingConArm()) {
+        if (part.partType == PartType.ARMOR) {
+            if (armor != null && PewterAPI.isUsingConArm()) {
                 TinkerRegistry.addMaterialStats(m, part.stats(this))
             }
         } else {
@@ -75,7 +76,12 @@ class MaterialData {
 
     }
 
-    enum class MatPart(val dependency: String, val stats: (it: MaterialData) -> IMaterialStats?, val isArmorPart: Boolean = false) {
+    enum class PartType {
+        TOOL,
+        ARMOR
+    }
+
+    enum class MatPart(val dependency: String, val stats: (it: MaterialData) -> IMaterialStats?, val partType: PartType = PartType.TOOL) {
         // Tools
         HEAD(MaterialTypes.HEAD, { HeadMaterialStats(it.tool.head.durability, it.tool.head.speed, it.tool.head.attackDamage, it.tool.head.harvestLevel) }),
         HANDLE(MaterialTypes.HANDLE, { HandleMaterialStats(it.tool.handle.modifier, it.tool.handle.durability) }),
@@ -88,13 +94,13 @@ class MaterialData {
         // Armor
         CORE("core", {
             CoreMaterialStats(it.armor?.core?.durability ?: 1f, it.armor?.core?.defense ?: 1f)
-        }, isArmorPart = true),
+        }, PartType.ARMOR),
         PLATES("plates", {
             PlatesMaterialStats(it.armor?.plates?.modifier ?: 1f, it.armor?.plates?.durability ?: 1f, it.armor?.plates?.toughness ?: 1f)
-        }, isArmorPart = true),
+        }, PartType.ARMOR),
         TRIM("trim", {
             TrimMaterialStats(it.armor?.trim?.extraDurability ?: 0f)
-        }, isArmorPart = true)
+        }, PartType.ARMOR)
     }
 
 }

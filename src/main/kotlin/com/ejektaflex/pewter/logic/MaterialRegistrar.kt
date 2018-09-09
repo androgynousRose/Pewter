@@ -141,7 +141,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
                     if (specTrait) numSpecTraits++
                 }
             } catch (e: Exception) {
-                Pewter.LOGGER.error("I don't think a part exists for the part name $specificPartName")
+                Pewter.LOGGER.error("I don't think a part exists for the part identifier $specificPartName")
                 e.printStackTrace()
             }
         }

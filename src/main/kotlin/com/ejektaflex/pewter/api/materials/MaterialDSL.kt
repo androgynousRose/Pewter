@@ -160,7 +160,7 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
 
         @TopLevelToolDSL
         fun toolTrait(traitName: String) {
-            for (part in material.matParts.filter { !it.isArmorPart }) {
+            for (part in material.matParts.filter { it.partType == MaterialData.PartType.TOOL }) {
                 addTraits(part.name to traitName)
             }
         }
@@ -293,7 +293,7 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
 
         @TopLevelToolDSL
         fun armorTrait(traitName: String) {
-            for (part in material.matParts.filter { it.isArmorPart }) {
+            for (part in material.matParts.filter { it.partType == MaterialData.PartType.ARMOR }) {
                 addTraits(part.name to traitName)
             }
         }

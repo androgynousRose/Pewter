@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.api.materials
 
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.content.IDependency
+import com.ejektaflex.pewter.api.materials.stats.IDependency
 import com.ejektaflex.pewter.api.materials.stats.MaterialData
 
 interface IMaterialDependency : IDependency {

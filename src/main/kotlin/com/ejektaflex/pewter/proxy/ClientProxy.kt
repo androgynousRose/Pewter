@@ -7,6 +7,7 @@ import com.ejektaflex.pewter.book.PewterArmorSectionTransformer
 import com.ejektaflex.pewter.book.PewterToolSectionTransformer
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.content.PewterModifiers
+import com.ejektaflex.pewter.lib.PewterAPI
 import com.ejektaflex.pewter.lib.modifiers.PewterArmorModifier
 import com.ejektaflex.pewter.lib.modifiers.PewterToolModifier
 import com.ejektaflex.pewter.logic.FluidStateMapper
@@ -66,7 +67,7 @@ class ClientProxy : CommonProxy() {
 
     override fun postInit(e: FMLPostInitializationEvent) {
         addTinkerBookSection(TinkerBook.INSTANCE, "tinker_book")
-        if (Pewter.isUsingConArm()) {
+        if (PewterAPI.isUsingConArm()) {
             addArmoryBookSection(ArmoryBook.INSTANCE, "armory_book")
         }
         super.postInit(e)

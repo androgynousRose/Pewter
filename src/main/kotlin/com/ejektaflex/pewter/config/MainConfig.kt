@@ -40,7 +40,7 @@ open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
         got.forEach { blacklistedMaterials.add(it) }
 
 
-        val modNames = PewterModifiers.contentDefs.map { it.name }
+        val modNames = PewterModifiers.internalContent.map { it.identifier }
         val catNameMods = "modifier blacklist:"
         config.addCustomCategoryComment(catNameMods, "Possible modifiers you can blacklist:\n ${modNames.sorted()}")
 

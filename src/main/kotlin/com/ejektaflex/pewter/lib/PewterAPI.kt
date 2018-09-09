@@ -1,25 +1,50 @@
 package com.ejektaflex.pewter.lib
 
+import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.IPewterAPI
 import com.ejektaflex.pewter.api.materials.MaterialDSL
-import com.ejektaflex.pewter.api.materials.stats.MaterialData
-import com.ejektaflex.pewter.lib.modifiers.PewterArmorModifier
-import com.ejektaflex.pewter.lib.modifiers.PewterToolModifier
+import com.ejektaflex.pewter.api.modifiers.ModifierDef
+import com.ejektaflex.pewter.content.PewterMaterials
+import com.ejektaflex.pewter.content.PewterModifiers
+import com.ejektaflex.pewter.content.PewterTraits
+import net.minecraftforge.fml.common.Loader
+import slimeknights.tconstruct.library.modifiers.Modifier
 
-class PewterAPI : IPewterAPI {
+object PewterAPI : IPewterAPI {
+    override fun addToolModifier(mod: ModifierDef<out Modifier>) {
+        PewterModifiers.internalContent.add(mod)
+    }
+
+    override fun addArmorModifier(mod: ModifierDef<out Modifier>) {
+        if (isUsingConArm()) {
+            PewterModifiers.internalContent.add(mod)
+        } else {
+            throw Exception("Pewter is not using Construct's Armory, cannot add Armor Modifier '${mod.identifier}'!")
+        }
+    }
+
+    override fun addToolTrait(mod: Modifier) {
+        PewterTraits.internalContent.add(mod)
+    }
+
+    override fun addArmorTrait(mod: Modifier) {
+        if (isUsingConArm()) {
+            PewterTraits.internalContent.add(mod)
+        } else {
+            throw Exception("Pewter is not using Construct's Armory, cannot add Armor Trait '${mod.identifier}'!")
+        }
+    }
+
     override fun addMaterial(material: MaterialDSL) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        PewterMaterials.internalContent.add(material)
     }
 
-    override fun addMaterial(material: MaterialData) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override val blacklistedMaterials: List<String>
+        get() = Pewter.CONFIG.MAIN.blacklistedMaterials
 
-    override fun addToolModifier(mod: PewterToolModifier) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override val blacklistedModifiers: List<String>
+        get() = Pewter.CONFIG.MAIN.blacklistedModifiers
 
-    override fun addArmorModifier(mod: PewterArmorModifier) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun isUsingConArm() = Pewter.CONFIG.MAIN.conarmIntegration && Loader.isModLoaded("conarm")
+
 }

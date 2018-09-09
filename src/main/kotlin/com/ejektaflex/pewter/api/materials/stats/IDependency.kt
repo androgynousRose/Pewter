@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.content
+package com.ejektaflex.pewter.api.materials.stats
 
 interface IDependency {
 

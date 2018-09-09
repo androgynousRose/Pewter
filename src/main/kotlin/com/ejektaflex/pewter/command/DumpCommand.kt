@@ -4,6 +4,7 @@ package com.ejektaflex.pewter.command
 import c4.conarm.lib.ArmoryRegistry
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ext.sendMessage
+import com.ejektaflex.pewter.lib.PewterAPI
 import net.minecraft.command.CommandException
 import net.minecraft.command.ICommand
 import net.minecraft.command.ICommandSender
@@ -59,7 +60,7 @@ class DumpCommand : ICommand {
             }
 
             "armortraits" -> {
-                if (Pewter.isUsingConArm()) {
+                if (PewterAPI.isUsingConArm()) {
                     val armorTraits = ArmoryRegistry.getAllArmorModifiers()
                     val listString = armorTraits.map { colors.cycle().toString() + "${it.localizedName} (${it.identifier})" }
 
@@ -72,7 +73,7 @@ class DumpCommand : ICommand {
             "tooltraits" -> {
                 val toolTraits = TinkerRegistry.getAllModifiers().toMutableList()
 
-                if (Pewter.isUsingConArm()) {
+                if (PewterAPI.isUsingConArm()) {
                     toolTraits.removeIf { it in ArmoryRegistry.getAllArmorModifiers() }
                 }
 

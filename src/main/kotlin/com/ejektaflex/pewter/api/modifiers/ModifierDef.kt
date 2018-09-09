@@ -6,12 +6,12 @@ import kotlin.reflect.KFunction1
 
 class ModifierDef<T : Modifier> {
 
-    var name: String
+    var identifier: String
     private var modClass: Class<T>? = null
     private var modFact: KFunction1<String, T>? = null
 
     private constructor(modName: String) {
-        name = modName
+        identifier = modName
     }
 
     constructor(modName: String, clazz: Class<T>) : this(modName) {
@@ -26,9 +26,9 @@ class ModifierDef<T : Modifier> {
 
     fun create(): T {
         return when {
-            modClass != null -> modClass!!.getConstructor(String::class.java).newInstance(name)
-            modFact != null -> modFact?.invoke(name)!!
-            else -> throw Exception("Can't create modifier $name, as you used an unsuitable constructor")
+            modClass != null -> modClass!!.getConstructor(String::class.java).newInstance(identifier)
+            modFact != null -> modFact?.invoke(identifier)!!
+            else -> throw Exception("Can't create modifier $identifier, as you used an unsuitable constructor")
         }
     }
 
