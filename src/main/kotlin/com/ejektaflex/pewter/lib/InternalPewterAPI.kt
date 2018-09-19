@@ -7,10 +7,10 @@ import com.ejektaflex.pewter.api.modifiers.ModifierDef
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.content.PewterModifiers
 import com.ejektaflex.pewter.content.PewterTraits
-import net.minecraftforge.fml.common.Loader
 import slimeknights.tconstruct.library.modifiers.Modifier
 
 object InternalPewterAPI : IPewterAPI {
+
     override fun addToolModifier(mod: ModifierDef<out Modifier>) {
         PewterModifiers.internalContent.add(mod)
     }
@@ -37,6 +37,10 @@ object InternalPewterAPI : IPewterAPI {
 
     override fun addMaterial(material: MaterialDSL) {
         PewterMaterials.internalContent.add(material)
+    }
+
+    override fun log(any: Any) {
+        Pewter.LOGGER.info(any)
     }
 
 }

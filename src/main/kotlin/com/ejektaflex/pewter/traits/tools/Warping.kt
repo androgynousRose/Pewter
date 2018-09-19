@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.modifiers.tools.ModSanitizing
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
-import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
+import com.ejektaflex.pewter.api.core.traits.PewterToolTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack

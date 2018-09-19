@@ -1,9 +1,9 @@
 package com.ejektaflex.pewter.modifiers.tools
 
 
+import com.ejektaflex.pewter.api.core.modifiers.PewterToolModifier
 import com.ejektaflex.pewter.ext.*
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
-import com.ejektaflex.pewter.lib.modifiers.PewterToolModifier
 import com.ejektaflex.pewter.modifiers.base.methods.IToolHarvestBonus
 import com.ejektaflex.pewter.traits.tools.ManaHarvest
 import net.minecraft.item.ItemStack

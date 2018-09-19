@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.lib.mixins.ManaExchanger
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
-import com.ejektaflex.pewter.lib.traits.armor.PewterArmorTrait
+import com.ejektaflex.pewter.api.core.traits.PewterArmorTrait
 import net.minecraft.entity.Entity
 import net.minecraft.world.World
 

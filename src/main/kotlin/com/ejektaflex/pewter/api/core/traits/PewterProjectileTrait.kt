@@ -1,16 +1,15 @@
-package com.ejektaflex.pewter.lib.traits.tools
+package com.ejektaflex.pewter.api.core.traits
 
-import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.api.PewterAPI
 import net.minecraftforge.common.MinecraftForge
-import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.traits.AbstractProjectileTrait
 
 // This does not actually leak
 @Suppress("LeakingThis")
 open class PewterProjectileTrait(val name: String, color: Int, identifier: String = name.toLowerCase().filter { it != ' ' }) : AbstractProjectileTrait(identifier, color) {
     init {
-        Pewter.LOGGER.info("Creating trait: $name")
-        TinkerRegistry.addTrait(this)
+        PewterAPI.log("Creating trait: $name")
+        //TinkerRegistry.addTrait(this)
         MinecraftForge.EVENT_BUS.register(this)
     }
 }

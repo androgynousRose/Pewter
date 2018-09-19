@@ -7,9 +7,8 @@ import com.ejektaflex.pewter.book.PewterArmorSectionTransformer
 import com.ejektaflex.pewter.book.PewterToolSectionTransformer
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.content.PewterModifiers
-import com.ejektaflex.pewter.lib.InternalPewterAPI
-import com.ejektaflex.pewter.lib.modifiers.PewterArmorModifier
-import com.ejektaflex.pewter.lib.modifiers.PewterToolModifier
+import com.ejektaflex.pewter.api.core.modifiers.PewterArmorModifier
+import com.ejektaflex.pewter.api.core.modifiers.PewterToolModifier
 import com.ejektaflex.pewter.logic.FluidStateMapper
 import com.google.common.base.Function
 import net.minecraft.client.Minecraft
@@ -117,7 +116,6 @@ class ClientProxy : CommonProxy() {
         // Block Model
         ModelLoader.setCustomStateMapper(block, mapper)
     }
-
 
     @SubscribeEvent
     fun onModelBake(event: ModelBakeEvent) {

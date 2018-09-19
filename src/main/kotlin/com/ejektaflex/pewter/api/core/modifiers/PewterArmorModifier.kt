@@ -1,9 +1,8 @@
-package com.ejektaflex.pewter.lib.modifiers
+package com.ejektaflex.pewter.api.core.modifiers
 
 import c4.conarm.lib.modifiers.ArmorModifier
 import c4.conarm.lib.utils.RecipeMatchHolder
-import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.lib.mixins.ConfigurableModifier
+import com.ejektaflex.pewter.api.PewterAPI
 import net.minecraft.item.ItemStack
 import net.minecraftforge.common.MinecraftForge
 
@@ -15,14 +14,13 @@ abstract class PewterArmorModifier(
         maxLevel: Int = 0,
         countPerLevel: Int = 0,
         identifier: String = name.toLowerCase().filter { it != ' ' }
-) : ArmorModifier(identifier, color), ConfigurableModifier {
+) : ArmorModifier(identifier, color), IPewterModifier {
     init {
-        Pewter.LOGGER.info("Creating armor modifier: $name (id: $identifier)")
+        PewterAPI.log("Creating armor modifier: $name (id: $identifier)")
         MinecraftForge.EVENT_BUS.register(this)
     }
 
-    // Apparently getItems() crashes if there are no registered items
-    fun getItemsSafe(): List<List<ItemStack>>? {
+    override fun getItemsSafe(): List<List<ItemStack>>? {
         return try {
             getItems()
         } catch (e: Exception) {
@@ -31,7 +29,7 @@ abstract class PewterArmorModifier(
     }
 
 
-    fun safeAdd(stack: ItemStack?) {
+    override fun safeAdd(stack: ItemStack?) {
         stack?.let { RecipeMatchHolder.addItem(this, it, 1, 1) }
     }
 

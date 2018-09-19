@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.lib.modifiers
 
 import c4.conarm.lib.utils.RecipeMatchHolder
+import com.ejektaflex.pewter.api.core.modifiers.PewterArmorModifier
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
 import com.ejektaflex.pewter.modifiers.base.IModGem
 import net.minecraft.nbt.NBTTagCompound

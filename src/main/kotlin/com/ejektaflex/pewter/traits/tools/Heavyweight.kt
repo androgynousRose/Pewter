@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
-import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
+import com.ejektaflex.pewter.api.core.traits.PewterToolTrait
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.event.entity.player.PlayerEvent

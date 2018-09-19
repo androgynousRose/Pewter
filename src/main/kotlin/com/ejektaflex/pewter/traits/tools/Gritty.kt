@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.traits.tools
 
 import com.ejektaflex.pewter.ext.ifHasCapability
-import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
+import com.ejektaflex.pewter.api.core.traits.PewterToolTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import thebetweenlands.common.registries.CapabilityRegistry

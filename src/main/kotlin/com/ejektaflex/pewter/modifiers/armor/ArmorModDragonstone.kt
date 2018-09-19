@@ -4,7 +4,7 @@ import c4.conarm.lib.armor.ArmorNBT
 import com.ejektaflex.pewter.ext.comesFrom
 import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
-import com.ejektaflex.pewter.lib.modifiers.PewterArmorModifier
+import com.ejektaflex.pewter.api.core.modifiers.PewterArmorModifier
 import net.minecraft.nbt.NBTTagCompound
 import slimeknights.tconstruct.library.modifiers.ModifierAspect
 

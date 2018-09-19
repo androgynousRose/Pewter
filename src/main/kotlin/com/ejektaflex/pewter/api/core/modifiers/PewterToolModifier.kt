@@ -1,13 +1,13 @@
-package com.ejektaflex.pewter.lib.modifiers
+package com.ejektaflex.pewter.api.core.modifiers
 
-import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.lib.mixins.ConfigurableModifier
+import com.ejektaflex.pewter.api.PewterAPI
 import net.minecraft.item.ItemStack
 import net.minecraftforge.common.MinecraftForge
-import slimeknights.mantle.util.RecipeMatchRegistry
 import slimeknights.tconstruct.library.modifiers.ModifierTrait
 
-// This does not actually leak
+/**
+ * Extend this if you want to create a new tool modifier.
+ */
 @Suppress("LeakingThis")
 abstract class PewterToolModifier(
         val name: String,
@@ -15,14 +15,13 @@ abstract class PewterToolModifier(
         maxLevel: Int = 0,
         countPerLevel: Int = 0,
         identifier: String = name.toLowerCase().filter { it != ' ' }
-) : ModifierTrait(identifier, color, maxLevel, countPerLevel), ConfigurableModifier {
+) : ModifierTrait(identifier, color, maxLevel, countPerLevel), IPewterModifier {
     init {
-        Pewter.LOGGER.info("Creating modifier: $name")
+        PewterAPI.log("Creating modifier: $name")
         MinecraftForge.EVENT_BUS.register(this)
     }
 
-    // Apparently getItems() crashes if there are no registered items
-    fun getItemsSafe(): List<List<ItemStack>>? {
+    override fun getItemsSafe(): List<List<ItemStack>>? {
         return try {
             getItems()
         } catch (e: Exception) {
@@ -30,7 +29,7 @@ abstract class PewterToolModifier(
         }
     }
 
-    fun safeAdd(stack: ItemStack?) {
+    override fun safeAdd(stack: ItemStack?) {
         stack?.let { addItem(it, 1, 1) }
     }
 

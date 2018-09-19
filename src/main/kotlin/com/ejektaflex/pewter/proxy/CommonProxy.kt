@@ -1,9 +1,9 @@
 package com.ejektaflex.pewter.proxy
 
 import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.api.core.modifiers.IPewterModifier
 import com.ejektaflex.pewter.content.*
 import com.ejektaflex.pewter.ext.resource
-import com.ejektaflex.pewter.lib.mixins.ConfigurableModifier
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
@@ -50,7 +50,7 @@ open class CommonProxy : IProxy {
     // Assign modifiers to items
     private fun configureModifiers() {
         for (mod in PewterModifiers) {
-            if (mod is ConfigurableModifier) {
+            if (mod is IPewterModifier) {
                 mod.configure()
             }
         }

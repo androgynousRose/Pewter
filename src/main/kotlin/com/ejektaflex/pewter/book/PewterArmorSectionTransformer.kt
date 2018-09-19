@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.book
 
 import c4.conarm.lib.book.content.ContentArmorModifier
-import com.ejektaflex.pewter.lib.modifiers.PewterArmorModifier
+import com.ejektaflex.pewter.api.core.modifiers.PewterArmorModifier
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly

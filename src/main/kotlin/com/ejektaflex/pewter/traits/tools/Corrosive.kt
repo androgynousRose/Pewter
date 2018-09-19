@@ -3,7 +3,7 @@ package com.ejektaflex.pewter.traits.tools
 import com.ejektaflex.pewter.ext.get
 import com.ejektaflex.pewter.ext.set
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
-import com.ejektaflex.pewter.lib.traits.tools.PewterToolTrait
+import com.ejektaflex.pewter.api.core.traits.PewterToolTrait
 import com.ejektaflex.pewter.traits.base.EntityBonus
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase

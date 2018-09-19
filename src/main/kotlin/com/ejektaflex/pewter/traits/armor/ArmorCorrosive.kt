@@ -4,7 +4,7 @@ import c4.conarm.common.armor.utils.ArmorTagUtil
 import com.ejektaflex.pewter.ext.get
 import com.ejektaflex.pewter.ext.set
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
-import com.ejektaflex.pewter.lib.traits.armor.PewterArmorTrait
+import com.ejektaflex.pewter.api.core.traits.PewterArmorTrait
 import com.ejektaflex.pewter.traits.tools.Corrosive
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer

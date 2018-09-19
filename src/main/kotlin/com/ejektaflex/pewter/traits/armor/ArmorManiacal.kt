@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.DamageSource
 import c4.conarm.lib.armor.ArmorModifications
-import com.ejektaflex.pewter.lib.traits.armor.PewterArmorTrait
+import com.ejektaflex.pewter.api.core.traits.PewterArmorTrait
 import thaumcraft.api.ThaumcraftApi
 
 

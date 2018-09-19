@@ -2,9 +2,9 @@ package com.ejektaflex.pewter.modifiers.tools
 
 
 import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.api.core.modifiers.PewterToolModifier
 import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
-import com.ejektaflex.pewter.lib.modifiers.PewterToolModifier
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound

@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.traits.armor
 
 import c4.conarm.common.armor.utils.ArmorHelper
 import com.ejektaflex.pewter.lib.mixins.AuraExchanger
-import com.ejektaflex.pewter.lib.traits.armor.PewterArmorTrait
+import com.ejektaflex.pewter.api.core.traits.PewterArmorTrait
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.DamageSource

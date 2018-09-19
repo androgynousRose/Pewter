@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.lib.modifiers
 
+import com.ejektaflex.pewter.api.core.modifiers.PewterToolModifier
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
 import com.ejektaflex.pewter.modifiers.base.IModGem
 import net.minecraft.nbt.NBTTagCompound
