@@ -14,7 +14,7 @@ object PewterModifiers : AbstractLoadable<Modifier, ModifierDef<out Modifier>>()
     }
 
     override fun transformContent(items: List<ModifierDef<out Modifier>>): List<Modifier> {
-        return items.mapNotNull {
+        return items.asSequence().mapNotNull {
             // Remove modifiers that have been blacklisted
             if (Pewter.hasBlacklistedModifier(it.identifier)) {
                 return@mapNotNull null
@@ -28,7 +28,7 @@ object PewterModifiers : AbstractLoadable<Modifier, ModifierDef<out Modifier>>()
             it
         }.map {
             it.create()
-        }
+        }.toList()
     }
 
 }
