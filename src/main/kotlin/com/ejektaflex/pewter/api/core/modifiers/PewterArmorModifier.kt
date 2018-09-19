@@ -6,7 +6,9 @@ import com.ejektaflex.pewter.api.PewterAPI
 import net.minecraft.item.ItemStack
 import net.minecraftforge.common.MinecraftForge
 
-// Does not actually leak
+/**
+ * Extend this if you want to create a new armor modifier.
+ */
 @Suppress("LeakingThis")
 abstract class PewterArmorModifier(
         val name: String,
@@ -14,7 +16,7 @@ abstract class PewterArmorModifier(
         maxLevel: Int = 0, // Actually not using maxLevel and countPerLevel yet.
         countPerLevel: Int = 0,
         identifier: String = name.toLowerCase().filter { it != ' ' }
-) : ArmorModifier(identifier, color), IPewterModifier {
+) : ArmorModifier(identifier, color), IPewterArmorModifier {
     init {
         PewterAPI.log("Creating armor modifier: $name (id: $identifier)")
         MinecraftForge.EVENT_BUS.register(this)

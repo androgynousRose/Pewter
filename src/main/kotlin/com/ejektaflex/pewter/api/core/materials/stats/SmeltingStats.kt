@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.api.materials.stats
+package com.ejektaflex.pewter.api.core.materials.stats
 
 import com.ejektaflex.pewter.ext.toItemStack
 import net.minecraft.item.ItemStack

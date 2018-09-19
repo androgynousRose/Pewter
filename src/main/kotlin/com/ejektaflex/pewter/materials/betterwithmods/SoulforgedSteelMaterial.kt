@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter.materials.betterwithmods
 
-import com.ejektaflex.pewter.api.materials.MaterialDSL
+import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.lib.dependencies.BetterWithModsDependency
 
 class SoulforgedSteelMaterial : MaterialDSL("soulforgedsteel", "#464646", {

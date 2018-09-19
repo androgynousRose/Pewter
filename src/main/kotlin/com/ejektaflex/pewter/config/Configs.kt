@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.config
 
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.api.materials.stats.MaterialData
+import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
 import com.ejektaflex.pewter.materials.example.ExampleMaterial
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException

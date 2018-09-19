@@ -3,6 +3,8 @@ package com.ejektaflex.pewter.proxy
 import c4.conarm.lib.book.ArmoryBook
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ResourceManager
+import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
+import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.book.PewterArmorSectionTransformer
 import com.ejektaflex.pewter.book.PewterToolSectionTransformer
 import com.ejektaflex.pewter.content.PewterMaterials
@@ -74,11 +76,11 @@ class ClientProxy : CommonProxy() {
 
     private fun addTinkerBookSection(book: BookData, repository: String) {
 
-        val modifierItems = PewterModifiers.content.filter {
-            it is PewterToolModifier
+        val modifierItems = PewterModifiers.content.asSequence().filter {
+            it is IPewterToolModifier
         }.mapNotNull {
-            (it as PewterToolModifier).getItemsSafe()?.flatten()
-        }.flatten()
+            (it as IPewterToolModifier).getItemsSafe()?.flatten()
+        }.toList().flatten()
 
         if (modifierItems.isNotEmpty()) {
             val repo = FileRepository("${Pewter.MODID}:$repository")
@@ -92,11 +94,11 @@ class ClientProxy : CommonProxy() {
 
     private fun addArmoryBookSection(book: BookData, repository: String) {
 
-        val armorModifierItems = PewterModifiers.content.filter {
-            it is PewterArmorModifier
+        val armorModifierItems = PewterModifiers.content.asSequence().filter {
+            it is IPewterArmorModifier
         }.mapNotNull {
-            (it as PewterArmorModifier).getItemsSafe()?.flatten()
-        }.flatten()
+            (it as IPewterArmorModifier).getItemsSafe()?.flatten()
+        }.toList().flatten()
 
         if (armorModifierItems.isNotEmpty()) {
             val repo = FileRepository("${Pewter.MODID}:$repository")

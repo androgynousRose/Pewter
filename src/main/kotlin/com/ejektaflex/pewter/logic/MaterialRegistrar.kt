@@ -3,9 +3,9 @@ package com.ejektaflex.pewter.logic
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ext.resource
 import com.ejektaflex.pewter.ext.toItemStack
-import com.ejektaflex.pewter.api.materials.stats.MaterialData
-import com.ejektaflex.pewter.api.materials.stats.MaterialData.MatPart
-import com.ejektaflex.pewter.api.materials.stats.SmeltingStats
+import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
+import com.ejektaflex.pewter.api.core.materials.stats.MaterialData.MatPart
+import com.ejektaflex.pewter.api.core.materials.stats.SmeltingStats
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraft.block.Block
 import net.minecraft.item.ItemBlock

@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.TinkerRegistry
  */
 @Suppress("LeakingThis")
 open class PewterArmorTrait(val name: String, color: Int, identifier: String = name.toLowerCase().filter { it != ' ' })
-    : AbstractArmorTrait(identifier, color), IPewterTrait {
+    : AbstractArmorTrait(identifier, color), IPewterArmorTrait {
     init {
         if (Loader.isModLoaded("conarm")) {
             PewterAPI.log("Creating trait: $name (identifier: $identifier)")

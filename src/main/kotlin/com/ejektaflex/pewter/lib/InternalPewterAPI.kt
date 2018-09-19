@@ -3,7 +3,7 @@ package com.ejektaflex.pewter.lib
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.IPewterAPI
 import com.ejektaflex.pewter.api.core.traits.IPewterTrait
-import com.ejektaflex.pewter.api.materials.MaterialDSL
+import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.modifiers.ModifierDef
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.content.PewterModifiers

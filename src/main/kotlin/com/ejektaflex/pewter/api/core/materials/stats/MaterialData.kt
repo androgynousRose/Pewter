@@ -1,8 +1,7 @@
-package com.ejektaflex.pewter.api.materials.stats
+package com.ejektaflex.pewter.api.core.materials.stats
 
 import c4.conarm.lib.materials.*
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.lib.InternalPewterAPI
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*
 

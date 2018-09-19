@@ -1,8 +1,8 @@
-package com.ejektaflex.pewter.api.materials
+package com.ejektaflex.pewter.api.core.materials
 
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.api.materials.stats.IDependency
-import com.ejektaflex.pewter.api.materials.stats.MaterialData
+import com.ejektaflex.pewter.api.core.materials.stats.IDependency
+import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
 
 interface IMaterialDependency : IDependency {
     val material: MaterialData

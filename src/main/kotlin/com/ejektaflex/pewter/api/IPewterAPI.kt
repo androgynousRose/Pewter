@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.api
 
 import com.ejektaflex.pewter.api.core.traits.IPewterTrait
-import com.ejektaflex.pewter.api.materials.MaterialDSL
+import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.modifiers.ModifierDef
 import slimeknights.tconstruct.library.modifiers.Modifier
 

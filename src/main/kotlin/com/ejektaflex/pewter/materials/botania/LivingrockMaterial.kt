@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter.materials.botania
 
-import com.ejektaflex.pewter.api.materials.MaterialDSL
+import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.lib.dependencies.BotaniaDependency
 
 class LivingrockMaterial : MaterialDSL("livingrock", "#E5DFCF", {
