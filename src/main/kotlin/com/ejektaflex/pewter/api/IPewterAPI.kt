@@ -6,20 +6,14 @@ import slimeknights.tconstruct.library.modifiers.Modifier
 
 interface IPewterAPI {
 
-    fun addMaterial(material: MaterialDSL)
+    fun addMaterial(material: MaterialDSL) {}
 
-    fun addToolModifier(mod: ModifierDef<out Modifier>)
+    fun addToolModifier(mod: ModifierDef<out Modifier>) {}
 
-    fun addArmorModifier(mod: ModifierDef<out Modifier>)
+    fun addArmorModifier(mod: ModifierDef<out Modifier>) {}
 
-    fun addToolTrait(mod: Modifier)
+    fun addToolTrait(mod: Modifier) {}
 
-    fun addArmorTrait(mod: Modifier)
-
-    val blacklistedMaterials: List<String>
-
-    val blacklistedModifiers: List<String>
-
-    fun isUsingConArm(): Boolean
+    fun addArmorTrait(mod: Modifier) {}
 
 }

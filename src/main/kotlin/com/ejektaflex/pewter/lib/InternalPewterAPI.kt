@@ -10,13 +10,13 @@ import com.ejektaflex.pewter.content.PewterTraits
 import net.minecraftforge.fml.common.Loader
 import slimeknights.tconstruct.library.modifiers.Modifier
 
-object PewterAPI : IPewterAPI {
+object InternalPewterAPI : IPewterAPI {
     override fun addToolModifier(mod: ModifierDef<out Modifier>) {
         PewterModifiers.internalContent.add(mod)
     }
 
     override fun addArmorModifier(mod: ModifierDef<out Modifier>) {
-        if (isUsingConArm()) {
+        if (Pewter.isUsingConArm()) {
             PewterModifiers.internalContent.add(mod)
         } else {
             throw Exception("Pewter is not using Construct's Armory, cannot add Armor Modifier '${mod.identifier}'!")
@@ -28,7 +28,7 @@ object PewterAPI : IPewterAPI {
     }
 
     override fun addArmorTrait(mod: Modifier) {
-        if (isUsingConArm()) {
+        if (Pewter.isUsingConArm()) {
             PewterTraits.internalContent.add(mod)
         } else {
             throw Exception("Pewter is not using Construct's Armory, cannot add Armor Trait '${mod.identifier}'!")
@@ -38,13 +38,5 @@ object PewterAPI : IPewterAPI {
     override fun addMaterial(material: MaterialDSL) {
         PewterMaterials.internalContent.add(material)
     }
-
-    override val blacklistedMaterials: List<String>
-        get() = Pewter.CONFIG.MAIN.blacklistedMaterials
-
-    override val blacklistedModifiers: List<String>
-        get() = Pewter.CONFIG.MAIN.blacklistedModifiers
-
-    override fun isUsingConArm() = Pewter.CONFIG.MAIN.conarmIntegration && Loader.isModLoaded("conarm")
 
 }

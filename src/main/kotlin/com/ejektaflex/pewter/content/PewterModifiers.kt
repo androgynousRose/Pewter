@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.modifiers.ModifierDef
-import com.ejektaflex.pewter.lib.PewterAPI
+import com.ejektaflex.pewter.lib.InternalPewterAPI
 import slimeknights.tconstruct.library.modifiers.Modifier
 
 object PewterModifiers : AbstractLoadable<Modifier, ModifierDef<out Modifier>>() {
@@ -21,7 +21,7 @@ object PewterModifiers : AbstractLoadable<Modifier, ModifierDef<out Modifier>>()
             }
 
             // Remove ConArm mods if the mod isn't loaded
-            if (it.identifier.endsWith(armorSuffix) && !PewterAPI.isUsingConArm()) {
+            if (it.identifier.endsWith(armorSuffix) && !Pewter.isUsingConArm()) {
                 return@mapNotNull null
             }
 

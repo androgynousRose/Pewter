@@ -1,7 +1,8 @@
 package com.ejektaflex.pewter.content
 
+import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.modifiers.ModifierDef
-import com.ejektaflex.pewter.lib.PewterAPI
+import com.ejektaflex.pewter.lib.InternalPewterAPI
 import com.ejektaflex.pewter.materials.astralsorcery.StarmetalMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.HellfireMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.SoulforgedSteelMaterial
@@ -115,28 +116,32 @@ object PewterContent {
     fun load() {
 
         for (trait in toolTraits) {
-            PewterAPI.addToolTrait(trait)
+            InternalPewterAPI.addToolTrait(trait)
         }
 
         for (trait in armorTraits) {
-            if (PewterAPI.isUsingConArm()) {
-                PewterAPI.addArmorTrait(trait)
+            if (Pewter.isUsingConArm()) {
+                InternalPewterAPI.addArmorTrait(trait)
             }
         }
 
         for (mod in toolModifiers) {
-            PewterAPI.addToolModifier(mod)
+            InternalPewterAPI.addToolModifier(mod)
         }
 
         for (mod in armorModifiers) {
-            if (PewterAPI.isUsingConArm()) {
-                PewterAPI.addArmorModifier(mod)
+            if (Pewter.isUsingConArm()) {
+                InternalPewterAPI.addArmorModifier(mod)
             }
         }
 
         for (mat in materials) {
-            PewterAPI.addMaterial(mat)
+            InternalPewterAPI.addMaterial(mat)
         }
+
+        PewterTraits.initialize()
+        PewterModifiers.initialize()
+        PewterMaterials.initialize()
 
     }
 

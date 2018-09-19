@@ -1,21 +1,24 @@
 package com.ejektaflex.pewter
 
+import com.ejektaflex.pewter.api.PewterAPIProvider
 import com.ejektaflex.pewter.command.DumpCommand
 import com.ejektaflex.pewter.config.Configs
+import com.ejektaflex.pewter.lib.InternalPewterAPI
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraftforge.common.MinecraftForge
+import net.minecraftforge.fml.common.Loader
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventHandler
 import net.minecraftforge.fml.common.SidedProxy
-import net.minecraftforge.fml.common.event.FMLInitializationEvent
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent
+import net.minecraftforge.fml.common.event.*
 import org.apache.logging.log4j.Logger
 
 
 @Mod(modid = Pewter.MODID, name = Pewter.NAME, acceptedMinecraftVersions = Pewter.VERSIONS, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
 object Pewter : IProxy {
+
+    @EventHandler
+    fun loadAPI(event: FMLConstructionEvent) = PewterAPIProvider.changeAPI(InternalPewterAPI)
 
     @EventHandler
     override fun preInit(event: FMLPreInitializationEvent) {
@@ -42,6 +45,14 @@ object Pewter : IProxy {
     fun hasBlacklistedModifier(name: String): Boolean {
         return (name) in CONFIG.MAIN.blacklistedModifiers
     }
+
+    val blacklistedMaterials: List<String>
+        get() = Pewter.CONFIG.MAIN.blacklistedMaterials
+
+    val blacklistedModifiers: List<String>
+        get() = Pewter.CONFIG.MAIN.blacklistedModifiers
+
+    fun isUsingConArm() = Pewter.CONFIG.MAIN.conarmIntegration && Loader.isModLoaded("conarm")
 
     @EventHandler
     override fun init(event: FMLInitializationEvent) {

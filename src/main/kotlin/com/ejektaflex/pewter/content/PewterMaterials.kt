@@ -12,7 +12,7 @@ object PewterMaterials : AbstractLoadable<MaterialRegistrar, MaterialDSL>() {
     }
 
     override fun transformContent(items: List<MaterialDSL>): List<MaterialRegistrar> {
-        val toLoad = (internalContent).mapNotNull {
+        val toLoad = (internalContent).asSequence().mapNotNull {
             dependencyCheck(it)
         }.toMutableList()
 
