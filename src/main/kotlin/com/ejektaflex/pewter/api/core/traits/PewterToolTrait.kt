@@ -6,7 +6,8 @@ import slimeknights.tconstruct.library.modifiers.ModifierTrait
 
 // This does not actually leak
 @Suppress("LeakingThis")
-abstract class PewterToolTrait(val name: String, color: Int, identifier: String = name.toLowerCase().filter { it != ' ' }) : ModifierTrait(identifier, color) {
+abstract class PewterToolTrait(val name: String, color: Int, identifier: String = name.toLowerCase().filter { it != ' ' })
+    : ModifierTrait(identifier, color), IPewterTrait {
     init {
         PewterAPI.log("Creating trait: $name")
         //TinkerRegistry.addTrait(this)

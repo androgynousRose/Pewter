@@ -87,7 +87,7 @@ object Pewter : IProxy {
     private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
     private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
 
-    lateinit var LOGGER: Logger
+    var LOGGER: Logger? = null
     lateinit var CONFIG: Configs
 
     @SidedProxy(clientSide = CLIENT, serverSide = SERVER)

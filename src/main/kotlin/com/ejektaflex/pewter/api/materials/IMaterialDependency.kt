@@ -8,6 +8,6 @@ interface IMaterialDependency : IDependency {
     val material: MaterialData
 
     val isBlackListed: Boolean
-        get() = material.name in Pewter.CONFIG.MAIN.blacklistedMaterials
+        get() = material.name in Pewter.blacklistedMaterials
 
 }

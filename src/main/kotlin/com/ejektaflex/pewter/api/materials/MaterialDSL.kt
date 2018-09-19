@@ -1,6 +1,5 @@
 package com.ejektaflex.pewter.api.materials
 
-import com.ejektaflex.pewter.logic.DSL
 import com.ejektaflex.pewter.api.materials.stats.ArmorStats
 import com.ejektaflex.pewter.api.materials.stats.MaterialData
 

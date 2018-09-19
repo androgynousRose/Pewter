@@ -1,13 +1,14 @@
 package com.ejektaflex.pewter.content
 
-import slimeknights.tconstruct.library.modifiers.Modifier
+import com.ejektaflex.pewter.api.core.traits.IPewterTrait
+import slimeknights.tconstruct.library.modifiers.IModifier
 
-object PewterTraits : AbstractLoadable<Modifier, Modifier>() {
+object PewterTraits : AbstractLoadable<IModifier, IPewterTrait>() {
 
-    override fun get(id: String): Modifier? {
+    override fun get(id: String): IModifier? {
         return PewterTraits.content.find { it.identifier == id }
     }
 
-    override fun transformContent(items: List<Modifier>) = items
+    override fun transformContent(items: List<IPewterTrait>) = items
 
 }

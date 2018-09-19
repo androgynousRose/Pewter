@@ -30,7 +30,7 @@ class ResourceManager : IResourceManagerReloadListener {
             val materialName = mat.data.name.toLowerCase()
             var data = ""
 
-            Pewter.LOGGER.info("$mcLocale ... ${locales[mcLocale]}")
+            Pewter.LOGGER!!.info("$mcLocale ... ${locales[mcLocale]}")
 
             // Look up the current locale in the local map. If it exists, then add the entry
             if (locales.keys.isNotEmpty()) {

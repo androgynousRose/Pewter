@@ -1,8 +1,9 @@
 package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.api.PewterAPI
+import com.ejektaflex.pewter.api.core.traits.IPewterTrait
 import com.ejektaflex.pewter.api.modifiers.ModifierDef
-import com.ejektaflex.pewter.lib.InternalPewterAPI
 import com.ejektaflex.pewter.materials.astralsorcery.StarmetalMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.HellfireMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.SoulforgedSteelMaterial
@@ -14,7 +15,6 @@ import com.ejektaflex.pewter.modifiers.armor.*
 import com.ejektaflex.pewter.modifiers.tools.*
 import com.ejektaflex.pewter.traits.armor.*
 import com.ejektaflex.pewter.traits.tools.*
-import slimeknights.tconstruct.library.modifiers.Modifier
 
 object PewterContent {
 
@@ -76,8 +76,8 @@ object PewterContent {
             ModifierDef("dragonstone", ::ModDragonstone)
     )
 
-    private val toolTraits: MutableList<out Modifier> by lazy {
-        mutableListOf(
+    private val toolTraits: MutableList<out IPewterTrait> by lazy {
+        mutableListOf<IPewterTrait>(
                 Brilliance(),
                 Buzzing(),
                 HeatLover(),
@@ -97,8 +97,8 @@ object PewterContent {
         )
     }
 
-    private val armorTraits: MutableList<out Modifier> by lazy {
-        mutableListOf(
+    private val armorTraits: MutableList<out IPewterTrait> by lazy {
+        mutableListOf<IPewterTrait>(
                 ArmorHeatLover(),
                 ArmorInflamed(),
                 ArmorCorrosive(),
@@ -116,27 +116,31 @@ object PewterContent {
     fun load() {
 
         for (trait in toolTraits) {
-            InternalPewterAPI.addToolTrait(trait)
+            PewterAPI.addToolTrait(trait)
         }
 
         for (trait in armorTraits) {
             if (Pewter.isUsingConArm()) {
-                InternalPewterAPI.addArmorTrait(trait)
+                PewterAPI.addArmorTrait(trait)
+            } else {
+                PewterAPI.log("Pewter is not using ConArm; Skipping internal ConArm modifiers")
             }
         }
 
         for (mod in toolModifiers) {
-            InternalPewterAPI.addToolModifier(mod)
+            PewterAPI.addToolModifier(mod)
         }
 
         for (mod in armorModifiers) {
             if (Pewter.isUsingConArm()) {
-                InternalPewterAPI.addArmorModifier(mod)
+                PewterAPI.addArmorModifier(mod)
+            } else {
+                PewterAPI.log("Pewter is not using ConArm; Skipping internal ConArm modifiers")
             }
         }
 
         for (mat in materials) {
-            InternalPewterAPI.addMaterial(mat)
+            PewterAPI.addMaterial(mat)
         }
 
         PewterTraits.initialize()

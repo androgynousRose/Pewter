@@ -85,7 +85,7 @@ class ClientProxy : CommonProxy() {
             book.addRepository(repo)
             book.addTransformer(PewterToolSectionTransformer(repo.sections[0].name))
             book.addTransformer(BookTransformer.IndexTranformer())
-            Pewter.LOGGER.info("Added modifiers to book named \"${book.appearance.title}\".")
+            Pewter.LOGGER!!.info("Added modifiers to book named \"${book.appearance.title}\".")
         }
 
     }
@@ -102,7 +102,7 @@ class ClientProxy : CommonProxy() {
             val repo = FileRepository("${Pewter.MODID}:$repository")
             book.addRepository(repo)
             book.addTransformer(PewterArmorSectionTransformer(repo.sections[0].name))
-            Pewter.LOGGER.info("Added modifiers to book named \"${book.appearance.title}\".")
+            Pewter.LOGGER!!.info("Added modifiers to book named \"${book.appearance.title}\".")
         }
 
     }

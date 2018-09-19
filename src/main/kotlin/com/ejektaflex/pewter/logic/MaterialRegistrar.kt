@@ -110,7 +110,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
                 TinkerRegistry.registerMelting(meltingRecipe)
             }
         } else {
-            Pewter.LOGGER.warn("Could not associate $itemString with material named '${data.name}'! Reason is because the item doesn't exist.")
+            Pewter.LOGGER!!.warn("Could not associate $itemString with material named '${data.name}'! Reason is because the item doesn't exist.")
         }
     }
 
@@ -123,7 +123,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
 
         itemToRepresentWith?.let {
             tinkMaterial.representativeItem = it
-            Pewter.LOGGER.info("${data.name} is being represented by a ${tinkMaterial.representativeItem.unlocalizedName}")
+            Pewter.LOGGER!!.info("${data.name} is being represented by a ${tinkMaterial.representativeItem.unlocalizedName}")
         }
     }
 
@@ -141,11 +141,11 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
                     if (specTrait) numSpecTraits++
                 }
             } catch (e: Exception) {
-                Pewter.LOGGER.error("I don't think a part exists for the part identifier $specificPartName")
+                Pewter.LOGGER!!.error("I don't think a part exists for the part identifier $specificPartName")
                 e.printStackTrace()
             }
         }
-        Pewter.LOGGER.info("Loaded $numSpecTraits specific traits for $tinkMaterial.")
+        Pewter.LOGGER!!.info("Loaded $numSpecTraits specific traits for $tinkMaterial.")
     }
 
     private fun addTrait(name: String, matPart: MatPart? = null): Boolean {
@@ -159,7 +159,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
             }
             true
         } else {
-            Pewter.LOGGER.warn("Trait '$name' does not exist!")
+            Pewter.LOGGER!!.warn("Trait '$name' does not exist!")
             false
         }
     }
@@ -180,8 +180,8 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
         }
 
         if (data.fluidNames != null) {
-            Pewter.LOGGER.info("Instead of making a fluids for material ${data.name}, we are going to try to load one of these: ${data.fluidNames}")
-            Pewter.LOGGER.info("All fluids: ${FluidRegistry.getBucketFluids().map { it.unlocalizedName }}")
+            Pewter.LOGGER!!.info("Instead of making a fluids for material ${data.name}, we are going to try to load one of these: ${data.fluidNames}")
+            Pewter.LOGGER!!.info("All fluids: ${FluidRegistry.getBucketFluids().map { it.unlocalizedName }}")
 
             val fluidToUse = data.fluidNames!!.map { FluidRegistry.getFluid(it) }.firstOrNull()
             if (fluidToUse != null) {
@@ -193,7 +193,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
             }
         }
 
-        Pewter.LOGGER.info("Making fluids for material ${data.name}")
+        Pewter.LOGGER!!.info("Making fluids for material ${data.name}")
 
         var name = data.name.toLowerCase()
         fluid = FluidMolten(name, Color.decode(data.color).rgb).apply {

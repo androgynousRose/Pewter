@@ -2,6 +2,7 @@ package com.ejektaflex.pewter.lib
 
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.IPewterAPI
+import com.ejektaflex.pewter.api.core.traits.IPewterTrait
 import com.ejektaflex.pewter.api.materials.MaterialDSL
 import com.ejektaflex.pewter.api.modifiers.ModifierDef
 import com.ejektaflex.pewter.content.PewterMaterials
@@ -23,11 +24,11 @@ object InternalPewterAPI : IPewterAPI {
         }
     }
 
-    override fun addToolTrait(mod: Modifier) {
+    override fun addToolTrait(mod: IPewterTrait) {
         PewterTraits.internalContent.add(mod)
     }
 
-    override fun addArmorTrait(mod: Modifier) {
+    override fun addArmorTrait(mod: IPewterTrait) {
         if (Pewter.isUsingConArm()) {
             PewterTraits.internalContent.add(mod)
         } else {
@@ -40,7 +41,11 @@ object InternalPewterAPI : IPewterAPI {
     }
 
     override fun log(any: Any) {
-        Pewter.LOGGER.info(any)
+        if (Pewter.LOGGER == null) {
+            println("Pewter [API]: $any")
+        } else {
+            Pewter.LOGGER!!.info(any)
+        }
     }
 
 }

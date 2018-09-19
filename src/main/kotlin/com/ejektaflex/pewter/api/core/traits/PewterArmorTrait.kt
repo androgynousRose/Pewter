@@ -10,7 +10,8 @@ import slimeknights.tconstruct.library.TinkerRegistry
  * Extend this if you want to create a new Armor trait.
  */
 @Suppress("LeakingThis")
-open class PewterArmorTrait(val name: String, color: Int, identifier: String = name.toLowerCase().filter { it != ' ' }) : AbstractArmorTrait(identifier, color) {
+open class PewterArmorTrait(val name: String, color: Int, identifier: String = name.toLowerCase().filter { it != ' ' })
+    : AbstractArmorTrait(identifier, color), IPewterTrait {
     init {
         if (Loader.isModLoaded("conarm")) {
             PewterAPI.log("Creating trait: $name (identifier: $identifier)")

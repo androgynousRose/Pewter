@@ -3,7 +3,7 @@ package com.ejektaflex.pewter.traits.base
 import com.ejektaflex.pewter.ext.isAtMaxDurability
 import com.ejektaflex.pewter.lib.mixins.ManaExchanger
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
-import com.ejektaflex.pewter.lib.traits.base.SharedTrait
+import com.ejektaflex.pewter.lib.traits.SharedTrait
 import com.ejektaflex.pewter.modifiers.base.methods.IModChange
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase

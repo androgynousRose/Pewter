@@ -25,6 +25,11 @@ object PewterModifiers : AbstractLoadable<Modifier, ModifierDef<out Modifier>>()
                 return@mapNotNull null
             }
 
+            // Trim armor identifier as it gets redundantly added later on
+            if (it.identifier.endsWith(armorSuffix)) {
+                it.identifier = it.identifier.dropLast(armorSuffix.length)
+            }
+
             it
         }.map {
             it.create()

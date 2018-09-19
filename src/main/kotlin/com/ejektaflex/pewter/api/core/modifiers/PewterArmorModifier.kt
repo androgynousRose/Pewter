@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.api.core.modifiers
 
+import c4.conarm.lib.ArmoryRegistry
 import c4.conarm.lib.modifiers.ArmorModifier
 import c4.conarm.lib.utils.RecipeMatchHolder
 import com.ejektaflex.pewter.api.PewterAPI
@@ -11,7 +12,7 @@ import net.minecraftforge.common.MinecraftForge
 abstract class PewterArmorModifier(
         val name: String,
         color: Int,
-        maxLevel: Int = 0,
+        maxLevel: Int = 0, // Actually not using maxLevel and countPerLevel yet.
         countPerLevel: Int = 0,
         identifier: String = name.toLowerCase().filter { it != ' ' }
 ) : ArmorModifier(identifier, color), IPewterModifier {

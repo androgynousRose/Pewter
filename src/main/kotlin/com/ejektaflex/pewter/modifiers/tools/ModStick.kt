@@ -26,7 +26,7 @@ class ModStick : PewterToolModifier("Shtick", 0xffff88), TinkerNBTHelper {
         val duration = getData(tool).level * 20
         target!!.addPotionEffect(PotionEffect(MobEffects.SLOWNESS, duration, 1))
 
-        Pewter.LOGGER.info("OnHit was called")
+        Pewter.LOGGER!!.info("OnHit was called")
     }
 
     override fun applyEffect(rootCompound: NBTTagCompound, modifierTag: NBTTagCompound) {
