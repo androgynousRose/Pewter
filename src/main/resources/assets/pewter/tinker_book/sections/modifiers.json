@@ -1,6 +1,10 @@
 [
   {
     "type": "modifier",
+    "data": "modifiers/celestial.json"
+  },
+  {
+    "type": "modifier",
     "data": "modifiers/quicksilver.json"
   },
   {

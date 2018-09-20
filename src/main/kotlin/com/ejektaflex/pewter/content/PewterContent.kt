@@ -73,7 +73,9 @@ object PewterContent {
             // Botania
             ModifierDef("runemana", ::ModRuneMana),
             ModifierDef("runeautumn", ::ModRuneAutumn),
-            ModifierDef("dragonstone", ::ModDragonstone)
+            ModifierDef("dragonstone", ::ModDragonstone),
+            // Astral Sorcery
+            ModifierDef("celestial", ::ModAquaCelestial)
     )
 
     private val toolTraits: MutableList<out IPewterTrait> by lazy {
