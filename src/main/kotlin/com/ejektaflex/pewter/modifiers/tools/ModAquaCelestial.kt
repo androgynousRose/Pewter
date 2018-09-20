@@ -43,7 +43,6 @@ class ModAquaCelestial(modName: String) : PewterToolModifier(modName, 0x2A93E8, 
         }
 
         (entity as? EntityPlayer)?.let {
-
             when (isRightSetting(entity)) {
                 true -> {
                     if (!TagUtil.hasEnchantEffect(tool)) {
@@ -61,7 +60,6 @@ class ModAquaCelestial(modName: String) : PewterToolModifier(modName, 0x2A93E8, 
                     }
                 }
             }
-
         }
     }
 

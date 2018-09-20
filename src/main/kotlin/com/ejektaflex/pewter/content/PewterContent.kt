@@ -54,7 +54,9 @@ object PewterContent {
             ModifierDef("topaz_armor", ::ArmorModTopaz),
             // Botania
             ModifierDef("runemana_armor", ::ArmorModRuneMana),
-            ModifierDef("dragonstone_armor", ::ArmorModDragonstone)
+            ModifierDef("dragonstone_armor", ::ArmorModDragonstone),
+            // Astral Sorcery
+            ModifierDef("starseeker", ::ArmorModAquaStarseeker)
     )
 
     private val toolModifiers = mutableListOf(

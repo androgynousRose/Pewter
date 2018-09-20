@@ -10,10 +10,6 @@ import slimeknights.tconstruct.library.modifiers.ModifierAspect
 
 class ArmorModDragonstone(modName: String) : PewterArmorModifier(modName, 0xED339A), TinkerNBTHelper {
 
-    init {
-        addAspects(ModifierAspect.SingleAspect(this), ModifierAspect.DataAspect(this), ModifierAspect.freeModifier)
-    }
-
     override fun applyEffect(rootCompound: NBTTagCompound, modifierTag: NBTTagCompound?) {
 
         val armorMod: ArmorNBT.() -> Unit = {
@@ -29,7 +25,7 @@ class ArmorModDragonstone(modName: String) : PewterArmorModifier(modName, 0xED33
         }
 
         modifyArmorStats(rootCompound, armorMod)
-        // No super here :s?
+        super.applyEffect(rootCompound, modifierTag)
     }
 
     override fun configure() {

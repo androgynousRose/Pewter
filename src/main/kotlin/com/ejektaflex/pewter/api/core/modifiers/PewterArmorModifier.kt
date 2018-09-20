@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.api.core.modifiers
 
 import c4.conarm.lib.modifiers.ArmorModifier
+import c4.conarm.lib.modifiers.ArmorModifierTrait
 import c4.conarm.lib.utils.RecipeMatchHolder
 import com.ejektaflex.pewter.api.PewterAPI
 import net.minecraft.item.ItemStack
@@ -13,10 +14,10 @@ import net.minecraftforge.common.MinecraftForge
 abstract class PewterArmorModifier(
         val name: String,
         color: Int,
-        maxLevel: Int = 0, // Actually not using maxLevel and countPerLevel yet.
+        maxLevel: Int = 0,
         countPerLevel: Int = 0,
         identifier: String = name.toLowerCase().filter { it != ' ' }
-) : ArmorModifier(identifier, color), IPewterArmorModifier {
+) : ArmorModifierTrait(identifier, color, maxLevel, countPerLevel), IPewterArmorModifier {
     init {
         PewterAPI.log("Creating armor modifier: $name (id: $identifier)")
         MinecraftForge.EVENT_BUS.register(this)
@@ -29,7 +30,6 @@ abstract class PewterArmorModifier(
             null
         }
     }
-
 
     override fun safeAdd(stack: ItemStack?) {
         stack?.let { RecipeMatchHolder.addItem(this, it, 1, 1) }

@@ -11,11 +11,7 @@ import net.minecraft.nbt.NBTTagCompound
 import slimeknights.tconstruct.library.modifiers.IModifierDisplay
 import slimeknights.tconstruct.library.modifiers.ModifierAspect
 
-class ArmorModRuneMana(modName: String) : PewterArmorModifier(modName, 0xFF2AC), TinkerNBTHelper, IModifierDisplay, IArmorManaCost {
-
-    init {
-        addAspects(ModifierAspect.DataAspect(this), ModifierAspect.MultiAspect(this, 2, 3, 1))
-    }
+class ArmorModRuneMana(modName: String) : PewterArmorModifier(modName, 0xFF2AC, 2, 3), TinkerNBTHelper, IModifierDisplay, IArmorManaCost {
 
     override fun applyEffect(rootCompound: NBTTagCompound?, modifierTag: NBTTagCompound?) {}
 
