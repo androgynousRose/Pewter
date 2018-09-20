@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.api
 import com.ejektaflex.pewter.api.core.traits.IPewterTrait
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.modifiers.ModifierDef
+import net.minecraft.util.ResourceLocation
 import slimeknights.tconstruct.library.modifiers.Modifier
 
 /**
@@ -44,8 +45,15 @@ interface IPewterAPI {
     fun log(any: Any) {}
 
     /**
-     * Used to log API warning for Pewter
+     * Adds a book repository location from which it can display modifiers in
+     * the book "Materials & You"
      */
-    // TODO add fun warn()
+    fun addToolRepository(location: String) {}
+
+    /**
+     * Adds a book repository location from which it can display modifiers in
+     * the book "Materials & You: Armory Addendum", if it is loaded.
+     */
+    fun addArmorRepository(location: String) {}
 
 }

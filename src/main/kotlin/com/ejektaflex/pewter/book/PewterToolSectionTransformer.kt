@@ -17,7 +17,7 @@ class PewterToolSectionTransformer(secName: String) : PewterContentListing<Conte
 
     override fun getModifierFromPage(content: PageContent): IModifier? {
         if (content is ContentModifier) {
-            return TinkerRegistry.getModifier((content).modifierName)
+            return TinkerRegistry.getModifier(content.modifierName)
         }
         return null
     }

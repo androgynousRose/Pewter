@@ -143,9 +143,9 @@ object PewterContent {
             PewterAPI.addMaterial(mat)
         }
 
-        PewterTraits.initialize()
-        PewterModifiers.initialize()
-        PewterMaterials.initialize()
+        PewterTraits.setup()
+        PewterModifiers.setup()
+        PewterMaterials.setup()
 
     }
 

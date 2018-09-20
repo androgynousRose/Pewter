@@ -7,12 +7,11 @@ import slimeknights.tconstruct.library.materials.*
 
 
 class MaterialData {
+    var name = "doot"
     var tool = ToolStats()
-
     var color = "#448844"
     var craftable = false
     var madeInToolForge = false
-    var name = "doot"
     var createMeltingRecipes = true
     var meltingTemperature = 475
     var looks = mutableMapOf(
@@ -29,23 +28,14 @@ class MaterialData {
     )
     var matParts = mutableSetOf<MatPart>()
     var nameLocales = mutableMapOf<String, String>()
-    /*
-    var smeltingItems = mutableMapOf<String, MutableList<String>>(
-            "ingot" to mutableListOf(),
-            "block" to mutableListOf(),
-            "nugget" to mutableListOf(),
-            "ore" to mutableListOf()
-    )
-    */
+
     var smeltingItems = SmeltingStats()
 
     var smeltingTags = SmeltingStats()
 
     var armor: ArmorStats? = null
 
-    var specificTraits = mutableMapOf<String, MutableList<String>>(
-
-    )
+    var specificTraits = mutableMapOf<String, MutableList<String>>()
 
     @Transient
     var isCustomMaterial = true

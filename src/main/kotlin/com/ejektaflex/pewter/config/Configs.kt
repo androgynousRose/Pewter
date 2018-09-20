@@ -1,6 +1,7 @@
 package com.ejektaflex.pewter.config
 
 import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
 import com.ejektaflex.pewter.materials.example.ExampleMaterial
 import com.google.gson.GsonBuilder
@@ -12,7 +13,7 @@ import java.nio.file.Files
 
 object Configs {
 
-    private lateinit var DIR: File
+    lateinit var DIR: File
 
     lateinit var MAIN: MainConfig
 
@@ -38,13 +39,13 @@ object Configs {
 
     val externalMaterials: List<MaterialData>
         get() {
-            val jsons = DIR.listFiles().filter { it.isFile }.filter { it.extension == "json" && it.name != "_example.json" }
+            val jsons = DIR.listFiles().filter { it.isFile }.filter { it.extension == "json" && !it.name.startsWith("_") }
 
             if (jsons.isEmpty()) {
                 Pewter.LOGGER!!.warn("Pewter is set to load external JSON files, but none were found.")
             }
 
-            val mats = jsons.mapNotNull {
+            return jsons.mapNotNull {
                 try {
                     val fileContents = String(Files.readAllBytes(it.toPath()))
                     gson.fromJson<Any>(fileContents, MaterialData::class.java) as MaterialData
@@ -57,8 +58,6 @@ object Configs {
                     null
                 }
             }
-
-            return mats
         }
 
     fun initialize(root: File) {
@@ -74,5 +73,10 @@ object Configs {
         }
     }
 
+    fun generateMaterialFile(location: File, dsl: MaterialData) {
+        FileWriter("${location.absolutePath}${File.separator}_${dsl.name}.json").use { writer ->
+            gson.toJson(dsl, writer)
+        }
+    }
 
 }

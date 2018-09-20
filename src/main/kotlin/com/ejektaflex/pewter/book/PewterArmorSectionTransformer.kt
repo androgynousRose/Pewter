@@ -17,7 +17,7 @@ class PewterArmorSectionTransformer(secName: String) : PewterContentListing<Cont
 
     override fun getModifierFromPage(content: PageContent): IModifier? {
         if (content is ContentArmorModifier) {
-            return TinkerRegistry.getModifier((content).modifierName)
+            return TinkerRegistry.getModifier(content.modifierName)
         }
         return null
     }

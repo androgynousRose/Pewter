@@ -8,6 +8,10 @@ import com.ejektaflex.pewter.api.modifiers.ModifierDef
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.content.PewterModifiers
 import com.ejektaflex.pewter.content.PewterTraits
+import net.minecraft.util.ResourceLocation
+import net.minecraftforge.fml.relauncher.Side
+import net.minecraftforge.fml.relauncher.SideOnly
+import slimeknights.mantle.client.book.repository.FileRepository
 import slimeknights.tconstruct.library.modifiers.Modifier
 
 object InternalPewterAPI : IPewterAPI {
@@ -45,6 +49,24 @@ object InternalPewterAPI : IPewterAPI {
             println("Pewter [API]: $any")
         } else {
             Pewter.LOGGER!!.info(any)
+        }
+    }
+
+    override fun addToolRepository(location: String) {
+        try {
+            val repo = FileRepository(location)
+            BookContentRegistry.toolContent.add(repo)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun addArmorRepository(location: String) {
+        try {
+            val repo = FileRepository(location)
+            BookContentRegistry.armorContent.add(repo)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 

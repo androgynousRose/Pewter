@@ -1,16 +1,10 @@
 package com.ejektaflex.pewter.proxy
 
-import c4.conarm.lib.book.ArmoryBook
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.ResourceManager
-import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
-import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
-import com.ejektaflex.pewter.book.PewterArmorSectionTransformer
-import com.ejektaflex.pewter.book.PewterToolSectionTransformer
+import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.content.PewterMaterials
-import com.ejektaflex.pewter.content.PewterModifiers
-import com.ejektaflex.pewter.api.core.modifiers.PewterArmorModifier
-import com.ejektaflex.pewter.api.core.modifiers.PewterToolModifier
+import com.ejektaflex.pewter.lib.BookContentRegistry
 import com.ejektaflex.pewter.logic.FluidStateMapper
 import com.google.common.base.Function
 import net.minecraft.client.Minecraft
@@ -27,10 +21,6 @@ import net.minecraftforge.client.model.ModelLoader
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
-import slimeknights.mantle.client.book.BookTransformer
-import slimeknights.mantle.client.book.data.BookData
-import slimeknights.mantle.client.book.repository.FileRepository
-import slimeknights.tconstruct.library.book.TinkerBook
 import slimeknights.tconstruct.library.client.MaterialRenderInfo
 import java.awt.Color
 
@@ -67,46 +57,11 @@ class ClientProxy : CommonProxy() {
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
-        addTinkerBookSection(TinkerBook.INSTANCE, "tinker_book")
-        if (Pewter.isUsingConArm()) {
-            addArmoryBookSection(ArmoryBook.INSTANCE, "armory_book")
-        }
+        PewterAPI.addToolRepository("${Pewter.MODID}:tinker_book")
+        PewterAPI.addArmorRepository("${Pewter.MODID}:armory_book")
+
+        BookContentRegistry.setup()
         super.postInit(e)
-    }
-
-    private fun addTinkerBookSection(book: BookData, repository: String) {
-
-        val modifierItems = PewterModifiers.content.asSequence().filter {
-            it is IPewterToolModifier
-        }.mapNotNull {
-            (it as IPewterToolModifier).getItemsSafe()?.flatten()
-        }.toList().flatten()
-
-        if (modifierItems.isNotEmpty()) {
-            val repo = FileRepository("${Pewter.MODID}:$repository")
-            book.addRepository(repo)
-            book.addTransformer(PewterToolSectionTransformer(repo.sections[0].name))
-            book.addTransformer(BookTransformer.IndexTranformer())
-            Pewter.LOGGER!!.info("Added modifiers to book named \"${book.appearance.title}\".")
-        }
-
-    }
-
-    private fun addArmoryBookSection(book: BookData, repository: String) {
-
-        val armorModifierItems = PewterModifiers.content.asSequence().filter {
-            it is IPewterArmorModifier
-        }.mapNotNull {
-            (it as IPewterArmorModifier).getItemsSafe()?.flatten()
-        }.toList().flatten()
-
-        if (armorModifierItems.isNotEmpty()) {
-            val repo = FileRepository("${Pewter.MODID}:$repository")
-            book.addRepository(repo)
-            book.addTransformer(PewterArmorSectionTransformer(repo.sections[0].name))
-            Pewter.LOGGER!!.info("Added modifiers to book named \"${book.appearance.title}\".")
-        }
-
     }
 
     override fun makePewterFluid() {

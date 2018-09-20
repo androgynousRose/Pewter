@@ -12,7 +12,7 @@ abstract class AbstractLoadable<M, D> {
 
     abstract fun transformContent(items: List<D>): List<M>
 
-    fun initialize() {
+    fun setup() {
         isLoaded = true
         content = transformContent(internalContent)
     }

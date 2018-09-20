@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.event.*
 import org.apache.logging.log4j.Logger
 
 
-@Mod(modid = Pewter.MODID, name = Pewter.NAME, acceptedMinecraftVersions = Pewter.VERSIONS, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
+@Mod(modid = Pewter.MODID, name = Pewter.NAME, acceptedMinecraftVersions = Pewter.MCVERSION, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
 object Pewter : IProxy {
 
     @EventHandler
@@ -72,7 +72,7 @@ object Pewter : IProxy {
     const val MODID = "pewter"
     const val NAME = "Pewter"
     const val VERSION = "1.1.4"
-    const val VERSIONS = "1.12"
+    const val MCVERSION = "1.12"
     const val DEPENDS = "required-after:tconstruct;" +
             "required-after:forgelin;" +
             "after:jaopca;" + // JAOPCA Compat?
