@@ -184,6 +184,9 @@ modifier.sparking.desc=§oFighting With Fire!§r\nHitting enemies has a chance o
 modifier.splash_armor.name=Splash
 modifier.splash_armor.desc=§oNothing happened!§r\nReflects damage taken on attackers when in water.
 
+modifier.starseeker_armor.name=Starseeker
+modifier.starseeker_armor.desc=§oStargazing!§r\nAdds armor toughness under an open night sky.
+
 modifier.tanzanite.name=Tanzanite
 modifier.tanzanite.desc=§oFind them all!§r\nDurability++, Speed+++
 

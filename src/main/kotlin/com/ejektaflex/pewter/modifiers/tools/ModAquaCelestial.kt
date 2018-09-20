@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.modifiers.tools
 import com.ejektaflex.pewter.api.core.modifiers.PewterToolModifier
 import com.ejektaflex.pewter.ext.*
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
+import com.ejektaflex.pewter.modifiers.base.methods.IModAquaNight
 import com.ejektaflex.pewter.modifiers.base.methods.IModChange
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
@@ -19,17 +20,13 @@ import slimeknights.tconstruct.library.utils.ModifierTagHolder
 
 
 
-class ModAquaCelestial(modName: String) : PewterToolModifier(modName, 0x2A93E8, 2, 25), TinkerNBTHelper, IModifierDisplay, IModChange<Float> {
+class ModAquaCelestial(modName: String) : PewterToolModifier(modName, 0x2A93E8, 2, 25), TinkerNBTHelper, IModifierDisplay, IModChange<Float>, IModAquaNight {
 
     override val baseChange = 0f
 
     override fun modCost(item: ItemStack?): Float {
         val modData = item!!.getModifierIntNBT<ModAquaCelestial>()
         return modData.current / 250f
-    }
-
-    private fun isRightSetting(player: EntityLivingBase): Boolean {
-        return player.world.canBlockSeeSky(player.position) && !player.world.isDaytime
     }
 
     override fun configure() {

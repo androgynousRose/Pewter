@@ -1,6 +1,10 @@
 [
   {
     "type": "armormodifier",
+    "data": "modifiers/starseeker_armor.json"
+  },
+  {
+    "type": "armormodifier",
     "data": "modifiers/dragonstone_armor.json"
   },
   {
