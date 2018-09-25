@@ -55,11 +55,9 @@ object PewterContent {
             ModifierFunc("sapphire_armor") { ArmorModSapphire(this) },
             ModifierFunc("tanzanite_armor") { ArmorModTanzanite(this) },
             ModifierFunc("topaz_armor") { ArmorModTopaz(this) },
-
             // Botania
             ModifierFunc("runemana_armor") { ArmorModRuneMana(this) },
             ModifierFunc("dragonstone_armor") { ArmorModDragonstone(this) },
-
             // Astral Sorcery
             ModifierFunc("starseeker_armor") { ArmorModAquaStarseeker(this) }
     )
@@ -128,29 +126,26 @@ object PewterContent {
             PewterAPI.addToolTrait(trait)
         }
 
-        for (trait in armorTraits) {
-            if (Pewter.isUsingConArm()) {
-                PewterAPI.addArmorTrait(trait)
-            } else {
-                PewterAPI.log("Pewter is not using ConArm; Skipping internal ConArm modifiers")
-            }
-        }
-
         for (mod in toolModifiers) {
             PewterAPI.addToolModifier(mod)
         }
 
-        for (mod in armorModifiers) {
-            if (Pewter.isUsingConArm()) {
-                PewterAPI.addArmorModifier(mod)
-            } else {
-                PewterAPI.log("Pewter is not using ConArm; Skipping internal ConArm modifiers")
-            }
-        }
-
-
         for (mat in materials) {
             PewterAPI.addMaterial(mat)
+        }
+
+        if (Pewter.isUsingConArm()) {
+
+            for (trait in armorTraits) {
+                PewterAPI.addArmorTrait(trait)
+            }
+
+            for (mod in armorModifiers) {
+                PewterAPI.addArmorModifier(mod)
+            }
+
+        } else {
+            PewterAPI.log("Pewter is not using ConArm; Skipping internal ConArm traits & modifiers")
         }
 
         PewterTraits.setup()
