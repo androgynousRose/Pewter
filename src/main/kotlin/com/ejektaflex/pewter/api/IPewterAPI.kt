@@ -1,14 +1,10 @@
 package com.ejektaflex.pewter.api
 
-import com.ejektaflex.pewter.api.core.traits.IPewterTrait
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
-import com.ejektaflex.pewter.api.core.modifiers.IPewterModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
-import com.ejektaflex.pewter.api.modifiers.ModifierDef
-import com.ejektaflex.pewter.api.modifiers.ModifierFunc
-import net.minecraft.util.ResourceLocation
-import slimeknights.tconstruct.library.modifiers.Modifier
+import com.ejektaflex.pewter.api.core.traits.IPewterTrait
+import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
 
 /**
  * All calls to the Pewter API should be done before Pewter loads PreInit.
@@ -32,7 +28,6 @@ interface IPewterAPI {
      * Adds an armor modifier to Pewter.
      */
     fun addArmorModifier(mod: ModifierFunc<out IPewterArmorModifier>) {}
-
 
     /**
      * Adds a tool trait to Pewter.

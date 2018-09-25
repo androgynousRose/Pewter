@@ -4,8 +4,7 @@ import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.api.core.traits.IPewterTrait
-import com.ejektaflex.pewter.api.modifiers.ModifierDef
-import com.ejektaflex.pewter.api.modifiers.ModifierFunc
+import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
 import com.ejektaflex.pewter.materials.astralsorcery.StarmetalMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.HellfireMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.SoulforgedSteelMaterial
