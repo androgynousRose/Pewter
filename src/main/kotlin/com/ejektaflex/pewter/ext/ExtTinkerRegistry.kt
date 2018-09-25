@@ -1,7 +1,9 @@
 package com.ejektaflex.pewter.ext
 
-import com.ejektaflex.pewter.content.PewterMaterials
+import com.ejektaflex.pewter.api.core.modifiers.IPewterModifier
+import com.ejektaflex.pewter.api.core.traits.IPewterTrait
 import com.ejektaflex.pewter.content.PewterModifiers
+import com.ejektaflex.pewter.content.PewterTraits
 import com.ejektaflex.pewter.logic.MaterialRegistrar
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.Material
@@ -17,12 +19,12 @@ inline fun <reified T : Material> getTinkersMaterial(): Material {
 }
 
 
-inline fun <reified T : Modifier> getPewterModifier(): Modifier {
+inline fun <reified T : Modifier> getPewterModifier(): IPewterModifier {
     return PewterModifiers.content.first { it is T }
 }
 
-inline fun <reified T : MaterialRegistrar> getPewterTrait(): Modifier {
-    return PewterModifiers.content.first { it is T }
+inline fun <reified T : MaterialRegistrar> getPewterTrait(): IPewterTrait {
+    return PewterTraits.content.first { it is T }
 }
 
 

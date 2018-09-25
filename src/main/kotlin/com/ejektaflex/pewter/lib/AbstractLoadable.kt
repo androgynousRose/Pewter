@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.content
+package com.ejektaflex.pewter.lib
 
 abstract class AbstractLoadable<M, D> {
 

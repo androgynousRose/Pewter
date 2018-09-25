@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter
 
 import com.ejektaflex.pewter.api.PewterAPIProvider
-import com.ejektaflex.pewter.command.DumpCommand
+import com.ejektaflex.pewter.command.PewterCommand
 import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.lib.InternalPewterAPI
 import com.ejektaflex.pewter.proxy.IProxy
@@ -46,12 +46,6 @@ object Pewter : IProxy {
         return (name) in CONFIG.MAIN.blacklistedModifiers
     }
 
-    val blacklistedMaterials: List<String>
-        get() = Pewter.CONFIG.MAIN.blacklistedMaterials
-
-    val blacklistedModifiers: List<String>
-        get() = Pewter.CONFIG.MAIN.blacklistedModifiers
-
     fun isUsingConArm() = Pewter.CONFIG.MAIN.conarmIntegration && Loader.isModLoaded("conarm")
 
     @EventHandler
@@ -66,7 +60,7 @@ object Pewter : IProxy {
 
     @EventHandler
     fun serverLoad(event: FMLServerStartingEvent) {
-        event.registerServerCommand(DumpCommand())
+        event.registerServerCommand(PewterCommand())
     }
 
     const val MODID = "pewter"

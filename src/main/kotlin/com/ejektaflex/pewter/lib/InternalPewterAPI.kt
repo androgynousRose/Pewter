@@ -4,23 +4,21 @@ import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.IPewterAPI
 import com.ejektaflex.pewter.api.core.traits.IPewterTrait
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.api.modifiers.ModifierDef
+import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
+import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
+import com.ejektaflex.pewter.api.modifiers.ModifierFunc
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.content.PewterModifiers
 import com.ejektaflex.pewter.content.PewterTraits
-import net.minecraft.util.ResourceLocation
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
 import slimeknights.mantle.client.book.repository.FileRepository
-import slimeknights.tconstruct.library.modifiers.Modifier
 
-object InternalPewterAPI : IPewterAPI {
+internal object InternalPewterAPI : IPewterAPI {
 
-    override fun addToolModifier(mod: ModifierDef<out Modifier>) {
+    override fun addToolModifier(mod: ModifierFunc<out IPewterToolModifier>) {
         PewterModifiers.internalContent.add(mod)
     }
 
-    override fun addArmorModifier(mod: ModifierDef<out Modifier>) {
+    override fun addArmorModifier(mod: ModifierFunc<out IPewterArmorModifier>) {
         if (Pewter.isUsingConArm()) {
             PewterModifiers.internalContent.add(mod)
         } else {

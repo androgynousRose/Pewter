@@ -23,7 +23,7 @@ open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
                 CATEGORY_GENERAL,
                 "LoadMaterialJSONS",
                 false,
-                "If set to true, will load json files from the config folder (besides _example.json)"
+                "If set to true, will load json files from the config folder (besides _example.json) as custom materials. For more info, see: https://github.com/ejektaflex/Pewter/wiki/Custom-Materials"
         ).boolean
 
 

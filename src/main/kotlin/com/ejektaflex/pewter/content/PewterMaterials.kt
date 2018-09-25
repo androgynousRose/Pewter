@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.content
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.config.Configs
+import com.ejektaflex.pewter.lib.AbstractLoadable
 import com.ejektaflex.pewter.logic.MaterialRegistrar
 
 object PewterMaterials : AbstractLoadable<MaterialRegistrar, MaterialDSL>() {

@@ -2,8 +2,10 @@ package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.PewterAPI
+import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.api.core.traits.IPewterTrait
 import com.ejektaflex.pewter.api.modifiers.ModifierDef
+import com.ejektaflex.pewter.api.modifiers.ModifierFunc
 import com.ejektaflex.pewter.materials.astralsorcery.StarmetalMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.HellfireMaterial
 import com.ejektaflex.pewter.materials.betterwithmods.SoulforgedSteelMaterial
@@ -42,42 +44,46 @@ object PewterContent {
             VoidMetalMaterial()
     )
 
+
+
     private val armorModifiers = listOf(
-            // BOP
-            ModifierDef("amber_armor", ::ArmorModAmber),
-            ModifierDef("amethyst_armor", ::ArmorModAmethyst),
-            ModifierDef("ruby_armor", ::ArmorModRuby),
-            ModifierDef("malachite_armor", ::ArmorModMalachite),
-            ModifierDef("peridot_armor", ::ArmorModPeridot),
-            ModifierDef("sapphire_armor", ::ArmorModSapphire),
-            ModifierDef("tanzanite_armor", ::ArmorModTanzanite),
-            ModifierDef("topaz_armor", ::ArmorModTopaz),
+            // General gems
+            ModifierFunc("amber_armor") { ArmorModAmber(this) },
+            ModifierFunc("amethyst_armor") { ArmorModAmethyst(this) },
+            ModifierFunc("ruby_armor") { ArmorModRuby(this) },
+            ModifierFunc("malachite_armor") { ArmorModMalachite(this) },
+            ModifierFunc("peridot_armor") { ArmorModPeridot(this) },
+            ModifierFunc("sapphire_armor") { ArmorModSapphire(this) },
+            ModifierFunc("tanzanite_armor") { ArmorModTanzanite(this) },
+            ModifierFunc("topaz_armor") { ArmorModTopaz(this) },
+
             // Botania
-            ModifierDef("runemana_armor", ::ArmorModRuneMana),
-            ModifierDef("dragonstone_armor", ::ArmorModDragonstone),
+            ModifierFunc("runemana_armor") { ArmorModRuneMana(this) },
+            ModifierFunc("dragonstone_armor") { ArmorModDragonstone(this) },
+
             // Astral Sorcery
-            ModifierDef("starseeker_armor", ::ArmorModAquaStarseeker)
+            ModifierFunc("starseeker_armor") { ArmorModAquaStarseeker(this) }
     )
 
-    private val toolModifiers = mutableListOf(
+    private val toolModifiers = mutableListOf<ModifierFunc<IPewterToolModifier>>(
             // BOP
-            ModifierDef("amethyst", ::ModAmethyst),
-            ModifierDef("ruby", ::ModRuby),
-            ModifierDef("peridot", ::ModPeridot),
-            ModifierDef("topaz", ::ModTopaz),
-            ModifierDef("tanzanite", ::ModTanzanite),
-            ModifierDef("malachite", ::ModMalachite),
-            ModifierDef("sapphire", ::ModSapphire),
-            ModifierDef("amber", ::ModAmber),
+            ModifierFunc("amethyst") { ModAmethyst(this) },
+            ModifierFunc("ruby") { ModRuby(this) },
+            ModifierFunc("peridot") { ModPeridot(this) },
+            ModifierFunc("topaz") { ModTopaz(this) },
+            ModifierFunc("tanzanite") { ModTanzanite(this) },
+            ModifierFunc("malachite") { ModMalachite(this) },
+            ModifierFunc("sapphire") { ModSapphire(this) },
+            ModifierFunc("amber") { ModAmber(this) },
             // Thaumcraft
-            ModifierDef("sanitizing", ::ModSanitizing),
-            ModifierDef("quicksilver", ::ModQuicksilver),
+            ModifierFunc("sanitizing") { ModSanitizing(this) },
+            ModifierFunc("quicksilver") { ModQuicksilver(this) },
             // Botania
-            ModifierDef("runemana", ::ModRuneMana),
-            ModifierDef("runeautumn", ::ModRuneAutumn),
-            ModifierDef("dragonstone", ::ModDragonstone),
+            ModifierFunc("runemana") { ModRuneMana(this) },
+            ModifierFunc("runeautumn") { ModRuneAutumn(this) },
+            ModifierFunc("dragonstone") { ModDragonstone(this) },
             // Astral Sorcery
-            ModifierDef("celestial", ::ModAquaCelestial)
+            ModifierFunc("celestial") { ModAquaCelestial(this) }
     )
 
     private val toolTraits: MutableList<out IPewterTrait> by lazy {
@@ -142,6 +148,7 @@ object PewterContent {
                 PewterAPI.log("Pewter is not using ConArm; Skipping internal ConArm modifiers")
             }
         }
+
 
         for (mat in materials) {
             PewterAPI.addMaterial(mat)

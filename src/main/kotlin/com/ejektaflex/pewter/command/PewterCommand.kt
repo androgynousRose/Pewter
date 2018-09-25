@@ -20,7 +20,7 @@ import slimeknights.tconstruct.library.tools.TinkerToolCore
 import slimeknights.tconstruct.library.utils.TagUtil
 import java.util.*
 
-class DumpCommand : ICommand {
+class PewterCommand : ICommand {
 
     private val colors = Cycler(listOf(TextFormatting.GREEN, TextFormatting.DARK_AQUA, TextFormatting.RED, TextFormatting.GOLD))
 
@@ -46,7 +46,7 @@ class DumpCommand : ICommand {
     override fun execute(server: MinecraftServer, sender: ICommandSender, args: Array<String>) {
 
         if (args.isEmpty()) {
-            sender.sendMessage("Valid options: '/pewter tooltraits', '/pewter armortraits'")
+            sender.sendMessage("Valid options: '/pewter listmaterials|genfile|tooltraits|armortraits'")
             return
         }
 
@@ -73,14 +73,14 @@ class DumpCommand : ICommand {
                                 "materials you can generate a file for.")
                     }
                 } else {
-                    sender.sendMessage(TextFormatting.RED.toString() + "Invalid number of arguments! Usage: '/pewter genfile [material id]'")
+                    sender.sendMessage(TextFormatting.RED.toString() + "Invalid number of arguments! Usage: '/pewter genfile [material identifier]'")
                 }
             }
 
             "listmaterials" -> {
                 if (PewterMaterials.content.isNotEmpty()) {
                     sender.sendMessage("All Pewter Materials Currently Loaded:")
-                    val listString = PewterMaterials.content.map { colors.cycle().toString() + "${it.tinkMaterial.localizedName} (id: ${it.data.name})" }
+                    val listString = PewterMaterials.content.map { colors.cycle().toString() + "${it.tinkMaterial.localizedName} (identifier: ${it.data.name})" }
                     sender.sendMessage(listString.toString())
                 } else {
                     sender.sendMessage("Pewter isn't adding any materials. Add some more mods?")
@@ -90,7 +90,7 @@ class DumpCommand : ICommand {
             "armortraits" -> {
                 if (Pewter.isUsingConArm()) {
                     val armorTraits = ArmoryRegistry.getAllArmorModifiers()
-                    val listString = armorTraits.map { colors.cycle().toString() + "${it.localizedName} (id: ${it.identifier})" }
+                    val listString = armorTraits.map { colors.cycle().toString() + "${it.localizedName} (identifier: ${it.identifier})" }
                     sender.sendMessage(listString.toString())
                 } else {
                     sender.sendMessage("Constructs Armory is not loaded!")

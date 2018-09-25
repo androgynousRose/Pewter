@@ -37,7 +37,7 @@ class ArmorTerra : PewterArmorTrait("Terra", 0x83FF37), ManaExchanger, TinkerNBT
             // All cores must be made of terrasteel (method happens to always return core as first item)
             val allCoresTerrasteel = terraArmor.all { baseMaterialNames(it).first() == "terrasteel" }
 
-            // Only execute for one of the items (the first one in the list of Terrasteel Armors
+            // Only execute for one of the items (the first one in the list of Terrasteel Armors)
             if (allCoresTerrasteel && terraArmor.first() == armor) {
                 entity.heal(0.165f)
             }
@@ -45,7 +45,6 @@ class ArmorTerra : PewterArmorTrait("Terra", 0x83FF37), ManaExchanger, TinkerNBT
         }
 
         super.onUpdate(armor, world, entity, itemSlot, isSelected)
-
     }
 
 }

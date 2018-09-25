@@ -15,5 +15,4 @@ class ArmorManiacal : PewterArmorTrait("Maniacal", 0xFF2334) {
         return mods
     }
 
-
 }

@@ -1,19 +1,23 @@
 package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.api.PewterAPI
+import com.ejektaflex.pewter.api.core.modifiers.IPewterModifier
 import com.ejektaflex.pewter.api.modifiers.ModifierDef
+import com.ejektaflex.pewter.api.modifiers.ModifierFunc
+import com.ejektaflex.pewter.lib.AbstractLoadable
 import com.ejektaflex.pewter.lib.InternalPewterAPI
 import slimeknights.tconstruct.library.modifiers.Modifier
 
-object PewterModifiers : AbstractLoadable<Modifier, ModifierDef<out Modifier>>() {
+object PewterModifiers : AbstractLoadable<IPewterModifier, ModifierFunc<out IPewterModifier>>() {
 
     private const val armorSuffix = "_armor"
 
-    override fun get(id: String): Modifier? {
+    override fun get(id: String): IPewterModifier? {
         return content.find { it.identifier == id }
     }
 
-    override fun transformContent(items: List<ModifierDef<out Modifier>>): List<Modifier> {
+    override fun transformContent(items: List<ModifierFunc<*>>): List<IPewterModifier> {
         return items.asSequence().mapNotNull {
             // Remove modifiers that have been blacklisted
             if (Pewter.hasBlacklistedModifier(it.identifier)) {
@@ -32,6 +36,7 @@ object PewterModifiers : AbstractLoadable<Modifier, ModifierDef<out Modifier>>()
 
             it
         }.map {
+            PewterAPI.log("Created armor modifier from func for ${it.identifier}")
             it.create()
         }.toList()
     }

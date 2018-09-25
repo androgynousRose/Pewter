@@ -27,7 +27,6 @@ object BookContentRegistry {
             addTinkerBookSection(TinkerBook.INSTANCE, it)
         }
 
-        //addTinkerBookSection(TinkerBook.INSTANCE, "tinker_book")
         if (Pewter.isUsingConArm()) {
             armorContent.reversed().forEach {
                 addArmoryBookSection(ArmoryBook.INSTANCE, it)
