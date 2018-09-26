@@ -7,6 +7,8 @@ import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
+import com.ejektaflex.pewter.api.core.pulse.PewterModule
+import com.ejektaflex.pewter.content.PewterContent
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.content.PewterModifiers
 import com.ejektaflex.pewter.content.PewterTraits
@@ -48,6 +50,10 @@ internal object InternalPewterAPI : IPewterAPI {
         } else {
             Pewter.LOGGER!!.info(any)
         }
+    }
+
+    override fun addModule(module: PewterModule) {
+        PewterContent.registerModule(module)
     }
 
     override fun addToolRepository(location: String) {

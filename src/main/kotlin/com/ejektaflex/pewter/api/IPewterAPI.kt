@@ -5,6 +5,7 @@ import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.api.core.traits.IPewterTrait
 import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
+import com.ejektaflex.pewter.api.core.pulse.PewterModule
 
 /**
  * All calls to the Pewter API should be done before Pewter loads PreInit.
@@ -43,6 +44,12 @@ interface IPewterAPI {
      * Used to log API work done by Pewter.
      */
     fun log(any: Any) {}
+
+    /**
+     * Adds a content module (a predefined set of materials, modifiers and
+     * traits) to Pewter.
+     */
+    fun addModule(module: PewterModule) {}
 
     /**
      * Adds a book repository location from which it can display modifiers in

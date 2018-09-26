@@ -2,24 +2,29 @@ package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.PewterAPI
-import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
-import com.ejektaflex.pewter.api.core.traits.IPewterTrait
-import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
-import com.ejektaflex.pewter.materials.astralsorcery.StarmetalMaterial
-import com.ejektaflex.pewter.materials.betterwithmods.HellfireMaterial
-import com.ejektaflex.pewter.materials.betterwithmods.SoulforgedSteelMaterial
-import com.ejektaflex.pewter.materials.betweenlands.*
-import com.ejektaflex.pewter.materials.botania.*
-import com.ejektaflex.pewter.materials.thaumcraft.ThaumiumMaterial
-import com.ejektaflex.pewter.materials.thaumcraft.VoidMetalMaterial
-import com.ejektaflex.pewter.modifiers.armor.*
-import com.ejektaflex.pewter.modifiers.tools.*
-import com.ejektaflex.pewter.traits.armor.*
-import com.ejektaflex.pewter.traits.tools.*
+import com.ejektaflex.pewter.api.core.pulse.PewterModule
+import com.ejektaflex.pewter.content.groups.ModuleThaumcraft
 
-object PewterContent {
+internal object PewterContent {
 
-    private val materials = listOf(
+    private val modules = mutableListOf<PewterModule>()
+
+    fun registerModule(module: PewterModule) {
+        modules.add(module)
+    }
+
+    init {
+        val builtins = listOf<PewterModule>(
+                ModuleThaumcraft()
+        )
+
+        for (builtinModule in builtins) {
+            registerModule(builtinModule)
+        }
+    }
+
+    /*
+    override val materials = mutableListOf(
             // Astral Sorcery
             StarmetalMaterial(),
             // Better With Mods
@@ -42,8 +47,9 @@ object PewterContent {
             ThaumiumMaterial(),
             VoidMetalMaterial()
     )
+    */
 
-
+    /*
 
     private val armorModifiers = listOf(
             // General gems
@@ -119,39 +125,42 @@ object PewterContent {
         )
     }
 
+    */
 
     fun load() {
 
-        for (trait in toolTraits) {
-            PewterAPI.addToolTrait(trait)
-        }
-
-        for (mod in toolModifiers) {
-            PewterAPI.addToolModifier(mod)
-        }
-
-        for (mat in materials) {
-            PewterAPI.addMaterial(mat)
-        }
-
-        if (Pewter.isUsingConArm()) {
-
-            for (trait in armorTraits) {
-                PewterAPI.addArmorTrait(trait)
-            }
-
-            for (mod in armorModifiers) {
-                PewterAPI.addArmorModifier(mod)
-            }
-
-        } else {
-            PewterAPI.log("Pewter is not using ConArm; Skipping internal ConArm traits & modifiers")
+        for (module in modules) {
+            loadModule(module)
         }
 
         PewterTraits.setup()
         PewterModifiers.setup()
         PewterMaterials.setup()
 
+    }
+
+    private fun loadModule(module: PewterModule) {
+        for (trait in module.toolTraits) {
+            PewterAPI.addToolTrait(trait)
+        }
+
+        for (mod in module.toolModifiers) {
+            PewterAPI.addToolModifier(mod)
+        }
+
+        for (mat in module.materials) {
+            PewterAPI.addMaterial(mat)
+        }
+
+        if (Pewter.isUsingConArm()) {
+            for (trait in module.armorTraits) {
+                PewterAPI.addArmorTrait(trait)
+            }
+
+            for (mod in module.armorModifiers) {
+                PewterAPI.addArmorModifier(mod)
+            }
+        }
     }
 
 }

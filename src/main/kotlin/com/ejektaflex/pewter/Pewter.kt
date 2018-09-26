@@ -3,6 +3,7 @@ package com.ejektaflex.pewter
 import com.ejektaflex.pewter.api.PewterAPIProvider
 import com.ejektaflex.pewter.command.PewterCommand
 import com.ejektaflex.pewter.config.Configs
+import com.ejektaflex.pewter.content.groups.ModuleThaumcraft
 import com.ejektaflex.pewter.lib.InternalPewterAPI
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraftforge.common.MinecraftForge
@@ -12,6 +13,8 @@ import net.minecraftforge.fml.common.Mod.EventHandler
 import net.minecraftforge.fml.common.SidedProxy
 import net.minecraftforge.fml.common.event.*
 import org.apache.logging.log4j.Logger
+import slimeknights.mantle.pulsar.control.PulseManager
+import slimeknights.tconstruct.common.config.Config
 
 
 @Mod(modid = Pewter.MODID, name = Pewter.NAME, acceptedMinecraftVersions = Pewter.MCVERSION, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)

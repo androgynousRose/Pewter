@@ -5,9 +5,9 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 
 interface IProxy {
-    fun preInit(e: FMLPreInitializationEvent)
+    fun preInit(e: FMLPreInitializationEvent) {}
 
-    fun init(e: FMLInitializationEvent)
+    fun init(e: FMLInitializationEvent) {}
 
-    fun postInit(e: FMLPostInitializationEvent)
+    fun postInit(e: FMLPostInitializationEvent) {}
 }
