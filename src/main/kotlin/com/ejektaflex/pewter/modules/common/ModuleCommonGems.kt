@@ -4,7 +4,8 @@ import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
 import com.ejektaflex.pewter.api.core.module.PewterModule
-import com.ejektaflex.pewter.mods.commongems.*
+import com.ejektaflex.pewter.mods.commongems.armor.*
+import com.ejektaflex.pewter.mods.commongems.tool.*
 
 // Just a base for creating new modules; We never use this or extend it
 class ModuleCommonGems : PewterModule() {

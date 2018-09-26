@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.shared.methods
 
 import com.ejektaflex.pewter.ext.getModifierIntNBT
-import com.ejektaflex.pewter.mods.botania.ToolModRuneAutumn
+import com.ejektaflex.pewter.mods.botania.tool.ToolModRuneAutumn
 import net.minecraft.item.ItemStack
 
 interface IToolHarvestBonus : IModChange<Int> {

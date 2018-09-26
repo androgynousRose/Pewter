@@ -7,8 +7,9 @@ import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
 import com.ejektaflex.pewter.api.core.module.PewterModule
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
-import com.ejektaflex.pewter.mods.botania.*
-import com.ejektaflex.pewter.mods.thebetweenlands.*
+import com.ejektaflex.pewter.mods.botania.armor.*
+import com.ejektaflex.pewter.mods.botania.material.*
+import com.ejektaflex.pewter.mods.botania.tool.*
 
 class ModuleBotania : PewterModule() {
 

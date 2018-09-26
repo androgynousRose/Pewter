@@ -1,13 +1,16 @@
 package com.ejektaflex.pewter.modules.specific
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
-import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
-import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
 import com.ejektaflex.pewter.api.core.module.PewterModule
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
-import com.ejektaflex.pewter.mods.thebetweenlands.*
+import com.ejektaflex.pewter.mods.thebetweenlands.armor.ArmorTraitCorrosive
+import com.ejektaflex.pewter.mods.thebetweenlands.armor.ArmorTraitSplash
+import com.ejektaflex.pewter.mods.thebetweenlands.material.*
+import com.ejektaflex.pewter.mods.thebetweenlands.tool.ToolTraitBuzzing
+import com.ejektaflex.pewter.mods.thebetweenlands.tool.ToolTraitCorrosive
+import com.ejektaflex.pewter.mods.thebetweenlands.tool.ToolTraitGritty
+import com.ejektaflex.pewter.mods.thebetweenlands.tool.ToolTraitSparking
 
 class ModuleTheBetweenlands : PewterModule() {
 

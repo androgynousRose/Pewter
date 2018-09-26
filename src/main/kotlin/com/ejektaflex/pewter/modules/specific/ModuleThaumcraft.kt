@@ -6,10 +6,11 @@ import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
 import com.ejektaflex.pewter.api.core.module.PewterModule
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
-import com.ejektaflex.pewter.mods.thaumcraft.MaterialThaumium
-import com.ejektaflex.pewter.mods.thaumcraft.MaterialVoidMetal
-import com.ejektaflex.pewter.mods.thaumcraft.ToolModQuicksilver
-import com.ejektaflex.pewter.mods.thaumcraft.*
+import com.ejektaflex.pewter.mods.thaumcraft.material.MaterialThaumium
+import com.ejektaflex.pewter.mods.thaumcraft.material.MaterialVoidMetal
+import com.ejektaflex.pewter.mods.thaumcraft.armor.ArmorTraitManiacal
+import com.ejektaflex.pewter.mods.thaumcraft.armor.ArmorTraitVisBarrier
+import com.ejektaflex.pewter.mods.thaumcraft.tool.*
 
 class ModuleThaumcraft : PewterModule() {
 
