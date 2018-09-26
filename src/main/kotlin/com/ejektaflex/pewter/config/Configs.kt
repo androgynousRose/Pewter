@@ -1,9 +1,8 @@
 package com.ejektaflex.pewter.config
 
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
-import com.ejektaflex.pewter.materials.example.ExampleMaterial
+import com.ejektaflex.pewter.mods.unused.MaterialExample
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
 import java.io.File
@@ -69,7 +68,7 @@ object Configs {
 
     private fun createExampleFile(location: File) {
         FileWriter("${location.absolutePath}${File.separator}_example.json").use { writer ->
-            gson.toJson(ExampleMaterial().material, writer)
+            gson.toJson(MaterialExample().material, writer)
         }
     }
 

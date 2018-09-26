@@ -1,11 +1,11 @@
 package com.ejektaflex.pewter.proxy
 
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.ResourceManager
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.lib.BookContentRegistry
 import com.ejektaflex.pewter.logic.FluidStateMapper
+import com.ejektaflex.pewter.logic.ResourceManager
 import com.google.common.base.Function
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.block.model.IBakedModel

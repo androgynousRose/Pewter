@@ -4,10 +4,9 @@ import c4.conarm.lib.utils.RecipeMatchHolder
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.api.core.modifiers.PewterArmorModifier
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
-import com.ejektaflex.pewter.modifiers.base.IModGem
+import com.ejektaflex.pewter.shared.gems.IModGem
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.oredict.OreDictionary
-import slimeknights.tconstruct.library.modifiers.ModifierAspect
 
 @Suppress("LeakingThis")
 abstract class GemArmorModifier(name: String, color: Int) : PewterArmorModifier(name, color), IModGem, TinkerNBTHelper {

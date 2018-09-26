@@ -59,7 +59,7 @@ open class CommonProxy : IProxy {
     open fun makePewterFluid() {
         val name = "pewterfluid"
         fluid = FluidMolten(name, 0xffff00ff.toInt()).apply {
-            unlocalizedName = "unused"
+            unlocalizedName = "other"
             FluidRegistry.registerFluid(this)
         }
 
