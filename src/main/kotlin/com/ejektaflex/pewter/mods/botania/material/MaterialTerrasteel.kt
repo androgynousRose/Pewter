@@ -1,7 +1,6 @@
 package com.ejektaflex.pewter.mods.botania.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.lib.dependencies.BotaniaDependency
 
 class MaterialTerrasteel : MaterialDSL("terrasteel", "#5CFF12", {
     forge { true }
@@ -54,4 +53,4 @@ class MaterialTerrasteel : MaterialDSL("terrasteel", "#5CFF12", {
         }
     }
 
-}), BotaniaDependency
+})

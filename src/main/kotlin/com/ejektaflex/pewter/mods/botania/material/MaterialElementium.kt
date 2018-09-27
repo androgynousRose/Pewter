@@ -1,7 +1,6 @@
 package com.ejektaflex.pewter.mods.botania.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.lib.dependencies.BotaniaDependency
 
 class MaterialElementium : MaterialDSL("elementium", "#ED339A", {
     forge { true }
@@ -53,4 +52,4 @@ class MaterialElementium : MaterialDSL("elementium", "#ED339A", {
         }
     }
 
-}), BotaniaDependency
+})

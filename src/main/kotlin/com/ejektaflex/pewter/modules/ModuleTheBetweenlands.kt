@@ -1,7 +1,7 @@
-package com.ejektaflex.pewter.modules.specific
+package com.ejektaflex.pewter.modules
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.api.core.module.PewterModule
+import com.ejektaflex.pewter.api.core.PewterModule
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
 import com.ejektaflex.pewter.mods.thebetweenlands.armor.ArmorTraitCorrosive
@@ -13,6 +13,8 @@ import com.ejektaflex.pewter.mods.thebetweenlands.tool.ToolTraitGritty
 import com.ejektaflex.pewter.mods.thebetweenlands.tool.ToolTraitSparking
 
 class ModuleTheBetweenlands : PewterModule() {
+
+    override val id = "theBetweenlands"
 
     override val armorTraits: MutableList<IPewterArmorTrait> = mutableListOf(
             ArmorTraitCorrosive(),

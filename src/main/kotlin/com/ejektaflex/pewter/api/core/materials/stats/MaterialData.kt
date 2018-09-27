@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.api.core.materials.stats
 
 import c4.conarm.lib.materials.*
-import com.ejektaflex.pewter.Pewter
+import net.minecraftforge.fml.common.Loader
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*
 
@@ -56,13 +56,12 @@ class MaterialData {
     private fun addStats(m: Material, part: MatPart) {
         // If it's an armor part, only configure if we have armor data
         if (part.partType == PartType.ARMOR) {
-            if (armor != null && Pewter.isUsingConArm()) {
+            if (armor != null && Loader.isModLoaded("conarm")) {
                 TinkerRegistry.addMaterialStats(m, part.stats(this))
             }
         } else {
             TinkerRegistry.addMaterialStats(m, part.stats(this))
         }
-
     }
 
     enum class PartType {

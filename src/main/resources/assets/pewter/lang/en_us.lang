@@ -6,6 +6,9 @@ material.brass.name=Brass
 material.hellfire.name=Hellfire
 fluid.pewter.hellfire.name=Molten Hellfire
 
+material.dawnstone.name=Dawnstone
+fluid.pewter.dawnstone.name=Molten Dawnstone
+
 material.dragonflywing.name=Dragonfly Wing
 # no fluid available for dragonfly wint
 

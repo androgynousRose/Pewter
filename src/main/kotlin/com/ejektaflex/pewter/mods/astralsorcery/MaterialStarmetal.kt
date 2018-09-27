@@ -1,7 +1,6 @@
 package com.ejektaflex.pewter.mods.astralsorcery
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.lib.dependencies.AstralSorceryDependency
 
 class MaterialStarmetal : MaterialDSL("starmetal", "#222288", {
     forge { true }
@@ -53,4 +52,4 @@ class MaterialStarmetal : MaterialDSL("starmetal", "#222288", {
     }
 
 
-}), AstralSorceryDependency
+})

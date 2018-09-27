@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.api.core.module
+package com.ejektaflex.pewter.api.core
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
@@ -8,6 +8,8 @@ import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
 
 abstract class PewterModule {
+
+    abstract val id: String
 
     open val materials = mutableListOf<MaterialDSL>()
 

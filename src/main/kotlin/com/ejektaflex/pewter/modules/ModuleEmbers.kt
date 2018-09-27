@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.modules.other
+package com.ejektaflex.pewter.modules
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
@@ -7,11 +7,12 @@ import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
 import com.ejektaflex.pewter.api.core.PewterModule
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
+import com.ejektaflex.pewter.mods.embers.MaterialDawnstone
 
 // Just a base for creating new modules; We never use this or extend it
-class ModuleUnused : PewterModule() {
+class ModuleEmbers : PewterModule() {
 
-    override val id = "unused_module"
+    override val id = "embers"
 
     override val armorModifiers: MutableList<ModifierFunc<out IPewterArmorModifier>> = mutableListOf(
             // None
@@ -22,7 +23,7 @@ class ModuleUnused : PewterModule() {
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(
-            // None
+            MaterialDawnstone()
     )
 
     override val toolModifiers: MutableList<ModifierFunc<out IPewterToolModifier>> = mutableListOf(

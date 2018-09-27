@@ -3,12 +3,13 @@ package com.ejektaflex.pewter.modules.common
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
-import com.ejektaflex.pewter.api.core.module.PewterModule
+import com.ejektaflex.pewter.api.core.PewterModule
 import com.ejektaflex.pewter.mods.commongems.armor.*
 import com.ejektaflex.pewter.mods.commongems.tool.*
 
-// Just a base for creating new modules; We never use this or extend it
 class ModuleCommonGems : PewterModule() {
+
+    override val id = "commonGems"
 
     override val armorModifiers: MutableList<ModifierFunc<out IPewterArmorModifier>> = mutableListOf(
             ModifierFunc("amber_armor") { ArmorModAmber(this) },

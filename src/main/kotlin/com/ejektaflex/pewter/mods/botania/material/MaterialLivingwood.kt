@@ -1,7 +1,6 @@
 package com.ejektaflex.pewter.mods.botania.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.lib.dependencies.BotaniaDependency
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
 
 class MaterialLivingwood : MaterialDSL("livingwood", "#401909", {
@@ -72,4 +71,4 @@ class MaterialLivingwood : MaterialDSL("livingwood", "#401909", {
     }
 
 
-}), BotaniaDependency
+})

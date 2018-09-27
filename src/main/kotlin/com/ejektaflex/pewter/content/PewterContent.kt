@@ -2,9 +2,9 @@ package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.PewterAPI
-import com.ejektaflex.pewter.api.core.module.PewterModule
+import com.ejektaflex.pewter.api.core.PewterModule
+import com.ejektaflex.pewter.modules.*
 import com.ejektaflex.pewter.modules.common.ModuleCommonGems
-import com.ejektaflex.pewter.modules.specific.*
 
 internal object PewterContent {
 
@@ -20,6 +20,7 @@ internal object PewterContent {
                 ModuleBetterWithMods(),
                 ModuleBotania(),
                 ModuleCommonGems(),
+                ModuleEmbers(),
                 ModuleThaumcraft(),
                 ModuleTheBetweenlands()
         ).forEach(this::registerModule)

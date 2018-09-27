@@ -1,7 +1,6 @@
 package com.ejektaflex.pewter.mods.thebetweenlands.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.lib.dependencies.BetweenlandsDependency
 
 class MaterialSyrmorite : MaterialDSL("syrmorite", "#1E336C", {
     forge { true }
@@ -55,4 +54,4 @@ class MaterialSyrmorite : MaterialDSL("syrmorite", "#1E336C", {
         }
     }
 
-}), BetweenlandsDependency
+})

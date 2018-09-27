@@ -1,7 +1,6 @@
 package com.ejektaflex.pewter.mods.unused
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.lib.dependencies.ExampleDependency
 
 class MaterialExample : MaterialDSL("examplematerial", "#666688", {
     locale("en_us" to "Test Material.", "en_pt" to "Ye Olde Material")
@@ -55,4 +54,4 @@ class MaterialExample : MaterialDSL("examplematerial", "#666688", {
         }
     }
 
-}), ExampleDependency
+})

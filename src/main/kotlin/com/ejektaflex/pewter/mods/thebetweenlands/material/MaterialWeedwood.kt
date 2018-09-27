@@ -1,7 +1,6 @@
 package com.ejektaflex.pewter.mods.thebetweenlands.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.lib.dependencies.BetweenlandsDependency
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
 
 class MaterialWeedwood : MaterialDSL("weedwood", "#665E31", {
@@ -71,4 +70,4 @@ class MaterialWeedwood : MaterialDSL("weedwood", "#665E31", {
     }
 
 
-}), BetweenlandsDependency
+})

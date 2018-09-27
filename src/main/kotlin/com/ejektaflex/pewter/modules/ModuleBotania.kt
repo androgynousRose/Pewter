@@ -1,10 +1,10 @@
-package com.ejektaflex.pewter.modules.specific
+package com.ejektaflex.pewter.modules
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
-import com.ejektaflex.pewter.api.core.module.PewterModule
+import com.ejektaflex.pewter.api.core.PewterModule
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
 import com.ejektaflex.pewter.mods.botania.armor.*
@@ -12,6 +12,8 @@ import com.ejektaflex.pewter.mods.botania.material.*
 import com.ejektaflex.pewter.mods.botania.tool.*
 
 class ModuleBotania : PewterModule() {
+
+    override val id = "botania"
 
     override val armorModifiers: MutableList<ModifierFunc<out IPewterArmorModifier>> = mutableListOf(
             ModifierFunc("dragonstone_armor") { ArmorModDragonstone(this) },

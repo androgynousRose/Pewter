@@ -1,7 +1,6 @@
 package com.ejektaflex.pewter.mods.thaumcraft.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.lib.dependencies.ThaumcraftDependency
 
 class MaterialVoidMetal : MaterialDSL("voidmetal", "#2A114A", {
     forge { true }
@@ -60,4 +59,4 @@ class MaterialVoidMetal : MaterialDSL("voidmetal", "#2A114A", {
     }
 
 
-}), ThaumcraftDependency
+})

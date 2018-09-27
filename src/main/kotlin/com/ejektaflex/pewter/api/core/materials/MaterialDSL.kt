@@ -4,9 +4,9 @@ import com.ejektaflex.pewter.api.core.materials.stats.ArmorStats
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
 
 @Suppress("LeakingThis")
-abstract class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>(), IMaterialDependency {
+abstract class MaterialDSL(initName: String, initColor: String, initFunc: MaterialDSL.() -> Unit) : DSL<MaterialDSL>() {
 
-    override val material = MaterialData()
+    val material = MaterialData()
 
     init {
         material.isCustomMaterial = false

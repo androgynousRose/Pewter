@@ -1,7 +1,6 @@
 package com.ejektaflex.pewter.mods.botania.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.lib.dependencies.BotaniaDependency
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData.MatPart
 
 class MaterialManastring : MaterialDSL("manastring", "#6BBEBF", {
@@ -17,4 +16,4 @@ class MaterialManastring : MaterialDSL("manastring", "#6BBEBF", {
             string { 0.85f }
         }
     }
-}), BotaniaDependency
+})

@@ -69,14 +69,15 @@ object Pewter : IProxy {
     const val MCVERSION = "1.12"
     const val DEPENDS = "required-after:tconstruct;" +
             "required-after:forgelin;" +
-            "after:jaopca;" + // JAOPCA Compat?
+            "after:jaopca;" +
             "after:conarm;" +
             "after:astralsorcery;" +
             "after:thaumcraft;" +
             "after:betterwithmods;" +
             "after:biomesoplenty;" +
             "after:botania;" +
-            "after:thebetweenlands;"
+            "after:thebetweenlands;" +
+            "after:embers;"
     const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
     private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
     private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"

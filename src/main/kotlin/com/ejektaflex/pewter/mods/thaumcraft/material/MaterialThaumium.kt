@@ -1,7 +1,6 @@
 package com.ejektaflex.pewter.mods.thaumcraft.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
-import com.ejektaflex.pewter.lib.dependencies.ThaumcraftDependency
 
 class MaterialThaumium : MaterialDSL("thaumium", "#6F43E8", {
     forge { true }
@@ -56,4 +55,4 @@ class MaterialThaumium : MaterialDSL("thaumium", "#6F43E8", {
         }
     }
 
-}), ThaumcraftDependency
+})
