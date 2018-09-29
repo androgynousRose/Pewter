@@ -7,10 +7,7 @@ import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
 import com.ejektaflex.pewter.api.core.PewterModule
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
-import com.ejektaflex.pewter.mods.embers.ArmorTraitBranded
-import com.ejektaflex.pewter.mods.embers.MaterialDawnstone
-import com.ejektaflex.pewter.mods.embers.ToolTraitDawn
-import com.ejektaflex.pewter.mods.embers.ToolTraitSimmering
+import com.ejektaflex.pewter.mods.embers.*
 
 // Just a base for creating new modules; We never use this or extend it
 class ModuleEmbersRekindled : PewterModule() {
@@ -22,10 +19,12 @@ class ModuleEmbersRekindled : PewterModule() {
     )
 
     override val armorTraits: MutableList<IPewterArmorTrait> = mutableListOf(
+            ArmorTraitAshwoven(),
             ArmorTraitBranded()
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(
+            MaterialAshenFabric(),
             MaterialDawnstone()
     )
 
