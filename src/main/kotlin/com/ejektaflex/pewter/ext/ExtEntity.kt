@@ -2,6 +2,7 @@ package com.ejektaflex.pewter.ext
 
 import c4.conarm.common.armor.utils.ArmorHelper
 import net.minecraft.entity.EntityLivingBase
+import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumHand
 import net.minecraft.world.biome.Biome
@@ -19,6 +20,9 @@ val EntityLivingBase.tinkersArmor: List<ItemStack>
 fun EntityLivingBase.isWearingItemWithTrait(traitIdentifier: String): Boolean {
     return tinkersArmor.count { TinkerUtil.hasTrait(TagUtil.getTagSafe(it), traitIdentifier) } > 0
 }
+
+val EntityLivingBase.allArmor: List<Item>
+    get() = armorInventoryList.map { it.item }
 
 val EntityLivingBase.currentBiome: Biome
     get() = world.getBiome(position)

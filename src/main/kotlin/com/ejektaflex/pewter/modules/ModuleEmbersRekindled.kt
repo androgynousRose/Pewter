@@ -7,6 +7,7 @@ import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
 import com.ejektaflex.pewter.api.core.PewterModule
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
+import com.ejektaflex.pewter.mods.embers.ArmorTraitBranded
 import com.ejektaflex.pewter.mods.embers.MaterialDawnstone
 import com.ejektaflex.pewter.mods.embers.ToolTraitDawn
 import com.ejektaflex.pewter.mods.embers.ToolTraitSimmering
@@ -21,7 +22,7 @@ class ModuleEmbersRekindled : PewterModule() {
     )
 
     override val armorTraits: MutableList<IPewterArmorTrait> = mutableListOf(
-            // None
+            ArmorTraitBranded()
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(

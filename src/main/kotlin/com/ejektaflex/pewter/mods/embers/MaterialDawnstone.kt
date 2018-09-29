@@ -41,7 +41,7 @@ class MaterialDawnstone : MaterialDSL("dawnstone", "#FFB648", {
     }
 
     armor {
-        //armorTrait("visbarrier_armor")
+        armorTrait("branded_armor")
         core {
             durability { 18f }
             defense { 15f }

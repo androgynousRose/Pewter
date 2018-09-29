@@ -1,7 +1,12 @@
 package com.ejektaflex.pewter.api.core.traits
 
+import c4.conarm.common.armor.utils.ArmorHelper
+import c4.conarm.common.armor.utils.ArmorTagUtil
+import c4.conarm.lib.armor.ArmorNBT
 import c4.conarm.lib.traits.AbstractArmorTrait
 import com.ejektaflex.pewter.api.PewterAPI
+import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.item.ItemStack
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Loader
 import slimeknights.tconstruct.library.TinkerRegistry
@@ -19,4 +24,17 @@ open class PewterArmorTrait(val name: String, color: Int, identifier: String = n
             MinecraftForge.EVENT_BUS.register(this)
         }
     }
+
+    private fun conArmorSet(entity: EntityPlayer): List<ItemStack> {
+        return entity.armorInventoryList.filter { ArmorHelper.isUnbrokenTinkersArmor(it) }
+    }
+
+    fun armorSetStats(entity: EntityPlayer): List<ArmorNBT> {
+        return conArmorSet(entity).map { ArmorTagUtil.getArmorStats(it) }
+    }
+
+    fun armorSetOriginalStats(entity: EntityPlayer): List<ArmorNBT> {
+        return conArmorSet(entity).map { ArmorTagUtil.getOriginalArmorStats(it) }
+    }
+
 }
