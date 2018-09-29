@@ -63,6 +63,9 @@ modifier.amber.desc=§oFind them all!§r\nDurability+, Speed++
 modifier.amber_armor.name=Amber
 modifier.amber_armor.desc=§oFind them all!§r\nDurability+, Defense+
 
+modifier.amethyst_armor.name=Amethyst
+modifier.amethyst_armor.desc=§oFind them all!§r\nDurability+++, Defense+++
+
 modifier.attuned.name=Attuned
 modifier.attuned.desc=§oIn sync with the world!§r\nRepairing gives bonus durability based on vis and flux in the Aura.
 
@@ -91,8 +94,8 @@ modifier.corrosive_armor.desc=§oEdgy!§r\nMaterial corrodes over time in The Be
 modifier.amethyst.name=Amethyst
 modifier.amethyst.desc=§oFind them all!§r\nDurability++++, Speed+++
 
-modifier.amethyst_armor.name=Amethyst
-modifier.amethyst_armor.desc=§oFind them all!§r\nDurability+++, Defense+++
+modifier.dawn.name=Dawn
+modifier.dawn.desc=§oA new day!§r\nDeals higher damage at lower speeds, setting enemies on fire.
 
 modifier.dragonstone.name=Dragonstone
 modifier.dragonstone.desc=§oDiamond but Better!§r\nIncreased durability, stacks as the number of Botania materials in the tool increases.
@@ -180,6 +183,9 @@ modifier.sapphire_armor.desc=§oFind them all!§r\nDurability+++, Defense+++
 
 modifier.sapping.name=Sapping
 modifier.sapping.desc=§oAlchemical Trade!§r\nDamaging enemies usually steals a small portion of their health. If your health is full, may regen tool durability instead.
+
+modifier.simmering.name=Simmering
+modifier.simmering.desc=§oIt gets hotter!§r\nDeals increased damage at lower elevations.
 
 modifier.sparking.name=Spark
 modifier.sparking.desc=§oFighting With Fire!§r\nHitting enemies has a chance of setting them on fire. Hitting enemies on fire does 33% bonus damage.

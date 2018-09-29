@@ -10,11 +10,11 @@ class MaterialDawnstone : MaterialDSL("dawnstone", "#FFB648", {
     defaultMetalParts()
     shininess(0.55f)
     addTraits(
-            //"HEAD" to "essentia"
+            "HEAD" to "dawn"
     )
     tool {
 
-        //toolTrait("aural")
+        toolTrait("simmering")
 
         head {
             durability { 625 }

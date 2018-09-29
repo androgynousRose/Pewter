@@ -8,9 +8,11 @@ import com.ejektaflex.pewter.api.core.PewterModule
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
 import com.ejektaflex.pewter.mods.embers.MaterialDawnstone
+import com.ejektaflex.pewter.mods.embers.ToolTraitDawn
+import com.ejektaflex.pewter.mods.embers.ToolTraitSimmering
 
 // Just a base for creating new modules; We never use this or extend it
-class ModuleEmbers : PewterModule() {
+class ModuleEmbersRekindled : PewterModule() {
 
     override val id = "embers"
 
@@ -31,7 +33,8 @@ class ModuleEmbers : PewterModule() {
     )
 
     override val toolTraits: MutableList<IPewterToolTrait> = mutableListOf(
-            // None
+            ToolTraitDawn(),
+            ToolTraitSimmering()
     )
 
 }

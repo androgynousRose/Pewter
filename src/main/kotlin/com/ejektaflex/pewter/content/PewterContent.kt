@@ -20,7 +20,7 @@ internal object PewterContent {
                 ModuleBetterWithMods(),
                 ModuleBotania(),
                 ModuleCommonGems(),
-                ModuleEmbers(),
+                ModuleEmbersRekindled(),
                 ModuleThaumcraft(),
                 ModuleTheBetweenlands()
         ).forEach(this::registerModule)

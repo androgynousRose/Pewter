@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
 import net.minecraft.util.text.ITextComponent
 import net.minecraft.util.text.TextComponentString
+import net.minecraft.world.World
 import slimeknights.mantle.util.RecipeMatchRegistry
 import slimeknights.tconstruct.library.modifiers.Modifier
 import java.util.*
@@ -31,4 +32,18 @@ fun Random.chanceOf(f: Float, func: () -> Unit) {
 
 fun ICommandSender.sendMessage(str: String) {
     sendMessage(TextComponentString(str))
+}
+
+fun nonRemote(world: World, func: () -> Unit) {
+    if (!world.isRemote) {
+        func()
+    }
+}
+
+fun <T> nonRemote(world: World, default: T, func: () -> T): T {
+    return if (!world.isRemote) {
+        func()
+    } else {
+        default
+    }
 }
