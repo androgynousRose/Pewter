@@ -68,6 +68,11 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
         parts(*metalParts)
     }
 
+    @TopLevelToolDSL
+    fun armorParts() {
+        parts(MaterialData.MatPart.CORE, MaterialData.MatPart.PLATES, MaterialData.MatPart.TRIM)
+    }
+
 
     @TopLevelToolDSL
     fun addTraits(vararg pairs: Pair<String, String>) {

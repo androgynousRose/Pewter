@@ -8,10 +8,11 @@ import com.ejektaflex.pewter.api.core.PewterModule
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
 import com.ejektaflex.pewter.mods.betterwithmods.*
+import net.minecraftforge.fml.common.Loader
 
 class ModuleBetterWithMods : PewterModule() {
 
-    override val id = "betterWithMods"
+    override val id = "betterwithmods"
 
     override val armorModifiers: MutableList<ModifierFunc<out IPewterArmorModifier>> = mutableListOf(
             // None

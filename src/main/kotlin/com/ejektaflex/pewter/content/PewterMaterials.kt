@@ -5,7 +5,6 @@ import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.lib.AbstractLoadable
 import com.ejektaflex.pewter.logic.MaterialRegistrar
-import thaumcraft.common.items.tools.ItemPrimalCrusher.material
 
 object PewterMaterials : AbstractLoadable<MaterialRegistrar, MaterialDSL>() {
 
@@ -30,7 +29,7 @@ object PewterMaterials : AbstractLoadable<MaterialRegistrar, MaterialDSL>() {
     }
 
     private fun dependencyCheck(matDSL: MaterialDSL): MaterialRegistrar? {
-        return if (material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials) {
+        return if (matDSL.material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials) {
             MaterialRegistrar(matDSL.material)
         } else {
             null

@@ -14,7 +14,7 @@ import com.ejektaflex.pewter.mods.thebetweenlands.tool.ToolTraitSparking
 
 class ModuleTheBetweenlands : PewterModule() {
 
-    override val id = "theBetweenlands"
+    override val id = "thebetweenlands"
 
     override val armorTraits: MutableList<IPewterArmorTrait> = mutableListOf(
             ArmorTraitCorrosive(),

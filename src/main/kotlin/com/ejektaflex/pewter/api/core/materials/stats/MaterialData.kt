@@ -1,7 +1,10 @@
 package com.ejektaflex.pewter.api.core.materials.stats
 
 import c4.conarm.lib.materials.*
+import com.ejektaflex.pewter.ext.toItemStack
+import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.common.Loader
+import net.minecraftforge.oredict.OreDictionary
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.materials.*
 

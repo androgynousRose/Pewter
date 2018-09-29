@@ -11,6 +11,10 @@ class ModuleCommonGems : PewterModule() {
 
     override val id = "commonGems"
 
+    override fun hasMetDependencies(): Boolean {
+        return true
+    }
+
     override val armorModifiers: MutableList<ModifierFunc<out IPewterArmorModifier>> = mutableListOf(
             ModifierFunc("amber_armor") { ArmorModAmber(this) },
             ModifierFunc("amethyst_armor") { ArmorModAmethyst(this) },

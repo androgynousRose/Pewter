@@ -23,7 +23,9 @@ internal object PewterContent {
                 ModuleEmbersRekindled(),
                 ModuleThaumcraft(),
                 ModuleTheBetweenlands()
-        ).forEach(this::registerModule)
+        ).filter {
+            it.hasMetDependencies()
+        }.forEach(this::registerModule)
     }
 
     fun load() {

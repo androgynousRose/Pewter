@@ -10,10 +10,11 @@ import com.ejektaflex.pewter.mods.astralsorcery.MaterialStarmetal
 import com.ejektaflex.pewter.mods.astralsorcery.ArmorModAquaStarseeker
 import com.ejektaflex.pewter.mods.astralsorcery.ToolModAquaCelestial
 import com.ejektaflex.pewter.mods.astralsorcery.ToolTraitBrilliance
+import net.minecraftforge.fml.common.Loader
 
 class ModuleAstralSorcery : PewterModule() {
 
-    override val id = "astralSorcery"
+    override val id = "astralsorcery"
 
     override val armorModifiers: MutableList<ModifierFunc<out IPewterArmorModifier>> = mutableListOf(
             ModifierFunc("starseeker_armor") { ArmorModAquaStarseeker(this) }

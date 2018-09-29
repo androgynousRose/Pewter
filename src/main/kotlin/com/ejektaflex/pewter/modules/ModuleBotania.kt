@@ -10,6 +10,7 @@ import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
 import com.ejektaflex.pewter.mods.botania.armor.*
 import com.ejektaflex.pewter.mods.botania.material.*
 import com.ejektaflex.pewter.mods.botania.tool.*
+import net.minecraftforge.fml.common.Loader
 
 class ModuleBotania : PewterModule() {
 
