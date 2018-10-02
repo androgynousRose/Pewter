@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.betterwithmods
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialHellfire : MaterialDSL("hellfire", "#FF362C", {
+class MaterialHellfire(matName: String) : MaterialDSL(matName, "#FF362C", {
     locale("en_7S " to "Ye Fiery Treasure")
     forge { true }
     craft { false }

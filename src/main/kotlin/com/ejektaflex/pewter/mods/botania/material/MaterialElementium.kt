@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.botania.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialElementium : MaterialDSL("elementium", "#ED339A", {
+class MaterialElementium(name: String) : MaterialDSL(name, "#ED339A", {
     forge { true }
     craft { false }
     blocks("botania:storage:2")

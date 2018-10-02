@@ -10,7 +10,6 @@ import com.ejektaflex.pewter.mods.astralsorcery.MaterialStarmetal
 import com.ejektaflex.pewter.mods.astralsorcery.ArmorModAquaStarseeker
 import com.ejektaflex.pewter.mods.astralsorcery.ToolModAquaCelestial
 import com.ejektaflex.pewter.mods.astralsorcery.ToolTraitBrilliance
-import net.minecraftforge.fml.common.Loader
 
 class ModuleAstralSorcery : PewterModule() {
 
@@ -21,7 +20,7 @@ class ModuleAstralSorcery : PewterModule() {
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(
-            MaterialStarmetal()
+            MaterialStarmetal("starmetal")
     )
 
     override val toolModifiers: MutableList<ModifierFunc<out IPewterToolModifier>> = mutableListOf(
@@ -29,7 +28,7 @@ class ModuleAstralSorcery : PewterModule() {
     )
 
     override val toolTraits: MutableList<IPewterToolTrait> = mutableListOf(
-            ToolTraitBrilliance()
+            ToolTraitBrilliance("brilliance")
     )
 
 }

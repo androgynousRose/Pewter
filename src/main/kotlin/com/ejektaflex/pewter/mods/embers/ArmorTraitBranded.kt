@@ -10,7 +10,7 @@ import slimeknights.tconstruct.shared.client.ParticleEffect
 import slimeknights.tconstruct.tools.TinkerTools
 import kotlin.math.ceil
 
-class ArmorTraitBranded : PewterArmorTrait("branded", 0xFF2334) {
+class ArmorTraitBranded(name: String) : PewterArmorTrait(name, 0xFF2334) {
 
     override fun onDamaged(armor: ItemStack?, player: EntityPlayer?, source: DamageSource?, damage: Float, newDamage: Float, evt: LivingDamageEvent?): Float {
 

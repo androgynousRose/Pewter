@@ -8,7 +8,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 
-class ToolTraitManaInfused : PewterToolTrait("manainfused", 0x005EE0), IModManaInfused, IToolManaCost {
+class ToolTraitManaInfused(name: String) : PewterToolTrait(name, 0x005EE0), IModManaInfused, IToolManaCost {
 
     override val manaCost = 200
 

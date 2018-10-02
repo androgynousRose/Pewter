@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.DamageSource
 import net.minecraftforge.event.entity.living.LivingHurtEvent
 
-class ArmorTraitAshwoven : PewterArmorTrait("ashwoven", 0xFF2334) {
+class ArmorTraitAshwoven(name: String) : PewterArmorTrait(name, 0xFF2334) {
 
     override fun onHurt(armor: ItemStack?, player: EntityPlayer?, source: DamageSource?, damage: Float, newDamage: Float, evt: LivingHurtEvent?): Float {
 

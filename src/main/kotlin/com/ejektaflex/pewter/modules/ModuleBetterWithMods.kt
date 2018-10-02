@@ -8,7 +8,6 @@ import com.ejektaflex.pewter.api.core.PewterModule
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
 import com.ejektaflex.pewter.mods.betterwithmods.*
-import net.minecraftforge.fml.common.Loader
 
 class ModuleBetterWithMods : PewterModule() {
 
@@ -19,13 +18,13 @@ class ModuleBetterWithMods : PewterModule() {
     )
 
     override val armorTraits: MutableList<IPewterArmorTrait> = mutableListOf(
-            ArmorTraitEnvious(),
-            ArmorTraitHeatLover()
+            ArmorTraitEnvious("envious"),
+            ArmorTraitHeatLover("heatlover")
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(
-            MaterialHellfire(),
-            MaterialSoulforgedSteel()
+            MaterialHellfire("hellfire"),
+            MaterialSoulforgedSteel("soulforgedsteel")
     )
 
     override val toolModifiers: MutableList<ModifierFunc<out IPewterToolModifier>> = mutableListOf(
@@ -33,7 +32,7 @@ class ModuleBetterWithMods : PewterModule() {
     )
 
     override val toolTraits: MutableList<IPewterToolTrait> = mutableListOf(
-            ToolTraitHeatLover()
+            ToolTraitHeatLover("heatlover")
     )
 
 }

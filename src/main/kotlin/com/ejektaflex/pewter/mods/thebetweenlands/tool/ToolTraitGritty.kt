@@ -6,7 +6,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import thebetweenlands.common.registries.CapabilityRegistry
 
-class ToolTraitGritty : PewterToolTrait("gritty", 0xC867D7) {
+class ToolTraitGritty(name: String) : PewterToolTrait(name, 0xC867D7) {
     override fun damage(tool: ItemStack?, player: EntityLivingBase?, target: EntityLivingBase?, damage: Float, newDamage: Float, isCritical: Boolean): Float {
         var toReturn = damage
         player!!.ifHasCapability(CapabilityRegistry.CAPABILITY_DECAY) {

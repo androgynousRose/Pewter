@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.thebetweenlands.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialValonite : MaterialDSL("valonite", "#845784", {
+class MaterialValonite(name: String) : MaterialDSL(name, "#845784", {
     forge { false }
     craft { true }
     ingots("thebetweenlands:items_misc:19")

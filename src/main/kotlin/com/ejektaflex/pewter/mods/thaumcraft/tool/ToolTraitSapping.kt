@@ -10,7 +10,7 @@ import slimeknights.tconstruct.tools.TinkerTools
 import kotlin.math.min
 
 
-class ToolTraitSapping : PewterToolTrait("sapping", 0x8A134E) {
+class ToolTraitSapping(name: String) : PewterToolTrait(name, 0x8A134E) {
     override fun onHit(tool: ItemStack, player: EntityLivingBase, target: EntityLivingBase, damage: Float, isCritical: Boolean) {
 
         val healthToSteal = min(target.health, damage) / 7.0f

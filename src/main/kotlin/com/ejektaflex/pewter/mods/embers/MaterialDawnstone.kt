@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.embers
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialDawnstone : MaterialDSL("dawnstone", "#FFB648", {
+class MaterialDawnstone(matName: String) : MaterialDSL(matName, "#FFB648", {
     forge { true }
     craft { false }
     allTags("Dawnstone")

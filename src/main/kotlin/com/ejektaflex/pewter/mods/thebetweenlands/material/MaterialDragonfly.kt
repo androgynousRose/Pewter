@@ -3,7 +3,7 @@ package com.ejektaflex.pewter.mods.thebetweenlands.material
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
 
-class MaterialDragonfly : MaterialDSL("dragonflywing", "#6BBEBF", {
+class MaterialDragonfly(name: String) : MaterialDSL(name, "#6BBEBF", {
     forge { false }
     craft { true }
     ingots("thebetweenlands:items_misc:3")

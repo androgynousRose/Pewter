@@ -8,7 +8,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 
-class ArmorTraitManaInfused : PewterArmorTrait("Mana Infused", 0x005EE0), IModManaInfused, IArmorManaCost {
+class ArmorTraitManaInfused(name: String) : PewterArmorTrait(name, 0x005EE0), IModManaInfused, IArmorManaCost {
 
     override val manaCost = 50
 

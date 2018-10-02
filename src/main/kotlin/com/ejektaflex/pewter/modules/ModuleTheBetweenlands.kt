@@ -17,23 +17,23 @@ class ModuleTheBetweenlands : PewterModule() {
     override val id = "thebetweenlands"
 
     override val armorTraits: MutableList<IPewterArmorTrait> = mutableListOf(
-            ArmorTraitCorrosive(),
-            ArmorTraitSplash()
+            ArmorTraitCorrosive("corrosive"),
+            ArmorTraitSplash("splash")
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(
-            MaterialDragonfly(),
-            MaterialOctine(),
-            MaterialSyrmorite(),
-            MaterialValonite(),
-            MaterialWeedwood()
+            MaterialDragonfly("dragonflywing"),
+            MaterialOctine("octine"),
+            MaterialSyrmorite("syrmorite"),
+            MaterialValonite("valonite"),
+            MaterialWeedwood("weedwood")
     )
 
     override val toolTraits: MutableList<IPewterToolTrait> = mutableListOf(
-            ToolTraitBuzzing(),
-            ToolTraitCorrosive(),
-            ToolTraitGritty(),
-            ToolTraitSparking()
+            ToolTraitBuzzing("buzzing"),
+            ToolTraitCorrosive("corrosive"),
+            ToolTraitGritty("gritty"),
+            ToolTraitSparking("sparking")
     )
 
 }

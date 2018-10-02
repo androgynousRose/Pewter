@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.thaumcraft.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialThaumium : MaterialDSL("thaumium", "#6F43E8", {
+class MaterialThaumium(name: String) : MaterialDSL(name, "#6F43E8", {
     forge { true }
     craft { false }
     allTags("Thaumium")

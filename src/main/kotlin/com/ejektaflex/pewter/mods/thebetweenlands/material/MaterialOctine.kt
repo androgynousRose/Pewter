@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.thebetweenlands.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialOctine : MaterialDSL("octine", "#F38A20", {
+class MaterialOctine(name: String) : MaterialDSL(name, "#F38A20", {
     locale("en_7S " to "Ye Illuminating Treasure")
     forge { true }
     craft { false }

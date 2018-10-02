@@ -8,7 +8,7 @@ import com.ejektaflex.pewter.api.core.traits.PewterArmorTrait
 import thaumcraft.api.ThaumcraftApi
 
 
-class ArmorTraitManiacal : PewterArmorTrait("maniacal", 0xFF2334) {
+class ArmorTraitManiacal(name: String) : PewterArmorTrait(name, 0xFF2334) {
 
     override fun getModifications(player: EntityPlayer, mods: ArmorModifications, armor: ItemStack?, source: DamageSource?, damage: Double, slot: Int): ArmorModifications {
         mods.addToughness(ThaumcraftApi.internalMethods.getActualWarp(player).toFloat() / 25f)

@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.botania.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialTerrasteel : MaterialDSL("terrasteel", "#5CFF12", {
+class MaterialTerrasteel(name: String) : MaterialDSL(name, "#5CFF12", {
     forge { true }
     craft { false }
     blocks("botania:storage:1")

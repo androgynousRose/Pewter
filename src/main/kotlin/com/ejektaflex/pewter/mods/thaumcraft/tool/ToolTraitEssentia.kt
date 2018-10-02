@@ -11,7 +11,7 @@ import net.minecraftforge.event.world.BlockEvent
 import thaumcraft.api.ThaumcraftApiHelper
 import thaumcraft.api.aspects.AspectHelper
 
-class ToolTraitEssentia : PewterToolTrait("essentia", 0xD79291), AuraExchanger {
+class ToolTraitEssentia(name: String) : PewterToolTrait(name, 0xD79291), AuraExchanger {
 
     override fun blockHarvestDrops(tool: ItemStack, event: BlockEvent.HarvestDropsEvent) {
         if (random.nextFloat() <= blockChance) {

@@ -7,7 +7,7 @@ import slimeknights.tconstruct.library.entity.EntityProjectileBase
 import slimeknights.tconstruct.library.modifiers.Modifier
 
 
-class ToolTraitBuzzing : PewterProjectileTrait("buzzing", 0x6BBEBF) {
+class ToolTraitBuzzing(name: String) : PewterProjectileTrait(name, 0x6BBEBF) {
 
     override fun onMovement(projectile: EntityProjectileBase, world: World, slowdown: Double) {
         val amt = 0.13f

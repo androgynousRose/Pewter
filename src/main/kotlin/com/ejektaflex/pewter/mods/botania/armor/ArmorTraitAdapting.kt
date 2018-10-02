@@ -7,7 +7,7 @@ import c4.conarm.lib.armor.ArmorModifications
 import com.ejektaflex.pewter.lib.mixins.ManaExchanger
 import com.ejektaflex.pewter.api.core.traits.PewterArmorTrait
 
-class ArmorTraitAdapting : PewterArmorTrait("adapting", 0xE5DFCF), ManaExchanger {
+class ArmorTraitAdapting(name: String) : PewterArmorTrait(name, 0xE5DFCF), ManaExchanger {
     override fun getModifications(player: EntityPlayer?, mods: ArmorModifications, armor: ItemStack?, source: DamageSource?, damage: Double, slot: Int): ArmorModifications {
         if (player!!.lastDamageSource != null) {
             if (hasEnoughMana(armor!!, player, MANA_COST)) {

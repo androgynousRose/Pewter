@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.thebetweenlands.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialSyrmorite : MaterialDSL("syrmorite", "#1E336C", {
+class MaterialSyrmorite(name: String) : MaterialDSL(name, "#1E336C", {
     forge { true }
     craft { false }
     allTags("Syrmorite")

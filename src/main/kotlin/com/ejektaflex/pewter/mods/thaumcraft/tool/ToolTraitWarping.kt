@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack
 import thaumcraft.api.ThaumcraftApi
 import thaumcraft.api.capabilities.IPlayerWarp
 
-class ToolTraitWarping : PewterToolTrait("warping", 0x4F1D3C), TinkerNBTHelper {
+class ToolTraitWarping(name: String) : PewterToolTrait(name, 0x4F1D3C), TinkerNBTHelper {
     override fun onToolDamage(tool: ItemStack?, damage: Int, newDamage: Int, entity: EntityLivingBase): Int {
         if (entity is EntityPlayer) {
             if (random.nextFloat() < calculateChance(tool!!)) {

@@ -10,7 +10,6 @@ import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
 import com.ejektaflex.pewter.mods.botania.armor.*
 import com.ejektaflex.pewter.mods.botania.material.*
 import com.ejektaflex.pewter.mods.botania.tool.*
-import net.minecraftforge.fml.common.Loader
 
 class ModuleBotania : PewterModule() {
 
@@ -22,18 +21,18 @@ class ModuleBotania : PewterModule() {
     )
 
     override val armorTraits: MutableList<IPewterArmorTrait> = mutableListOf(
-            ArmorTraitAdapting(),
-            ArmorTraitManaInfused(),
-            ArmorTraitTerra()
+            ArmorTraitAdapting("adapting"),
+            ArmorTraitManaInfused("Mana Infused"),
+            ArmorTraitTerra("terra")
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(
-            MaterialElementium(),
-            MaterialLivingrock(),
-            MaterialLivingwood(),
-            MaterialManasteel(),
-            MaterialManastring(),
-            MaterialTerrasteel()
+            MaterialElementium("elementium"),
+            MaterialLivingrock("livingrock"),
+            MaterialLivingwood("livingwood"),
+            MaterialManasteel("manasteel"),
+            MaterialManastring("manastring"),
+            MaterialTerrasteel("terrasteel")
     )
 
     override val toolModifiers: MutableList<ModifierFunc<out IPewterToolModifier>> = mutableListOf(
@@ -43,8 +42,8 @@ class ModuleBotania : PewterModule() {
     )
 
     override val toolTraits: MutableList<IPewterToolTrait> = mutableListOf(
-            ToolTraitManaHarvest(),
-            ToolTraitManaInfused()
+            ToolTraitManaHarvest("manaharvest"),
+            ToolTraitManaInfused("manainfused")
     )
 
 }

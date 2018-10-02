@@ -2,10 +2,9 @@ package com.ejektaflex.pewter.mods.embers
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialAshenFabric : MaterialDSL("ashenfabric", "#303030", {
+class MaterialAshenFabric(matName: String) : MaterialDSL(matName, "#303030", {
     forge { false }
     craft { true }
-    //allTags("Dawnstone")
     ingots("embers:ashen_cloth")
     armorParts()
     brightness(0.02f)

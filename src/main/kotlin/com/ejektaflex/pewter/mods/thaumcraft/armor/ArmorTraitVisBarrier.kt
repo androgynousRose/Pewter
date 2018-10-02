@@ -10,7 +10,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent
 import slimeknights.tconstruct.shared.client.ParticleEffect
 import slimeknights.tconstruct.tools.TinkerTools
 
-class ArmorTraitVisBarrier : PewterArmorTrait("visbarrier", 0xFF2334), AuraExchanger {
+class ArmorTraitVisBarrier(name: String) : PewterArmorTrait(name, 0xFF2334), AuraExchanger {
 
     override fun onDamaged(armor: ItemStack?, player: EntityPlayer, source: DamageSource, damage: Float, newDamage: Float, evt: LivingDamageEvent?): Float {
 

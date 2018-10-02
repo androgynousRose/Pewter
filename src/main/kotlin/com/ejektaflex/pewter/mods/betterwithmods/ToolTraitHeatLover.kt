@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.library.utils.ToolHelper
 
 
-class ToolTraitHeatLover : PewterToolTrait("heatlover", 0xFF2334), IModHeatLover {
+class ToolTraitHeatLover(name: String) : PewterToolTrait(name, 0xFF2334), IModHeatLover {
     override fun onHit(tool: ItemStack, player: EntityLivingBase, target: EntityLivingBase, damage: Float, isCritical: Boolean) {
         if (target.isBurning) {
             ToolHelper.healTool(tool, calcHealAmount(target, random), player)

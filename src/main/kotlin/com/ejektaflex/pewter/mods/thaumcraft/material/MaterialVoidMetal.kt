@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.thaumcraft.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialVoidMetal : MaterialDSL("voidmetal", "#2A114A", {
+class MaterialVoidMetal(name: String) : MaterialDSL(name, "#2A114A", {
     forge { true }
     craft { false }
     ingots("thaumcraft:ingot:1")

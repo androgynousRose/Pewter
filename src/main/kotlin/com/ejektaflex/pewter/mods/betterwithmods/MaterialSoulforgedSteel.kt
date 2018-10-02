@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.betterwithmods
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialSoulforgedSteel : MaterialDSL("soulforgedsteel", "#464646", {
+class MaterialSoulforgedSteel(matName: String) : MaterialDSL(matName, "#464646", {
     forge { true }
     craft { false }
     allTags("SoulforgedSteel")

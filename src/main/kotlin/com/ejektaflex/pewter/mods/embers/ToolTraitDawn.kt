@@ -14,7 +14,7 @@ import kotlin.math.max
 import kotlin.math.roundToInt
 
 
-class ToolTraitDawn : PewterToolTrait("dawn", 0xFFB337), TinkerNBTHelper {
+class ToolTraitDawn(name: String) : PewterToolTrait(name, 0xFFB337), TinkerNBTHelper {
     override fun onHit(tool: ItemStack, player: EntityLivingBase, target: EntityLivingBase?, damage: Float, isCritical: Boolean) {
         return when (player.world.isRemote) {
             true -> super.onHit(tool, player, target, damage, isCritical)

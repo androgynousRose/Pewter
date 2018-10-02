@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.botania.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialLivingrock : MaterialDSL("livingrock", "#E5DFCF", {
+class MaterialLivingrock(name: String) : MaterialDSL(name, "#E5DFCF", {
     forge { false }
     craft { true }
     ingots("botania:livingrock")

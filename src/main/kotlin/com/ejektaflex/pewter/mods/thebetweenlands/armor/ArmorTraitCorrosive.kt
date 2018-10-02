@@ -24,7 +24,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 
-class ArmorTraitCorrosive : PewterArmorTrait("corrosive", 0xFF2334), TinkerNBTHelper {
+class ArmorTraitCorrosive(name: String) : PewterArmorTrait(name, 0xFF2334), TinkerNBTHelper {
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent

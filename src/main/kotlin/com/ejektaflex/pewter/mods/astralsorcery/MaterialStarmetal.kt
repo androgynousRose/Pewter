@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.astralsorcery
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialStarmetal : MaterialDSL("starmetal", "#222288", {
+class MaterialStarmetal(matName: String) : MaterialDSL(matName, "#222288", {
     forge { true }
     craft { false }
     ingots("astralsorcery:itemcraftingcomponent:1")

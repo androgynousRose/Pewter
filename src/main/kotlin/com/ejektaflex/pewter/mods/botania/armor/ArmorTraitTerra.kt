@@ -10,7 +10,7 @@ import com.ejektaflex.pewter.api.core.traits.PewterArmorTrait
 import net.minecraft.entity.Entity
 import net.minecraft.world.World
 
-class ArmorTraitTerra : PewterArmorTrait("terra", 0x83FF37), ManaExchanger, TinkerNBTHelper {
+class ArmorTraitTerra(name: String) : PewterArmorTrait(name, 0x83FF37), ManaExchanger, TinkerNBTHelper {
 
     override fun onUpdate(armor: ItemStack?, world: World?, entity: Entity?, itemSlot: Int, isSelected: Boolean) {
         if (entity == null || entity !is EntityPlayer || entity.getEntityWorld().isRemote) {

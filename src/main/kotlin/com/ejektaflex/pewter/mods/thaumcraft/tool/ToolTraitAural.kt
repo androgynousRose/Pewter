@@ -5,7 +5,7 @@ import com.ejektaflex.pewter.api.core.traits.PewterToolTrait
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 
-class ToolTraitAural : PewterToolTrait("aural", 0xC867D7), AuraExchanger {
+class ToolTraitAural(name: String) : PewterToolTrait(name, 0xC867D7), AuraExchanger {
     override fun onToolDamage(tool: ItemStack?, damage: Int, newDamage: Int, entity: EntityLivingBase): Int {
         val protoDamage = when (random.nextFloat() < chance) {
             true -> {

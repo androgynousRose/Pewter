@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.botania.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialManasteel : MaterialDSL("manasteel", "#005EE0", {
+class MaterialManasteel(name: String) : MaterialDSL(name, "#005EE0", {
     forge { true }
     craft { false }
     allTags("Manasteel")

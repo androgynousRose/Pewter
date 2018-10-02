@@ -3,7 +3,7 @@ package com.ejektaflex.pewter.mods.botania.material
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData.MatPart
 
-class MaterialManastring : MaterialDSL("manastring", "#6BBEBF", {
+class MaterialManastring(name: String) : MaterialDSL(name, "#6BBEBF", {
     forge { false }
     craft { true }
     ingotTags("manaString")

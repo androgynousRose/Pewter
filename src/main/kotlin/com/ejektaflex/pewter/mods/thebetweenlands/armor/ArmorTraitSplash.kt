@@ -8,7 +8,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent
 import slimeknights.tconstruct.shared.client.ParticleEffect
 import slimeknights.tconstruct.tools.TinkerTools
 
-class ArmorTraitSplash : PewterArmorTrait("splash", 0xFF2334) {
+class ArmorTraitSplash(name: String) : PewterArmorTrait(name, 0xFF2334) {
 
     override fun onDamaged(armor: ItemStack?, player: EntityPlayer, source: DamageSource, damage: Float, newDamage: Float, evt: LivingDamageEvent?): Float {
         val enemy = source.trueSource

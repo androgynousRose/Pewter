@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.DamageSource
 import net.minecraftforge.event.entity.living.LivingDamageEvent
 
-class ArmorTraitEnvious : PewterArmorTrait("envious", 0x9B9B9B) {
+class ArmorTraitEnvious(name: String) : PewterArmorTrait(name, 0x9B9B9B) {
 
     override fun onDamaged(armor: ItemStack?, player: EntityPlayer?, source: DamageSource, damage: Float, newDamage: Float, evt: LivingDamageEvent?): Float {
         var toDeal = newDamage

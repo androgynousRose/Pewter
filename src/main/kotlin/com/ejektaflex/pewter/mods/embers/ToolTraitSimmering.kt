@@ -5,9 +5,10 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.shared.client.ParticleEffect
 import slimeknights.tconstruct.tools.TinkerTools
+import kotlin.math.min
 
 
-class ToolTraitSimmering : PewterToolTrait("simmering", 0xE84C22) {
+class ToolTraitSimmering(name: String) : PewterToolTrait(name, 0xE84C22) {
     override fun onHit(tool: ItemStack, player: EntityLivingBase, target: EntityLivingBase, damage: Float, isCritical: Boolean) {
 
         val addedDamage = when(target.posY) {
@@ -16,7 +17,9 @@ class ToolTraitSimmering : PewterToolTrait("simmering", 0xE84C22) {
             else -> 0f
         }
 
-        TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_FIRE, target, addedDamage.toInt())
+        val numHearts = min(1, addedDamage.toInt() / 2)
+
+        TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_FIRE, target, numHearts)
 
         super.onHit(tool, player, target, damage + addedDamage, isCritical)
     }

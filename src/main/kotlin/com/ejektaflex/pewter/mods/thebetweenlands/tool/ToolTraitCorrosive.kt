@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import kotlin.math.max
 
 
-class ToolTraitCorrosive : PewterToolTrait("corrosive", 0x70FF3D), EntityBonus<IEntityBL, Float>, TinkerNBTHelper {
+class ToolTraitCorrosive(name: String) : PewterToolTrait(name, 0x70FF3D), EntityBonus<IEntityBL, Float>, TinkerNBTHelper {
 
     override fun calculateEntityBonus(e: Entity?, original: Float, func: IEntityBL.() -> Unit): Float {
         return original * (1f + when(e) {

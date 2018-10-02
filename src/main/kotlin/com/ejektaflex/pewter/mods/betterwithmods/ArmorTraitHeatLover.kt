@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.DamageSource
 import net.minecraftforge.event.entity.living.LivingDamageEvent
 
-class ArmorTraitHeatLover : PewterArmorTrait("heatlover", 0xFF2334), IModHeatLover {
+class ArmorTraitHeatLover(name: String) : PewterArmorTrait(name, 0xFF2334), IModHeatLover {
 
     override fun onDamaged(armor: ItemStack?, player: EntityPlayer?, source: DamageSource, damage: Float, newDamage: Float, evt: LivingDamageEvent?): Float {
         if (source.trueSource is EntityLivingBase) {
