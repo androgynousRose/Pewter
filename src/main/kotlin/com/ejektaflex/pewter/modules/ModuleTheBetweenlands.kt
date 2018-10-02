@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.modules
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.PewterModule
-import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
+import com.ejektaflex.pewter.api.core.EffectWrapper
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
 import com.ejektaflex.pewter.mods.thebetweenlands.armor.ArmorTraitCorrosive
@@ -17,9 +17,9 @@ class ModuleTheBetweenlands : PewterModule() {
 
     override val id = "thebetweenlands"
 
-    override val armorTraits: MutableList<ModifierFunc<out IPewterArmorTrait>> = mutableListOf(
-            ModifierFunc("corrosive") { ArmorTraitCorrosive(this) },
-            ModifierFunc("splash") { ArmorTraitSplash(this) }
+    override val armorTraits: MutableList<EffectWrapper<out IPewterArmorTrait>> = mutableListOf(
+            EffectWrapper("corrosive") { ArmorTraitCorrosive(this) },
+            EffectWrapper("splash") { ArmorTraitSplash(this) }
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(
@@ -30,11 +30,11 @@ class ModuleTheBetweenlands : PewterModule() {
             MaterialWeedwood("weedwood")
     )
 
-    override val toolTraits: MutableList<ModifierFunc<out IPewterToolTrait>> = mutableListOf(
-            ModifierFunc("buzzing") { ToolTraitBuzzing(this) },
-            ModifierFunc("corrosive") { ToolTraitCorrosive(this) },
-            ModifierFunc("gritty") { ToolTraitGritty(this) },
-            ModifierFunc("sparking") { ToolTraitSparking(this) }
+    override val toolTraits: MutableList<EffectWrapper<out IPewterToolTrait>> = mutableListOf(
+            EffectWrapper("buzzing") { ToolTraitBuzzing(this) },
+            EffectWrapper("corrosive") { ToolTraitCorrosive(this) },
+            EffectWrapper("gritty") { ToolTraitGritty(this) },
+            EffectWrapper("sparking") { ToolTraitSparking(this) }
     )
 
 }

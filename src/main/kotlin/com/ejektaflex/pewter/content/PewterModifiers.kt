@@ -3,10 +3,10 @@ package com.ejektaflex.pewter.content
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.api.core.modifiers.IPewterModifier
-import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
+import com.ejektaflex.pewter.api.core.EffectWrapper
 import com.ejektaflex.pewter.lib.AbstractLoadable
 
-object PewterModifiers : AbstractLoadable<IPewterModifier, ModifierFunc<out IPewterModifier>>() {
+object PewterModifiers : AbstractLoadable<IPewterModifier, EffectWrapper<out IPewterModifier>>() {
 
     private const val armorSuffix = "_armor"
 
@@ -14,7 +14,7 @@ object PewterModifiers : AbstractLoadable<IPewterModifier, ModifierFunc<out IPew
         return content.find { it.identifier == id }
     }
 
-    override fun transformContent(items: List<ModifierFunc<out IPewterModifier>>): List<IPewterModifier> {
+    override fun transformContent(items: List<EffectWrapper<out IPewterModifier>>): List<IPewterModifier> {
         return items.asSequence().mapNotNull {
             // Remove modifiers that have been blacklisted
             if (Pewter.hasBlacklistedModifier(it.identifier)) {

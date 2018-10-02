@@ -4,7 +4,7 @@ import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.api.core.traits.IPewterTrait
-import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
+import com.ejektaflex.pewter.api.core.EffectWrapper
 import com.ejektaflex.pewter.api.core.PewterModule
 
 /**
@@ -23,22 +23,22 @@ interface IPewterAPI {
     /**
      * Adds a tool modifier to Pewter.
      */
-    fun addToolModifier(mod: ModifierFunc<out IPewterToolModifier>) {}
+    fun addToolModifier(mod: EffectWrapper<out IPewterToolModifier>) {}
 
     /**
      * Adds an armor modifier to Pewter.
      */
-    fun addArmorModifier(mod: ModifierFunc<out IPewterArmorModifier>) {}
+    fun addArmorModifier(mod: EffectWrapper<out IPewterArmorModifier>) {}
 
     /**
      * Adds a tool trait to Pewter.
      */
-    fun addToolTrait(mod: ModifierFunc<out IPewterTrait>) {}
+    fun addToolTrait(mod: EffectWrapper<out IPewterTrait>) {}
 
     /**
      * Adds an armor trait to Pewter.
      */
-    fun addArmorTrait(mod: ModifierFunc<out IPewterTrait>) {}
+    fun addArmorTrait(mod: EffectWrapper<out IPewterTrait>) {}
 
     /**
      * Used to log API work done by Pewter.

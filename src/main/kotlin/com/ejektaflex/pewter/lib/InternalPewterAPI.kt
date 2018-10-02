@@ -6,7 +6,7 @@ import com.ejektaflex.pewter.api.core.traits.IPewterTrait
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
-import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
+import com.ejektaflex.pewter.api.core.EffectWrapper
 import com.ejektaflex.pewter.api.core.PewterModule
 import com.ejektaflex.pewter.content.PewterContent
 import com.ejektaflex.pewter.content.PewterMaterials
@@ -16,11 +16,11 @@ import slimeknights.mantle.client.book.repository.FileRepository
 
 internal object InternalPewterAPI : IPewterAPI {
 
-    override fun addToolModifier(mod: ModifierFunc<out IPewterToolModifier>) {
+    override fun addToolModifier(mod: EffectWrapper<out IPewterToolModifier>) {
         PewterModifiers.internalContent.add(mod)
     }
 
-    override fun addArmorModifier(mod: ModifierFunc<out IPewterArmorModifier>) {
+    override fun addArmorModifier(mod: EffectWrapper<out IPewterArmorModifier>) {
         if (Pewter.isUsingConArm()) {
             PewterModifiers.internalContent.add(mod)
         } else {
@@ -28,11 +28,11 @@ internal object InternalPewterAPI : IPewterAPI {
         }
     }
 
-    override fun addToolTrait(mod: ModifierFunc<out IPewterTrait>) {
+    override fun addToolTrait(mod: EffectWrapper<out IPewterTrait>) {
         PewterTraits.internalContent.add(mod)
     }
 
-    override fun addArmorTrait(mod: ModifierFunc<out IPewterTrait>) {
+    override fun addArmorTrait(mod: EffectWrapper<out IPewterTrait>) {
         if (Pewter.isUsingConArm()) {
             PewterTraits.internalContent.add(mod)
         } else {

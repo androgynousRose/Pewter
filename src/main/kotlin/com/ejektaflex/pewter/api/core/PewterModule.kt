@@ -2,12 +2,9 @@ package com.ejektaflex.pewter.api.core
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
-import com.ejektaflex.pewter.api.core.modifiers.IPewterModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
-import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
-import com.ejektaflex.pewter.api.core.traits.IPewterTrait
 import net.minecraftforge.fml.common.Loader
 
 abstract class PewterModule {
@@ -29,12 +26,12 @@ abstract class PewterModule {
 
     open val materials = mutableListOf<MaterialDSL>()
 
-    open val toolTraits = mutableListOf<ModifierFunc<out IPewterToolTrait>>()
+    open val toolTraits = mutableListOf<EffectWrapper<out IPewterToolTrait>>()
 
-    open val toolModifiers = mutableListOf<ModifierFunc<out IPewterToolModifier>>()
+    open val toolModifiers = mutableListOf<EffectWrapper<out IPewterToolModifier>>()
 
-    open val armorTraits = mutableListOf<ModifierFunc<out IPewterArmorTrait>>()
+    open val armorTraits = mutableListOf<EffectWrapper<out IPewterArmorTrait>>()
 
-    open val armorModifiers = mutableListOf<ModifierFunc<out IPewterArmorModifier>>()
+    open val armorModifiers = mutableListOf<EffectWrapper<out IPewterArmorModifier>>()
 
 }

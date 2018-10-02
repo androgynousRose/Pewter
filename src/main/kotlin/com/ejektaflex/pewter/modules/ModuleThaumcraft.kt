@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.modules
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
-import com.ejektaflex.pewter.api.core.modifiers.ModifierFunc
+import com.ejektaflex.pewter.api.core.EffectWrapper
 import com.ejektaflex.pewter.api.core.PewterModule
 import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
@@ -16,9 +16,9 @@ class ModuleThaumcraft : PewterModule() {
 
     override val id = "thaumcraft"
 
-    override val armorTraits: MutableList<ModifierFunc<out IPewterArmorTrait>> = mutableListOf(
-            ModifierFunc("maniacal") { ArmorTraitManiacal(this) },
-            ModifierFunc("visbarrier") { ArmorTraitVisBarrier(this) }
+    override val armorTraits: MutableList<EffectWrapper<out IPewterArmorTrait>> = mutableListOf(
+            EffectWrapper("maniacal") { ArmorTraitManiacal(this) },
+            EffectWrapper("visbarrier") { ArmorTraitVisBarrier(this) }
     )
 
     override val materials = mutableListOf<MaterialDSL>(
@@ -26,17 +26,17 @@ class ModuleThaumcraft : PewterModule() {
             MaterialVoidMetal("voidmetal")
     )
 
-    override val toolModifiers = mutableListOf<ModifierFunc<out IPewterToolModifier>>(
-            ModifierFunc("sanitizing") { ToolModSanitizing(this) },
-            ModifierFunc("quicksilver") { ToolModQuicksilver(this) }
+    override val toolModifiers = mutableListOf<EffectWrapper<out IPewterToolModifier>>(
+            EffectWrapper("sanitizing") { ToolModSanitizing(this) },
+            EffectWrapper("quicksilver") { ToolModQuicksilver(this) }
     )
 
-    override val toolTraits: MutableList<ModifierFunc<out IPewterToolTrait>> = mutableListOf(
-            ModifierFunc("aural") { ToolTraitAural(this) },
-            ModifierFunc("essentia") { ToolTraitEssentia(this) },
-            ModifierFunc("polluted") { ToolTraitPolluted(this) },
-            ModifierFunc("sapping") { ToolTraitSapping(this) },
-            ModifierFunc("warping") { ToolTraitWarping(this) }
+    override val toolTraits: MutableList<EffectWrapper<out IPewterToolTrait>> = mutableListOf(
+            EffectWrapper("aural") { ToolTraitAural(this) },
+            EffectWrapper("essentia") { ToolTraitEssentia(this) },
+            EffectWrapper("polluted") { ToolTraitPolluted(this) },
+            EffectWrapper("sapping") { ToolTraitSapping(this) },
+            EffectWrapper("warping") { ToolTraitWarping(this) }
     )
 
 }
