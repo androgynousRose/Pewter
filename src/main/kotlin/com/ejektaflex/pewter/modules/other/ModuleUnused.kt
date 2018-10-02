@@ -17,7 +17,7 @@ class ModuleUnused : PewterModule() {
             // None
     )
 
-    override val armorTraits: MutableList<IPewterArmorTrait> = mutableListOf(
+    override val armorTraits: MutableList<ModifierFunc<out IPewterArmorTrait>> = mutableListOf(
             // None
     )
 
@@ -29,7 +29,7 @@ class ModuleUnused : PewterModule() {
             // None
     )
 
-    override val toolTraits: MutableList<IPewterToolTrait> = mutableListOf(
+    override val toolTraits: MutableList<ModifierFunc<out IPewterToolTrait>> = mutableListOf(
             // None
     )
 

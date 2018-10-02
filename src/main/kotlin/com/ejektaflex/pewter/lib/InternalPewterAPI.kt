@@ -28,11 +28,11 @@ internal object InternalPewterAPI : IPewterAPI {
         }
     }
 
-    override fun addToolTrait(mod: IPewterTrait) {
+    override fun addToolTrait(mod: ModifierFunc<out IPewterTrait>) {
         PewterTraits.internalContent.add(mod)
     }
 
-    override fun addArmorTrait(mod: IPewterTrait) {
+    override fun addArmorTrait(mod: ModifierFunc<out IPewterTrait>) {
         if (Pewter.isUsingConArm()) {
             PewterTraits.internalContent.add(mod)
         } else {

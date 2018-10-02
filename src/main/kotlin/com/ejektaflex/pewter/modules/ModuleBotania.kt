@@ -20,10 +20,10 @@ class ModuleBotania : PewterModule() {
             ModifierFunc("runemana_armor") { ArmorModRuneMana(this) }
     )
 
-    override val armorTraits: MutableList<IPewterArmorTrait> = mutableListOf(
-            ArmorTraitAdapting("adapting"),
-            ArmorTraitManaInfused("Mana Infused"),
-            ArmorTraitTerra("terra")
+    override val armorTraits: MutableList<ModifierFunc<out IPewterArmorTrait>> = mutableListOf(
+            ModifierFunc("adapting") { ArmorTraitAdapting(this) },
+            ModifierFunc("Mana Infused") { ArmorTraitManaInfused(this) },
+            ModifierFunc("terra") { ArmorTraitTerra(this) }
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(
@@ -41,9 +41,9 @@ class ModuleBotania : PewterModule() {
             ModifierFunc("runemana") { ToolModRuneMana(this) }
     )
 
-    override val toolTraits: MutableList<IPewterToolTrait> = mutableListOf(
-            ToolTraitManaHarvest("manaharvest"),
-            ToolTraitManaInfused("manainfused")
+    override val toolTraits: MutableList<ModifierFunc<out IPewterToolTrait>> = mutableListOf(
+            ModifierFunc("manaharvest") { ToolTraitManaHarvest("manaharvest") },
+            ModifierFunc("manainfused") { ToolTraitManaInfused(this) }
     )
 
 }

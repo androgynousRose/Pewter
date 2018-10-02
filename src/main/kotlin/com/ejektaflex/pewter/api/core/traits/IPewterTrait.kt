@@ -1,5 +1,5 @@
 package com.ejektaflex.pewter.api.core.traits
 
-import slimeknights.tconstruct.library.modifiers.IModifier
+import com.ejektaflex.pewter.api.core.IPewterBaseEffect
 
-interface IPewterTrait : IModifier
+interface IPewterTrait : IPewterBaseEffect

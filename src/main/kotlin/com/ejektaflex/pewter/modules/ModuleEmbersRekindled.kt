@@ -18,9 +18,9 @@ class ModuleEmbersRekindled : PewterModule() {
             // None
     )
 
-    override val armorTraits: MutableList<IPewterArmorTrait> = mutableListOf(
-            ArmorTraitAshwoven("ashwoven"),
-            ArmorTraitBranded("branded")
+    override val armorTraits: MutableList<ModifierFunc<out IPewterArmorTrait>> = mutableListOf(
+            ModifierFunc("ashwoven") { ArmorTraitAshwoven(this) },
+            ModifierFunc("branded") { ArmorTraitBranded(this) }
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(
@@ -32,9 +32,9 @@ class ModuleEmbersRekindled : PewterModule() {
             // None
     )
 
-    override val toolTraits: MutableList<IPewterToolTrait> = mutableListOf(
-            ToolTraitDawn("dawn"),
-            ToolTraitSimmering("simmering")
+    override val toolTraits: MutableList<ModifierFunc<out IPewterToolTrait>> = mutableListOf(
+            ModifierFunc("dawn") { ToolTraitDawn(this) },
+            ModifierFunc("simmering") { ToolTraitSimmering(this) }
     )
 
 }

@@ -16,9 +16,9 @@ class ModuleThaumcraft : PewterModule() {
 
     override val id = "thaumcraft"
 
-    override val armorTraits: MutableList<IPewterArmorTrait> = mutableListOf(
-            ArmorTraitManiacal("maniacal"),
-            ArmorTraitVisBarrier("visbarrier")
+    override val armorTraits: MutableList<ModifierFunc<out IPewterArmorTrait>> = mutableListOf(
+            ModifierFunc("maniacal") { ArmorTraitManiacal(this) },
+            ModifierFunc("visbarrier") { ArmorTraitVisBarrier(this) }
     )
 
     override val materials = mutableListOf<MaterialDSL>(
@@ -31,12 +31,12 @@ class ModuleThaumcraft : PewterModule() {
             ModifierFunc("quicksilver") { ToolModQuicksilver(this) }
     )
 
-    override val toolTraits: MutableList<IPewterToolTrait> = mutableListOf(
-            ToolTraitAural("aural"),
-            ToolTraitEssentia("essentia"),
-            ToolTraitPolluted("polluted"),
-            ToolTraitSapping("sapping"),
-            ToolTraitWarping("warping")
+    override val toolTraits: MutableList<ModifierFunc<out IPewterToolTrait>> = mutableListOf(
+            ModifierFunc("aural") { ToolTraitAural(this) },
+            ModifierFunc("essentia") { ToolTraitEssentia(this) },
+            ModifierFunc("polluted") { ToolTraitPolluted(this) },
+            ModifierFunc("sapping") { ToolTraitSapping(this) },
+            ModifierFunc("warping") { ToolTraitWarping(this) }
     )
 
 }

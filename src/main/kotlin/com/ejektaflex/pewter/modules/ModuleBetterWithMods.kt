@@ -17,9 +17,9 @@ class ModuleBetterWithMods : PewterModule() {
             // None
     )
 
-    override val armorTraits: MutableList<IPewterArmorTrait> = mutableListOf(
-            ArmorTraitEnvious("envious"),
-            ArmorTraitHeatLover("heatlover")
+    override val armorTraits: MutableList<ModifierFunc<out IPewterArmorTrait>> = mutableListOf(
+            ModifierFunc("envious") { ArmorTraitEnvious(this) },
+            ModifierFunc("heatlover") { ArmorTraitHeatLover(this) }
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(
@@ -31,8 +31,8 @@ class ModuleBetterWithMods : PewterModule() {
             // None
     )
 
-    override val toolTraits: MutableList<IPewterToolTrait> = mutableListOf(
-            ToolTraitHeatLover("heatlover")
+    override val toolTraits: MutableList<ModifierFunc<out IPewterToolTrait>> = mutableListOf(
+            ModifierFunc("heatlover") { ToolTraitHeatLover(this) }
     )
 
 }

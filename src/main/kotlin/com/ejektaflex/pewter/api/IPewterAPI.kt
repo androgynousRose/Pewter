@@ -33,12 +33,12 @@ interface IPewterAPI {
     /**
      * Adds a tool trait to Pewter.
      */
-    fun addToolTrait(mod: IPewterTrait) {}
+    fun addToolTrait(mod: ModifierFunc<out IPewterTrait>) {}
 
     /**
      * Adds an armor trait to Pewter.
      */
-    fun addArmorTrait(mod: IPewterTrait) {}
+    fun addArmorTrait(mod: ModifierFunc<out IPewterTrait>) {}
 
     /**
      * Used to log API work done by Pewter.

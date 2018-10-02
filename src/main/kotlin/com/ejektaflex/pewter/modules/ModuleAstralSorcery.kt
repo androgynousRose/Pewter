@@ -27,8 +27,8 @@ class ModuleAstralSorcery : PewterModule() {
             ModifierFunc("celestial") { ToolModAquaCelestial(this) }
     )
 
-    override val toolTraits: MutableList<IPewterToolTrait> = mutableListOf(
-            ToolTraitBrilliance("brilliance")
+    override val toolTraits: MutableList<ModifierFunc<out IPewterToolTrait>> = mutableListOf(
+            ModifierFunc("brilliance") { ToolTraitBrilliance("brilliance") }
     )
 
 }

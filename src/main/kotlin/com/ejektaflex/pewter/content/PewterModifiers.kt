@@ -14,7 +14,7 @@ object PewterModifiers : AbstractLoadable<IPewterModifier, ModifierFunc<out IPew
         return content.find { it.identifier == id }
     }
 
-    override fun transformContent(items: List<ModifierFunc<*>>): List<IPewterModifier> {
+    override fun transformContent(items: List<ModifierFunc<out IPewterModifier>>): List<IPewterModifier> {
         return items.asSequence().mapNotNull {
             // Remove modifiers that have been blacklisted
             if (Pewter.hasBlacklistedModifier(it.identifier)) {
