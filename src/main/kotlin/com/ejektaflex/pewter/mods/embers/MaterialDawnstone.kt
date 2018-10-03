@@ -43,8 +43,8 @@ class MaterialDawnstone(matName: String) : MaterialDSL(matName, "#FFB648", {
     armor {
         armorTrait("branded_armor")
         core {
-            durability { 18f }
-            defense { 15f }
+            durability { 16.5f }
+            defense { 15.5f }
         }
         plates {
             modifier { 1f }

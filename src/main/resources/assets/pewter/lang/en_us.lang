@@ -74,7 +74,7 @@ modifier.amethyst_armor.name=Amethyst
 modifier.amethyst_armor.desc=§oFind them all!§r\nDurability+++, Defense+++
 
 modifier.ashwoven_armor.name=Ashwoven
-modifier.ashwoven_armor.desc=§oTightly knit!§r\nTakes 15% less damage from fire, but makes the wearer 10% weaker to normal attacks. This effect stacks!
+modifier.ashwoven_armor.desc=§oTightly knit!§r\nTakes 15% less damage from fire, but makes the wearer 10% weaker to normal attacks. This effect stacks with other armor pieces!
 
 modifier.attuned.name=Attuned
 modifier.attuned.desc=§oIn sync with the world!§r\nRepairing gives bonus durability based on vis and flux in the Aura.

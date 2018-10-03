@@ -11,6 +11,6 @@ interface IToolHarvestBonus : IModChange<Int> {
 
     override fun modCost(item: ItemStack?): Int {
         val modData = item!!.getModifierIntNBT<ToolModRuneAutumn>()
-        return (baseChange + (modData.current * 20))
+        return (baseChange + (modData.current * 22))
     }
 }
