@@ -1,5 +1,6 @@
 package com.ejektaflex.pewter.ext
 
+import net.minecraft.enchantment.EnchantmentProtection
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.math.RayTraceResult

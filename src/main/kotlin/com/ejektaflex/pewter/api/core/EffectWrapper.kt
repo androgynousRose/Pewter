@@ -10,3 +10,5 @@ package com.ejektaflex.pewter.api.core
 class EffectWrapper<T : IPewterBaseEffect>(var identifier: String, val func: String.() -> T) {
     fun create() = func(identifier)
 }
+
+

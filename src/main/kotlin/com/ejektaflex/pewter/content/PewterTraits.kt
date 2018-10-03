@@ -15,3 +15,4 @@ object PewterTraits : AbstractLoadable<IPewterTrait, EffectWrapper<out IPewterTr
     }
 
 }
+

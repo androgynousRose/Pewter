@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.mods.embers
+package com.ejektaflex.pewter.mods.unused
 
 import com.ejektaflex.pewter.api.core.traits.PewterToolTrait
 import com.ejektaflex.pewter.shared.methods.IModHeatLover

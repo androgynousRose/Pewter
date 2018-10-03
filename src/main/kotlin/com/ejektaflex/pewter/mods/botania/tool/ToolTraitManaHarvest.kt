@@ -5,6 +5,7 @@ import com.ejektaflex.pewter.shared.methods.IToolHarvestBonus
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
+import net.minecraftforge.event.world.BlockEvent
 import slimeknights.tconstruct.shared.client.ParticleEffect
 import slimeknights.tconstruct.tools.TinkerTools
 import vazkii.botania.api.mana.ManaItemHandler

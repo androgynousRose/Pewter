@@ -22,7 +22,7 @@ class ModuleBotania : PewterModule() {
 
     override val armorTraits: MutableList<EffectWrapper<out IPewterArmorTrait>> = mutableListOf(
             EffectWrapper("adapting") { ArmorTraitAdapting(this) },
-            EffectWrapper("Mana Infused") { ArmorTraitManaInfused(this) },
+            EffectWrapper("manainfused") { ArmorTraitManaInfused(this) },
             EffectWrapper("terra") { ArmorTraitTerra(this) }
     )
 

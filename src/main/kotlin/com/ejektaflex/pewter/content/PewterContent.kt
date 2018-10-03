@@ -21,6 +21,7 @@ internal object PewterContent {
                 ModuleBotania(),
                 ModuleCommonGems(),
                 ModuleEmbersRekindled(),
+                ModuleSoot(),
                 ModuleThaumcraft(),
                 ModuleTheBetweenlands()
         ).filter {

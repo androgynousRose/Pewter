@@ -1,5 +1,7 @@
 ### Materials ###
 
+material.antimony.name=Antimony
+
 material.ashenfabric.name=Ashen Fabric
 
 material.brass.name=Brass
@@ -162,6 +164,9 @@ modifier.peridot_armor.desc=§oFind them all!§r\nDurability++, Defense++
 modifier.polluted.name=Polluted
 modifier.polluted.desc=§oSlightly Toxic.§r\nHitting enemies has a chance of releasing flux.
 
+modifier.quenching.name=Quenching
+modifier.quenching.desc=§oPut it out!§r\nPuts out mobs on fire, scalding them and dealing damage.
+
 modifier.quicksilver.name=Quicksilver
 modifier.quicksilver.desc=§oSafe to handle!§r\nIncreases damage done to Taint mobs
 
@@ -200,6 +205,9 @@ modifier.sparking.desc=§oFighting With Fire!§r\nHitting enemies has a chance o
 
 modifier.splash_armor.name=Splash
 modifier.splash_armor.desc=§oNothing happened!§r\nReflects damage taken on attackers when in water.
+
+modifier.squelching_armor.name=Squelching
+modifier.squelching_armor.desc=§oTake the heat!§r\nIf on fire, you'll sometimes be put out quicker.
 
 modifier.starseeker_armor.name=Starseeker
 modifier.starseeker_armor.desc=§oStargazing!§r\nAdds armor toughness under an open night sky.
