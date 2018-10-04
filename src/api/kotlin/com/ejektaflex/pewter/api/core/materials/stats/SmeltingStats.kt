@@ -13,8 +13,6 @@ class SmeltingStats {
         return type.getter(this)
     }
 
-    val names: List<String> = SmeltingType.values().map { it.getter(this) }.flatten()
-
     enum class SmeltingType(val getter: SmeltingStats.() -> MutableList<String>, val amount: Int) {
         INGOT({ ingot }, Material.VALUE_Ingot),
         BLOCK({ block }, Material.VALUE_Block),
