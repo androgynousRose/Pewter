@@ -117,11 +117,12 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
     }
 
 
-    fun representativeItem(smeltStats: SmeltingStats, isOreDict: Boolean = false): ItemStack? {
+    private fun getRepresentativeItem(smeltStats: SmeltingStats, isOreDict: Boolean = false): ItemStack? {
+        val smeltNames = SmeltingStats.SmeltingType.values().map { it.getter(smeltStats) }.flatten()
         return if (!isOreDict) {
-            smeltStats.names.firstOrNull()?.toItemStack
+            smeltNames.firstOrNull()?.toItemStack
         } else {
-            val firstTag = smeltStats.names.firstOrNull()
+            val firstTag = smeltNames.firstOrNull()
             firstTag?.let {
                 OreDictionary.getOres(firstTag).firstOrNull()
             }
@@ -131,8 +132,8 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
 
     private fun represent() {
         // Material will be represented in Table of Contents by first ingot we get from OreDict tags or items
-        val repTagItem = representativeItem(data.smeltingTags, isOreDict = true)
-        val repItem = representativeItem(data.smeltingItems, isOreDict = false)
+        val repTagItem = getRepresentativeItem(data.smeltingTags, isOreDict = true)
+        val repItem = getRepresentativeItem(data.smeltingItems, isOreDict = false)
         val itemToRepresentWith = repTagItem ?: repItem
 
         itemToRepresentWith?.let {

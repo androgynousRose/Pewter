@@ -1,6 +1,5 @@
 package com.ejektaflex.pewter.api.core.modifiers
 
-import c4.conarm.lib.modifiers.ArmorModifier
 import c4.conarm.lib.modifiers.ArmorModifierTrait
 import c4.conarm.lib.utils.RecipeMatchHolder
 import com.ejektaflex.pewter.api.PewterAPI
