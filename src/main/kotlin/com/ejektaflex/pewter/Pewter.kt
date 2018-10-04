@@ -65,7 +65,7 @@ object Pewter : IProxy {
 
     const val MODID = "pewter"
     const val NAME = "Pewter"
-    const val VERSION = "1.2.0"
+    const val VERSION = "1.2.1"
     const val MCVERSION = "1.12"
     const val DEPENDS = "required-after:tconstruct;" +
             "required-after:forgelin;" +
