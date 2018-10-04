@@ -45,9 +45,13 @@ repositories {
         name 'Maven for JEI'
         url 'http://dvs1.progwml6.com/files/maven'
     }
-
-    flatDir {
-        dirs 'libs'
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
+    maven {
+        name = "MMD"
+        url = "https://maven.mcmoddev.com/"
     }
 }
 
@@ -62,8 +66,14 @@ dependencies {
     deobfProvided "mezz.jei:jei_${v_minecraft}:${v_jei}:api"
     // at runtime, use the full JEI jar
     runtime "mezz.jei:jei_${v_minecraft}:${v_jei}"
-    // Other integration mods
-    // Provided fileTree(dir: 'libr', include: ['*.jar'])
+
+    compileOnly files('libonly/Botania+r1.10-356.jar')
+    compileOnly files('libonly/conarm-1.12.2-1.0.2.jar')
+    compileOnly files('libonly/Thaumcraft-1.12.2-6.1.BETA24.jar')
+
+    compileOnly 'angry-pixel-the-betweenlands-mod:TheBetweenlands:3.3.12:universal'
+
+    compileOnly group: "com.azanor", name: "Thaumcraft", version: "1.12.2-6.1.BETA24"
 
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }

@@ -27,3 +27,5 @@ libs/*
 *.pyc
 
 \.DS_Store
+
+libonly/
