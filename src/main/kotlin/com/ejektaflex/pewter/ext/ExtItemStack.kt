@@ -25,6 +25,6 @@ inline fun <reified T : Modifier> ItemStack.getModifierIntNBT(): ModifierNBT.Int
 }
 
 fun ItemStack.comesFrom(modName: String): Boolean {
-    return item.registryName?.resourceDomain == modName
+    return item.registryName?.namespace == modName
 }
 
