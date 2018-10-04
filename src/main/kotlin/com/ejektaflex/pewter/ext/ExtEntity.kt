@@ -29,3 +29,6 @@ val EntityLivingBase.currentBiome: Biome
 
 val EntityLivingBase.temperature: Float
     get() = currentBiome.getTemperature(position)
+
+val EntityLivingBase.mobInterfaces: List<String>
+    get() = this::class.java.genericInterfaces.map { it.typeName }

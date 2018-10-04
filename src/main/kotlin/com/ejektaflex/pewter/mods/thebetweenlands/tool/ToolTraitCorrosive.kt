@@ -4,6 +4,7 @@ import com.ejektaflex.pewter.ext.get
 import com.ejektaflex.pewter.ext.set
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
 import com.ejektaflex.pewter.api.core.traits.PewterToolTrait
+import com.ejektaflex.pewter.ext.mobInterfaces
 import com.ejektaflex.pewter.shared.methods.EntityBonus
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
@@ -14,7 +15,6 @@ import slimeknights.tconstruct.library.utils.TagUtil
 import slimeknights.tconstruct.library.utils.Tags
 import slimeknights.tconstruct.shared.client.ParticleEffect
 import slimeknights.tconstruct.tools.TinkerTools
-import thebetweenlands.api.entity.IEntityBL
 import thebetweenlands.common.config.BetweenlandsConfig
 import kotlin.math.min
 import slimeknights.tconstruct.library.utils.TinkerUtil
@@ -25,15 +25,17 @@ import net.minecraftforge.fml.relauncher.SideOnly
 import kotlin.math.max
 
 
-class ToolTraitCorrosive(name: String) : PewterToolTrait(name, 0x70FF3D), EntityBonus<IEntityBL, Float>, TinkerNBTHelper {
+class ToolTraitCorrosive(name: String) : PewterToolTrait(name, 0x70FF3D), EntityBonus<Float>, TinkerNBTHelper {
 
-    override fun calculateEntityBonus(e: Entity?, original: Float, func: IEntityBL.() -> Unit): Float {
-        return original * (1f + when(e) {
-            is IEntityBL -> {
+    override val bonusInterfaces = setOf("thebetweenlands.api.entity.IEntityBL")
+
+    override fun calculateEntityBonus(e: EntityLivingBase, original: Float, func: EntityLivingBase.() -> Unit): Float {
+        return original * (1f + when(e.mobInterfaces.toSet().intersect(bonusInterfaces).size) {
+            0 -> 0f
+            else -> {
                 func(e)
                 ATTACK_BONUS
             }
-            else -> 0f
         })
     }
 
@@ -83,8 +85,12 @@ class ToolTraitCorrosive(name: String) : PewterToolTrait(name, 0x70FF3D), Entity
     }
 
     override fun damage(tool: ItemStack?, player: EntityLivingBase?, target: EntityLivingBase?, damage: Float, newDamage: Float, isCritical: Boolean): Float {
-        return calculateEntityBonus(target, newDamage) {
-            TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_BLOOD, target, 2)
+        return if (target != null && (player != null && !player.world.isRemote)) {
+            calculateEntityBonus(target, newDamage) {
+                TinkerTools.proxy.spawnEffectParticle(ParticleEffect.Type.HEART_BLOOD, target, 2)
+            }
+        } else {
+            return 0f
         }
     }
 
