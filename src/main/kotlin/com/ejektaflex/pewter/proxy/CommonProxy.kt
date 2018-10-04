@@ -65,7 +65,7 @@ open class CommonProxy : IProxy {
 
         block = BlockMolten(fluid).apply {
             setCreativeTab(null)
-            translationKey = Pewter.MODID + "." + name
+            unlocalizedName = Pewter.MODID + "." + name
             registryName = name.resource
             ForgeRegistries.BLOCKS.register(this)
         }

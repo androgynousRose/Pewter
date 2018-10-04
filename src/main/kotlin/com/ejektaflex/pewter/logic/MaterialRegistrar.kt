@@ -138,7 +138,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
 
         itemToRepresentWith?.let {
             tinkMaterial.representativeItem = it
-            Pewter.LOGGER!!.info("${data.name} is being represented by a ${tinkMaterial.representativeItem.translationKey}")
+            Pewter.LOGGER!!.info("${data.name} is being represented by a ${tinkMaterial.representativeItem.unlocalizedName}")
         }
     }
 
@@ -224,7 +224,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
         name = "molten_$name"
         // Create block
         block = BlockMolten(fluid).apply {
-            translationKey = "${Pewter.MODID}.$name"
+            unlocalizedName = "${Pewter.MODID}.$name"
             registryName = name.resource
         }
         //block.setCreativeTab(null)
