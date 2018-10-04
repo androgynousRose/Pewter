@@ -11,22 +11,24 @@ internal object PewterContent {
     private val modules = mutableListOf<PewterModule>()
 
     fun registerModule(module: PewterModule) {
-        modules.add(module)
+        if (module.hasMetDependencies()) {
+            modules.add(module)
+        }
     }
 
     init {
-        listOf(
-                ModuleAstralSorcery(),
-                ModuleBetterWithMods(),
-                ModuleBotania(),
-                ModuleCommonGems(),
-                ModuleEmbersRekindled(),
-                ModuleSoot(),
-                ModuleThaumcraft(),
-                ModuleTheBetweenlands()
-        ).filter {
-            it.hasMetDependencies()
-        }.forEach(this::registerModule)
+        if (Pewter.CONFIG.MAIN.loadPewter) {
+            listOf(
+                    ModuleAstralSorcery(),
+                    ModuleBetterWithMods(),
+                    ModuleBotania(),
+                    ModuleCommonGems(),
+                    ModuleEmbersRekindled(),
+                    ModuleSoot(),
+                    ModuleThaumcraft(),
+                    ModuleTheBetweenlands()
+            ).forEach(::registerModule)
+        }
     }
 
     fun load() {
