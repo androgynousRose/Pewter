@@ -87,6 +87,11 @@ processResources {
     }
 }
 
+jar {
+    from sourceSets.main.output
+    from sourceSets.api.output
+}
+
 compileKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
