@@ -9,6 +9,7 @@ import com.ejektaflex.pewter.api.core.materials.stats.SmeltingStats
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraft.block.Block
 import net.minecraft.item.ItemBlock
+import net.minecraft.item.ItemStack
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fluids.Fluid
 import net.minecraftforge.fluids.FluidRegistry
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.registry.ForgeRegistries
+import net.minecraftforge.oredict.OreDictionary
 import slimeknights.mantle.util.RecipeMatch
 import slimeknights.tconstruct.library.MaterialIntegration
 import slimeknights.tconstruct.library.TinkerRegistry
@@ -115,10 +117,23 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
     }
 
 
+    private fun getRepresentativeItem(smeltStats: SmeltingStats, isOreDict: Boolean = false): ItemStack? {
+        val smeltNames = SmeltingStats.SmeltingType.values().map { it.getter(smeltStats) }.flatten()
+        return if (!isOreDict) {
+            smeltNames.firstOrNull()?.toItemStack
+        } else {
+            val firstTag = smeltNames.firstOrNull()
+            firstTag?.let {
+                OreDictionary.getOres(firstTag).firstOrNull()
+            }
+        }
+    }
+
+
     private fun represent() {
         // Material will be represented in Table of Contents by first ingot we get from OreDict tags or items
-        val repTagItem = data.smeltingTags.representativeItem(isOreDict = true)
-        val repItem = data.smeltingItems.representativeItem(isOreDict = false)
+        val repTagItem = getRepresentativeItem(data.smeltingTags, isOreDict = true)
+        val repItem = getRepresentativeItem(data.smeltingItems, isOreDict = false)
         val itemToRepresentWith = repTagItem ?: repItem
 
         itemToRepresentWith?.let {

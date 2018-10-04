@@ -6,17 +6,26 @@ import com.ejektaflex.pewter.content.PewterModifiers
 open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
     open var conarmIntegration: Boolean = true
     open var loadExternalContent: Boolean = false
+    open var loadPewter: Boolean = false
 
     //var materialsToList = listOf<MaterialRegistrar>()
     var blacklistedMaterials = mutableListOf<String>()
     var blacklistedModifiers = mutableListOf<String>()
 
     fun grab() {
+
+        loadPewter = config.get(
+                CATEGORY_GENERAL,
+                "LoadPewterContent",
+                true,
+                "If set to false, Pewter will not load any of it's own content."
+        ).boolean
+
         conarmIntegration = config.get(
                 CATEGORY_GENERAL,
                 "ConstructsArmoryIntegration",
                 true,
-                "If set to true, will add dependencies as armor to Construct's Armory where available"
+                "Toggles Construct's Armory integration for Pewter."
         ).boolean
 
         loadExternalContent = config.get(

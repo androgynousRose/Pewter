@@ -23,7 +23,6 @@ abstract class PewterModule {
         return Loader.isModLoaded(id)
     }
 
-
     open val materials = mutableListOf<MaterialDSL>()
 
     open val toolTraits = mutableListOf<EffectWrapper<out IPewterToolTrait>>()
