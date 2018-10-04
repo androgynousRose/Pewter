@@ -11,8 +11,6 @@ import slimeknights.tconstruct.library.utils.TagUtil
 abstract class PewterToolTrait(val name: String, color: Int, identifier: String = name.toLowerCase().filter { it != ' ' })
     : ModifierTrait(identifier, color), IPewterToolTrait {
     init {
-        PewterAPI.log("Creating trait: $name")
-        //TinkerRegistry.addTrait(this)
         MinecraftForge.EVENT_BUS.register(this)
     }
 

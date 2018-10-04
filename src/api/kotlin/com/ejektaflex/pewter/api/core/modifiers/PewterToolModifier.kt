@@ -17,7 +17,6 @@ abstract class PewterToolModifier(
         identifier: String = name.toLowerCase().filter { it != ' ' }
 ) : ModifierTrait(identifier, color, maxLevel, countPerLevel), IPewterToolModifier {
     init {
-        PewterAPI.log("Creating modifier: $name")
         MinecraftForge.EVENT_BUS.register(this)
     }
 

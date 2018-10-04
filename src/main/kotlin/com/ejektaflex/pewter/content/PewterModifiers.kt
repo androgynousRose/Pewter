@@ -33,7 +33,6 @@ object PewterModifiers : AbstractLoadable<IPewterModifier, EffectWrapper<out IPe
 
             it
         }.map {
-            PewterAPI.log("Created armor modifier from func for ${it.identifier}")
             it.create()
         }.toList()
     }

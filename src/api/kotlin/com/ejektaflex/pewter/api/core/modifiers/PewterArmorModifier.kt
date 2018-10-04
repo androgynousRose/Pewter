@@ -18,7 +18,6 @@ abstract class PewterArmorModifier(
         identifier: String = name.toLowerCase().filter { it != ' ' }
 ) : ArmorModifierTrait(identifier, color, maxLevel, countPerLevel), IPewterArmorModifier {
     init {
-        PewterAPI.log("Creating armor modifier: $name (identifier: $identifier)")
         MinecraftForge.EVENT_BUS.register(this)
     }
 
