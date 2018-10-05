@@ -103,6 +103,14 @@ processResources {
 dokka {
     outputFormat = 'gfm'
     outputDirectory = "docs"
+    packageOptions {
+        prefix = "com.ejektaflex.pewter"
+        suppress = true
+    }
+    packageOptions {
+        prefix = "com.ejektaflex.pewter.api"
+        suppress = false
+    }
 }
 
 jar {

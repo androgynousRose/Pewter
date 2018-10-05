@@ -23,6 +23,7 @@ run
 
 libs/
 libs/*
+docs/
 
 *.pyc
 
