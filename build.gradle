@@ -101,14 +101,26 @@ processResources {
 }
 
 dokka {
-    outputFormat = 'gfm'
+    outputFormat = 'jekyll'
     outputDirectory = "../ModDocs/docs/"
+    linkMapping {
+        // Source directory
+        dir = "${projectDir}/src"
+
+        // URL showing where the source code can be accessed through the web browser
+        url = "https://github.com/ejektaflex/Pewter/tree/develop/src"
+
+        // Suffix which is used to append the line number to the URL. Use #L for GitHub
+        suffix = "#L"
+    }
     packageOptions {
         prefix = "com.ejektaflex.pewter"
+        reportUndocumented = false
         suppress = true
     }
     packageOptions {
         prefix = "com.ejektaflex.pewter.api"
+        reportUndocumented = false
         suppress = false
     }
 }
