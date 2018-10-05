@@ -102,7 +102,7 @@ processResources {
 
 dokka {
     outputFormat = 'gfm'
-    outputDirectory = "docs"
+    outputDirectory = "../ModDocs/docs/"
     packageOptions {
         prefix = "com.ejektaflex.pewter"
         suppress = true
