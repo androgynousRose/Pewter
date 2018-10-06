@@ -1,6 +1,5 @@
 package com.ejektaflex.pewter.api.core.traits
 
-import com.ejektaflex.pewter.api.PewterAPI
 import net.minecraftforge.common.MinecraftForge
 import slimeknights.tconstruct.library.traits.AbstractProjectileTrait
 

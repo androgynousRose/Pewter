@@ -33,7 +33,7 @@ compileJava {
 minecraft {
     version = "1.12.2-14.23.4.2765"
     runDir = "run"
-    mappings = "stable_39"
+    mappings = "snapshot_20171003"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
@@ -65,17 +65,19 @@ dependencies {
     // Tinkers' Construct
     compile group: "slimeknights", name: "TConstruct", version: "${v_minecraft}-${v_tinkers}"
     // Construct's Armory
-    compile files('libonly/conarm-1.12.2-1.0.2.jar')
+    compileOnly 'constructs-armory:conarm:1.12.2:1.1.2'
     // compile against the JEI API but do not include it at runtime
     deobfProvided "mezz.jei:jei_${v_minecraft}:${v_jei}:api"
     // at runtime, use the full JEI jar
     runtime "mezz.jei:jei_${v_minecraft}:${v_jei}"
 
     // Optional dependencies. Apprently, 'fileTree' does not work for this use case.
+    
+    // Botania
     compileOnly files('libonly/Botania+r1.10-356.jar')
-
-    compileOnly files('libonly/Thaumcraft-1.12.2-6.1.BETA24.jar')
+    // Betweenlands
     compileOnly 'angry-pixel-the-betweenlands-mod:TheBetweenlands:3.3.12:universal'
+    // Thaumcraft
     compileOnly group: "com.azanor", name: "Thaumcraft", version: "1.12.2-6.1.BETA24"
 
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
@@ -93,7 +95,7 @@ processResources {
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
-        
+    
     // copy everything else except the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
@@ -104,13 +106,8 @@ dokka {
     outputFormat = 'jekyll'
     outputDirectory = "../ModDocs/docs/"
     linkMapping {
-        // Source directory
         dir = "${projectDir}/src"
-
-        // URL showing where the source code can be accessed through the web browser
         url = "https://github.com/ejektaflex/Pewter/tree/develop/src"
-
-        // Suffix which is used to append the line number to the URL. Use #L for GitHub
         suffix = "#L"
     }
     packageOptions {
@@ -125,6 +122,14 @@ dokka {
     }
 }
 
+// other/apiJar generates a jar file with only the API module
+task apiJar(type: Jar) {
+    classifier = 'api'
+    from sourceSets.api.output
+    from sourceSets.api.allJava
+}
+
+// We need to specify that jars add API module as well
 jar {
     from sourceSets.main.output
     from sourceSets.api.output
