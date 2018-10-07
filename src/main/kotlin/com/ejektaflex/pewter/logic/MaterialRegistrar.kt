@@ -54,9 +54,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
-        // Nothing to do postInit, this isn't even called right now
-        // I lied, that's when we integrate.
-        // TODO Move integrate to here, and call postInit instead
+        integration.integrate()
     }
 
     private fun associate() {
@@ -205,8 +203,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
                 fluid = fluidToUse
                 return
             } else {
-                throw Exception("No fluids was found matching these names: ${data.fluidNames}. " +
-                        "These were the fluids that WERE found: ${FluidRegistry.getBucketFluids().map { it.name }}")
+                throw Exception("No fluids was found matching these names: ${data.fluidNames}.")
             }
         }
 

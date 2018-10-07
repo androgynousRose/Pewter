@@ -42,18 +42,15 @@ open class CommonProxy : IProxy {
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
-        configureModifiers()
-        for (mat in PewterMaterials) {
-            mat.integrate()
-        }
-    }
-
-    // Assign modifiers to items
-    private fun configureModifiers() {
+        // Assign modifiers to items
         for (mod in PewterModifiers) {
             mod.configure()
         }
+        for (mat in PewterMaterials) {
+            mat.postInit(e)
+        }
     }
+
 
     open fun makePewterFluid() {
         val name = "pewterfluid"
