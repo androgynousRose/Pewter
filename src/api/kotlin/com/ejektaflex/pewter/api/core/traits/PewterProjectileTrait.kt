@@ -1,6 +1,5 @@
 package com.ejektaflex.pewter.api.core.traits
 
-import com.ejektaflex.pewter.api.PewterAPI
 import net.minecraftforge.common.MinecraftForge
 import slimeknights.tconstruct.library.traits.AbstractProjectileTrait
 
@@ -9,8 +8,6 @@ import slimeknights.tconstruct.library.traits.AbstractProjectileTrait
 open class PewterProjectileTrait(val name: String, color: Int, identifier: String = name.toLowerCase().filter { it != ' ' })
     : AbstractProjectileTrait(identifier, color), IPewterToolTrait {
     init {
-        PewterAPI.log("Creating trait: $name")
-        //TinkerRegistry.addTrait(this)
         MinecraftForge.EVENT_BUS.register(this)
     }
 }

@@ -7,6 +7,11 @@ import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
 import net.minecraftforge.fml.common.Loader
 
+/**
+ * A [PewterModule] is a set of materials, tools and traits.
+ * [com.ejektaflex.pewter.api.PewterAPI.registerModule] will register this
+ * module so that Pewter can load it later on.
+ */
 abstract class PewterModule {
 
     /**
@@ -17,7 +22,8 @@ abstract class PewterModule {
 
     /**
      * Here you can define the conditions that determine whether or not the
-     * module should load.
+     * module should load. By default, it checks whether there is a mod
+     * with the same ID as the module ID to determine whether it should load.
      */
     open fun hasMetDependencies(): Boolean {
         return Loader.isModLoaded(id)

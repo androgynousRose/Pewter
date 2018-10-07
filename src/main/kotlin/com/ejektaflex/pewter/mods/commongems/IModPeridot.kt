@@ -1,24 +1,23 @@
-package com.ejektaflex.pewter.shared.gems
+package com.ejektaflex.pewter.mods.commongems
 
 import c4.conarm.lib.armor.ArmorNBT
 import slimeknights.tconstruct.library.tools.ToolNBT
 
-interface IModAmethyst : IModGem {
+interface IModPeridot : IModGem {
 
     override val oreTags: List<String>
-        get() = listOf("gemAmethyst")
+        get() = listOf("gemPeridot")
 
     override val toolMod: ToolNBT.() -> Unit
         get() = {
-            durability += 400
-            attack += 1f
+            durability += 150
+            speed += 0.25f
         }
 
     override val armorMod: ArmorNBT.() -> Unit
         get() = {
-            defense += 2.5f
-            durability = (durability * 1.2).toInt()
+            defense += 1.5f
+            durability = (durability * 1.075).toInt()
         }
 
 }
-

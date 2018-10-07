@@ -1,9 +1,11 @@
 package com.ejektaflex.pewter.shared.methods
 
-import net.minecraft.entity.Entity
+import net.minecraft.entity.EntityLivingBase
 
-interface EntityBonus<E, N : Number> {
+interface EntityBonus<N : Number> {
 
-    fun calculateEntityBonus(e: Entity?, original: Float, func: E.() -> Unit): N
+    val bonusInterfaces: Set<String>
+
+    fun calculateEntityBonus(e: EntityLivingBase, original: Float, func: EntityLivingBase.() -> Unit): N
 
 }

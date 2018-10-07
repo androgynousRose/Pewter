@@ -8,10 +8,7 @@ import com.ejektaflex.pewter.api.core.EffectWrapper
 import com.ejektaflex.pewter.api.core.PewterModule
 
 /**
- * All calls to the Pewter API should be done before Pewter loads PreInit.
- * This is because Pewter registers which content to load in PreInit.
- * Make sure your mod is required before Pewter. If using Construct's Armory,
- * make sure your mod is required after that.
+ * The Pewter API interface. All methods seen here are used by the API.
  */
 interface IPewterAPI {
 
