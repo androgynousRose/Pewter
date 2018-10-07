@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.commongems.tool
 
 
 import com.ejektaflex.pewter.lib.modifiers.GemToolModifier
-import com.ejektaflex.pewter.shared.gems.IModMalachite
+import com.ejektaflex.pewter.mods.commongems.IModMalachite
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
 

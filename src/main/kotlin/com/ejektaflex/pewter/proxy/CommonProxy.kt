@@ -38,10 +38,11 @@ open class CommonProxy : IProxy {
         for (mat in PewterMaterials) {
             mat.init(e)
         }
-        configureModifiers()
+
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
+        configureModifiers()
         for (mat in PewterMaterials) {
             mat.integrate()
         }
@@ -50,9 +51,7 @@ open class CommonProxy : IProxy {
     // Assign modifiers to items
     private fun configureModifiers() {
         for (mod in PewterModifiers) {
-            if (mod is IPewterModifier) {
-                mod.configure()
-            }
+            mod.configure()
         }
     }
 
