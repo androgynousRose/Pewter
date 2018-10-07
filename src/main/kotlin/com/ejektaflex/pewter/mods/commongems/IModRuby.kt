@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.shared.gems
+package com.ejektaflex.pewter.mods.commongems
 
 import c4.conarm.lib.armor.ArmorNBT
 import slimeknights.tconstruct.library.tools.ToolNBT
