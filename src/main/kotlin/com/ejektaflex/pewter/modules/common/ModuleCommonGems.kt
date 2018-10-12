@@ -4,8 +4,8 @@ import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.api.core.EffectWrapper
 import com.ejektaflex.pewter.api.core.PewterModule
-import com.ejektaflex.pewter.mods.commongems.armor.*
-import com.ejektaflex.pewter.mods.commongems.tool.*
+import com.ejektaflex.pewter.mods.common.gems.armor.*
+import com.ejektaflex.pewter.mods.common.gems.tool.*
 
 class ModuleCommonGems : PewterModule() {
 

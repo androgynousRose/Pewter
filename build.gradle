@@ -65,7 +65,7 @@ dependencies {
     // Tinkers' Construct
     compile group: "slimeknights", name: "TConstruct", version: "${v_minecraft}-${v_tinkers}"
     // Construct's Armory
-    compileOnly 'constructs-armory:conarm:1.12.2:1.1.2'
+    compile 'constructs-armory:conarm:1.12.2:1.1.2'
     // compile against the JEI API but do not include it at runtime
     deobfProvided "mezz.jei:jei_${v_minecraft}:${v_jei}:api"
     // at runtime, use the full JEI jar
