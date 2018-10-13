@@ -1,34 +1,38 @@
-package com.ejektaflex.pewter.modules
+package com.ejektaflex.pewter.mods.soot
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.api.core.EffectWrapper
 import com.ejektaflex.pewter.api.core.PewterModule
+import com.ejektaflex.pewter.api.core.traits.IPewterArmorTrait
 import com.ejektaflex.pewter.api.core.traits.IPewterToolTrait
-import com.ejektaflex.pewter.mods.astralsorcery.MaterialStarmetal
-import com.ejektaflex.pewter.mods.astralsorcery.ArmorModAquaStarseeker
-import com.ejektaflex.pewter.mods.astralsorcery.ToolModAquaCelestial
-import com.ejektaflex.pewter.mods.astralsorcery.ToolTraitBrilliance
+import com.ejektaflex.pewter.mods.soot.ArmorTraitSquelching
+import com.ejektaflex.pewter.mods.soot.MaterialAntimony
+import com.ejektaflex.pewter.mods.soot.ToolTraitQuenching
 
-class ModuleAstralSorcery : PewterModule() {
+class ModuleSoot : PewterModule() {
 
-    override val id = "astralsorcery"
+    override val id = "soot"
 
     override val armorModifiers: MutableList<EffectWrapper<out IPewterArmorModifier>> = mutableListOf(
-            EffectWrapper("starseeker_armor") { ArmorModAquaStarseeker(this) }
+            // None
+    )
+
+    override val armorTraits: MutableList<EffectWrapper<out IPewterArmorTrait>> = mutableListOf(
+            EffectWrapper("squelching") { ArmorTraitSquelching(this) }
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(
-            MaterialStarmetal("starmetal")
+            MaterialAntimony("antimony")
     )
 
     override val toolModifiers: MutableList<EffectWrapper<out IPewterToolModifier>> = mutableListOf(
-            EffectWrapper("celestial") { ToolModAquaCelestial(this) }
+            // None
     )
 
     override val toolTraits: MutableList<EffectWrapper<out IPewterToolTrait>> = mutableListOf(
-            EffectWrapper("brilliance") { ToolTraitBrilliance("brilliance") }
+            EffectWrapper("quenching") { ToolTraitQuenching(this) }
     )
 
 }

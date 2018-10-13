@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.modules
+package com.ejektaflex.pewter.mods.botania
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier

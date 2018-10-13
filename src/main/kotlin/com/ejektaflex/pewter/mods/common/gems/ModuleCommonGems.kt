@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.modules.common
+package com.ejektaflex.pewter.mods.common.gems
 
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier

@@ -3,9 +3,16 @@ package com.ejektaflex.pewter.content
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.api.core.PewterModule
-import com.ejektaflex.pewter.modules.*
-import com.ejektaflex.pewter.modules.common.ModuleCommonGems
-import com.ejektaflex.pewter.modules.multi.ModuleThaumBotania
+import com.ejektaflex.pewter.mods.astralsorcery.ModuleAstralSorcery
+import com.ejektaflex.pewter.mods.betterwithmods.ModuleBetterWithMods
+import com.ejektaflex.pewter.mods.botania.ModuleBotania
+import com.ejektaflex.pewter.mods.embers.ModuleEmbersRekindled
+import com.ejektaflex.pewter.mods.mekanism.ModuleMekanism
+import com.ejektaflex.pewter.mods.soot.ModuleSoot
+import com.ejektaflex.pewter.mods.thaumcraft.ModuleThaumcraft
+import com.ejektaflex.pewter.mods.common.gems.ModuleCommonGems
+import com.ejektaflex.pewter.mods.common.magic.ModuleThaumBotania
+import com.ejektaflex.pewter.mods.thebetweenlands.ModuleTheBetweenlands
 
 internal object PewterContent {
 

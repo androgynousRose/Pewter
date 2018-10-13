@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.modules.multi
+package com.ejektaflex.pewter.mods.common.magic
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier

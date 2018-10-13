@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.mekanism
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialOsmium : MaterialDSL("osmium", "#96CFD9", {
+class MaterialOsmium : MaterialDSL("osmium", "#a6ccdd", {
     forge { true }
     craft { false }
     allTags("Osmium")
@@ -38,7 +38,7 @@ class MaterialOsmium : MaterialDSL("osmium", "#96CFD9", {
     }
 
     armor {
-
+        armorTrait("grounded_armor")
         core {
             durability { 12f }
             defense { 14f }

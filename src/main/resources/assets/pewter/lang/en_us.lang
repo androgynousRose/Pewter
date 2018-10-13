@@ -37,6 +37,9 @@ material.manastring.name=Mana String
 material.octine.name=Octine
 fluid.pewter.octine.name=Molten Octine
 
+material.osmium.name=Osmium
+fluid.pewter.osmium.name=Molten Osmium
+
 material.starmetal.name=Starmetal
 fluid.pewter.starmetal.name=Molten Starmetal
 
@@ -124,6 +127,9 @@ modifier.essentia.desc=§oOnly the essentials!§r\nKilling enemies and breaking 
 
 modifier.gritty.name=Gritty
 modifier.gritty.desc=§oFeels So Good!§r\nAs the decay meter drains, bonus damage goes up.
+
+modifier.grounded_armor.name=Grounded
+modifier.grounded_armor.desc=§oI won't budge!§r\nYou take less damage from airborne projectiles while standing on solid ground.
 
 modifier.heatlover.name=Heat Lover
 modifier.heatlover.desc=§oSizzlin'!§r\nHas a chance to repair durability if the enemy is on fire or in lava.
