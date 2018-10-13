@@ -25,7 +25,7 @@ class ModuleThaumBotania : PewterModule() {
     )
 
     override val armorTraits: MutableList<EffectWrapper<out IPewterArmorTrait>> = mutableListOf(
-            EffectWrapper("magical") { ArmorTraitMagical(this) }
+            EffectWrapper("magical_armor") { ArmorTraitMagical(this) }
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(

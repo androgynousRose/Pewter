@@ -2,6 +2,7 @@ package com.ejektaflex.pewter.mods.mekanism
 
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
 import com.ejektaflex.pewter.api.core.traits.PewterToolTrait
+import com.ejektaflex.pewter.shared.methods.IBuffTradeoff
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.event.entity.player.PlayerEvent
@@ -11,10 +12,11 @@ import slimeknights.tconstruct.library.utils.TagUtil
 import slimeknights.tconstruct.library.utils.TinkerUtil
 
 
-class ToolTraitHeavyweight(modName: String) : PewterToolTrait(modName, 0x124026), TinkerNBTHelper {
+class ToolTraitHeavyweight(modName: String) : PewterToolTrait(modName, 0x124026), TinkerNBTHelper, IBuffTradeoff {
 
-    private val bonus = 10.1f
-    private val loss = 0.95f
+    override val buffMult = 10.1f
+    override val debuffMult = 0.95f
+
 
     override fun applyEffect(rootCompound: NBTTagCompound?, modifierTag: NBTTagCompound?) {
         super.applyEffect(rootCompound, modifierTag)
@@ -22,21 +24,21 @@ class ToolTraitHeavyweight(modName: String) : PewterToolTrait(modName, 0x124026)
         // add the attack speed boost
         val data = TagUtil.getToolStats(rootCompound)
 
-        data.attackSpeedMultiplier *= loss
-        data.attack *= bonus
+        data.attackSpeedMultiplier *= debuffMult
+        data.attack *= buffMult
 
         TagUtil.setToolTag(rootCompound, data.get())
 
 
         if (TinkerUtil.hasCategory(rootCompound, Category.LAUNCHER)) {
             val launcherData = ProjectileLauncherNBT(TagUtil.getToolTag(rootCompound))
-            launcherData.drawSpeed *= loss
+            launcherData.drawSpeed *= debuffMult
             TagUtil.setToolTag(rootCompound, launcherData.get())
         }
     }
 
     override fun miningSpeed(tool: ItemStack, event: PlayerEvent.BreakSpeed) {
         // 10% bonus speed
-        event.newSpeed = event.newSpeed * loss
+        event.newSpeed = event.newSpeed * buffMult
     }
 }

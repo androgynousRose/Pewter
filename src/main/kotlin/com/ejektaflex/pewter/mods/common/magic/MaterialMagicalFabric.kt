@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.common.magic
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialMagicalFabric(matName: String) : MaterialDSL(matName, "#66d1dd", {
+class MaterialMagicalFabric(matName: String) : MaterialDSL(matName, "#66b9dd", {
     forge { false }
     craft { true }
     ingots("botania:manaresource:22")
@@ -11,18 +11,18 @@ class MaterialMagicalFabric(matName: String) : MaterialDSL(matName, "#66d1dd", {
     brightness(0.02f)
 
     armor {
-        armorTrait("ashwoven_armor")
+        armorTrait("magical_armor")
         core {
-            durability { 10.5f }
-            defense { 4f }
+            durability { 9.25f }
+            defense { 4.2f }
         }
         plates {
-            modifier { 0.65f }
-            durability { 2.5f }
+            modifier { 0.75f }
+            durability { 1.5f }
             toughness { 0f }
         }
         trim {
-            extraDurability { 5f }
+            extraDurability { 3f }
         }
     }
 

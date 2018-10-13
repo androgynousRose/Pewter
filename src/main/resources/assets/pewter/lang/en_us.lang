@@ -25,6 +25,9 @@ material.livingrock.name=Livingrock
 material.livingwood.name=Livingwood
 # no fluid for this wood
 
+material.magical_fabric.name=Magical Fabric
+# no fluid for this material
+
 material.manasteel.name=Manasteel
 fluid.pewter.manasteel.name=Molten Manasteel
 
@@ -129,10 +132,13 @@ modifier.heatlover_armor.name=Heat Lover
 modifier.heatlover_armor.desc=§oSizzlin'§r\nHas a chance to repair durability if hit by an enemy that is on fire or in lava.
 
 modifier.heavyweight.name=Heavyweight
-modifier.heavyweight.desc=§oThunk.§r\n10% bonus attack damage, 5% less attack speed. Stacks with other heavyweight parts.
+modifier.heavyweight.desc=§oThunk.§r\nDoes bonus damage at the cost of a slower attack speed.
 
 modifier.inflamed_armor.name=Inflamed
 modifier.inflamed_armor.desc=§oFwoosh!§r\nRepairs armor durability when on fire.
+
+modifier.magical_armor.name=Magical
+modifier.magical_armor.desc=§oMagically woven!§r\nTakes 20% less damage from magic, but makes the wearer 8% weaker to normal attacks. This effect stacks with other armor pieces!
 
 modifier.malachite.name=Malachite
 modifier.malachite.desc=§oFind them all!§r\nDurability+, Bonus durability on repair

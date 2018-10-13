@@ -1,5 +1,7 @@
 package com.ejektaflex.pewter.api
 
+import net.minecraftforge.common.MinecraftForge
+
 /**
  * [PewterAPIProvider] is a wrapper around an empty instance of the Pewter API.
  * At the time of mod construction, it gets replaced by Pewter's internal API
@@ -14,6 +16,7 @@ open class PewterAPIProvider : IPewterAPI by api {
          */
         fun changeAPI(newAPI: IPewterAPI) {
             api = newAPI
+            MinecraftForge.EVENT_BUS.register(api)
             api.log("Using Pewter API: ${newAPI::class.simpleName}")
         }
     }

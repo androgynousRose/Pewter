@@ -27,12 +27,12 @@ class ModuleBotania : PewterModule() {
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(
-            MaterialElementium("elementium"),
-            MaterialLivingrock("livingrock"),
             MaterialLivingwood("livingwood"),
+            MaterialLivingrock("livingrock"),
             MaterialManasteel("manasteel"),
-            MaterialManastring("manastring"),
-            MaterialTerrasteel("terrasteel")
+            MaterialElementium("elementium"),
+            MaterialTerrasteel("terrasteel"),
+            MaterialManastring("manastring")
     )
 
     override val toolModifiers: MutableList<EffectWrapper<out IPewterToolModifier>> = mutableListOf(

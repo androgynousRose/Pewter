@@ -18,10 +18,7 @@ import org.apache.logging.log4j.Logger
 object Pewter : IProxy {
 
     @EventHandler
-    fun loadAPI(event: FMLConstructionEvent) {
-        PewterAPIProvider.changeAPI(InternalPewterAPI)
-        MinecraftForge.EVENT_BUS.register(InternalPewterAPI)
-    }
+    fun loadAPI(event: FMLConstructionEvent) = PewterAPIProvider.changeAPI(InternalPewterAPI)
 
     @EventHandler
     override fun preInit(event: FMLPreInitializationEvent) {
