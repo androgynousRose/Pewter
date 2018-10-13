@@ -23,15 +23,16 @@ abstract class  PewterContentListing<C : TinkerPage>(secName: String) : ContentL
     abstract fun getModifierFromPage(content: PageContent): IModifier?
 
     inline fun <reified M : Any> pewterProcessPage(book: BookData, listing: ContentListing, page: PageData) {
-        PewterAPI.log("Pewter is processing page in ${book.appearance.title}... named: ${page.content}")
         val modifier = getModifierFromPage(page.content)
         if (modifier != null && modifier is M) {
 
             val modItems = getModItems(modifier)
 
             if (modItems != null && modItems.isNotEmpty()) {
+                PewterAPI.log("Added a page for the modifier: '${modifier.identifier}' in '${book.appearance.title}'")
                 listing.addEntry(modifier.localizedName, page)
             } else {
+                PewterAPI.log("Removed a page for the modifier: '${modifier.identifier}' in '${book.appearance.title}'")
                 pagesToRemove.add(page)
             }
 
@@ -52,7 +53,6 @@ abstract class  PewterContentListing<C : TinkerPage>(secName: String) : ContentL
 
         // Remove all pages that processing took care of
         for (page in pagesToRemove) {
-            PewterAPI.log("Removed page titled: '${page.title}' (named: '${page.name}')")
             data.pages.remove(page)
         }
 

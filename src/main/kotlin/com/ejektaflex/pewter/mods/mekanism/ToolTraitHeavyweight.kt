@@ -14,9 +14,10 @@ import slimeknights.tconstruct.library.utils.TinkerUtil
 
 class ToolTraitHeavyweight(modName: String) : PewterToolTrait(modName, 0x124026), TinkerNBTHelper, IBuffTradeoff {
 
+    // Damage buff
     override val buffMult = 10.1f
-    override val debuffMult = 0.95f
-
+    // Speed debuff
+    override val debuffMult = 0.90f
 
     override fun applyEffect(rootCompound: NBTTagCompound?, modifierTag: NBTTagCompound?) {
         super.applyEffect(rootCompound, modifierTag)
@@ -38,7 +39,7 @@ class ToolTraitHeavyweight(modName: String) : PewterToolTrait(modName, 0x124026)
     }
 
     override fun miningSpeed(tool: ItemStack, event: PlayerEvent.BreakSpeed) {
-        // 10% bonus speed
+        // bonus speed
         event.newSpeed = event.newSpeed * buffMult
     }
 }

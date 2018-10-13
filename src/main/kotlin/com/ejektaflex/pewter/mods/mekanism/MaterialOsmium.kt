@@ -2,14 +2,10 @@ package com.ejektaflex.pewter.mods.mekanism
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialOsmium : MaterialDSL("osmium", "#D2983A", {
+class MaterialOsmium : MaterialDSL("osmium", "#96CFD9", {
     forge { true }
     craft { false }
-    ingots("thaumcraft:ingot:2")
-    nuggets("thaumcraft:nugget:8")
-    blocks("thaumcraft:metal_brass")
-    //fluids("brass")
-    noMeltRecipes()
+    allTags("Osmium")
     defaultMetalParts()
 
     tool {
