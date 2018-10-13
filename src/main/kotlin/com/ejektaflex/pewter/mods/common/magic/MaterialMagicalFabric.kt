@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.mods.common.magic
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 
-class MaterialMagicalFabric(matName: String) : MaterialDSL(matName, "#303030", {
+class MaterialMagicalFabric(matName: String) : MaterialDSL(matName, "#66d1dd", {
     forge { false }
     craft { true }
     ingots("botania:manaresource:22")

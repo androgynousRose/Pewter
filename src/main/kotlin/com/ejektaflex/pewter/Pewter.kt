@@ -18,7 +18,10 @@ import org.apache.logging.log4j.Logger
 object Pewter : IProxy {
 
     @EventHandler
-    fun loadAPI(event: FMLConstructionEvent) = PewterAPIProvider.changeAPI(InternalPewterAPI)
+    fun loadAPI(event: FMLConstructionEvent) {
+        PewterAPIProvider.changeAPI(InternalPewterAPI)
+        MinecraftForge.EVENT_BUS.register(InternalPewterAPI)
+    }
 
     @EventHandler
     override fun preInit(event: FMLPreInitializationEvent) {
@@ -82,6 +85,7 @@ object Pewter : IProxy {
     const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
     private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
     private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
+    const val CONFIG_FOLDER = "config/pewter/"
 
     var LOGGER: Logger? = null
     lateinit var CONFIG: Configs
