@@ -16,9 +16,11 @@ class ArmorTraitMagical(name: String) : PewterArmorTrait(name, 0xFF2334), IBuffT
 
         if (player != null && source != null) {
             return if (source.isMagicDamage) {
-                super.onHurt(armor, player, source, damage, newDamage * (1f - buffMult), evt)
+                println("MAGIC!")
+                newDamage * (10f - buffMult)
             } else {
-                super.onHurt(armor, player, source, damage, newDamage * (1f + debuffMult), evt)
+                println("TYPE: ${source.damageType}")
+                newDamage * (1f + debuffMult)
             }
         }
 

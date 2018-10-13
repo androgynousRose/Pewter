@@ -16,9 +16,9 @@ class ArmorTraitAshwoven(name: String) : PewterArmorTrait(name, 0xFF2334), IBuff
 
         if (player != null && source != null) {
             return if (source.isFireDamage) {
-                super.onHurt(armor, player, source, damage, newDamage * (1f - buffMult), evt)
+                newDamage * (1f - buffMult)
             } else {
-                super.onHurt(armor, player, source, damage, newDamage * (1f + debuffMult), evt)
+                newDamage * (1f + debuffMult)
             }
         }
 

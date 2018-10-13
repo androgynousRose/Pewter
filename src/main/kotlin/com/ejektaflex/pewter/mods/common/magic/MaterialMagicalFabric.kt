@@ -25,5 +25,4 @@ class MaterialMagicalFabric(matName: String) : MaterialDSL(matName, "#66b9dd", {
             extraDurability { 3f }
         }
     }
-
 })

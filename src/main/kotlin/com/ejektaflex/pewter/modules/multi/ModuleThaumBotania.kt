@@ -11,13 +11,12 @@ import com.ejektaflex.pewter.mods.common.magic.ArmorTraitMagical
 import com.ejektaflex.pewter.mods.common.magic.MaterialMagicalFabric
 import net.minecraftforge.fml.common.Loader
 
-// Just a base for creating new modules; We never use this or extend it
 class ModuleThaumBotania : PewterModule() {
 
-    override val id = "thaumcraft_and_botania"
+    override val id = "thaumcraft_or_botania"
 
     override fun hasMetDependencies(): Boolean {
-        return Loader.isModLoaded("thaumcraft") && Loader.isModLoaded("botania")
+        return Loader.isModLoaded("thaumcraft") || Loader.isModLoaded("botania")
     }
 
     override val armorModifiers: MutableList<EffectWrapper<out IPewterArmorModifier>> = mutableListOf(
@@ -25,7 +24,7 @@ class ModuleThaumBotania : PewterModule() {
     )
 
     override val armorTraits: MutableList<EffectWrapper<out IPewterArmorTrait>> = mutableListOf(
-            EffectWrapper("magical_armor") { ArmorTraitMagical(this) }
+            EffectWrapper("magical") { ArmorTraitMagical(this) }
     )
 
     override val materials: MutableList<MaterialDSL> = mutableListOf(

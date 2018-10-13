@@ -11,12 +11,7 @@ class MaterialOsmium : MaterialDSL("osmium", "#D2983A", {
     //fluids("brass")
     noMeltRecipes()
     defaultMetalParts()
-    addTraits(
-            "HEAD" to "basher",
-            "CORE" to "shielding_armor",
-            "PLATES" to "dense_armor",
-            "TRIM" to "dense_armor"
-    )
+
     tool {
 
         toolTrait("heavyweight")
