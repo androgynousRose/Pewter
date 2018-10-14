@@ -54,7 +54,7 @@ class MaterialLivingwood(name: String) : MaterialDSL(name, "#401909", {
     }
 
     armor {
-        armorTrait("manaharvest_armor")
+        //armorTrait("manaharvest_armor")
         armorTrait("ecological_armor")
         core {
             durability { 3f }
