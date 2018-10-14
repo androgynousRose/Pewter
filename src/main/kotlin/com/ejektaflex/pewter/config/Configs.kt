@@ -12,7 +12,7 @@ import java.nio.file.Files
 
 object Configs {
 
-    lateinit var DIR: File
+    var DIR: File = File(Pewter.CONFIG_FOLDER)
 
     lateinit var MAIN: MainConfig
 
@@ -32,32 +32,29 @@ object Configs {
 
     fun load() {
         MAIN.load()
-
-
     }
 
-    val externalMaterials: List<MaterialData>
-        get() {
-            val jsons = DIR.listFiles().filter { it.isFile }.filter { it.extension == "json" && !it.name.startsWith("_") }
+    val externalMaterials: List<MaterialData> by lazy {
+        val jsons = DIR.listFiles().filter { it.isFile }.filter { it.extension == "json" && !it.name.startsWith("_") }
 
-            if (jsons.isEmpty()) {
-                Pewter.LOGGER!!.warn("Pewter is set to load external JSON files, but none were found.")
-            }
+        if (jsons.isEmpty()) {
+            Pewter.LOGGER!!.warn("Pewter is set to load external JSON files, but none were found.")
+        }
 
-            return jsons.mapNotNull {
-                try {
-                    val fileContents = String(Files.readAllBytes(it.toPath()))
-                    gson.fromJson<Any>(fileContents, MaterialData::class.java) as MaterialData
-                } catch (e: IOException) {
-                    Pewter.LOGGER!!.warn("File named ${it.name} could not be found?")
-                    null
-                } catch (e: JsonSyntaxException) {
-                    Pewter.LOGGER!!.warn("File named ${it.name} has a JSON syntax error!")
-                    e.printStackTrace()
-                    null
-                }
+        jsons.mapNotNull {
+            try {
+                val fileContents = String(Files.readAllBytes(it.toPath()))
+                gson.fromJson<Any>(fileContents, MaterialData::class.java) as MaterialData
+            } catch (e: IOException) {
+                Pewter.LOGGER!!.warn("File named ${it.name} could not be found?")
+                null
+            } catch (e: JsonSyntaxException) {
+                Pewter.LOGGER!!.warn("File named ${it.name} has a JSON syntax error!")
+                e.printStackTrace()
+                null
             }
         }
+    }
 
     fun initialize(root: File) {
         DIR = ensureDirectory(root, Pewter.MODID)

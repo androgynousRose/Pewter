@@ -78,10 +78,12 @@ object Pewter : IProxy {
             "after:botania;" +
             "after:thebetweenlands;" +
             "after:embers;" +
+            "after:mekanism;" +
             "after:soot"
     const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
     private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
     private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
+    const val CONFIG_FOLDER = "config/pewter/"
 
     var LOGGER: Logger? = null
     lateinit var CONFIG: Configs

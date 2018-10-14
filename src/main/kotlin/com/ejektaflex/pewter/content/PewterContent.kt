@@ -3,8 +3,16 @@ package com.ejektaflex.pewter.content
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.api.core.PewterModule
-import com.ejektaflex.pewter.modules.*
-import com.ejektaflex.pewter.modules.common.ModuleCommonGems
+import com.ejektaflex.pewter.mods.astralsorcery.ModuleAstralSorcery
+import com.ejektaflex.pewter.mods.betterwithmods.ModuleBetterWithMods
+import com.ejektaflex.pewter.mods.botania.ModuleBotania
+import com.ejektaflex.pewter.mods.embers.ModuleEmbersRekindled
+import com.ejektaflex.pewter.mods.mekanism.ModuleMekanism
+import com.ejektaflex.pewter.mods.soot.ModuleSoot
+import com.ejektaflex.pewter.mods.thaumcraft.ModuleThaumcraft
+import com.ejektaflex.pewter.mods.common.gems.ModuleCommonGems
+import com.ejektaflex.pewter.mods.common.magic.ModuleThaumBotania
+import com.ejektaflex.pewter.mods.thebetweenlands.ModuleTheBetweenlands
 
 internal object PewterContent {
 
@@ -12,22 +20,34 @@ internal object PewterContent {
 
     fun registerModule(module: PewterModule) {
         if (module.hasMetDependencies()) {
+            PewterAPI.log("Registered module: ${module.id}")
             modules.add(module)
+        } else {
+            PewterAPI.log("Module '${module.id} has unmet dependencies. Skipping integration.")
         }
     }
 
     init {
         if (Pewter.CONFIG.MAIN.loadPewter) {
-            listOf(
-                    ModuleAstralSorcery(),
-                    ModuleBetterWithMods(),
-                    ModuleBotania(),
-                    ModuleCommonGems(),
-                    ModuleEmbersRekindled(),
-                    ModuleSoot(),
-                    ModuleThaumcraft(),
-                    ModuleTheBetweenlands()
-            ).forEach(::registerModule)
+            val contentMap = mapOf(
+                    "core" to listOf(
+                            ModuleMekanism(),
+                            ModuleAstralSorcery(),
+                            ModuleBetterWithMods(),
+                            ModuleBotania(),
+                            ModuleCommonGems(),
+                            ModuleEmbersRekindled(),
+                            ModuleSoot(),
+                            ModuleThaumcraft(),
+                            ModuleTheBetweenlands()
+                    ),
+                    "multi_mod" to listOf(
+                            ModuleThaumBotania()
+                    )
+            )
+            for (contentList in contentMap.values) {
+                contentList.forEach(::registerModule)
+            }
         }
     }
 

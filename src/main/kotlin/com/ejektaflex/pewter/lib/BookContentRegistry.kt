@@ -2,6 +2,7 @@ package com.ejektaflex.pewter.lib
 
 import c4.conarm.lib.book.ArmoryBook
 import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
@@ -24,6 +25,7 @@ object BookContentRegistry {
 
     fun setup() {
         toolContent.reversed().forEach {
+            println("Setting up book section")
             addTinkerBookSection(TinkerBook.INSTANCE, it)
         }
 
@@ -39,6 +41,8 @@ object BookContentRegistry {
     private fun addTinkerBookSection(book: BookData, repo: FileRepository) {
         if (getModifierItems<IPewterToolModifier>().isNotEmpty()) {
             setupBook(book, repo, PewterToolSectionTransformer(repo.sections[0].name))
+        } else {
+            PewterAPI.log("Pewter is not adding tool modifiers to Materials and You, no valid items exist")
         }
     }
 
@@ -46,6 +50,8 @@ object BookContentRegistry {
     private fun addArmoryBookSection(book: BookData, repo: FileRepository) {
         if (getModifierItems<IPewterArmorModifier>().isNotEmpty()) {
             setupBook(book, repo, PewterArmorSectionTransformer(repo.sections[0].name))
+        } else {
+            PewterAPI.log("Pewter is not adding armor modifiers to Construct's Armory, no valid items exist")
         }
     }
 

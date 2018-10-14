@@ -8,11 +8,15 @@ import com.ejektaflex.pewter.api.core.modifiers.IPewterArmorModifier
 import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.api.core.EffectWrapper
 import com.ejektaflex.pewter.api.core.PewterModule
+import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.content.PewterContent
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.content.PewterModifiers
 import com.ejektaflex.pewter.content.PewterTraits
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import slimeknights.mantle.client.book.repository.FileRepository
+import slimeknights.tconstruct.library.events.MaterialEvent
+import slimeknights.tconstruct.library.materials.IMaterialStats
 
 internal object InternalPewterAPI : IPewterAPI {
 
@@ -71,6 +75,23 @@ internal object InternalPewterAPI : IPewterAPI {
             BookContentRegistry.armorContent.add(repo)
         } catch (e: Exception) {
             e.printStackTrace()
+        }
+    }
+
+    /**
+     * This will later be optional. If the user has any custom JSON content
+     * with an identifier that matches the material identifier, it will instead
+     * load the custom stats. This allows users to override stats in materials
+     * from other mods.
+     */
+    @SubscribeEvent
+    fun catchStats(e: MaterialEvent.StatRegisterEvent<IMaterialStats>) {
+        val jsonMaterial = Configs.externalMaterials.find { it.name == e.material.identifier }
+        if (jsonMaterial != null) {
+            val jsonPartStat = jsonMaterial.matParts.find { it.dependency == e.stats.identifier }
+            jsonPartStat?.let {
+                e.overrideResult(jsonPartStat.stats(jsonMaterial))
+            }
         }
     }
 

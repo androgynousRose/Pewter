@@ -57,11 +57,12 @@ class ClientProxy : CommonProxy() {
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
+        super.postInit(e)
+        PewterAPI.log("Adding Pewter content to Tinker-based books..")
         PewterAPI.addToolRepository("${Pewter.MODID}:tinker_book")
         PewterAPI.addArmorRepository("${Pewter.MODID}:armory_book")
 
         BookContentRegistry.setup()
-        super.postInit(e)
     }
 
     override fun makePewterFluid() {

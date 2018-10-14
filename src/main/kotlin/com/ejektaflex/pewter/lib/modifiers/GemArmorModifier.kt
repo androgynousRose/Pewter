@@ -4,7 +4,7 @@ import c4.conarm.lib.utils.RecipeMatchHolder
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.api.core.modifiers.PewterArmorModifier
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
-import com.ejektaflex.pewter.mods.commongems.IModGem
+import com.ejektaflex.pewter.mods.common.gems.IModGem
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.oredict.OreDictionary
 
