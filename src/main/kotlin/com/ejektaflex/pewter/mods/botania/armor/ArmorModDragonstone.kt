@@ -18,7 +18,7 @@ class ArmorModDragonstone(modName: String) : PewterArmorModifier(modName, 0xED33
 
             val numBotaniaMats = baseMaterials(rootCompound).count { it.representativeItem.comesFrom("botania") }.toDouble()
 
-            durability = (durability * (1 + (numBotaniaMats / 10))).toInt()
+            durability = (durability * (1 + (numBotaniaMats / 8))).toInt()
             //toughness *= (1 + (numBotaniaMats / 25)).toFloat()
 
         }

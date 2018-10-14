@@ -32,7 +32,7 @@ class ToolModDragonstone(modName: String) : PewterToolModifier(modName, 0xED339A
 
             val numBotaniaMats = baseMaterials(rootCompound).count { it.representativeItem.comesFrom("botania") }.toDouble()
 
-            durability = (durability * (1 + (numBotaniaMats / 10))).toInt()
+            durability = (durability * (1 + (numBotaniaMats / 8))).toInt()
             attack *= (1 + (numBotaniaMats / 35)).toFloat()
 
         }

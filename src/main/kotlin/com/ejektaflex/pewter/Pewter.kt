@@ -3,7 +3,7 @@ package com.ejektaflex.pewter
 import com.ejektaflex.pewter.api.PewterAPIProvider
 import com.ejektaflex.pewter.command.PewterCommand
 import com.ejektaflex.pewter.config.Configs
-import com.ejektaflex.pewter.lib.InternalPewterAPI
+import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Loader
@@ -11,18 +11,16 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventHandler
 import net.minecraftforge.fml.common.SidedProxy
 import net.minecraftforge.fml.common.event.*
-import org.apache.logging.log4j.Logger
 
 
 @Mod(modid = Pewter.MODID, name = Pewter.NAME, acceptedMinecraftVersions = Pewter.MCVERSION, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
 object Pewter : IProxy {
 
     @EventHandler
-    fun loadAPI(event: FMLConstructionEvent) = PewterAPIProvider.changeAPI(InternalPewterAPI)
+    fun loadAPI(event: FMLConstructionEvent) = PewterAPIProvider.changeAPI(InternalAPI)
 
     @EventHandler
     override fun preInit(event: FMLPreInitializationEvent) {
-        LOGGER = event.modLog
         CONFIG = Configs
         CONFIG.initialize(event.modConfigurationDirectory)
         CONFIG.MAIN.grab()
@@ -78,12 +76,13 @@ object Pewter : IProxy {
             "after:botania;" +
             "after:thebetweenlands;" +
             "after:embers;" +
+            "after:mekanism;" +
             "after:soot"
     const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
     private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
     private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
+    const val CONFIG_FOLDER = "config/pewter/"
 
-    var LOGGER: Logger? = null
     lateinit var CONFIG: Configs
 
     @SidedProxy(clientSide = CLIENT, serverSide = SERVER)

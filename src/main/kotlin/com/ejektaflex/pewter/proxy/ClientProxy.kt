@@ -4,6 +4,7 @@ import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.lib.BookContentRegistry
+import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.logic.FluidStateMapper
 import com.ejektaflex.pewter.logic.ResourceManager
 import com.google.common.base.Function
@@ -57,11 +58,12 @@ class ClientProxy : CommonProxy() {
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
+        super.postInit(e)
+        InternalAPI.info("Adding Pewter content to Tinker-based books..")
         PewterAPI.addToolRepository("${Pewter.MODID}:tinker_book")
         PewterAPI.addArmorRepository("${Pewter.MODID}:armory_book")
 
         BookContentRegistry.setup()
-        super.postInit(e)
     }
 
     override fun makePewterFluid() {

@@ -6,7 +6,6 @@ import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.ext.sendMessage
-import com.ejektaflex.pewter.lib.InternalPewterAPI
 import net.minecraft.command.CommandException
 import net.minecraft.command.ICommand
 import net.minecraft.command.ICommandSender
@@ -80,7 +79,7 @@ class PewterCommand : ICommand {
             "listmaterials" -> {
                 if (PewterMaterials.content.isNotEmpty()) {
                     sender.sendMessage("All Pewter Materials Currently Loaded:")
-                    val listString = PewterMaterials.content.map { colors.cycle().toString() + "${it.tinkMaterial.localizedName} (identifier: ${it.data.name})" }
+                    val listString = PewterMaterials.content.map { colors.cycle().toString() + "${it.tinkMaterial.localizedName} (identifier: ${it.data.name})" }.sorted()
                     sender.sendMessage(listString.toString())
                 } else {
                     sender.sendMessage("Pewter isn't adding any materials. Add some more mods?")
@@ -90,7 +89,7 @@ class PewterCommand : ICommand {
             "armortraits" -> {
                 if (Pewter.isUsingConArm()) {
                     val armorTraits = ArmoryRegistry.getAllArmorModifiers()
-                    val listString = armorTraits.map { colors.cycle().toString() + "${it.localizedName} (identifier: ${it.identifier})" }
+                    val listString = armorTraits.map { colors.cycle().toString() + "${it.localizedName} (identifier: ${it.identifier})" }.sorted()
                     sender.sendMessage(listString.toString())
                 } else {
                     sender.sendMessage("Constructs Armory is not loaded!")
@@ -106,13 +105,13 @@ class PewterCommand : ICommand {
 
                 val modifierTraits = toolTraits.filter { it is ModifierTrait }
 
-                val listString = modifierTraits.map { colors.cycle().toString() + "${it.localizedName} (${it.identifier})" }
+                val listString = modifierTraits.map { colors.cycle().toString() + "${it.localizedName} (${it.identifier})" }.sorted()
 
                 sender.sendMessage(listString.toString())
             }
 
             else -> {
-                sender.sendMessage("Invalid command. Valid options are: 'armortraits', 'tooltraits'.")
+                sender.sendMessage("Invalid command. Valid options are: 'armortraits', 'tooltraits', 'listmaterials', 'genfile'.")
             }
 
         }

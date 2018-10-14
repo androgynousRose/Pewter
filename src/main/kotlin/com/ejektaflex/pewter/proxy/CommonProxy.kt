@@ -1,9 +1,9 @@
 package com.ejektaflex.pewter.proxy
 
 import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.api.core.modifiers.IPewterModifier
 import com.ejektaflex.pewter.content.*
 import com.ejektaflex.pewter.ext.resource
+import com.ejektaflex.pewter.lib.InternalAPI
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
@@ -25,7 +25,7 @@ open class CommonProxy : IProxy {
     override fun preInit(e: FMLPreInitializationEvent) {
         PewterContent.load()
 
-        Pewter.LOGGER!!.info("Loaded ${PewterMaterials.content.size} dependencies.")
+        InternalAPI.info("Loaded ${PewterMaterials.content.size} materials.")
 
         for (mat in PewterMaterials) {
             mat.preInit(e)

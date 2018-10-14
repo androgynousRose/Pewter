@@ -39,6 +39,8 @@ object BookContentRegistry {
     private fun addTinkerBookSection(book: BookData, repo: FileRepository) {
         if (getModifierItems<IPewterToolModifier>().isNotEmpty()) {
             setupBook(book, repo, PewterToolSectionTransformer(repo.sections[0].name))
+        } else {
+            InternalAPI.info("Pewter is not adding tool modifiers to Materials and You, no valid items exist")
         }
     }
 
@@ -46,6 +48,8 @@ object BookContentRegistry {
     private fun addArmoryBookSection(book: BookData, repo: FileRepository) {
         if (getModifierItems<IPewterArmorModifier>().isNotEmpty()) {
             setupBook(book, repo, PewterArmorSectionTransformer(repo.sections[0].name))
+        } else {
+            InternalAPI.info("Pewter is not adding armor modifiers to Construct's Armory, no valid items exist")
         }
     }
 
@@ -62,7 +66,7 @@ object BookContentRegistry {
     private fun setupBook(book: BookData, repo: FileRepository, transformer: PewterContentListing<*>) {
         book.addRepository(repo)
         book.addTransformer(transformer)
-        Pewter.LOGGER!!.info("Added modifiers to book named \"${book.appearance.title}\".")
+        InternalAPI.verbose("Added modifiers to book named \"$book\".")
     }
 
 
