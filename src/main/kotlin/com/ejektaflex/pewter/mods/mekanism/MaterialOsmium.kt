@@ -39,7 +39,7 @@ class MaterialOsmium : MaterialDSL("osmium", "#a6ccdd", {
             defense { 15.5f }
         }
         plates {
-            modifier { 0.9f }
+            modifier { 0.8f }
             durability { 6f }
             toughness { 1.5f }
         }
