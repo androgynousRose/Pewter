@@ -9,7 +9,6 @@ val v_minecraft_root = "1.12"
 val v_minecraft = "$v_minecraft_root.2"
 val v_tinkers = "2.10.1.87"
 
-
 buildscript {
     repositories {
         jcenter()
@@ -22,19 +21,18 @@ buildscript {
     }
 }
 
+base {
+    archivesBaseName = "Pewter"
+    version = "1.2.1"
+    group = "com.ejektaflex.pewter"
+}
+
 plugins {
     java
     id("org.jetbrains.kotlin.jvm") version "1.2.60"
     //id("kotlin") version "1.2.60"
     id("net.minecraftforge.gradle.forge") version "2.0.2"
     id("org.jetbrains.dokka") version "0.9.17"
-}
-
-version = "1.2.2"
-group = "com.ejektaflex.pewter"
-
-base {
-    archivesBaseName = "Pewter"
 }
 
 java {
@@ -94,12 +92,12 @@ tasks.withType<DokkaTask> {
     // https://github.com/Kotlin/dokka/pull/358
 }
 
-tasks.withType<Jar> {
+tasks.register<Jar>("createJar") {
     from(sourceSets["main"].output)
     from(sourceSets["api"].output)
 }
 
-tasks.withType<Jar> {
+tasks.register<Jar>("apiJar") {
     classifier = "api"
     from(sourceSets["api"].output)
     from(sourceSets["api"].allJava)
