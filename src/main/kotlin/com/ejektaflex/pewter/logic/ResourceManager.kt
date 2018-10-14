@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.logic
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.lib.InternalAPI
+import com.ejektaflex.pewter.lib.PewterInfo
 import net.minecraft.client.Minecraft
 import net.minecraft.client.resources.IResourceManagerReloadListener
 import net.minecraft.util.text.translation.LanguageMap
@@ -38,7 +39,7 @@ class ResourceManager : IResourceManagerReloadListener {
                 locales[mcLocale]?.let {
                     println(it)
                     data += "material.$materialName.name=$it\n"
-                    data += "fluid.${Pewter.MODID}.$materialName.name=Molten $it\n"
+                    data += "fluid.${PewterInfo.MODID}.$materialName.name=Molten $it\n"
                 }
             }
 

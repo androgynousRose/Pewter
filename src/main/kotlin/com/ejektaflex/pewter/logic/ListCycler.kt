@@ -1,6 +1,6 @@
-package com.ejektaflex.pewter.command
+package com.ejektaflex.pewter.logic
 
-class Cycler<T : Any>(val content: List<T>) {
+class ListCycler<T : Any>(val content: List<T>) {
 
     var counter: Int = -1
         private set

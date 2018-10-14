@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.config
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
 import com.ejektaflex.pewter.lib.InternalAPI
+import com.ejektaflex.pewter.lib.PewterInfo
 import com.ejektaflex.pewter.mods.unused.MaterialExample
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
@@ -13,7 +14,7 @@ import java.nio.file.Files
 
 object Configs {
 
-    var DIR: File = File(Pewter.CONFIG_FOLDER)
+    var DIR: File = File(PewterInfo.CONFIG_FOLDER)
 
     lateinit var MAIN: MainConfig
 
@@ -58,7 +59,7 @@ object Configs {
     }
 
     fun initialize(root: File) {
-        DIR = ensureDirectory(root, Pewter.MODID)
+        DIR = ensureDirectory(root, PewterInfo.MODID)
         MAIN = MainConfig(DIR.path)
     }
 

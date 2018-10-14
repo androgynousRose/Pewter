@@ -6,6 +6,8 @@ import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.ext.sendMessage
+import com.ejektaflex.pewter.lib.PewterInfo
+import com.ejektaflex.pewter.logic.ListCycler
 import net.minecraft.command.CommandException
 import net.minecraft.command.ICommand
 import net.minecraft.command.ICommandSender
@@ -21,18 +23,18 @@ import java.util.*
 
 class PewterCommand : ICommand {
 
-    private val colors = Cycler(listOf(TextFormatting.GREEN, TextFormatting.DARK_AQUA, TextFormatting.RED, TextFormatting.GOLD))
+    private val colors = ListCycler(listOf(TextFormatting.GREEN, TextFormatting.DARK_AQUA, TextFormatting.RED, TextFormatting.GOLD))
 
     override fun compareTo(other: ICommand): Int {
         return 0
     }
 
     override fun getName(): String {
-        return Pewter.MODID
+        return PewterInfo.MODID
     }
 
     override fun getUsage(sender: ICommandSender): String {
-        return "/${Pewter.MODID}"
+        return "/${PewterInfo.MODID}"
     }
 
     override fun getAliases(): List<String> {

@@ -4,6 +4,7 @@ import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.content.*
 import com.ejektaflex.pewter.ext.resource
 import com.ejektaflex.pewter.lib.InternalAPI
+import com.ejektaflex.pewter.lib.PewterInfo
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
@@ -50,8 +51,7 @@ open class CommonProxy : IProxy {
             mat.postInit(e)
         }
     }
-
-
+    
     open fun makePewterFluid() {
         val name = "pewterfluid"
         fluid = FluidMolten(name, 0xffff00ff.toInt()).apply {
@@ -61,7 +61,7 @@ open class CommonProxy : IProxy {
 
         block = BlockMolten(fluid).apply {
             setCreativeTab(null)
-            unlocalizedName = Pewter.MODID + "." + name
+            unlocalizedName = PewterInfo.MODID + "." + name
             registryName = name.resource
             ForgeRegistries.BLOCKS.register(this)
         }

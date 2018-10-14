@@ -4,6 +4,7 @@ import com.ejektaflex.pewter.api.PewterAPIProvider
 import com.ejektaflex.pewter.command.PewterCommand
 import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.lib.InternalAPI
+import com.ejektaflex.pewter.lib.PewterInfo
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Loader
@@ -13,7 +14,7 @@ import net.minecraftforge.fml.common.SidedProxy
 import net.minecraftforge.fml.common.event.*
 
 
-@Mod(modid = Pewter.MODID, name = Pewter.NAME, acceptedMinecraftVersions = Pewter.MCVERSION, version = Pewter.VERSION, dependencies = Pewter.DEPENDS, modLanguageAdapter = Pewter.ADAPTER)
+@Mod(modid = PewterInfo.MODID, name = PewterInfo.NAME, acceptedMinecraftVersions = PewterInfo.MCVERSION, version = PewterInfo.VERSION, dependencies = PewterInfo.DEPENDS, modLanguageAdapter = PewterInfo.ADAPTER)
 object Pewter : IProxy {
 
     @EventHandler
@@ -61,31 +62,11 @@ object Pewter : IProxy {
         event.registerServerCommand(PewterCommand())
     }
 
-    const val MODID = "pewter"
-    const val NAME = "Pewter"
-    const val VERSION = "1.2.2"
-    const val MCVERSION = "1.12"
-    const val DEPENDS = "required-after:tconstruct;" +
-            "required-after:forgelin;" +
-            "after:jaopca;" +
-            "after:conarm;" +
-            "after:astralsorcery;" +
-            "after:thaumcraft;" +
-            "after:betterwithmods;" +
-            "after:biomesoplenty;" +
-            "after:botania;" +
-            "after:thebetweenlands;" +
-            "after:embers;" +
-            "after:mekanism;" +
-            "after:soot"
-    const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
-    private const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
-    private const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
-    const val CONFIG_FOLDER = "config/pewter/"
+
 
     lateinit var CONFIG: Configs
 
-    @SidedProxy(clientSide = CLIENT, serverSide = SERVER)
+    @SidedProxy(clientSide = PewterInfo.CLIENT, serverSide = PewterInfo.SERVER)
     @JvmStatic lateinit var proxy: IProxy
 
 }

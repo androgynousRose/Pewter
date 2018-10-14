@@ -7,6 +7,7 @@ import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData.MatPart
 import com.ejektaflex.pewter.api.core.materials.stats.SmeltingStats
 import com.ejektaflex.pewter.lib.InternalAPI
+import com.ejektaflex.pewter.lib.PewterInfo
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraft.block.Block
 import net.minecraft.item.ItemBlock
@@ -212,7 +213,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
 
         var name = data.name.toLowerCase()
         fluid = FluidMolten(name, Color.decode(data.color).rgb).apply {
-            unlocalizedName = "${Pewter.MODID}.$name"
+            unlocalizedName = "${PewterInfo.MODID}.$name"
             viscosity = data.fluid["viscosity"] ?: 0
             density = data.fluid["density"] ?: 0
             temperature = data.fluid["temperature"] ?: 0
@@ -224,7 +225,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
         name = "molten_$name"
         // Create block
         block = BlockMolten(fluid).apply {
-            unlocalizedName = "${Pewter.MODID}.$name"
+            unlocalizedName = "${PewterInfo.MODID}.$name"
             registryName = name.resource
         }
         //block.setCreativeTab(null)
