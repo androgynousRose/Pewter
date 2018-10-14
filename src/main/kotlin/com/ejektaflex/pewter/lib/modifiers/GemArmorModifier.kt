@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.lib.modifiers
 import c4.conarm.lib.utils.RecipeMatchHolder
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.api.core.modifiers.PewterArmorModifier
+import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
 import com.ejektaflex.pewter.mods.common.gems.IModGem
 import net.minecraft.nbt.NBTTagCompound
@@ -19,7 +20,7 @@ abstract class GemArmorModifier(name: String, color: Int) : PewterArmorModifier(
     override fun configure() {
         oreTags.forEach { tag ->
             OreDictionary.getOres(tag).forEach {
-                PewterAPI.log("Configured gem $tag with $it")
+                InternalAPI.info("Configured gem $tag with $it")
                 RecipeMatchHolder.addItem(this, it, 1, 1)
             }
         }

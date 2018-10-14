@@ -2,6 +2,7 @@ package com.ejektaflex.pewter.config
 
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
+import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.mods.unused.MaterialExample
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
@@ -38,7 +39,7 @@ object Configs {
         val jsons = DIR.listFiles().filter { it.isFile }.filter { it.extension == "json" && !it.name.startsWith("_") }
 
         if (jsons.isEmpty()) {
-            Pewter.LOGGER!!.warn("Pewter is set to load external JSON files, but none were found.")
+            InternalAPI.warn("Pewter is set to load external JSON files, but none were found.")
         }
 
         jsons.mapNotNull {
@@ -46,10 +47,10 @@ object Configs {
                 val fileContents = String(Files.readAllBytes(it.toPath()))
                 gson.fromJson<Any>(fileContents, MaterialData::class.java) as MaterialData
             } catch (e: IOException) {
-                Pewter.LOGGER!!.warn("File named ${it.name} could not be found?")
+                InternalAPI.warn("File named ${it.name} could not be found?")
                 null
             } catch (e: JsonSyntaxException) {
-                Pewter.LOGGER!!.warn("File named ${it.name} has a JSON syntax error!")
+                InternalAPI.warn("File named ${it.name} has a JSON syntax fatal!")
                 e.printStackTrace()
                 null
             }

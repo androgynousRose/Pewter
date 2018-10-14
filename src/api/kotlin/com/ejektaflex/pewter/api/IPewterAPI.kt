@@ -38,11 +38,6 @@ interface IPewterAPI {
     fun addArmorTrait(mod: EffectWrapper<out IPewterTrait>) {}
 
     /**
-     * Used to log API work done by Pewter.
-     */
-    fun log(any: Any) {}
-
-    /**
      * Adds a content module (a predefined set of materials, modifiers and
      * traits) to Pewter.
      */
