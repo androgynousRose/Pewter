@@ -95,10 +95,9 @@ object InternalAPI : IPewterAPI {
     }
 
     /**
-     * This will later be optional. If the user has any custom JSON content
-     * with an identifier that matches the material identifier, it will instead
-     * load the custom stats. This allows users to override stats in materials
-     * from other mods.
+     * If the user has any custom JSON content with an identifier that matches
+     * the material identifier, it will instead load the custom stats. This
+     * allows users to override stats in materials from other mods.
      */
     @SubscribeEvent
     fun catchStats(e: MaterialEvent.StatRegisterEvent<IMaterialStats>) {

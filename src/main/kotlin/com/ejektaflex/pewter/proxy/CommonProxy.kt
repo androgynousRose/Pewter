@@ -25,7 +25,7 @@ open class CommonProxy : IProxy {
     override fun preInit(e: FMLPreInitializationEvent) {
         PewterContent.load()
 
-        InternalAPI.info("Loaded ${PewterMaterials.content.size} dependencies.")
+        InternalAPI.info("Loaded ${PewterMaterials.content.size} materials.")
 
         for (mat in PewterMaterials) {
             mat.preInit(e)

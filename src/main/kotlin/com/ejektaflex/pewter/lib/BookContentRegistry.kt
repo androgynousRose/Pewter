@@ -24,7 +24,6 @@ object BookContentRegistry {
 
     fun setup() {
         toolContent.reversed().forEach {
-            println("Setting up book section")
             addTinkerBookSection(TinkerBook.INSTANCE, it)
         }
 
@@ -67,7 +66,7 @@ object BookContentRegistry {
     private fun setupBook(book: BookData, repo: FileRepository, transformer: PewterContentListing<*>) {
         book.addRepository(repo)
         book.addTransformer(transformer)
-        InternalAPI.info("Added modifiers to book named \"${book.appearance.title}\".")
+        InternalAPI.verbose("Added modifiers to book named \"$book\".")
     }
 
 

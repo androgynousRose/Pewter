@@ -208,7 +208,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
             }
         }
 
-        InternalAPI.info("Making fluids for material ${data.name}")
+        InternalAPI.verbose("Making fluids for material ${data.name}")
 
         var name = data.name.toLowerCase()
         fluid = FluidMolten(name, Color.decode(data.color).rgb).apply {
