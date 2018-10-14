@@ -30,7 +30,7 @@ class MaterialAntimony(matName: String) : MaterialDSL(matName, "#89A38D", {
             durability { 120 }
         }
         bow {
-            speed(2.2f)
+            speed(2f)
             range { 1.1f }
             bonusDamage { 4f }
         }

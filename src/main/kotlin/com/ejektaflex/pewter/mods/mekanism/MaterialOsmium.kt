@@ -13,43 +13,38 @@ class MaterialOsmium : MaterialDSL("osmium", "#a6ccdd", {
         toolTrait("heavyweight")
 
         head {
-            durability { 240 }
+            durability { 460 }
             attack { 4f }
             speed { 6.5f }
-            harvestLevel(1)
+            harvestLevel(2)
         }
         handle {
-            durability { 105 }
-            modifier { 1.05f }
+            durability { 90 }
+            modifier { 0.8f }
         }
         extra {
-            durability { 35 }
+            durability { 180 }
         }
         bow {
-            speed(6f)
-            range { 1f }
-            //string { 0.05f }
-            bonusDamage { 6.5f }
-        }
-        shaft {
-            modifier { 1.1f }
-            bonusAmmo { 5 }
+            speed(2.6f)
+            range { 0.9f }
+            bonusDamage { 7f }
         }
     }
 
     armor {
         armorTrait("grounded_armor")
         core {
-            durability { 12f }
-            defense { 14f }
+            durability { 14f }
+            defense { 15.5f }
         }
         plates {
             modifier { 0.9f }
             durability { 6f }
-            toughness { 0f }
+            toughness { 1.5f }
         }
         trim {
-            extraDurability { 4f }
+            extraDurability { 7f }
         }
     }
 

@@ -31,12 +31,12 @@ internal object PewterContent {
         if (Pewter.CONFIG.MAIN.loadPewter) {
             val contentMap = mapOf(
                     "core" to listOf(
+                            ModuleMekanism(),
                             ModuleAstralSorcery(),
                             ModuleBetterWithMods(),
                             ModuleBotania(),
                             ModuleCommonGems(),
                             ModuleEmbersRekindled(),
-                            ModuleMekanism(),
                             ModuleSoot(),
                             ModuleThaumcraft(),
                             ModuleTheBetweenlands()
