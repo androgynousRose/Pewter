@@ -3,6 +3,7 @@ package com.ejektaflex.pewter.content
 import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.api.core.PewterModule
+import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.mods.astralsorcery.ModuleAstralSorcery
 import com.ejektaflex.pewter.mods.betterwithmods.ModuleBetterWithMods
 import com.ejektaflex.pewter.mods.botania.ModuleBotania
@@ -20,10 +21,10 @@ internal object PewterContent {
 
     fun registerModule(module: PewterModule) {
         if (module.hasMetDependencies()) {
-            PewterAPI.log("Registered module: ${module.id}")
+            InternalAPI.info("Registered module: ${module.id}")
             modules.add(module)
         } else {
-            PewterAPI.log("Module '${module.id} has unmet dependencies. Skipping integration.")
+            InternalAPI.info("Module '${module.id} has unmet dependencies. Skipping integration.")
         }
     }
 

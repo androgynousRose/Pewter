@@ -17,7 +17,6 @@ open class PewterAPIProvider : IPewterAPI by api {
         fun changeAPI(newAPI: IPewterAPI) {
             api = newAPI
             MinecraftForge.EVENT_BUS.register(api)
-            api.log("Using Pewter API: ${newAPI::class.simpleName}")
         }
     }
 }

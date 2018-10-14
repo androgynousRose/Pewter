@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter.book
 
-import com.ejektaflex.pewter.api.PewterAPI
+import com.ejektaflex.pewter.lib.InternalAPI
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
@@ -29,10 +29,10 @@ abstract class  PewterContentListing<C : TinkerPage>(secName: String) : ContentL
             val modItems = getModItems(modifier)
 
             if (modItems != null && modItems.isNotEmpty()) {
-                PewterAPI.log("Added a page for the modifier: '${modifier.identifier}' in '${book.appearance.title}'")
+                InternalAPI.info("Added a page for the modifier: '${modifier.identifier}' in '${book.appearance.title}'")
                 listing.addEntry(modifier.localizedName, page)
             } else {
-                PewterAPI.log("Removed a page for the modifier: '${modifier.identifier}' in '${book.appearance.title}'")
+                InternalAPI.info("Removed a page for the modifier: '${modifier.identifier}' in '${book.appearance.title}'")
                 pagesToRemove.add(page)
             }
 

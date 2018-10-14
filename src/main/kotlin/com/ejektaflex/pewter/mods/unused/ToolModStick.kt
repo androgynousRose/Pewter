@@ -1,9 +1,8 @@
 package com.ejektaflex.pewter.mods.unused
 
-
-import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.core.modifiers.PewterToolModifier
 import com.ejektaflex.pewter.ext.toItemStack
+import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemStack
@@ -26,7 +25,7 @@ class ToolModStick : PewterToolModifier("Shtick", 0xffff88), TinkerNBTHelper {
         val duration = getData(tool).level * 20
         target!!.addPotionEffect(PotionEffect(MobEffects.SLOWNESS, duration, 1))
 
-        Pewter.LOGGER!!.info("OnHit was called")
+        InternalAPI.info("OnHit was called")
     }
 
     override fun applyEffect(rootCompound: NBTTagCompound, modifierTag: NBTTagCompound) {

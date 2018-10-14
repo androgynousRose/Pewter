@@ -6,7 +6,6 @@ import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.ext.sendMessage
-import com.ejektaflex.pewter.lib.InternalPewterAPI
 import net.minecraft.command.CommandException
 import net.minecraft.command.ICommand
 import net.minecraft.command.ICommandSender
