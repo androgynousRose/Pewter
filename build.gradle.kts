@@ -23,14 +23,13 @@ buildscript {
 
 base {
     archivesBaseName = "Pewter"
-    version = "1.2.1"
+    version = "1.3.0"
     group = "com.ejektaflex.pewter"
 }
 
 plugins {
     java
-    id("org.jetbrains.kotlin.jvm") version "1.2.60"
-    //id("kotlin") version "1.2.60"
+    kotlin("jvm") version "1.2.60"
     id("net.minecraftforge.gradle.forge") version "2.0.2"
     id("org.jetbrains.dokka") version "0.9.17"
 }
@@ -59,6 +58,7 @@ repositories {
 }
 
 dependencies {
+    compile(kotlin("stdlib", "1.2.31"))
     compile("net.shadowfacts:Forgelin:$v_forgelin")
     compile("slimeknights.mantle:Mantle:$v_minecraft_root-$v_mantle")
     compile("slimeknights:TConstruct:$v_minecraft-$v_tinkers")
@@ -92,9 +92,9 @@ tasks.withType<DokkaTask> {
     // https://github.com/Kotlin/dokka/pull/358
 }
 
-tasks.register<Jar>("createJar") {
-    from(sourceSets["main"].output)
-    from(sourceSets["api"].output)
+tasks.withType<Jar> {
+    //from(sourceSets["main"].output)
+    from(sourceSets["api"].output.classesDirs)
 }
 
 tasks.register<Jar>("apiJar") {
