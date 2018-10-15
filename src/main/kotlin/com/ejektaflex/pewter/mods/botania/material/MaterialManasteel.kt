@@ -6,7 +6,7 @@ class MaterialManasteel(name: String) : MaterialDSL(name, "#005EE0", {
     forge { true }
     craft { false }
     allTags("Manasteel")
-    //blocks("botania:storage")
+    blocks("botania:storage")
     defaultMetalParts()
     shininess(0.8f)
     addTraits(

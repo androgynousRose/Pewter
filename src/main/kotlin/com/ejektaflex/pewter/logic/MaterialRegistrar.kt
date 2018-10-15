@@ -24,6 +24,7 @@ import slimeknights.tconstruct.library.MaterialIntegration
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.library.materials.Material
+import slimeknights.tconstruct.library.smeltery.CastingRecipe
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe
 import slimeknights.tconstruct.library.traits.ITrait
 import slimeknights.tconstruct.smeltery.TinkerSmeltery
@@ -101,6 +102,27 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
                         data.meltingTemperature
                 )
                 TinkerRegistry.registerMelting(meltingRecipe)
+
+                if (smeltingType == SmeltingStats.SmeltingType.BLOCK) {
+
+                    TinkerRegistry.registerBasinCasting(
+                            CastingRecipe(
+                                    itemStack,
+                                    fluid,
+                                    smeltingType.amount,
+                                    CastingRecipe.calcCooldownTime(fluid, smeltingType.amount)
+                            )
+                            /*
+                            CastingRecipe(
+                                    itemStack,
+                                    RecipeMatch.of(itemStack, smeltingType.amount),
+                                    fluid,
+                                    data.meltingTemperature
+                            )
+                            */
+                    )
+                }
+
             }
         } else {
             PewterLogger.warn("Could not associate $itemString with material named '${data.name}'! Reason is because the item doesn't exist.")
@@ -132,11 +154,6 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
         val repTagItem = getRepresentativeOreItem()
         val repItem = getRepresentativeItem(data.smeltingItems)
         val itemToRepresentWith = repTagItem ?: repItem
-
-        println("ITEM TAG REP: ${repTagItem?.displayName} $repTagItem")
-        println("ITEM REP: ${repItem?.displayName}")
-        println("REP: $itemToRepresentWith")
-
 
         if (itemToRepresentWith != null) {
             tinkMaterial.representativeItem = itemToRepresentWith
