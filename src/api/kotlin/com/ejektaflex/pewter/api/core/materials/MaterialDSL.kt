@@ -134,6 +134,8 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
         material.smeltingItems.ingot.addAll(ing)
     }
 
+
+    // TODO Remove
     /**
      * Specifies some [OreDictionary] tags with which all items with the
      * tag can be used to make this material, with the approx. worth of an
@@ -142,7 +144,7 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
     @TopLevelToolDSL
     fun ingotTags(vararg ing: String) {
         // Add all ingots to map
-        material.smeltingTags.ingot.addAll(ing)
+        //material.smeltingTags.ingot.addAll(ing)
     }
 
     @TopLevelToolDSL
@@ -150,37 +152,33 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
         material.smeltingItems.block.addAll(blo)
     }
 
-    @TopLevelToolDSL
-    fun blockTags(vararg blo: String) {
-        material.smeltingTags.block.addAll(blo)
-    }
 
     @TopLevelToolDSL
     fun nuggets(vararg blo: String) {
         material.smeltingItems.nugget.addAll(blo)
     }
 
-    @TopLevelToolDSL
-    fun nuggetTags(vararg blo: String) {
-        material.smeltingTags.nugget.addAll(blo)
-    }
 
     @TopLevelToolDSL
     fun ores(vararg blo: String) {
         material.smeltingItems.ore.addAll(blo)
     }
 
+    // TODO Remove
     @TopLevelToolDSL
     fun oreTags(vararg blo: String) {
-        material.smeltingTags.ore.addAll(blo)
+        //material.smeltingTags.ore.addAll(blo)
     }
 
     @TopLevelToolDSL
-    fun allTags(vararg tags: String) {
+    fun allTags(vararg suffixes: String) {
+        /*
         nuggetTags(*tags.map { "nugget$it" }.toTypedArray())
         ingotTags(*tags.map { "ingot$it" }.toTypedArray())
         blockTags(*tags.map { "block$it" }.toTypedArray())
         oreTags(*tags.map { "ore$it" }.toTypedArray())
+        */
+        material.oreDictSuffixes.addAll(suffixes)
     }
 
     @TopLevelToolDSL

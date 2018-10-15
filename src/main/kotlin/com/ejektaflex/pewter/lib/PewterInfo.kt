@@ -3,7 +3,7 @@ package com.ejektaflex.pewter.lib
 object PewterInfo {
     const val MODID = "pewter"
     const val NAME = "Pewter"
-    const val VERSION = "1.2.2"
+    const val VERSION = "1.4.0-beta1"
     const val MCVERSION = "1.12"
     const val DEPENDS = "required-after:tconstruct;" +
             "required-after:forgelin;" +

@@ -1,6 +1,8 @@
 package com.ejektaflex.pewter.api.core.materials.stats
 
+import net.minecraft.item.ItemStack
 import slimeknights.tconstruct.library.materials.Material
+import slimeknights.tconstruct.smeltery.TinkerSmeltery
 
 class SmeltingStats {
 
@@ -8,6 +10,7 @@ class SmeltingStats {
     val block = mutableListOf<String>()
     val nugget = mutableListOf<String>()
     val ore = mutableListOf<String>()
+    val dust = mutableListOf<String>()
 
     operator fun get(type: SmeltingType): MutableList<String> {
         return type.getter(this)

@@ -33,7 +33,7 @@ object PewterModifiers : AbstractLoadable<IPewterModifier, EffectWrapper<out IPe
 
             it
         }.map {
-            it.create().also { mat -> PewterLogger.info("Added Material for registration: ${mat.identifier}") }
+            it.create().also { modif -> PewterLogger.verbose("Added Modifier for registration: ${modif.identifier}") }
         }.toList()
     }
 

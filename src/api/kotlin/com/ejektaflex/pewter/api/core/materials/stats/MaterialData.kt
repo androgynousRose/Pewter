@@ -10,6 +10,7 @@ class MaterialData {
     var name = "doot"
     var tool = ToolStats()
     var color = "#448844"
+    var oreDictSuffixes = mutableListOf<String>()
     var craftable = false
     var madeInToolForge = false
     var createMeltingRecipes = true
@@ -30,8 +31,6 @@ class MaterialData {
     var nameLocales = mutableMapOf<String, String>()
 
     var smeltingItems = SmeltingStats()
-
-    var smeltingTags = SmeltingStats()
 
     var armor: ArmorStats? = null
 
