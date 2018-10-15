@@ -28,7 +28,7 @@ object PewterMaterials : AbstractLoadable<MaterialRegistrar, MaterialDSL>() {
     }
 
     private fun dependencyCheck(matDSL: MaterialDSL): MaterialRegistrar? {
-        return if (Configs.main.hasBlacklistedMaterial(matDSL.material.name)) {
+        return if (!Configs.main.hasBlacklistedMaterial(matDSL.material.name)) {
             MaterialRegistrar(matDSL.material)
         } else {
             null
