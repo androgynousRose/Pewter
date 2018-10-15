@@ -4,6 +4,7 @@ import com.ejektaflex.pewter.api.core.modifiers.IPewterModifier
 import com.ejektaflex.pewter.api.core.EffectWrapper
 import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.lib.AbstractLoadable
+import com.ejektaflex.pewter.lib.PewterLogger
 
 object PewterModifiers : AbstractLoadable<IPewterModifier, EffectWrapper<out IPewterModifier>>() {
 
@@ -32,7 +33,7 @@ object PewterModifiers : AbstractLoadable<IPewterModifier, EffectWrapper<out IPe
 
             it
         }.map {
-            it.create()
+            it.create().also { mat -> PewterLogger.info("Added Material for registration: ${mat.identifier}") }
         }.toList()
     }
 

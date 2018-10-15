@@ -25,6 +25,7 @@ open class CommonProxy : IProxy {
     override fun preInit(e: FMLPreInitializationEvent) {
         PewterContent.load()
         PewterLogger.info("Loaded ${PewterMaterials.content.size} materials.")
+        PewterLogger.verbose("Doing material preinitialization")
         for (mat in PewterMaterials) {
             mat.preInit(e)
         }
@@ -32,6 +33,7 @@ open class CommonProxy : IProxy {
     }
 
     override fun init(e: FMLInitializationEvent) {
+        PewterLogger.verbose("Doing material initialization..")
         for (mat in PewterMaterials) {
             mat.init(e)
         }
@@ -42,6 +44,7 @@ open class CommonProxy : IProxy {
         for (mod in PewterModifiers) {
             mod.configure()
         }
+        PewterLogger.verbose("Doing material postinitialization")
         for (mat in PewterMaterials) {
             mat.postInit(e)
         }
