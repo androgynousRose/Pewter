@@ -1,12 +1,13 @@
 package com.ejektaflex.pewter.config
 
-import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
 import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.lib.PewterInfo
+import com.ejektaflex.pewter.lib.PewterLogger
 import com.ejektaflex.pewter.mods.unused.MaterialExample
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
+import net.minecraftforge.fml.common.Loader
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
@@ -14,9 +15,9 @@ import java.nio.file.Files
 
 object Configs {
 
-    var DIR: File = File(PewterInfo.CONFIG_FOLDER)
+    var configDir: File = File(PewterInfo.CONFIG_FOLDER)
 
-    lateinit var MAIN: MainConfig
+    lateinit var main: MainConfig
 
     private fun ensureDirectory(base: File, name: String): File {
         val newDir = File(base, name)
@@ -26,21 +27,22 @@ object Configs {
         return newDir
     }
 
-
     fun save() {
-        MAIN.save()
-        createExampleFile(DIR)
+        main.grab()
+        main.save()
+        createExampleFile(configDir)
     }
 
     fun load() {
-        MAIN.load()
+        main.grab()
+        main.load()
     }
 
     val externalMaterials: List<MaterialData> by lazy {
-        val jsons = DIR.listFiles().filter { it.isFile }.filter { it.extension == "json" && !it.name.startsWith("_") }
+        val jsons = configDir.listFiles().filter { it.isFile }.filter { it.extension == "json" && !it.name.startsWith("_") }
 
         if (jsons.isEmpty()) {
-            InternalAPI.warn("Pewter is set to load external JSON files, but none were found.")
+            PewterLogger.warn("Pewter is set to load external JSON files, but none were found.")
         }
 
         jsons.mapNotNull {
@@ -48,10 +50,10 @@ object Configs {
                 val fileContents = String(Files.readAllBytes(it.toPath()))
                 gson.fromJson<Any>(fileContents, MaterialData::class.java) as MaterialData
             } catch (e: IOException) {
-                InternalAPI.warn("File named ${it.name} could not be found?")
+                PewterLogger.warn("File named ${it.name} could not be found?")
                 null
             } catch (e: JsonSyntaxException) {
-                InternalAPI.warn("File named ${it.name} has a JSON syntax fatal!")
+                PewterLogger.warn("File named ${it.name} has a JSON syntax fatal!")
                 e.printStackTrace()
                 null
             }
@@ -59,8 +61,8 @@ object Configs {
     }
 
     fun initialize(root: File) {
-        DIR = ensureDirectory(root, PewterInfo.MODID)
-        MAIN = MainConfig(DIR.path)
+        configDir = ensureDirectory(root, PewterInfo.MODID)
+        main = MainConfig(configDir.path)
     }
 
     private val gson = GsonBuilder().setPrettyPrinting().create()

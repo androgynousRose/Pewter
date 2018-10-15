@@ -8,6 +8,7 @@ import com.ejektaflex.pewter.api.core.materials.stats.MaterialData.MatPart
 import com.ejektaflex.pewter.api.core.materials.stats.SmeltingStats
 import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.lib.PewterInfo
+import com.ejektaflex.pewter.lib.PewterLogger
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraft.block.Block
 import net.minecraft.item.ItemBlock
@@ -114,7 +115,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
                 TinkerRegistry.registerMelting(meltingRecipe)
             }
         } else {
-            InternalAPI.warn("Could not associate $itemString with material named '${data.name}'! Reason is because the item doesn't exist.")
+            PewterLogger.warn("Could not associate $itemString with material named '${data.name}'! Reason is because the item doesn't exist.")
         }
     }
 
@@ -140,7 +141,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
 
         itemToRepresentWith?.let {
             tinkMaterial.representativeItem = it
-            InternalAPI.verbose("${data.name} is being represented by '${tinkMaterial.representativeItem.displayName}'")
+            PewterLogger.verbose("${data.name} is being represented by '${tinkMaterial.representativeItem.displayName}'")
         }
     }
 
@@ -158,11 +159,11 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
                     if (specTrait) numSpecTraits++
                 }
             } catch (e: Exception) {
-                InternalAPI.fatal("I don't think a part exists for the part identifier $specificPartName")
+                PewterLogger.fatal("I don't think a part exists for the part identifier $specificPartName")
                 e.printStackTrace()
             }
         }
-        InternalAPI.verbose("Loaded $numSpecTraits specific traits for '${tinkMaterial.identifier}'.")
+        PewterLogger.verbose("Loaded $numSpecTraits specific traits for '${tinkMaterial.identifier}'.")
     }
 
     private fun addTrait(name: String, matPart: MatPart? = null): Boolean {
@@ -176,7 +177,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
             }
             true
         } else {
-            InternalAPI.warn("Trait '$name' does not exist!")
+            PewterLogger.warn("Trait '$name' does not exist!")
             false
         }
     }
@@ -184,7 +185,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
     private fun createMaterial() {
         tinkMaterial = TinkerRegistry.getMaterial(data.name)
         if (tinkMaterial != Material.UNKNOWN) {
-            InternalAPI.verbose("Material already registered. (${data.name})")
+            PewterLogger.verbose("Material already registered. (${data.name})")
         } else {
             tinkMaterial = Material(data.name, Color.decode(data.color).rgb)
         }
@@ -197,8 +198,8 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
         }
 
         if (data.fluidNames != null) {
-            InternalAPI.verbose("Instead of making a fluids for material ${data.name}, we are going to try to load one of these: ${data.fluidNames}")
-            InternalAPI.verbose("All fluids: ${FluidRegistry.getBucketFluids().map { it.unlocalizedName }}")
+            PewterLogger.verbose("Instead of making a fluids for material ${data.name}, we are going to try to load one of these: ${data.fluidNames}")
+            PewterLogger.verbose("All fluids: ${FluidRegistry.getBucketFluids().map { it.unlocalizedName }}")
 
             val fluidToUse = data.fluidNames!!.map { FluidRegistry.getFluid(it) }.firstOrNull()
             if (fluidToUse != null) {
@@ -209,7 +210,7 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
             }
         }
 
-        InternalAPI.verbose("Making fluids for material ${data.name}")
+        PewterLogger.verbose("Making fluids for material ${data.name}")
 
         var name = data.name.toLowerCase()
         fluid = FluidMolten(name, Color.decode(data.color).rgb).apply {

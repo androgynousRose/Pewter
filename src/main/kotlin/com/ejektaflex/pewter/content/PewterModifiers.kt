@@ -1,9 +1,8 @@
 package com.ejektaflex.pewter.content
 
-import com.ejektaflex.pewter.Pewter
-import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.api.core.modifiers.IPewterModifier
 import com.ejektaflex.pewter.api.core.EffectWrapper
+import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.lib.AbstractLoadable
 
 object PewterModifiers : AbstractLoadable<IPewterModifier, EffectWrapper<out IPewterModifier>>() {
@@ -17,12 +16,12 @@ object PewterModifiers : AbstractLoadable<IPewterModifier, EffectWrapper<out IPe
     override fun transformContent(items: List<EffectWrapper<out IPewterModifier>>): List<IPewterModifier> {
         return items.asSequence().mapNotNull {
             // Remove modifiers that have been blacklisted
-            if (Pewter.hasBlacklistedModifier(it.identifier)) {
+            if (Configs.main.hasBlacklistedModifier(it.identifier)) {
                 return@mapNotNull null
             }
 
             // Remove ConArm mods if the mod isn't loaded
-            if (it.identifier.endsWith(armorSuffix) && !Pewter.isUsingConArm()) {
+            if (it.identifier.endsWith(armorSuffix) && !Configs.main.isUsingConArm()) {
                 return@mapNotNull null
             }
 

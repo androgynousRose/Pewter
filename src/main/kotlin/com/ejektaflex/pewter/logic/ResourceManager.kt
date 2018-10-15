@@ -1,9 +1,8 @@
 package com.ejektaflex.pewter.logic
 
-import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.content.PewterMaterials
-import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.lib.PewterInfo
+import com.ejektaflex.pewter.lib.PewterLogger
 import net.minecraft.client.Minecraft
 import net.minecraft.client.resources.IResourceManagerReloadListener
 import net.minecraft.util.text.translation.LanguageMap
@@ -32,7 +31,7 @@ class ResourceManager : IResourceManagerReloadListener {
             val materialName = mat.data.name.toLowerCase()
             var data = ""
 
-            InternalAPI.verbose("$mcLocale ... ${locales[mcLocale]}")
+            PewterLogger.verbose("$mcLocale ... ${locales[mcLocale]}")
 
             // Look up the current locale in the local map. If it exists, then add the entry
             if (locales.keys.isNotEmpty()) {

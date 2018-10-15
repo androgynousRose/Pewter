@@ -22,49 +22,30 @@ object Pewter : IProxy {
 
     @EventHandler
     override fun preInit(event: FMLPreInitializationEvent) {
-        CONFIG = Configs
-        CONFIG.initialize(event.modConfigurationDirectory)
-        CONFIG.MAIN.grab()
-        CONFIG.load()
-
+        //CONFIG = Configs
+        Configs.initialize(event.modConfigurationDirectory)
+        Configs.load()
         // Set integration
         proxy.preInit(event)
-
-        CONFIG.MAIN.grab()
-        CONFIG.save()
-
+        Configs.save()
         // Register model baking
         MinecraftForge.EVENT_BUS.register(proxy)
     }
 
-    fun shouldLoadJsonContent(): Boolean {
-        return CONFIG.MAIN.loadExternalContent
-    }
-
-    fun hasBlacklistedModifier(name: String): Boolean {
-        return (name) in CONFIG.MAIN.blacklistedModifiers
-    }
-
-    fun isUsingConArm() = Pewter.CONFIG.MAIN.conarmIntegration && Loader.isModLoaded("conarm")
-
     @EventHandler
-    override fun init(event: FMLInitializationEvent) {
-        proxy.init(event)
+    override fun init(e: FMLInitializationEvent) {
+        proxy.init(e)
     }
 
     @EventHandler
-    override fun postInit(event: FMLPostInitializationEvent) {
-        proxy.postInit(event)
+    override fun postInit(e: FMLPostInitializationEvent) {
+        proxy.postInit(e)
     }
 
     @EventHandler
-    fun serverLoad(event: FMLServerStartingEvent) {
-        event.registerServerCommand(PewterCommand())
+    fun serverLoad(e: FMLServerStartingEvent) {
+        e.registerServerCommand(PewterCommand())
     }
-
-
-
-    lateinit var CONFIG: Configs
 
     @SidedProxy(clientSide = PewterInfo.CLIENT, serverSide = PewterInfo.SERVER)
     @JvmStatic lateinit var proxy: IProxy

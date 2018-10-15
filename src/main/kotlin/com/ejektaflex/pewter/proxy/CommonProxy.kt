@@ -1,10 +1,9 @@
 package com.ejektaflex.pewter.proxy
 
-import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.content.*
 import com.ejektaflex.pewter.ext.resource
-import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.lib.PewterInfo
+import com.ejektaflex.pewter.lib.PewterLogger
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
@@ -25,13 +24,10 @@ open class CommonProxy : IProxy {
 
     override fun preInit(e: FMLPreInitializationEvent) {
         PewterContent.load()
-
-        InternalAPI.info("Loaded ${PewterMaterials.content.size} materials.")
-
+        PewterLogger.info("Loaded ${PewterMaterials.content.size} materials.")
         for (mat in PewterMaterials) {
             mat.preInit(e)
         }
-
         makePewterFluid()
     }
 
@@ -39,7 +35,6 @@ open class CommonProxy : IProxy {
         for (mat in PewterMaterials) {
             mat.init(e)
         }
-
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
@@ -51,7 +46,7 @@ open class CommonProxy : IProxy {
             mat.postInit(e)
         }
     }
-    
+
     open fun makePewterFluid() {
         val name = "pewterfluid"
         fluid = FluidMolten(name, 0xffff00ff.toInt()).apply {

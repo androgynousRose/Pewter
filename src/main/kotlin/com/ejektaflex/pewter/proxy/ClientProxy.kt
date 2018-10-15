@@ -1,11 +1,10 @@
 package com.ejektaflex.pewter.proxy
 
-import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.lib.BookContentRegistry
-import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.lib.PewterInfo
+import com.ejektaflex.pewter.lib.PewterLogger
 import com.ejektaflex.pewter.logic.FluidStateMapper
 import com.ejektaflex.pewter.logic.ResourceManager
 import com.google.common.base.Function
@@ -60,7 +59,7 @@ class ClientProxy : CommonProxy() {
 
     override fun postInit(e: FMLPostInitializationEvent) {
         super.postInit(e)
-        InternalAPI.info("Adding Pewter content to Tinker-based books..")
+        PewterLogger.info("Adding Pewter content to Tinker-based books..")
         PewterAPI.addToolRepository("${PewterInfo.MODID}:tinker_book")
         PewterAPI.addArmorRepository("${PewterInfo.MODID}:armory_book")
 

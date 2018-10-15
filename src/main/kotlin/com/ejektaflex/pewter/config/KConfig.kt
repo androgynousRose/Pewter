@@ -10,6 +10,4 @@ open class KConfig(folder: String, fileName: String) {
     open fun save() = config.save()
 
     open fun hasChanged() = config.hasChanged()
-
-    
 }

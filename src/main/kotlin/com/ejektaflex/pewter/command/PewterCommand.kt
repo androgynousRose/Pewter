@@ -66,7 +66,7 @@ class PewterCommand : ICommand {
                 if (args.size == 2) {
                     val mat = PewterMaterials.content.find { it.data.name == args[1] }
                     if (mat != null) {
-                        Configs.generateMaterialFile(Configs.DIR, mat.data)
+                        Configs.generateMaterialFile(Configs.configDir, mat.data)
                         sender.sendMessage("Generated file pewter/${mat.data.name}.json.")
                     } else {
                         sender.sendMessage(TextFormatting.DARK_AQUA.toString() + "Pewter never made a material named ${args[1]}" +
@@ -89,7 +89,7 @@ class PewterCommand : ICommand {
             }
 
             "armortraits" -> {
-                if (Pewter.isUsingConArm()) {
+                if (Configs.main.isUsingConArm()) {
                     val armorTraits = ArmoryRegistry.getAllArmorModifiers()
                     val listString = armorTraits.map { colors.cycle().toString() + "${it.localizedName} (identifier: ${it.identifier})" }.sorted()
                     sender.sendMessage(listString.toString())
@@ -101,7 +101,7 @@ class PewterCommand : ICommand {
             "tooltraits" -> {
                 val toolTraits = TinkerRegistry.getAllModifiers().toMutableList()
 
-                if (Pewter.isUsingConArm()) {
+                if (Configs.main.isUsingConArm()) {
                     toolTraits.removeIf { it in ArmoryRegistry.getAllArmorModifiers() }
                 }
 

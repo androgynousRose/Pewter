@@ -1,6 +1,5 @@
 package com.ejektaflex.pewter.lib
 
-import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.IPewterAPI
 import com.ejektaflex.pewter.api.core.traits.IPewterTrait
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
@@ -13,10 +12,7 @@ import com.ejektaflex.pewter.content.PewterContent
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.content.PewterModifiers
 import com.ejektaflex.pewter.content.PewterTraits
-import net.minecraft.launchwrapper.Launch
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
-import org.apache.logging.log4j.Level
-import org.apache.logging.log4j.LogManager
 import slimeknights.mantle.client.book.repository.FileRepository
 import slimeknights.tconstruct.library.events.MaterialEvent
 import slimeknights.tconstruct.library.materials.IMaterialStats
@@ -24,20 +20,12 @@ import slimeknights.tconstruct.library.materials.IMaterialStats
 
 object InternalAPI : IPewterAPI {
 
-    private val logger = LogManager.getLogger("PewterAPI")
-    private val levelVerbose: Level by lazy { Level.forName("VERBOSE", 350) }
-    // Debug should only be enabled if someone passes "-Dcom.ejektaflex.pewter.verbose=true" to the JVM as a parameter
-    // Debug just allows verbose log messages from Pewter.
-    private val debugEnabled: Boolean by lazy {
-        (Launch.blackboard["fml.deobfuscatedEnvironment"] as Boolean) && System.getProperty("com.ejektaflex.pewter.verbose") == "true"
-    }
-
     override fun addToolModifier(mod: EffectWrapper<out IPewterToolModifier>) {
         PewterModifiers.internalContent.add(mod)
     }
 
     override fun addArmorModifier(mod: EffectWrapper<out IPewterArmorModifier>) {
-        if (Pewter.isUsingConArm()) {
+        if (Configs.main.isUsingConArm()) {
             PewterModifiers.internalContent.add(mod)
         } else {
             throw Exception("Pewter is not using Construct's Armory, cannot add Armor Modifier '${mod.identifier}'!")
@@ -49,7 +37,7 @@ object InternalAPI : IPewterAPI {
     }
 
     override fun addArmorTrait(mod: EffectWrapper<out IPewterTrait>) {
-        if (Pewter.isUsingConArm()) {
+        if (Configs.main.isUsingConArm()) {
             PewterTraits.internalContent.add(mod)
         } else {
             throw Exception("Pewter is not using Construct's Armory, cannot add Armor Trait '${mod.identifier}'!")
@@ -59,18 +47,6 @@ object InternalAPI : IPewterAPI {
     override fun addMaterial(material: MaterialDSL) {
         PewterMaterials.internalContent.add(material)
     }
-
-    fun verbose(any: Any) {
-        if (debugEnabled) {
-            logger.log(levelVerbose, any)
-        }
-    }
-
-    fun info(any: Any) = logger.info(any)
-
-    fun warn(any: Any) = logger.warn(any)
-
-    fun fatal(any: Any) = logger.fatal(any)
 
     override fun registerModule(module: PewterModule) {
         PewterContent.registerModule(module)

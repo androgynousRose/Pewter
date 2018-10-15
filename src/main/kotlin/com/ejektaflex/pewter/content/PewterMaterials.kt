@@ -1,6 +1,5 @@
 package com.ejektaflex.pewter.content
 
-import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.lib.AbstractLoadable
@@ -17,7 +16,7 @@ object PewterMaterials : AbstractLoadable<MaterialRegistrar, MaterialDSL>() {
             dependencyCheck(it)
         }.toMutableList()
 
-        if (Pewter.shouldLoadJsonContent()) {
+        if (Configs.main.shouldLoadJsonContent()) {
             toLoad += loadJsonContent()
         }
 
@@ -29,7 +28,7 @@ object PewterMaterials : AbstractLoadable<MaterialRegistrar, MaterialDSL>() {
     }
 
     private fun dependencyCheck(matDSL: MaterialDSL): MaterialRegistrar? {
-        return if (matDSL.material.name !in Pewter.CONFIG.MAIN.blacklistedMaterials) {
+        return if (Configs.main.hasBlacklistedMaterial(matDSL.material.name)) {
             MaterialRegistrar(matDSL.material)
         } else {
             null
