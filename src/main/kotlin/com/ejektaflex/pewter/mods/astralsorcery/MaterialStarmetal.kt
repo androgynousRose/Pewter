@@ -5,7 +5,7 @@ import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 class MaterialStarmetal(matName: String) : MaterialDSL(matName, "#222288", {
     forge { true }
     craft { false }
-    allTags("AstralStarmetal")
+    allSuffixes("AstralStarmetal")
     defaultMetalParts()
     addTraits(
             "HEAD" to "dense"

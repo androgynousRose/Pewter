@@ -6,6 +6,8 @@ import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.ext.sendMessage
+import com.ejektaflex.pewter.lib.PewterInfo
+import com.ejektaflex.pewter.logic.ListCycler
 import net.minecraft.command.CommandException
 import net.minecraft.command.ICommand
 import net.minecraft.command.ICommandSender
@@ -21,18 +23,18 @@ import java.util.*
 
 class PewterCommand : ICommand {
 
-    private val colors = Cycler(listOf(TextFormatting.GREEN, TextFormatting.DARK_AQUA, TextFormatting.RED, TextFormatting.GOLD))
+    private val colors = ListCycler(listOf(TextFormatting.GREEN, TextFormatting.DARK_AQUA, TextFormatting.RED, TextFormatting.GOLD))
 
     override fun compareTo(other: ICommand): Int {
         return 0
     }
 
     override fun getName(): String {
-        return Pewter.MODID
+        return PewterInfo.MODID
     }
 
     override fun getUsage(sender: ICommandSender): String {
-        return "/${Pewter.MODID}"
+        return "/${PewterInfo.MODID}"
     }
 
     override fun getAliases(): List<String> {
@@ -64,8 +66,8 @@ class PewterCommand : ICommand {
                 if (args.size == 2) {
                     val mat = PewterMaterials.content.find { it.data.name == args[1] }
                     if (mat != null) {
-                        Configs.generateMaterialFile(Configs.DIR, mat.data)
-                        sender.sendMessage("Generated file pewter/${mat.data.name}.json.")
+                        Configs.generateMaterialFile(Configs.configDir, mat.data)
+                        sender.sendMessage("Generated file pewter/_${mat.data.name}.json.")
                     } else {
                         sender.sendMessage(TextFormatting.DARK_AQUA.toString() + "Pewter never made a material named ${args[1]}" +
                                 ", sorry! Use '/pewter listmaterials' to view all possible " +
@@ -87,7 +89,7 @@ class PewterCommand : ICommand {
             }
 
             "armortraits" -> {
-                if (Pewter.isUsingConArm()) {
+                if (Configs.main.isUsingConArm()) {
                     val armorTraits = ArmoryRegistry.getAllArmorModifiers()
                     val listString = armorTraits.map { colors.cycle().toString() + "${it.localizedName} (identifier: ${it.identifier})" }.sorted()
                     sender.sendMessage(listString.toString())
@@ -99,7 +101,7 @@ class PewterCommand : ICommand {
             "tooltraits" -> {
                 val toolTraits = TinkerRegistry.getAllModifiers().toMutableList()
 
-                if (Pewter.isUsingConArm()) {
+                if (Configs.main.isUsingConArm()) {
                     toolTraits.removeIf { it in ArmoryRegistry.getAllArmorModifiers() }
                 }
 

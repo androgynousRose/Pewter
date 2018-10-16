@@ -1,18 +1,14 @@
 package com.ejektaflex.pewter.ext
 
-import com.ejektaflex.pewter.Pewter
+import com.ejektaflex.pewter.lib.PewterInfo
 import net.minecraft.command.ICommandSender
-import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
-import net.minecraft.util.text.ITextComponent
 import net.minecraft.util.text.TextComponentString
 import net.minecraft.world.World
-import slimeknights.mantle.util.RecipeMatchRegistry
-import slimeknights.tconstruct.library.modifiers.Modifier
 import java.util.*
 
 val String.resource: ResourceLocation
-    get() = ResourceLocation(Pewter.MODID, this)
+    get() = ResourceLocation(PewterInfo.MODID, this)
 
 fun ClosedRange<Int>.random() =
         Random().nextInt(endInclusive + 1 - start) +  start

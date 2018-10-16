@@ -19,7 +19,7 @@ class MaterialVoidMetal(name: String) : MaterialDSL(name, "#2A114A", {
 
         head {
             durability { 740 }
-            attack { 5.3f }
+            attack { 6.5f }
             speed { 5.8f }
             harvestLevel(3)
         }

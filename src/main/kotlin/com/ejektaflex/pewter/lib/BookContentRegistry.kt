@@ -8,6 +8,7 @@ import com.ejektaflex.pewter.api.core.modifiers.IPewterToolModifier
 import com.ejektaflex.pewter.book.PewterArmorSectionTransformer
 import com.ejektaflex.pewter.book.PewterContentListing
 import com.ejektaflex.pewter.book.PewterToolSectionTransformer
+import com.ejektaflex.pewter.config.Configs
 import com.ejektaflex.pewter.content.PewterModifiers
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fml.relauncher.Side
@@ -27,7 +28,7 @@ object BookContentRegistry {
             addTinkerBookSection(TinkerBook.INSTANCE, it)
         }
 
-        if (Pewter.isUsingConArm()) {
+        if (Configs.main.isUsingConArm()) {
             armorContent.reversed().forEach {
                 addArmoryBookSection(ArmoryBook.INSTANCE, it)
             }
@@ -40,7 +41,7 @@ object BookContentRegistry {
         if (getModifierItems<IPewterToolModifier>().isNotEmpty()) {
             setupBook(book, repo, PewterToolSectionTransformer(repo.sections[0].name))
         } else {
-            InternalAPI.info("Pewter is not adding tool modifiers to Materials and You, no valid items exist")
+            PewterLogger.info("Pewter is not adding tool modifiers to Materials and You, no valid items exist")
         }
     }
 
@@ -49,7 +50,7 @@ object BookContentRegistry {
         if (getModifierItems<IPewterArmorModifier>().isNotEmpty()) {
             setupBook(book, repo, PewterArmorSectionTransformer(repo.sections[0].name))
         } else {
-            InternalAPI.info("Pewter is not adding armor modifiers to Construct's Armory, no valid items exist")
+            PewterLogger.info("Pewter is not adding armor modifiers to Construct's Armory, no valid items exist")
         }
     }
 
@@ -66,7 +67,7 @@ object BookContentRegistry {
     private fun setupBook(book: BookData, repo: FileRepository, transformer: PewterContentListing<*>) {
         book.addRepository(repo)
         book.addTransformer(transformer)
-        InternalAPI.verbose("Added modifiers to book named \"$book\".")
+        PewterLogger.verbose("Added modifiers to book named \"$book\".")
     }
 
 
