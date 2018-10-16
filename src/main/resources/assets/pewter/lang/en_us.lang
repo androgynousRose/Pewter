@@ -40,6 +40,9 @@ fluid.pewter.octine.name=Molten Octine
 material.osmium.name=Osmium
 fluid.pewter.osmium.name=Molten Osmium
 
+material.soulforgedsteel.name=Soulforged Steel
+fluid.pewter.soulforgedsteel.name=Molten Soulforged Steel
+
 material.starmetal.name=Starmetal
 fluid.pewter.starmetal.name=Molten Starmetal
 

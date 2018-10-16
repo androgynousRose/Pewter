@@ -60,11 +60,6 @@ class MaterialData {
         ARMOR
     }
 
-    // TODO Reverse and make map
-    fun allPossibleOreTags(): List<Pair<SmeltingStats.SmeltingType, String>> {
-        return oreDictSuffixes.map { suff -> SmeltingStats.SmeltingType.values().map { it to "${it.name.toLowerCase()}$suff" } }.flatten()
-    }
-
     enum class MatPart(val dependency: String, val stats: (it: MaterialData) -> IMaterialStats?, val partType: PartType = PartType.TOOL) {
         // Tools
         HEAD(MaterialTypes.HEAD, { HeadMaterialStats(it.tool.head.durability, it.tool.head.speed, it.tool.head.attackDamage, it.tool.head.harvestLevel) }),

@@ -27,6 +27,7 @@ class SmeltingStats {
     enum class SmeltingType(val of: SmeltingStats.() -> MutableList<String>, val amount: Int, val getCast: () -> ItemStack?) {
         INGOT({ ingot }, Material.VALUE_Ingot, { TinkerSmeltery.castIngot }),
         BLOCK({ block }, Material.VALUE_Block, { null }),
+        DUST({ dust }, Material.VALUE_Ore(), { null }),
         NUGGET({ nugget }, Material.VALUE_Nugget, { TinkerSmeltery.castNugget }),
         ORE({ ore }, Material.VALUE_Ore(), { null })
     }

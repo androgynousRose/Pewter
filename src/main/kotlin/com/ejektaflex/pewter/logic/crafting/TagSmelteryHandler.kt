@@ -13,9 +13,7 @@ class TagSmelteryHandler(private val reg: MaterialRegistrar) : ISmelteryHandler 
     override val statBase: () -> SmeltingStats = { reg.data.smeltingTags }
 
     override fun associate(input: String, smeltingType: SmeltingStats.SmeltingType) {
-        if (reg.fluid != null && reg.data.createMeltingRecipes) {
-            reg.tinkMaterial.addItem(input, 1, smeltingType.amount)
-        }
+        reg.tinkMaterial.addItem(input, 1, smeltingType.amount)
     }
 
     override fun integrate(input: String, smeltingType: SmeltingStats.SmeltingType) {

@@ -14,9 +14,8 @@ class ItemSmelteryHandler(private val reg: MaterialRegistrar) : ISmelteryHandler
     override val statBase: () -> SmeltingStats = { reg.data.smeltingItems }
 
     override fun associate(input: String, smeltingType: SmeltingStats.SmeltingType) {
-        val itemStack = input.toItemStack
-        if (itemStack != null) {
-            reg.tinkMaterial.addItem(itemStack, 1, smeltingType.amount)
+        input.toItemStack?.let {
+            reg.tinkMaterial.addItem(it, 1, smeltingType.amount)
         }
     }
 
