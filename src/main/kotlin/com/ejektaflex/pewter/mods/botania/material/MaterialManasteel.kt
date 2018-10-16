@@ -5,7 +5,7 @@ import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 class MaterialManasteel(name: String) : MaterialDSL(name, "#005EE0", {
     forge { true }
     craft { false }
-    allTags("Manasteel")
+    allSuffixes("Manasteel")
     blocks("botania:storage")
     defaultMetalParts()
     shininess(0.8f)

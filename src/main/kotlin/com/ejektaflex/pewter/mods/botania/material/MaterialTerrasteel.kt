@@ -6,7 +6,7 @@ class MaterialTerrasteel(name: String) : MaterialDSL(name, "#5CFF12", {
     forge { true }
     craft { false }
     blocks("botania:storage:1")
-    allTags("Terrasteel")
+    allSuffixes("Terrasteel")
     defaultMetalParts()
     brightness(0.1f)
     shininess(0.35f)

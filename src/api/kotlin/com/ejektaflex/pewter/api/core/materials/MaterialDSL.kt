@@ -2,6 +2,7 @@ package com.ejektaflex.pewter.api.core.materials
 
 import com.ejektaflex.pewter.api.core.materials.stats.ArmorStats
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
+import com.ejektaflex.pewter.api.core.materials.stats.SmeltingStats
 
 /**
  * A Kotlin DSL that describes a Tinkers' Construct Material. Used as a proxy
@@ -65,7 +66,7 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
      */
     @TopLevelToolDSL
     fun brightness(f: Float) {
-        material.looks["brightness"] = f
+        material.looks.brightness = f
     }
 
     /**
@@ -73,7 +74,7 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
      */
     @TopLevelToolDSL
     fun shininess(f: Float) {
-        material.looks["shininess"] = f
+        material.looks.shininess = f
     }
 
     /**
@@ -134,14 +135,8 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
         material.smeltingItems.ingot.addAll(ing)
     }
 
-    /**
-     * Specifies some [OreDictionary] tags with which all items with the
-     * tag can be used to make this material, with the approx. worth of an
-     * ingot.
-     */
     @TopLevelToolDSL
     fun ingotTags(vararg ing: String) {
-        // Add all ingots to map
         material.smeltingTags.ingot.addAll(ing)
     }
 
@@ -161,8 +156,8 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
     }
 
     @TopLevelToolDSL
-    fun nuggetTags(vararg blo: String) {
-        material.smeltingTags.nugget.addAll(blo)
+    fun nuggetTags(vararg nug: String) {
+        material.smeltingTags.nugget.addAll(nug)
     }
 
     @TopLevelToolDSL
@@ -171,16 +166,19 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
     }
 
     @TopLevelToolDSL
-    fun oreTags(vararg blo: String) {
-        material.smeltingTags.ore.addAll(blo)
+    fun oreTags(vararg ore: String) {
+        material.smeltingTags.ore.addAll(ore)
     }
 
     @TopLevelToolDSL
-    fun allTags(vararg tags: String) {
-        nuggetTags(*tags.map { "nugget$it" }.toTypedArray())
-        ingotTags(*tags.map { "ingot$it" }.toTypedArray())
-        blockTags(*tags.map { "block$it" }.toTypedArray())
-        oreTags(*tags.map { "ore$it" }.toTypedArray())
+    fun allSuffixes(vararg suffixes: String) {
+        /*
+        nuggetTags(*suffixes.map { "nugget$it" }.toTypedArray())
+        ingotTags(*suffixes.map { "ingot$it" }.toTypedArray())
+        blockTags(*suffixes.map { "block$it" }.toTypedArray())
+        oreTags(*suffixes.map { "ore$it" }.toTypedArray())
+        */
+        material.oreDictSuffixes.addAll(suffixes)
     }
 
     @TopLevelToolDSL

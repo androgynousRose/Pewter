@@ -5,7 +5,7 @@ import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 class MaterialAntimony(matName: String) : MaterialDSL(matName, "#89A38D", {
     forge { true }
     craft { false }
-    allTags("Antimony")
+    allSuffixes("Antimony")
     fluids("antimony")
     defaultMetalParts()
     shininess(0.35f)

@@ -1,6 +1,5 @@
 package com.ejektaflex.pewter.ext
 
-import net.minecraft.block.material.Material
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraftforge.oredict.OreDictionary

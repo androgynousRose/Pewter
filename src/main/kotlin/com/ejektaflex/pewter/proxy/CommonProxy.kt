@@ -1,9 +1,9 @@
 package com.ejektaflex.pewter.proxy
 
-import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.content.*
 import com.ejektaflex.pewter.ext.resource
-import com.ejektaflex.pewter.lib.InternalAPI
+import com.ejektaflex.pewter.lib.PewterInfo
+import com.ejektaflex.pewter.lib.PewterLogger
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock
@@ -24,21 +24,19 @@ open class CommonProxy : IProxy {
 
     override fun preInit(e: FMLPreInitializationEvent) {
         PewterContent.load()
-
-        InternalAPI.info("Loaded ${PewterMaterials.content.size} materials.")
-
+        PewterLogger.info("Loaded ${PewterMaterials.content.size} materials.")
+        PewterLogger.verbose("Doing material preinitialization")
         for (mat in PewterMaterials) {
             mat.preInit(e)
         }
-
         makePewterFluid()
     }
 
     override fun init(e: FMLInitializationEvent) {
+        PewterLogger.verbose("Doing material initialization..")
         for (mat in PewterMaterials) {
             mat.init(e)
         }
-
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
@@ -46,11 +44,11 @@ open class CommonProxy : IProxy {
         for (mod in PewterModifiers) {
             mod.configure()
         }
+        PewterLogger.verbose("Doing material postinitialization")
         for (mat in PewterMaterials) {
             mat.postInit(e)
         }
     }
-
 
     open fun makePewterFluid() {
         val name = "pewterfluid"
@@ -61,7 +59,7 @@ open class CommonProxy : IProxy {
 
         block = BlockMolten(fluid).apply {
             setCreativeTab(null)
-            unlocalizedName = Pewter.MODID + "." + name
+            unlocalizedName = PewterInfo.MODID + "." + name
             registryName = name.resource
             ForgeRegistries.BLOCKS.register(this)
         }

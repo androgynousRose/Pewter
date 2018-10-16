@@ -1,10 +1,10 @@
 package com.ejektaflex.pewter.proxy
 
-import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.lib.BookContentRegistry
-import com.ejektaflex.pewter.lib.InternalAPI
+import com.ejektaflex.pewter.lib.PewterInfo
+import com.ejektaflex.pewter.lib.PewterLogger
 import com.ejektaflex.pewter.logic.FluidStateMapper
 import com.ejektaflex.pewter.logic.ResourceManager
 import com.google.common.base.Function
@@ -46,9 +46,9 @@ class ClientProxy : CommonProxy() {
             }
             material.tinkMaterial.setRenderInfo(
                     MaterialRenderInfo.Metal(Color.decode(material.data.color).rgb,
-                            material.data.looks["shininess"] ?: 1.0f,
-                            material.data.looks["brightness"] ?: 1.0f,
-                            material.data.looks["hueshift"] ?: 1.0f
+                            material.data.looks.shininess,
+                            material.data.looks.brightness,
+                            material.data.looks.hueshift
                     )
             )
         }
@@ -59,9 +59,9 @@ class ClientProxy : CommonProxy() {
 
     override fun postInit(e: FMLPostInitializationEvent) {
         super.postInit(e)
-        InternalAPI.info("Adding Pewter content to Tinker-based books..")
-        PewterAPI.addToolRepository("${Pewter.MODID}:tinker_book")
-        PewterAPI.addArmorRepository("${Pewter.MODID}:armory_book")
+        PewterLogger.info("Adding Pewter content to Tinker-based books..")
+        PewterAPI.addToolRepository("${PewterInfo.MODID}:tinker_book")
+        PewterAPI.addArmorRepository("${PewterInfo.MODID}:armory_book")
 
         BookContentRegistry.setup()
     }
@@ -85,7 +85,7 @@ class ClientProxy : CommonProxy() {
             if (mat.fluid != null) {
                 model = ModelFluid(mat.fluid!!)
                 baked = model.bake(model.getDefaultState(), Attributes.DEFAULT_BAKED_FORMAT, textureGetter)
-                location = ModelResourceLocation(Pewter.MODID + ":fluid_block", mat.fluid!!.name)
+                location = ModelResourceLocation(PewterInfo.MODID + ":fluid_block", mat.fluid!!.name)
                 event.modelRegistry.putObject(location, baked)
             }
         }

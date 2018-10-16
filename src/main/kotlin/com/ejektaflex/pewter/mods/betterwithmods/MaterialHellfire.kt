@@ -6,9 +6,10 @@ class MaterialHellfire(matName: String) : MaterialDSL(matName, "#FF362C", {
     locale("en_7S " to "Ye Fiery Treasure")
     forge { true }
     craft { false }
-    ingots("betterwithmods:material:17")
+    ingotTags("ingotConcentratedHellfire")
+    blockTags("blockConcentratedHellfire")
     defaultMetalParts()
-    allTags("Hellfire")
+    //allSuffixes("Hellfire")
     tool {
         toolTrait("heatlover")
         head {

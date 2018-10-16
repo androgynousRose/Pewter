@@ -1,9 +1,9 @@
 package com.ejektaflex.pewter.content
 
-import com.ejektaflex.pewter.Pewter
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.api.core.PewterModule
-import com.ejektaflex.pewter.lib.InternalAPI
+import com.ejektaflex.pewter.config.Configs
+import com.ejektaflex.pewter.lib.PewterLogger
 import com.ejektaflex.pewter.mods.astralsorcery.ModuleAstralSorcery
 import com.ejektaflex.pewter.mods.betterwithmods.ModuleBetterWithMods
 import com.ejektaflex.pewter.mods.botania.ModuleBotania
@@ -21,15 +21,15 @@ internal object PewterContent {
 
     fun registerModule(module: PewterModule) {
         if (module.hasMetDependencies()) {
-            InternalAPI.info("Registered module: ${module.id}")
+            PewterLogger.info("Registered module: ${module.id}")
             modules.add(module)
         } else {
-            InternalAPI.info("Module '${module.id} has unmet dependencies. Skipping integration.")
+            PewterLogger.info("Module '${module.id} has unmet dependencies. Skipping integration.")
         }
     }
 
     init {
-        if (Pewter.CONFIG.MAIN.loadPewter) {
+        if (Configs.main.shouldLoadPewterContent()) {
             val contentMap = mapOf(
                     "core" to listOf(
                             ModuleMekanism(),
@@ -77,7 +77,7 @@ internal object PewterContent {
             PewterAPI.addMaterial(mat)
         }
 
-        if (Pewter.isUsingConArm()) {
+        if (Configs.main.isUsingConArm()) {
             for (trait in module.armorTraits) {
                 PewterAPI.addArmorTrait(trait)
             }

@@ -5,7 +5,7 @@ import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 class MaterialDawnstone(matName: String) : MaterialDSL(matName, "#FFB648", {
     forge { true }
     craft { false }
-    allTags("Dawnstone")
+    allSuffixes("Dawnstone")
     fluids("dawnstone")
     defaultMetalParts()
     shininess(0.55f)

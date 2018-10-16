@@ -2,15 +2,34 @@ package com.ejektaflex.pewter.config
 
 import com.ejektaflex.pewter.content.PewterMaterials
 import com.ejektaflex.pewter.content.PewterModifiers
+import net.minecraftforge.fml.common.Loader
 
 open class MainConfig(folder: String) : KConfig(folder, "pewter.cfg") {
-    open var conarmIntegration: Boolean = true
-    open var loadExternalContent: Boolean = false
-    open var loadPewter: Boolean = false
+    private var conarmIntegration: Boolean = true
+    private var loadExternalContent: Boolean = false
+    private var loadPewter: Boolean = false
 
     //var materialsToList = listOf<MaterialRegistrar>()
-    var blacklistedMaterials = mutableListOf<String>()
-    var blacklistedModifiers = mutableListOf<String>()
+    private var blacklistedMaterials = mutableListOf<String>()
+    private var blacklistedModifiers = mutableListOf<String>()
+
+    fun shouldLoadJsonContent(): Boolean {
+        return loadExternalContent
+    }
+
+    fun shouldLoadPewterContent(): Boolean {
+        return loadPewter
+    }
+
+    fun hasBlacklistedMaterial(name: String): Boolean {
+        return name in blacklistedMaterials
+    }
+
+    fun hasBlacklistedModifier(name: String): Boolean {
+        return name in blacklistedModifiers
+    }
+
+    fun isUsingConArm() = conarmIntegration && Loader.isModLoaded("conarm")
 
     fun grab() {
 
