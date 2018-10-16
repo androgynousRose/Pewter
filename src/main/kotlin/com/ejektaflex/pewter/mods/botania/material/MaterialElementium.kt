@@ -6,7 +6,7 @@ class MaterialElementium(name: String) : MaterialDSL(name, "#ED339A", {
     forge { true }
     craft { false }
     blocks("botania:storage:2")
-    allTags("ElvenElementium")
+    allSuffixes("ElvenElementium")
     defaultMetalParts()
     shininess(0.6f)
     addTraits(

@@ -6,7 +6,7 @@ class MaterialOctine(name: String) : MaterialDSL(name, "#F38A20", {
     locale("en_7S " to "Ye Illuminating Treasure")
     forge { true }
     craft { false }
-    allTags("Octine")
+    allSuffixes("Octine")
     ores("thebetweenlands:octine_ore")
     defaultMetalParts()
     addTraits(

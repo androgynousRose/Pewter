@@ -13,14 +13,22 @@ class SmeltingStats {
     val dust = mutableListOf<String>()
 
     operator fun get(type: SmeltingType): MutableList<String> {
-        return type.getter(this)
+        return type.of(this)
     }
 
-    enum class SmeltingType(val getter: SmeltingStats.() -> MutableList<String>, val amount: Int) {
-        INGOT({ ingot }, Material.VALUE_Ingot),
-        BLOCK({ block }, Material.VALUE_Block),
-        NUGGET({ nugget }, Material.VALUE_Nugget),
-        ORE({ ore }, Material.VALUE_Ore())
+    override fun toString(): String {
+        return "Ingots: $ingot" +
+                "Blocks: $block" +
+                "Nugget: $nugget" +
+                "Ores:   $ore" +
+                "Dusts:  $dust"
+    }
+
+    enum class SmeltingType(val of: SmeltingStats.() -> MutableList<String>, val amount: Int, val getCast: () -> ItemStack?) {
+        INGOT({ ingot }, Material.VALUE_Ingot, { TinkerSmeltery.castIngot }),
+        BLOCK({ block }, Material.VALUE_Block, { null }),
+        NUGGET({ nugget }, Material.VALUE_Nugget, { TinkerSmeltery.castNugget }),
+        ORE({ ore }, Material.VALUE_Ore(), { null })
     }
 
 }

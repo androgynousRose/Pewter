@@ -1,13 +1,11 @@
 package com.ejektaflex.pewter.config
 
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
-import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.lib.PewterInfo
 import com.ejektaflex.pewter.lib.PewterLogger
 import com.ejektaflex.pewter.mods.unused.MaterialExample
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
-import net.minecraftforge.fml.common.Loader
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
@@ -73,9 +71,10 @@ object Configs {
         }
     }
 
-    fun generateMaterialFile(location: File, dsl: MaterialData) {
-        FileWriter("${location.absolutePath}${File.separator}_${dsl.name}.json").use { writer ->
-            gson.toJson(dsl, writer)
+    fun generateMaterialFile(location: File, data: MaterialData) {
+        FileWriter("${location.absolutePath}${File.separator}_${data.name}.json").use { writer ->
+            data.oreDictSuffixes.clear() // We don't want duplicates
+            gson.toJson(data, writer)
         }
     }
 

@@ -9,7 +9,7 @@ class MaterialHellfire(matName: String) : MaterialDSL(matName, "#FF362C", {
     ingotTags("ingotConcentratedHellfire")
     blockTags("blockConcentratedHellfire")
     defaultMetalParts()
-    //allTags("Hellfire")
+    //allSuffixes("Hellfire")
     tool {
         toolTrait("heatlover")
         head {

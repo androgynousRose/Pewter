@@ -2,6 +2,7 @@ package com.ejektaflex.pewter.api.core.materials
 
 import com.ejektaflex.pewter.api.core.materials.stats.ArmorStats
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
+import com.ejektaflex.pewter.api.core.materials.stats.SmeltingStats
 
 /**
  * A Kotlin DSL that describes a Tinkers' Construct Material. Used as a proxy
@@ -164,19 +165,18 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
         material.smeltingItems.ore.addAll(blo)
     }
 
-    // TODO Remove
     @TopLevelToolDSL
     fun oreTags(vararg ore: String) {
         material.smeltingTags.ore.addAll(ore)
     }
 
     @TopLevelToolDSL
-    fun allTags(vararg suffixes: String) {
+    fun allSuffixes(vararg suffixes: String) {
         /*
-        nuggetTags(*tags.map { "nugget$it" }.toTypedArray())
-        ingotTags(*tags.map { "ingot$it" }.toTypedArray())
-        blockTags(*tags.map { "block$it" }.toTypedArray())
-        oreTags(*tags.map { "ore$it" }.toTypedArray())
+        nuggetTags(*suffixes.map { "nugget$it" }.toTypedArray())
+        ingotTags(*suffixes.map { "ingot$it" }.toTypedArray())
+        blockTags(*suffixes.map { "block$it" }.toTypedArray())
+        oreTags(*suffixes.map { "ore$it" }.toTypedArray())
         */
         material.oreDictSuffixes.addAll(suffixes)
     }

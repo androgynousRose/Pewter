@@ -5,7 +5,7 @@ import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 class MaterialSyrmorite(name: String) : MaterialDSL(name, "#1E336C", {
     forge { true }
     craft { false }
-    allTags("Syrmorite")
+    allSuffixes("Syrmorite")
     defaultMetalParts()
     addTraits(
             //"HEAD" to "corrosive",

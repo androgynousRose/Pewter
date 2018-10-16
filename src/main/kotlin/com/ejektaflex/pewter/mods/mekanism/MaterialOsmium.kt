@@ -5,7 +5,7 @@ import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 class MaterialOsmium : MaterialDSL("osmium", "#a6ccdd", {
     forge { true }
     craft { false }
-    allTags("Osmium")
+    allSuffixes("Osmium")
     defaultMetalParts()
 
     tool {

@@ -1,16 +1,16 @@
 package com.ejektaflex.pewter.logic
 
 import com.ejektaflex.pewter.ext.resource
-import com.ejektaflex.pewter.ext.toItemStack
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData.MatPart
 import com.ejektaflex.pewter.api.core.materials.stats.SmeltingStats
 import com.ejektaflex.pewter.lib.PewterInfo
 import com.ejektaflex.pewter.lib.PewterLogger
+import com.ejektaflex.pewter.logic.crafting.ItemSmelteryHandler
+import com.ejektaflex.pewter.logic.crafting.TagSmelteryHandler
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraft.block.Block
 import net.minecraft.item.ItemBlock
-import net.minecraft.item.ItemStack
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fluids.Fluid
 import net.minecraftforge.fluids.FluidRegistry
@@ -18,36 +18,30 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.common.registry.ForgeRegistries
-import net.minecraftforge.oredict.OreDictionary
-import slimeknights.mantle.util.RecipeMatch
 import slimeknights.tconstruct.library.MaterialIntegration
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.fluid.FluidMolten
 import slimeknights.tconstruct.library.materials.Material
-import slimeknights.tconstruct.library.smeltery.CastingRecipe
-import slimeknights.tconstruct.library.smeltery.MeltingRecipe
 import slimeknights.tconstruct.library.traits.ITrait
-import slimeknights.tconstruct.smeltery.TinkerSmeltery
 import slimeknights.tconstruct.smeltery.block.BlockMolten
 import java.awt.Color
 
-open class MaterialRegistrar(val data: MaterialData) : IProxy {
+class MaterialRegistrar(val data: MaterialData) : IProxy {
 
     private lateinit var integration: MaterialIntegration
     lateinit var tinkMaterial: Material
     var fluid: Fluid? = null
     var block: Block? = null
     var fluidItem: ItemBlock? = null
-
-    // TODO Reverse and make map
-    val allPossibleOreTags: List<Pair<SmeltingStats.SmeltingType, String>>
-        get() = data.oreDictSuffixes.map { suff -> SmeltingStats.SmeltingType.values().map { it to "${it.name.toLowerCase()}$suff" } }.flatten()
+    val tagHandler = TagSmelteryHandler(this)
+    val itemHandler = ItemSmelteryHandler(this)
 
     init {
         MinecraftForge.EVENT_BUS.register(this)
     }
 
     override fun preInit(e: FMLPreInitializationEvent) {
+        transformSuffixes()
         createMaterial()
         makeFluid()
         preIntegrateMaterial()
@@ -55,151 +49,29 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
     }
 
     override fun init(e: FMLInitializationEvent) {
-        associate()
+        itemHandler.associateAll()
+        tagHandler.associateAll()
         addMaterialTraits()
         represent()
     }
 
     override fun postInit(e: FMLPostInitializationEvent) {
         integrateMaterial()
+        itemHandler.integrateAll()
+        tagHandler.integrateAll()
     }
 
-    private fun associate() {
-        associateItems()
-        associateSuffixes()
-        associateTags()
-    }
-
-    private fun associateSuffixes() {
-        for (possibleTag in allPossibleOreTags) {
-            associateSuffix(possibleTag.second, possibleTag.first)
-        }
-    }
-
-    private fun associateSuffix(possibleTag: String, smeltingType: SmeltingStats.SmeltingType) {
-        if (fluid != null && data.createMeltingRecipes) {
-            tinkMaterial.addItem(possibleTag, 1, smeltingType.amount)
-        }
-    }
-
-    private fun associateTags() {
-        for (smeltingType in SmeltingStats.SmeltingType.values() ) {
-            data.smeltingTags[smeltingType].forEach { tagString ->
-                associateTag(tagString, smeltingType)
+    private fun transformSuffixes() {
+        for (suffix in data.oreDictSuffixes) {
+            SmeltingStats.SmeltingType.values().forEach { smeltingType ->
+                smeltingType.of(data.smeltingTags).add("${smeltingType.name.toLowerCase()}$suffix")
             }
         }
     }
-
-    private fun associateTag(tagString: String, smeltingType: SmeltingStats.SmeltingType) {
-        if (fluid != null && data.createMeltingRecipes) {
-            tinkMaterial.addItem(tagString, 1, smeltingType.amount)
-
-            val meltingRecipe = MeltingRecipe(
-                    RecipeMatch.of(tagString, smeltingType.amount),
-                    fluid,
-                    data.meltingTemperature
-            )
-            TinkerRegistry.registerMelting(meltingRecipe)
-
-            OreDictionary.getOres(tagString).firstOrNull()?.let { outputItem ->
-                if (smeltingType == SmeltingStats.SmeltingType.BLOCK) {
-                    TinkerRegistry.registerBasinCasting(
-                            CastingRecipe(
-                                    outputItem,
-                                    fluid,
-                                    smeltingType.amount,
-                                    CastingRecipe.calcCooldownTime(fluid, smeltingType.amount)
-                            )
-                    )
-                } else {
-                    TinkerRegistry.registerTableCasting(
-                            CastingRecipe(
-                                    outputItem,
-                                    fluid,
-                                    smeltingType.amount,
-                                    CastingRecipe.calcCooldownTime(fluid, smeltingType.amount)
-                            )
-                    )
-                }
-            }
-
-
-        }
-    }
-
-    private fun associateItems() {
-        for (smeltingType in SmeltingStats.SmeltingType.values() ) {
-            data.smeltingItems[smeltingType].forEach { itemString ->
-                associateItem(itemString, smeltingType)
-            }
-        }
-    }
-
-    private fun associateItem(itemString: String, smeltingType: SmeltingStats.SmeltingType) {
-        val itemStack = itemString.toItemStack
-        // If that item exists, configure it
-        if (itemStack != null) {
-            tinkMaterial.addItem(itemStack, 1, smeltingType.amount)
-
-            if (fluid != null && data.createMeltingRecipes) {
-                val meltingRecipe = MeltingRecipe(
-                        RecipeMatch.of(itemStack, smeltingType.amount),
-                        fluid,
-                        data.meltingTemperature
-                )
-                TinkerRegistry.registerMelting(meltingRecipe)
-
-                if (smeltingType == SmeltingStats.SmeltingType.BLOCK) {
-                    TinkerRegistry.registerBasinCasting(
-                            CastingRecipe(
-                                    itemStack,
-                                    fluid,
-                                    smeltingType.amount,
-                                    CastingRecipe.calcCooldownTime(fluid, smeltingType.amount)
-                            )
-                    )
-                } else {
-                    TinkerRegistry.registerTableCasting(
-                            CastingRecipe(
-                                    itemStack,
-                                    fluid,
-                                    smeltingType.amount,
-                                    CastingRecipe.calcCooldownTime(fluid, smeltingType.amount)
-                            )
-                    )
-                }
-
-            }
-        } else {
-            PewterLogger.warn("Could not associate $itemString with material named '${data.name}'! Reason is because the item doesn't exist.")
-        }
-    }
-
-
-    private fun getRepresentativeItem(smeltStats: SmeltingStats): ItemStack? {
-        val smeltNames = SmeltingStats.SmeltingType.values().map { it.getter(smeltStats) }.flatten()
-        return smeltNames.firstOrNull()?.toItemStack
-    }
-
-    private fun getRepresentativeOreItem(): ItemStack? {
-
-        println("ALL POSSIBLE ORE TAGS FOR: ${data.name}: ::: $allPossibleOreTags")
-        for (possibleTag in allPossibleOreTags.map { it.second }) {
-            val possibleOres = OreDictionary.getOres(possibleTag)
-            if (possibleOres.isNotEmpty()) {
-                println("FOUND ORES? ${possibleOres.first().displayName}")
-                return possibleOres.first()
-            }
-        }
-        return null
-    }
-
 
     private fun represent() {
         // Material will be represented in Table of Contents by first ingot we get from OreDict tags or items
-        val repTagItem = getRepresentativeOreItem()
-        val repItem = getRepresentativeItem(data.smeltingItems)
-        val itemToRepresentWith = repTagItem ?: repItem
+        val itemToRepresentWith = tagHandler.representativeItem() ?: itemHandler.representativeItem()
 
         if (itemToRepresentWith != null) {
             tinkMaterial.representativeItem = itemToRepresentWith
@@ -210,10 +82,8 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
 
     }
 
-
     private fun addMaterialTraits() {
         var numSpecTraits = 0
-        // Default Trait
 
         // Specific Traits
         for ((specificPartName, traitNames) in data.specificTraits) {
@@ -280,10 +150,10 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
         var name = data.name.toLowerCase()
         fluid = FluidMolten(name, Color.decode(data.color).rgb).apply {
             unlocalizedName = "${PewterInfo.MODID}.$name"
-            viscosity = data.fluid["viscosity"] ?: 0
-            density = data.fluid["density"] ?: 0
-            temperature = data.fluid["temperature"] ?: 0
-            luminosity = data.fluid["luminosity"] ?: 0
+            viscosity = data.fluid.viscosity
+            density = data.fluid.density
+            temperature = data.fluid.temperature
+            luminosity = data.fluid.luminosity
         }
         FluidRegistry.registerFluid(fluid)
 
@@ -311,7 +181,6 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
     }
 
 
-
     private fun preIntegrateMaterial() {
         tinkMaterial.isCraftable = data.craftable
         tinkMaterial.isCastable = !data.craftable
@@ -321,15 +190,14 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
             if (data.madeInToolForge) { this.toolforge() }
             preInit()
         }
-
     }
 
     private fun integrateMaterial() {
         integration.integrate()
         fluid?.let {
             for (suffix in data.oreDictSuffixes) {
-                PewterLogger.verbose("Integrating '${data.name}' with suffix: '$suffix'")
-                TinkerSmeltery.registerOredictMeltingCasting(fluid, suffix)
+                //PewterLogger.verbose("Integrating '${data.name}' with suffix: '$suffix'")
+                //TinkerSmeltery.registerOredictMeltingCasting(fluid, suffix)
             }
         }
     }

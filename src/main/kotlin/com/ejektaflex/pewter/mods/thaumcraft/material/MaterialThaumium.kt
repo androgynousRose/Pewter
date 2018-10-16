@@ -5,7 +5,7 @@ import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 class MaterialThaumium(name: String) : MaterialDSL(name, "#6F43E8", {
     forge { true }
     craft { false }
-    allTags("Thaumium")
+    allSuffixes("Thaumium")
     defaultMetalParts()
     addTraits(
             "HEAD" to "essentia"

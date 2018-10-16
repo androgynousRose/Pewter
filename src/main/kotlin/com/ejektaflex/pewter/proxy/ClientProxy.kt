@@ -46,9 +46,9 @@ class ClientProxy : CommonProxy() {
             }
             material.tinkMaterial.setRenderInfo(
                     MaterialRenderInfo.Metal(Color.decode(material.data.color).rgb,
-                            material.data.looks["shininess"] ?: 1.0f,
-                            material.data.looks["brightness"] ?: 1.0f,
-                            material.data.looks["hueshift"] ?: 1.0f
+                            material.data.looks.shininess,
+                            material.data.looks.brightness,
+                            material.data.looks.hueshift
                     )
             )
         }

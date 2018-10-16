@@ -10,7 +10,6 @@ class MaterialData {
     var name = "doot"
     var tool = ToolStats()
     var color = "#448844"
-    var oreDictSuffixes = mutableListOf<String>()
     var craftable = false
     var madeInToolForge = false
     var createMeltingRecipes = true
@@ -18,6 +17,7 @@ class MaterialData {
     var looks = AppearanceStats()
     var fluidNames: MutableList<String>? = null
     var fluid = FluidStats()
+    var oreDictSuffixes = mutableListOf<String>()
     var matParts = mutableSetOf<MatPart>()
     var nameLocales = mutableMapOf<String, String>()
 
@@ -58,6 +58,11 @@ class MaterialData {
     enum class PartType {
         TOOL,
         ARMOR
+    }
+
+    // TODO Reverse and make map
+    fun allPossibleOreTags(): List<Pair<SmeltingStats.SmeltingType, String>> {
+        return oreDictSuffixes.map { suff -> SmeltingStats.SmeltingType.values().map { it to "${it.name.toLowerCase()}$suff" } }.flatten()
     }
 
     enum class MatPart(val dependency: String, val stats: (it: MaterialData) -> IMaterialStats?, val partType: PartType = PartType.TOOL) {

@@ -67,7 +67,7 @@ class PewterCommand : ICommand {
                     val mat = PewterMaterials.content.find { it.data.name == args[1] }
                     if (mat != null) {
                         Configs.generateMaterialFile(Configs.configDir, mat.data)
-                        sender.sendMessage("Generated file pewter/${mat.data.name}.json.")
+                        sender.sendMessage("Generated file pewter/_${mat.data.name}.json.")
                     } else {
                         sender.sendMessage(TextFormatting.DARK_AQUA.toString() + "Pewter never made a material named ${args[1]}" +
                                 ", sorry! Use '/pewter listmaterials' to view all possible " +
