@@ -65,7 +65,7 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
      */
     @TopLevelToolDSL
     fun brightness(f: Float) {
-        material.looks["brightness"] = f
+        material.looks.brightness = f
     }
 
     /**
@@ -73,7 +73,7 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
      */
     @TopLevelToolDSL
     fun shininess(f: Float) {
-        material.looks["shininess"] = f
+        material.looks.shininess = f
     }
 
     /**

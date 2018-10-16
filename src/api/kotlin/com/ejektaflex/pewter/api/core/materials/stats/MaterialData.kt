@@ -15,18 +15,9 @@ class MaterialData {
     var madeInToolForge = false
     var createMeltingRecipes = true
     var meltingTemperature = 475
-    var looks = mutableMapOf(
-            "shininess" to 0.25f,
-            "brightness" to 0.25f,
-            "hueshift" to -0.1f
-    )
+    var looks = AppearanceStats()
     var fluidNames: MutableList<String>? = null
-    var fluid = mutableMapOf(
-            "viscosity" to 8000,
-            "density" to 1500,
-            "temperature" to 1000,
-            "luminosity" to 8
-    )
+    var fluid = FluidStats()
     var matParts = mutableSetOf<MatPart>()
     var nameLocales = mutableMapOf<String, String>()
 
