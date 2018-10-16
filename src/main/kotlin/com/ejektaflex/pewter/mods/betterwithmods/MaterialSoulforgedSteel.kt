@@ -5,8 +5,8 @@ import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 class MaterialSoulforgedSteel(matName: String) : MaterialDSL(matName, "#464646", {
     forge { true }
     craft { false }
-    ingotTags("blockSoulforgedSteel")
-    nuggetTags("blockSoulforgedSteel")
+    ingotTags("ingotSoulforgedSteel")
+    nuggetTags("nuggetSoulforgedSteel")
     defaultMetalParts()
     shininess(0.6f)
     tool {
