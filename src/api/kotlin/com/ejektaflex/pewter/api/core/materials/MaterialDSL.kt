@@ -172,12 +172,6 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
 
     @TopLevelToolDSL
     fun allSuffixes(vararg suffixes: String) {
-        /*
-        nuggetTags(*suffixes.map { "nugget$it" }.toTypedArray())
-        ingotTags(*suffixes.map { "ingot$it" }.toTypedArray())
-        blockTags(*suffixes.map { "block$it" }.toTypedArray())
-        oreTags(*suffixes.map { "ore$it" }.toTypedArray())
-        */
         material.oreDictSuffixes.addAll(suffixes)
     }
 
