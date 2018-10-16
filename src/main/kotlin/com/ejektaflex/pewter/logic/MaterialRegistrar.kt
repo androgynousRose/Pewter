@@ -104,7 +104,6 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
                 TinkerRegistry.registerMelting(meltingRecipe)
 
                 if (smeltingType == SmeltingStats.SmeltingType.BLOCK) {
-
                     TinkerRegistry.registerBasinCasting(
                             CastingRecipe(
                                     itemStack,
@@ -112,14 +111,15 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
                                     smeltingType.amount,
                                     CastingRecipe.calcCooldownTime(fluid, smeltingType.amount)
                             )
-                            /*
+                    )
+                } else {
+                    TinkerRegistry.registerTableCasting(
                             CastingRecipe(
                                     itemStack,
-                                    RecipeMatch.of(itemStack, smeltingType.amount),
                                     fluid,
-                                    data.meltingTemperature
+                                    smeltingType.amount,
+                                    CastingRecipe.calcCooldownTime(fluid, smeltingType.amount)
                             )
-                            */
                     )
                 }
 

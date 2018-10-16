@@ -7,8 +7,9 @@ class MaterialHellfire(matName: String) : MaterialDSL(matName, "#FF362C", {
     forge { true }
     craft { false }
     ingots("betterwithmods:material:17")
+    blocks("betterwithmods:aesthetic:3")
     defaultMetalParts()
-    allTags("Hellfire")
+    //allTags("Hellfire")
     tool {
         toolTrait("heatlover")
         head {
