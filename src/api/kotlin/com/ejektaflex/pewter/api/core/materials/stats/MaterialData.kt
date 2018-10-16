@@ -31,6 +31,7 @@ class MaterialData {
     var nameLocales = mutableMapOf<String, String>()
 
     var smeltingItems = SmeltingStats()
+    var smeltingTags = SmeltingStats()
 
     var armor: ArmorStats? = null
 

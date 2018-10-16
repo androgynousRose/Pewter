@@ -9,7 +9,7 @@ object PewterLogger {
     private val logger = LogManager.getLogger("PewterAPI")
     private val levelVerbose: Level by lazy { Level.forName("VERBOSE", 350) }
     // Debug should only be enabled if someone passes "-Dcom.ejektaflex.pewter.verbose=true" to the JVM as a parameter
-    // Debug just allows verbose log messages from Pewter.
+    // And in a deobfuscated environment. Debug just allows verbose log messages from Pewter.
     private val debugEnabled: Boolean by lazy {
         (Launch.blackboard["fml.deobfuscatedEnvironment"] as Boolean) && System.getProperty("com.ejektaflex.pewter.verbose") == "true"
     }

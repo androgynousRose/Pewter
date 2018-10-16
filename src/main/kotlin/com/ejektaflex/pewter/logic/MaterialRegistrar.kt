@@ -66,18 +66,64 @@ open class MaterialRegistrar(val data: MaterialData) : IProxy {
 
     private fun associate() {
         associateItems()
+        associateSuffixes()
         associateTags()
     }
 
-    private fun associateTags() {
+    private fun associateSuffixes() {
         for (possibleTag in allPossibleOreTags) {
-            associateTag(possibleTag.second, possibleTag.first)
+            associateSuffix(possibleTag.second, possibleTag.first)
         }
     }
 
-    private fun associateTag(possibleTag: String, smeltingType: SmeltingStats.SmeltingType) {
+    private fun associateSuffix(possibleTag: String, smeltingType: SmeltingStats.SmeltingType) {
         if (fluid != null && data.createMeltingRecipes) {
             tinkMaterial.addItem(possibleTag, 1, smeltingType.amount)
+        }
+    }
+
+    private fun associateTags() {
+        for (smeltingType in SmeltingStats.SmeltingType.values() ) {
+            data.smeltingTags[smeltingType].forEach { tagString ->
+                associateTag(tagString, smeltingType)
+            }
+        }
+    }
+
+    private fun associateTag(tagString: String, smeltingType: SmeltingStats.SmeltingType) {
+        if (fluid != null && data.createMeltingRecipes) {
+            tinkMaterial.addItem(tagString, 1, smeltingType.amount)
+
+            val meltingRecipe = MeltingRecipe(
+                    RecipeMatch.of(tagString, smeltingType.amount),
+                    fluid,
+                    data.meltingTemperature
+            )
+            TinkerRegistry.registerMelting(meltingRecipe)
+
+            OreDictionary.getOres(tagString).firstOrNull()?.let { outputItem ->
+                if (smeltingType == SmeltingStats.SmeltingType.BLOCK) {
+                    TinkerRegistry.registerBasinCasting(
+                            CastingRecipe(
+                                    outputItem,
+                                    fluid,
+                                    smeltingType.amount,
+                                    CastingRecipe.calcCooldownTime(fluid, smeltingType.amount)
+                            )
+                    )
+                } else {
+                    TinkerRegistry.registerTableCasting(
+                            CastingRecipe(
+                                    outputItem,
+                                    fluid,
+                                    smeltingType.amount,
+                                    CastingRecipe.calcCooldownTime(fluid, smeltingType.amount)
+                            )
+                    )
+                }
+            }
+
+
         }
     }
 

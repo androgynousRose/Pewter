@@ -134,17 +134,9 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
         material.smeltingItems.ingot.addAll(ing)
     }
 
-
-    // TODO Remove
-    /**
-     * Specifies some [OreDictionary] tags with which all items with the
-     * tag can be used to make this material, with the approx. worth of an
-     * ingot.
-     */
     @TopLevelToolDSL
     fun ingotTags(vararg ing: String) {
-        // Add all ingots to map
-        //material.smeltingTags.ingot.addAll(ing)
+        material.smeltingTags.ingot.addAll(ing)
     }
 
     @TopLevelToolDSL
@@ -152,12 +144,20 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
         material.smeltingItems.block.addAll(blo)
     }
 
+    @TopLevelToolDSL
+    fun blockTags(vararg blo: String) {
+        material.smeltingTags.block.addAll(blo)
+    }
 
     @TopLevelToolDSL
     fun nuggets(vararg blo: String) {
         material.smeltingItems.nugget.addAll(blo)
     }
 
+    @TopLevelToolDSL
+    fun nuggetTags(vararg nug: String) {
+        material.smeltingTags.nugget.addAll(nug)
+    }
 
     @TopLevelToolDSL
     fun ores(vararg blo: String) {
@@ -166,8 +166,8 @@ abstract class MaterialDSL(initName: String, initColor: String, initFunc: Materi
 
     // TODO Remove
     @TopLevelToolDSL
-    fun oreTags(vararg blo: String) {
-        //material.smeltingTags.ore.addAll(blo)
+    fun oreTags(vararg ore: String) {
+        material.smeltingTags.ore.addAll(ore)
     }
 
     @TopLevelToolDSL

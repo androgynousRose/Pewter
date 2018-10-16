@@ -23,7 +23,7 @@ buildscript {
 
 base {
     archivesBaseName = "Pewter"
-    version = "1.4.0-beta2"
+    version = "1.4.0-beta3"
     group = "com.ejektaflex.pewter"
 }
 
