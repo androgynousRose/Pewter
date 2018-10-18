@@ -21,10 +21,11 @@ buildscript {
     }
 }
 
+version = "1.4.1"
+group = "com.ejektaflex.pewter"
+
 base {
     archivesBaseName = "Pewter"
-    version = "1.4.0"
-    group = "com.ejektaflex.pewter"
 }
 
 plugins {

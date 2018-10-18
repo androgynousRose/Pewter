@@ -7,15 +7,16 @@ import com.ejektaflex.pewter.lib.InternalAPI
 import com.ejektaflex.pewter.lib.PewterInfo
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraftforge.common.MinecraftForge
-import net.minecraftforge.fml.common.Loader
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventHandler
 import net.minecraftforge.fml.common.SidedProxy
 import net.minecraftforge.fml.common.event.*
 
-
 @Mod(modid = PewterInfo.MODID, name = PewterInfo.NAME, acceptedMinecraftVersions = PewterInfo.MCVERSION, version = PewterInfo.VERSION, dependencies = PewterInfo.DEPENDS, modLanguageAdapter = PewterInfo.ADAPTER)
 object Pewter : IProxy {
+
+    @SidedProxy(clientSide = PewterInfo.CLIENT, serverSide = PewterInfo.SERVER)
+    @JvmStatic lateinit var proxy: IProxy
 
     @EventHandler
     fun loadAPI(event: FMLConstructionEvent) = PewterAPIProvider.changeAPI(InternalAPI)
@@ -33,21 +34,12 @@ object Pewter : IProxy {
     }
 
     @EventHandler
-    override fun init(e: FMLInitializationEvent) {
-        proxy.init(e)
-    }
+    override fun init(e: FMLInitializationEvent) = proxy.init(e)
 
     @EventHandler
-    override fun postInit(e: FMLPostInitializationEvent) {
-        proxy.postInit(e)
-    }
+    override fun postInit(e: FMLPostInitializationEvent) = proxy.postInit(e)
 
     @EventHandler
-    fun serverLoad(e: FMLServerStartingEvent) {
-        e.registerServerCommand(PewterCommand())
-    }
-
-    @SidedProxy(clientSide = PewterInfo.CLIENT, serverSide = PewterInfo.SERVER)
-    @JvmStatic lateinit var proxy: IProxy
+    fun serverLoad(e: FMLServerStartingEvent) = e.registerServerCommand(PewterCommand())
 
 }

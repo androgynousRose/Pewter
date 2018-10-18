@@ -3,7 +3,7 @@ package com.ejektaflex.pewter.lib
 object PewterInfo {
     const val MODID = "pewter"
     const val NAME = "Pewter"
-    const val VERSION = "1.4.0"
+    const val VERSION = "1.4.1"
     const val MCVERSION = "1.12"
     const val DEPENDS = "required-after:tconstruct;" +
             "required-after:forgelin;" +
@@ -21,5 +21,4 @@ object PewterInfo {
     const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
     const val CLIENT = "com.ejektaflex.pewter.proxy.ClientProxy"
     const val SERVER = "com.ejektaflex.pewter.proxy.CommonProxy"
-    const val CONFIG_FOLDER = "config/pewter/"
 }
