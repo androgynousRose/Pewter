@@ -13,7 +13,7 @@ import java.nio.file.Files
 
 object Configs {
 
-    var configDir: File = File(PewterInfo.CONFIG_FOLDER)
+    var configDir: File = ensureDirectory(File("config"), "pewter")
 
     lateinit var main: MainConfig
 
