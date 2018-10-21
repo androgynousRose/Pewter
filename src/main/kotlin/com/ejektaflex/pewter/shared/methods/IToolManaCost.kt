@@ -1,7 +1,7 @@
 package com.ejektaflex.pewter.shared.methods
 
 import com.ejektaflex.pewter.ext.getModifierIntNBT
-import com.ejektaflex.pewter.mods.botania.tool.ToolModRuneMana
+import com.ejektaflex.pewter.modules.botania.tool.ToolModRuneMana
 import net.minecraft.item.ItemStack
 
 interface IToolManaCost : IModChange<Int> {

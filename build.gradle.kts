@@ -23,7 +23,7 @@ buildscript {
 
 val pewterVersion: String
     get() {
-        val versionFile = File("src/main/kotlin/com/ejektaflex/pewter/lib/PewterInfo.kt")
+        val versionFile = File("src/main/kotlin/com/ejektaflex/pewter/core/PewterInfo.kt")
         val gotVersion = if (versionFile.exists()) {
             versionFile.readLines().find { "VERSION" in it }?.dropWhile { it != '"' }?.drop(1)?.dropLast(1) ?: "UNDEFINED"
         } else {
