@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.mods.botania.material
+package com.ejektaflex.pewter.modules.botania.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData.MatPart

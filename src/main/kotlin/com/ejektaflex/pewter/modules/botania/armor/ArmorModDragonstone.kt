@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.mods.botania.armor
+package com.ejektaflex.pewter.modules.botania.armor
 
 import c4.conarm.lib.armor.ArmorNBT
 import com.ejektaflex.pewter.ext.comesFrom

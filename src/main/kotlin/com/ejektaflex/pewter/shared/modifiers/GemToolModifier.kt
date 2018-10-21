@@ -1,8 +1,8 @@
-package com.ejektaflex.pewter.lib.modifiers
+package com.ejektaflex.pewter.shared.modifiers
 
 import com.ejektaflex.pewter.api.core.modifiers.PewterToolModifier
 import com.ejektaflex.pewter.shared.methods.TinkerNBTHelper
-import com.ejektaflex.pewter.mods.common.gems.IModGem
+import com.ejektaflex.pewter.modules.common.gems.IModGem
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.oredict.OreDictionary
 import slimeknights.tconstruct.library.modifiers.ModifierAspect

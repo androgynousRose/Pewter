@@ -1,10 +1,10 @@
-package com.ejektaflex.pewter.lib.modifiers
+package com.ejektaflex.pewter.shared.modifiers
 
 import c4.conarm.lib.utils.RecipeMatchHolder
 import com.ejektaflex.pewter.api.core.modifiers.PewterArmorModifier
-import com.ejektaflex.pewter.lib.PewterLogger
+import com.ejektaflex.pewter.core.PewterLogger
 import com.ejektaflex.pewter.shared.methods.TinkerNBTHelper
-import com.ejektaflex.pewter.mods.common.gems.IModGem
+import com.ejektaflex.pewter.modules.common.gems.IModGem
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.oredict.OreDictionary
 

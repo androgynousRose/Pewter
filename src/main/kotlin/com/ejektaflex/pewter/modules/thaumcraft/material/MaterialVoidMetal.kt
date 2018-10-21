@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.mods.thaumcraft.material
+package com.ejektaflex.pewter.modules.thaumcraft.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 

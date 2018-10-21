@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.mods.thebetweenlands.material
+package com.ejektaflex.pewter.modules.thebetweenlands.material
 
 import com.ejektaflex.pewter.api.core.materials.MaterialDSL
 

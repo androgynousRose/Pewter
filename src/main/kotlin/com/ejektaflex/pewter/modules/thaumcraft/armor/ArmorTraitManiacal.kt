@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.mods.thaumcraft.armor
+package com.ejektaflex.pewter.modules.thaumcraft.armor
 
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack

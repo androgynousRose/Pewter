@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.mods.thebetweenlands.armor
+package com.ejektaflex.pewter.modules.thebetweenlands.armor
 
 import com.ejektaflex.pewter.api.core.traits.PewterArmorTrait
 import net.minecraft.entity.player.EntityPlayer

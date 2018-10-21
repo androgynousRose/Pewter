@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.mods.botania.armor
+package com.ejektaflex.pewter.modules.botania.armor
 
 import com.ejektaflex.pewter.ext.getTinkersModifier
 import com.ejektaflex.pewter.ext.toItemStack

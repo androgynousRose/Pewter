@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.lib.mixins
+package com.ejektaflex.pewter.shared.methods
 
 import c4.conarm.common.armor.utils.ArmorTagUtil
 import c4.conarm.lib.armor.ArmorNBT

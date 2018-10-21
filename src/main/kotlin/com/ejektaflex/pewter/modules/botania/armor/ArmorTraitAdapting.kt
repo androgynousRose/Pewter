@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.mods.botania.armor
+package com.ejektaflex.pewter.modules.botania.armor
 
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack

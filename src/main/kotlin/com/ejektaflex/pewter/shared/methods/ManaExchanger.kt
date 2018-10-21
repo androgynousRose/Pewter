@@ -1,4 +1,4 @@
-package com.ejektaflex.pewter.lib.mixins
+package com.ejektaflex.pewter.shared.methods
 
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack

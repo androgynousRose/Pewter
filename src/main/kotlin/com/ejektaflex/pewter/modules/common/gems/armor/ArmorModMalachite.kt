@@ -1,7 +1,7 @@
-package com.ejektaflex.pewter.mods.common.gems.armor
+package com.ejektaflex.pewter.modules.common.gems.armor
 
 
-import com.ejektaflex.pewter.lib.modifiers.GemArmorModifier
-import com.ejektaflex.pewter.mods.common.gems.IModMalachite
+import com.ejektaflex.pewter.shared.modifiers.GemArmorModifier
+import com.ejektaflex.pewter.modules.common.gems.IModMalachite
 
 class ArmorModMalachite(modName: String) : GemArmorModifier(modName, 0x079971), IModMalachite
