@@ -28,3 +28,6 @@ fun ItemStack.comesFrom(modName: String): Boolean {
     return item.registryName?.resourceDomain == modName
 }
 
+val List<ItemStack?>.displayNames: String
+    get() = map { it?.displayName }.toString()
+
