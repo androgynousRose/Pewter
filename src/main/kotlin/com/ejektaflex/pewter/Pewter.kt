@@ -3,8 +3,8 @@ package com.ejektaflex.pewter
 import com.ejektaflex.pewter.api.PewterAPIProvider
 import com.ejektaflex.pewter.command.PewterCommand
 import com.ejektaflex.pewter.config.Configs
-import com.ejektaflex.pewter.lib.InternalAPI
-import com.ejektaflex.pewter.lib.PewterInfo
+import com.ejektaflex.pewter.core.InternalAPI
+import com.ejektaflex.pewter.core.PewterInfo
 import com.ejektaflex.pewter.proxy.IProxy
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod

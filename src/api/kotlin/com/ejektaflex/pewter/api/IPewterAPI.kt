@@ -13,6 +13,12 @@ import com.ejektaflex.pewter.api.core.PewterModule
 interface IPewterAPI {
 
     /**
+     * Returns the current version of Pewter.
+     */
+    val pewterVersion: String
+        get() = "UNKNOWN"
+
+    /**
      * Adds a material definition to Pewter.
      */
     fun addMaterial(material: MaterialDSL) {}

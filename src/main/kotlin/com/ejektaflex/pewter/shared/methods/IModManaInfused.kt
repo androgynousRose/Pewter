@@ -1,9 +1,7 @@
 package com.ejektaflex.pewter.shared.methods
 
 import com.ejektaflex.pewter.ext.isAtMaxDurability
-import com.ejektaflex.pewter.lib.mixins.ManaExchanger
-import com.ejektaflex.pewter.lib.mixins.TinkerNBTHelper
-import com.ejektaflex.pewter.lib.traits.SharedTrait
+import com.ejektaflex.pewter.shared.SharedTrait
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer

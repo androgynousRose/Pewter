@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.logic.crafting
 
 import com.ejektaflex.pewter.api.core.materials.stats.SmeltingStats
 import com.ejektaflex.pewter.ext.toItemStack
-import com.ejektaflex.pewter.lib.PewterLogger
+import com.ejektaflex.pewter.core.PewterLogger
 import com.ejektaflex.pewter.logic.MaterialRegistrar
 import net.minecraft.item.ItemStack
 import slimeknights.mantle.util.RecipeMatch

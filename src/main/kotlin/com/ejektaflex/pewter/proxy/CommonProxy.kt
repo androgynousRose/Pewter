@@ -2,8 +2,8 @@ package com.ejektaflex.pewter.proxy
 
 import com.ejektaflex.pewter.content.*
 import com.ejektaflex.pewter.ext.resource
-import com.ejektaflex.pewter.lib.PewterInfo
-import com.ejektaflex.pewter.lib.PewterLogger
+import com.ejektaflex.pewter.core.PewterInfo
+import com.ejektaflex.pewter.core.PewterLogger
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.item.ItemBlock

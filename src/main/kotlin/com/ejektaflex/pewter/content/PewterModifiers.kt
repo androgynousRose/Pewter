@@ -3,8 +3,8 @@ package com.ejektaflex.pewter.content
 import com.ejektaflex.pewter.api.core.modifiers.IPewterModifier
 import com.ejektaflex.pewter.api.core.EffectWrapper
 import com.ejektaflex.pewter.config.Configs
-import com.ejektaflex.pewter.lib.AbstractLoadable
-import com.ejektaflex.pewter.lib.PewterLogger
+import com.ejektaflex.pewter.core.AbstractLoadable
+import com.ejektaflex.pewter.core.PewterLogger
 
 object PewterModifiers : AbstractLoadable<IPewterModifier, EffectWrapper<out IPewterModifier>>() {
 
@@ -21,7 +21,7 @@ object PewterModifiers : AbstractLoadable<IPewterModifier, EffectWrapper<out IPe
                 return@mapNotNull null
             }
 
-            // Remove ConArm mods if the mod isn't loaded
+            // Remove ConArm modules if the mod isn't loaded
             if (it.identifier.endsWith(armorSuffix) && !Configs.main.isUsingConArm()) {
                 return@mapNotNull null
             }

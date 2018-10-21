@@ -1,9 +1,9 @@
 package com.ejektaflex.pewter.config
 
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
-import com.ejektaflex.pewter.lib.PewterInfo
-import com.ejektaflex.pewter.lib.PewterLogger
-import com.ejektaflex.pewter.mods.unused.MaterialExample
+import com.ejektaflex.pewter.core.PewterInfo
+import com.ejektaflex.pewter.core.PewterLogger
+import com.ejektaflex.pewter.modules.unused.MaterialExample
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
 import java.io.File
