@@ -13,6 +13,7 @@ import com.ejektaflex.pewter.modules.soot.ModuleSoot
 import com.ejektaflex.pewter.modules.thaumcraft.ModuleThaumcraft
 import com.ejektaflex.pewter.modules.common.gems.ModuleCommonGems
 import com.ejektaflex.pewter.modules.common.magic.ModuleThaumBotania
+import com.ejektaflex.pewter.modules.forestry.ModuleForestry
 import com.ejektaflex.pewter.modules.thebetweenlands.ModuleTheBetweenlands
 
 internal object PewterContent {
@@ -33,6 +34,7 @@ internal object PewterContent {
             val contentMap = mapOf(
                     "core" to listOf(
                             ModuleMekanism(),
+                            ModuleForestry(),
                             ModuleAstralSorcery(),
                             ModuleBetterWithMods(),
                             ModuleBotania(),

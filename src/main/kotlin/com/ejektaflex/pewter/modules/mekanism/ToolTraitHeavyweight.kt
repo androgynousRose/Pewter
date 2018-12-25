@@ -15,7 +15,7 @@ import slimeknights.tconstruct.library.utils.TinkerUtil
 class ToolTraitHeavyweight(modName: String) : PewterToolTrait(modName, 0x124026), TinkerNBTHelper, IBuffTradeoff {
 
     // Damage buff
-    override val buffMult = 10.1f
+    override val buffMult = 1.1f
     // Speed debuff
     override val debuffMult = 0.90f
 
