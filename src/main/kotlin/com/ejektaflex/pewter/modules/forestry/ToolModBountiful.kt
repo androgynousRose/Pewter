@@ -16,7 +16,6 @@ import slimeknights.tconstruct.library.utils.ToolHelper
 import slimeknights.tconstruct.tools.tools.Kama
 import slimeknights.tconstruct.tools.tools.Scythe
 
-
 class ToolModBountiful(modName: String) : PewterToolModifier(modName, 0x58a6dd, 2, 75), TinkerNBTHelper, IModifierDisplay {
 
     private fun dropChance(item: ItemStack): Float {
@@ -24,14 +23,18 @@ class ToolModBountiful(modName: String) : PewterToolModifier(modName, 0x58a6dd, 
     }
 
     override fun blockHarvestDrops(tool: ItemStack, event: BlockEvent.HarvestDropsEvent) {
-        if (ToolHelper.isToolEffective2(tool, event.state) && (tool.item is Kama || tool.item is Scythe)) {
-            event.state?.run {
-                if (event.state.block is BlockCrops && event.drops.isNotEmpty() && random.nextFloat() < dropChance(tool)) {
-                    event.drops.add(event.drops.random.copy())
+        if (!event.world.isRemote) {
+            if (ToolHelper.isToolEffective2(tool, event.state) && (tool.item is Kama || tool.item is Scythe)) {
+                event.state?.run {
+                    if (event.state.block is BlockCrops && event.drops.isNotEmpty() && random.nextFloat() < dropChance(tool)) {
+                        event.drops.add(event.drops.random.copy())
+                    }
                 }
             }
         }
     }
+
+    // TODO: Limit appling only to Kama and Scythe?
 
     override fun getExtraInfo(tool: ItemStack, modifierTag: NBTTagCompound?): MutableList<String> {
         return mutableListOf("Bonus Harvest Drop +${"%.1f".format(dropChance(tool) * 100)}%")

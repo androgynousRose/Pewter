@@ -13,7 +13,7 @@ class ModuleForestry : PewterModule() {
     override val id = "forestry"
 
     override val armorModifiers: MutableList<EffectWrapper<out IPewterArmorModifier>> = mutableListOf(
-            // None
+            //EffectWrapper("beekeeper_armor") { ArmorModBeekeeper(this) }
     )
 
     override val armorTraits: MutableList<EffectWrapper<out IPewterArmorTrait>> = mutableListOf(
