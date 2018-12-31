@@ -2,7 +2,7 @@ package com.ejektaflex.pewter.content
 
 import com.ejektaflex.pewter.api.core.EffectWrapper
 import com.ejektaflex.pewter.api.core.traits.IPewterTrait
-import com.ejektaflex.pewter.lib.AbstractLoadable
+import com.ejektaflex.pewter.core.AbstractLoadable
 
 object PewterTraits : AbstractLoadable<IPewterTrait, EffectWrapper<out IPewterTrait>>() {
 

@@ -1,8 +1,8 @@
 package com.ejektaflex.pewter.logic
 
 import com.ejektaflex.pewter.content.PewterMaterials
-import com.ejektaflex.pewter.lib.PewterInfo
-import com.ejektaflex.pewter.lib.PewterLogger
+import com.ejektaflex.pewter.core.PewterInfo
+import com.ejektaflex.pewter.core.PewterLogger
 import net.minecraft.client.Minecraft
 import net.minecraft.client.resources.IResourceManagerReloadListener
 import net.minecraft.util.text.translation.LanguageMap

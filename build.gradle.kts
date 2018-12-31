@@ -21,7 +21,19 @@ buildscript {
     }
 }
 
-version = "1.4.1"
+val pewterVersion: String
+    get() {
+        val versionFile = File("src/main/kotlin/com/ejektaflex/pewter/core/PewterInfo.kt")
+        val gotVersion = if (versionFile.exists()) {
+            versionFile.readLines().find { "VERSION" in it }?.dropWhile { it != '"' }?.drop(1)?.dropLast(1) ?: "UNDEFINED"
+        } else {
+            "UNDEFINED"
+        }
+        println("build.gradle.kts got Pewter version: $gotVersion")
+        return gotVersion
+    }
+
+version = pewterVersion
 group = "com.ejektaflex.pewter"
 
 base {

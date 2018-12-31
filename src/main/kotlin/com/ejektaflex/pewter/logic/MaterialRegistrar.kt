@@ -4,8 +4,8 @@ import com.ejektaflex.pewter.ext.resource
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData
 import com.ejektaflex.pewter.api.core.materials.stats.MaterialData.MatPart
 import com.ejektaflex.pewter.api.core.materials.stats.SmeltingStats
-import com.ejektaflex.pewter.lib.PewterInfo
-import com.ejektaflex.pewter.lib.PewterLogger
+import com.ejektaflex.pewter.core.PewterInfo
+import com.ejektaflex.pewter.core.PewterLogger
 import com.ejektaflex.pewter.logic.crafting.ItemSmelteryHandler
 import com.ejektaflex.pewter.logic.crafting.TagSmelteryHandler
 import com.ejektaflex.pewter.proxy.IProxy

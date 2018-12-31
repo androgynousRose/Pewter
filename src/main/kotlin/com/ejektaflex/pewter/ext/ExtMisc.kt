@@ -1,6 +1,6 @@
 package com.ejektaflex.pewter.ext
 
-import com.ejektaflex.pewter.lib.PewterInfo
+import com.ejektaflex.pewter.core.PewterInfo
 import net.minecraft.command.ICommandSender
 import net.minecraft.util.ResourceLocation
 import net.minecraft.util.text.TextComponentString

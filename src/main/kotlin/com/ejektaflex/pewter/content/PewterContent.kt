@@ -3,17 +3,18 @@ package com.ejektaflex.pewter.content
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.api.core.PewterModule
 import com.ejektaflex.pewter.config.Configs
-import com.ejektaflex.pewter.lib.PewterLogger
-import com.ejektaflex.pewter.mods.astralsorcery.ModuleAstralSorcery
-import com.ejektaflex.pewter.mods.betterwithmods.ModuleBetterWithMods
-import com.ejektaflex.pewter.mods.botania.ModuleBotania
-import com.ejektaflex.pewter.mods.embers.ModuleEmbersRekindled
-import com.ejektaflex.pewter.mods.mekanism.ModuleMekanism
-import com.ejektaflex.pewter.mods.soot.ModuleSoot
-import com.ejektaflex.pewter.mods.thaumcraft.ModuleThaumcraft
-import com.ejektaflex.pewter.mods.common.gems.ModuleCommonGems
-import com.ejektaflex.pewter.mods.common.magic.ModuleThaumBotania
-import com.ejektaflex.pewter.mods.thebetweenlands.ModuleTheBetweenlands
+import com.ejektaflex.pewter.core.PewterLogger
+import com.ejektaflex.pewter.modules.astralsorcery.ModuleAstralSorcery
+import com.ejektaflex.pewter.modules.betterwithmods.ModuleBetterWithMods
+import com.ejektaflex.pewter.modules.botania.ModuleBotania
+import com.ejektaflex.pewter.modules.embers.ModuleEmbersRekindled
+import com.ejektaflex.pewter.modules.mekanism.ModuleMekanism
+import com.ejektaflex.pewter.modules.soot.ModuleSoot
+import com.ejektaflex.pewter.modules.thaumcraft.ModuleThaumcraft
+import com.ejektaflex.pewter.modules.common.gems.ModuleCommonGems
+import com.ejektaflex.pewter.modules.common.magic.ModuleThaumBotania
+import com.ejektaflex.pewter.modules.forestry.ModuleForestry
+import com.ejektaflex.pewter.modules.thebetweenlands.ModuleTheBetweenlands
 
 internal object PewterContent {
 
@@ -33,6 +34,7 @@ internal object PewterContent {
             val contentMap = mapOf(
                     "core" to listOf(
                             ModuleMekanism(),
+                            ModuleForestry(),
                             ModuleAstralSorcery(),
                             ModuleBetterWithMods(),
                             ModuleBotania(),

@@ -1,10 +1,8 @@
 package com.ejektaflex.pewter.logic.crafting
 
 import com.ejektaflex.pewter.api.core.materials.stats.SmeltingStats
-import com.ejektaflex.pewter.lib.PewterLogger
 import net.minecraft.item.ItemStack
 import net.minecraftforge.fluids.Fluid
-import slimeknights.mantle.util.RecipeMatch
 import slimeknights.tconstruct.library.TinkerRegistry
 import slimeknights.tconstruct.library.smeltery.CastingRecipe
 

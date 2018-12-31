@@ -2,9 +2,9 @@ package com.ejektaflex.pewter.proxy
 
 import com.ejektaflex.pewter.api.PewterAPI
 import com.ejektaflex.pewter.content.PewterMaterials
-import com.ejektaflex.pewter.lib.BookContentRegistry
-import com.ejektaflex.pewter.lib.PewterInfo
-import com.ejektaflex.pewter.lib.PewterLogger
+import com.ejektaflex.pewter.core.BookContentRegistry
+import com.ejektaflex.pewter.core.PewterInfo
+import com.ejektaflex.pewter.core.PewterLogger
 import com.ejektaflex.pewter.logic.FluidStateMapper
 import com.ejektaflex.pewter.logic.ResourceManager
 import com.google.common.base.Function
